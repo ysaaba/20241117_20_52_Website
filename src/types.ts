@@ -2,6 +2,9 @@ export type ExerciseType = 'articles' | 'nouns' | 'verbGroups' | 'adjectives';
 
 export type NounCategory = 
   | 'animals'
+  | 'objects'
+  | 'nature'
+  | 'all'
   | 'furniture'
   | 'clothing'
   | 'food'
@@ -10,7 +13,6 @@ export type NounCategory =
   | 'profession'
   | 'vehicles'
   | 'school'
-  | 'nature'
   | 'colors'
   | 'seasons'
   | 'abstract'
@@ -18,16 +20,32 @@ export type NounCategory =
   | 'hygiene'
   | 'music'
   | 'sports'
-  | 'office';
+  | 'office'
+  | 'electronics'
+  | 'business'
+  | 'kitchen'
+  | 'weather'
+;
 
 export interface Noun {
   noun: string;
-  indefiniteArticle: string;
-  definiteArticle: string;
-  indefinitePlural: string;
-  definitePlural: string;
   translation: string;
   category: NounCategory;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  gender: 'en' | 'ett';
+  countable: boolean;
+  forms: {
+    indefinite: string;
+    definite: string;
+    indefinitePlural: string;
+    definitePlural: string;
+  };
+  examples: {
+    indefinite: { swedish: string; english: string };
+    definite: { swedish: string; english: string };
+    indefinitePlural: { swedish: string; english: string };
+    definitePlural: { swedish: string; english: string };
+  };
 }
 
 export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';

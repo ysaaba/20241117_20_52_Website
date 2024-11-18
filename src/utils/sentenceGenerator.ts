@@ -39,19 +39,73 @@ const getCorrectArticle = (noun: Noun, type: ArticleType): string => {
   }
 };
 
-const generateSentence = (template: Template, noun: Noun, type: ArticleType): {
+interface TemplateContext {
+  noun: Noun;
+  type: ArticleType;
+  useDefiniteForm: boolean;
+}
+
+function generateTemplateString(template: Template, context: TemplateContext): {
   sentence: string;
-  correctSentence: string;
-} => {
-  const sentence = template.template.replace('NOUN', noun.noun);
-  const correctArticle = getCorrectArticle(noun, type);
+  translation: string;
+} {
+  const { noun, type, useDefiniteForm } = context;
+  
+  // Handle uncountable nouns
+  if (!noun.countable && (type === 'indefinitePlural' || type === 'definitePlural')) {
+    return generateUncountableTemplate(template, noun);
+  }
 
-  const correctSentence = type === 'indefinite' || type === 'indefinitePlural'
-    ? sentence.replace('___', correctArticle)
-    : sentence.replace('NOUN___', noun.noun + correctArticle);
+  let sentence = template.template;
+  let translation = template.translation;
 
-  return { sentence, correctSentence };
-};
+  // Replace noun placeholders
+  if (useDefiniteForm) {
+    sentence = sentence.replace('NOUN___', `${noun.noun}${noun.forms.definite}`);
+    translation = translation.replace('{noun}', noun.translation);
+  } else {
+    sentence = sentence.replace('NOUN', noun.noun);
+    translation = translation.replace('{noun}', noun.translation);
+  }
+
+  // Handle articles based on type
+  if (type === 'indefinite' || type === 'indefinitePlural') {
+    const article = type === 'indefinite' ? noun.forms.indefinite.split(' ')[0] : '';
+    sentence = sentence.replace('___', article);
+    
+    // Handle English articles
+    const englishArticle = getEnglishArticle(noun.translation, type);
+    translation = translation.replace('a {noun}', `${englishArticle} {noun}`);
+  }
+
+  return { sentence, translation };
+}
+
+function getEnglishArticle(word: string, type: ArticleType): string {
+  if (type === 'indefinitePlural') return '';
+  if (type === 'indefinite') {
+    return startsWithVowelSound(word) ? 'an' : 'a';
+  }
+  return 'the';
+}
+
+function startsWithVowelSound(word: string): boolean {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const firstLetter = word.toLowerCase().charAt(0);
+  
+  // Special cases
+  const silentHWords = ['hour', 'honest', 'honour', 'heir'];
+  if (silentHWords.some(h => word.toLowerCase().startsWith(h))) {
+    return true;
+  }
+  
+  const uExceptions = ['university', 'uniform', 'union', 'unique', 'unit'];
+  if (uExceptions.some(u => word.toLowerCase().startsWith(u))) {
+    return false;
+  }
+  
+  return vowels.includes(firstLetter);
+}
 
 export function generateExercises(count: number, startId: number = 1, type: ExerciseType = 'indefinite'): Exercise[] {
   // Early return for verb exercises as they use a different system

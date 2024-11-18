@@ -28,36 +28,26 @@ export function generateExercises(count: number, startId: number, type: Exercise
   for (let i = 0; i < count; i++) {
     const noun = commonNouns[Math.floor(Math.random() * commonNouns.length)];
     
-    // Get templates for the noun's category, fallback to generic templates if category not found
-    const categoryTemplates = templates[noun.category] || templates.furniture;
-    
-    let templateList: Array<{ sv: string; en: string }>;
-    switch(type) {
-      case 'indefinite':
-        templateList = categoryTemplates.indefinite;
-        break;
-      case 'definite':
-        templateList = categoryTemplates.definite;
-        break;
-      case 'indefinitePlural':
-        templateList = categoryTemplates.indefinitePlural;
-        break;
-      case 'definitePlural':
-        templateList = categoryTemplates.definitePlural;
-        break;
-      default:
-        templateList = categoryTemplates.indefinite;
+    // Get templates for the article type, not noun category
+    const templateList = templates[type];
+    if (!templateList) {
+      throw new Error(`No templates found for type: ${type}`);
     }
     
     const template = templateList[Math.floor(Math.random() * templateList.length)];
     
-    const sentence = template.sv.replace('{noun}', noun.noun);
+    // Only proceed if the template matches the noun's category
+    if (!template.categories.includes(noun.category) && !template.categories.includes('all')) {
+      continue;
+    }
+    
+    const sentence = template.template.replace('NOUN', noun.noun);
     const englishArticle = type === 'indefinite' 
       ? (startsWithVowelSound(noun.translation) ? 'an' : 'a')
       : 'the';
     
-    const translation = template.en
-      .replace('a {noun}', `${englishArticle} {noun}`)
+    const translation = template.translation
+      .replace('a {noun}', `${englishArticle} ${noun.translation}`)
       .replace('{noun}', noun.translation);
     
     let correctArticle: string;

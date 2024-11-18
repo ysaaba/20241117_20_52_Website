@@ -1,200 +1,1180 @@
-// Comprehensive Swedish noun database with correct plural forms
 export const commonNouns: Noun[] = [
-  // People and Family
-  { noun: 'person', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'person', category: 'people' },
-  { noun: 'kvinna', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'woman', category: 'people' },
-  { noun: 'man', indefiniteArticle: 'en', definiteArticle: 'nen', indefinitePlural: 'män', definitePlural: 'nen', translation: 'man', category: 'people' },
-  { noun: 'barn', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'child', category: 'people' },
-  { noun: 'familj', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'family', category: 'people' },
-  { noun: 'syster', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'rar', definitePlural: 'rarna', translation: 'sister', category: 'people' },
-  { noun: 'bror', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'der', definitePlural: 'derna', translation: 'brother', category: 'people' },
-  
-  // Professions
-  { noun: 'läkare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'doctor', category: 'professions' },
-  { noun: 'lärare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'teacher', category: 'professions' },
-  { noun: 'ingenjör', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'engineer', category: 'professions' },
-  { noun: 'kock', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'chef', category: 'professions' },
-  { noun: 'konstnär', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'artist', category: 'professions' },
-  
-  // Animals
-  { noun: 'hund', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'dog', category: 'animals' },
-  { noun: 'katt', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'cat', category: 'animals' },
-  { noun: 'fågel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'bird', category: 'animals' },
-  { noun: 'häst', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'horse', category: 'animals' },
-  { noun: 'fisk', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'fish', category: 'animals' },
-  
-  // Food and Drinks
-  { noun: 'äpple', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'apple', category: 'food' },
-  { noun: 'bröd', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'bread', category: 'food' },
-  { noun: 'kaffe', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'coffee', category: 'food' },
-  { noun: 'soppa', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'soup', category: 'food' },
-  { noun: 'smörgås', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'sandwich', category: 'food' },
-  
-  // Clothing
-  { noun: 'skjorta', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'shirt', category: 'clothing' },
-  { noun: 'byxa', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'pant', category: 'clothing' },
-  { noun: 'skor', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'shoe', category: 'clothing' },
-  { noun: 'klänning', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'dress', category: 'clothing' },
-  { noun: 'jacka', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'jacket', category: 'clothing' },
-  
-  // Furniture
-  { noun: 'bord', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'table', category: 'furniture' },
-  { noun: 'stol', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'chair', category: 'furniture' },
-  { noun: 'säng', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'bed', category: 'furniture' },
-  { noun: 'soffa', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'sofa', category: 'furniture' },
-  { noun: 'hylla', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'shelf', category: 'furniture' },
-  
-  // Technology
-  { noun: 'dator', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'er', definitePlural: 'erna', translation: 'computer', category: 'technology' },
-  { noun: 'telefon', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'phone', category: 'technology' },
-  { noun: 'kamera', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'camera', category: 'technology' },
-  { noun: 'skärm', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'screen', category: 'technology' },
-  { noun: 'router', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'router', category: 'technology' },
-  
-  // Body Parts
-  { noun: 'hand', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'händer', definitePlural: 'händerna', translation: 'hand', category: 'body' },
-  { noun: 'fot', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'fötter', definitePlural: 'fötterna', translation: 'foot', category: 'body' },
-  { noun: 'öga', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'ögon', definitePlural: 'ögonen', translation: 'eye', category: 'body' },
-  { noun: 'öra', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'öron', definitePlural: 'öronen', translation: 'ear', category: 'body' },
-  { noun: 'näsa', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'nose', category: 'body' },
-  
-  // Nature and Weather
-  { noun: 'träd', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'tree', category: 'nature' },
-  { noun: 'blomma', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'flower', category: 'nature' },
-  { noun: 'moln', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'cloud', category: 'nature' },
-  { noun: 'regn', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'rain', category: 'nature' },
-  { noun: 'vind', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'wind', category: 'nature' },
-  
-  // Places and Buildings
-  { noun: 'hus', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'house', category: 'places' },
-  { noun: 'skola', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'school', category: 'places' },
-  { noun: 'sjukhus', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'hospital', category: 'places' },
-  { noun: 'affär', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'store', category: 'places' },
-  { noun: 'restaurang', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'restaurant', category: 'places' },
-  
-  // Transportation
-  { noun: 'bil', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'car', category: 'transportation' },
-  { noun: 'buss', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'bus', category: 'transportation' },
-  { noun: 'tåg', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'train', category: 'transportation' },
-  { noun: 'cykel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'bicycle', category: 'transportation' },
-  { noun: 'flygplan', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'airplane', category: 'transportation' },
-  
-  // Kitchen Items
-  { noun: 'tallrik', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'plate', category: 'kitchen' },
-  { noun: 'gaffel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'fork', category: 'kitchen' },
-  { noun: 'kniv', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'knife', category: 'kitchen' },
-  { noun: 'sked', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'spoon', category: 'kitchen' },
-  { noun: 'kopp', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'cup', category: 'kitchen' },
-  
-  // Rooms
-  { noun: 'sovrum', indefiniteArticle: 'ett', definiteArticle: 'met', indefinitePlural: '', definitePlural: 'men', translation: 'bedroom', category: 'rooms' },
-  { noun: 'kök', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'kitchen', category: 'rooms' },
-  { noun: 'badrum', indefiniteArticle: 'ett', definiteArticle: 'met', indefinitePlural: '', definitePlural: 'men', translation: 'bathroom', category: 'rooms' },
-  { noun: 'vardagsrum', indefiniteArticle: 'ett', definiteArticle: 'met', indefinitePlural: '', definitePlural: 'men', translation: 'living room', category: 'rooms' },
-  { noun: 'kontor', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'office', category: 'rooms' },
-  
-  // Electronics
-  { noun: 'laddare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'charger', category: 'electronics' },
-  { noun: 'högtalare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'speaker', category: 'electronics' },
-  { noun: 'fjärrkontroll', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'remote control', category: 'electronics' },
-  { noun: 'surfplatta', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'tablet', category: 'electronics' },
-  { noun: 'tangentbord', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'keyboard', category: 'electronics' },
-  
-  // School/Education
-  { noun: 'penna', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'pen', category: 'school' },
-  { noun: 'suddgummi', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'eraser', category: 'school' },
-  { noun: 'anteckningsbok', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'böcker', definitePlural: 'böckerna', translation: 'notebook', category: 'school' },
-  { noun: 'klassrum', indefiniteArticle: 'ett', definiteArticle: 'met', indefinitePlural: '', definitePlural: 'men', translation: 'classroom', category: 'school' },
-  { noun: 'lärobok', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'böcker', definitePlural: 'böckerna', translation: 'textbook', category: 'school' },
-  
-  // Bathroom Items
-  { noun: 'tandborste', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'toothbrush', category: 'bathroom' },
-  { noun: 'tvål', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'soap', category: 'bathroom' },
-  { noun: 'handduk', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'towel', category: 'bathroom' },
-  { noun: 'schampo', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'shampoo', category: 'bathroom' },
-  { noun: 'spegel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'mirror', category: 'bathroom' },
-  
-  // Time
-  { noun: 'minut', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'minute', category: 'time' },
-  { noun: 'timme', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'hour', category: 'time' },
-  { noun: 'vecka', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'week', category: 'time' },
-  { noun: 'månad', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'month', category: 'time' },
-  { noun: 'sekund', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'second', category: 'time' },
-  
-  // Sports
-  { noun: 'boll', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'ball', category: 'sports' },
-  { noun: 'racket', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'racket', category: 'sports' },
-  { noun: 'mål', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'goal', category: 'sports' },
-  { noun: 'klubba', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'club/stick', category: 'sports' },
-  { noun: 'plan', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'field/court', category: 'sports' },
-  
-  // Emotions/Feelings
-  { noun: 'glädje', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: '', translation: 'joy', category: 'emotions' },
-  { noun: 'sorg', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'sorrow', category: 'emotions' },
-  { noun: 'ilska', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: '', translation: 'anger', category: 'emotions' },
-  { noun: 'rädsla', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'fear', category: 'emotions' },
-  { noun: 'kärlek', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: '', definitePlural: '', translation: 'love', category: 'emotions' },
-  
-  // Tools
-  { noun: 'hammare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'hammer', category: 'tools' },
-  { noun: 'skruvmejsel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'screwdriver', category: 'tools' },
-  { noun: 'spik', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'nail', category: 'tools' },
-  { noun: 'såg', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'saw', category: 'tools' },
-  { noun: 'skruv', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'screw', category: 'tools' },
-  
-  // Office Supplies
-  { noun: 'häftapparat', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'stapler', category: 'office' },
-  { noun: 'sax', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'scissors', category: 'office' },
-  { noun: 'tejp', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'tape', category: 'office' },
-  { noun: 'gem', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'paperclip', category: 'office' },
-  { noun: 'mapp', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'folder', category: 'office' },
-  
-  // Garden
-  { noun: 'spade', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'shovel', category: 'garden' },
-  { noun: 'kruka', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'pot', category: 'garden' },
-  { noun: 'gräsklippare', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: '', definitePlural: 'na', translation: 'lawnmower', category: 'garden' },
-  { noun: 'vattenslang', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'hose', category: 'garden' },
-  { noun: 'räfsa', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'rake', category: 'garden' },
-  
-  // Musical Instruments
-  { noun: 'gitarr', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'guitar', category: 'musical' },
-  { noun: 'piano', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'piano', category: 'musical' },
-  { noun: 'trumma', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'drum', category: 'musical' },
-  { noun: 'flöjt', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'flute', category: 'musical' },
-  { noun: 'fiol', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'violin', category: 'musical' },
-  
-  // Vehicles Parts
-  { noun: 'motor', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'er', definitePlural: 'erna', translation: 'engine', category: 'vehicles' },
-  { noun: 'däck', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'tire', category: 'vehicles' },
-  { noun: 'ratt', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'steering wheel', category: 'vehicles' },
-  { noun: 'växellåda', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'gearbox', category: 'vehicles' },
-  { noun: 'broms', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'brake', category: 'vehicles' },
-  
-  // Hygiene Products
-  { noun: 'tandkräm', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'toothpaste', category: 'hygiene' },
-  { noun: 'deodorant', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'deodorant', category: 'hygiene' },
-  { noun: 'kam', indefiniteArticle: 'en', definiteArticle: 'men', indefinitePlural: 'mar', definitePlural: 'marna', translation: 'comb', category: 'hygiene' },
-  { noun: 'rakapparat', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'razor', category: 'hygiene' },
-  { noun: 'bomull', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: '', definitePlural: '', translation: 'cotton', category: 'hygiene' },
-  
-  // Jewelry
-  { noun: 'ring', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'ring', category: 'jewelry' },
-  { noun: 'halsband', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'necklace', category: 'jewelry' },
-  { noun: 'armband', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'bracelet', category: 'jewelry' },
-  { noun: 'örhänge', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'earring', category: 'jewelry' },
-  { noun: 'brosch', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'brooch', category: 'jewelry' },
-  
-  // Containers
-  { noun: 'låda', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'box', category: 'containers' },
-  { noun: 'påse', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'bag', category: 'containers' },
-  { noun: 'burk', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'jar', category: 'containers' },
-  { noun: 'flaska', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'or', definitePlural: 'orna', translation: 'bottle', category: 'containers' },
-  { noun: 'korg', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'basket', category: 'containers' },
-  
-  // Stationery
-  { noun: 'linjal', indefiniteArticle: 'en', definiteArticle: 'en', indefinitePlural: 'er', definitePlural: 'erna', translation: 'ruler', category: 'stationery' },
-  { noun: 'häfte', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'notebook', category: 'stationery' },
-  { noun: 'stämpel', indefiniteArticle: 'en', definiteArticle: 'n', indefinitePlural: 'ar', definitePlural: 'arna', translation: 'stamp', category: 'stationery' },
-  { noun: 'kuvert', indefiniteArticle: 'ett', definiteArticle: 'et', indefinitePlural: '', definitePlural: 'en', translation: 'envelope', category: 'stationery' },
-  { noun: 'klistermärke', indefiniteArticle: 'ett', definiteArticle: 't', indefinitePlural: 'n', definitePlural: 'na', translation: 'sticker', category: 'stationery' }
-] as const;
+  {
+    noun: 'hund',
+    translation: 'dog',
+    category: 'animals',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en hund',
+      definite: 'hunden',
+      indefinitePlural: 'hundar',
+      definitePlural: 'hundarna'
+    },
+    examples: {
+      indefinite: { 
+        swedish: 'Jag ser en hund',
+        english: 'I see a dog'
+      },
+      definite: {
+        swedish: 'Hunden är stor',
+        english: 'The dog is big'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många hundar här',
+        english: 'There are many dogs here'
+      },
+      definitePlural: {
+        swedish: 'Hundarna springer i parken',
+        english: 'The dogs are running in the park'
+      }
+    }
+  },
+  {
+    noun: 'katt',
+    translation: 'cat',
+    category: 'animals',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en katt',
+      definite: 'katten',
+      indefinitePlural: 'katter',
+      definitePlural: 'katterna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag har en katt',
+        english: 'I have a cat'
+      },
+      definite: {
+        swedish: 'Katten sover',
+        english: 'The cat is sleeping'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns två katter',
+        english: 'There are two cats'
+      },
+      definitePlural: {
+        swedish: 'Katterna är hungriga',
+        english: 'The cats are hungry'
+      }
+    }
+  },
+  {
+    noun: 'hand',
+    translation: 'hand',
+    category: 'bodyParts',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en hand',
+      definite: 'handen',
+      indefinitePlural: 'händer',
+      definitePlural: 'händerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag har en hand',
+        english: 'I have a hand'
+      },
+      definite: {
+        swedish: 'Handen är varm',
+        english: 'The hand is warm'
+      },
+      indefinitePlural: {
+        swedish: 'Mina händer är kalla',
+        english: 'My hands are cold'
+      },
+      definitePlural: {
+        swedish: 'Händerna är starka',
+        english: 'The hands are strong'
+      }
+    }
+  },
+  {
+    noun: 'öga',
+    translation: 'eye',
+    category: 'bodyParts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett öga',
+      definite: 'ögat',
+      indefinitePlural: 'ögon',
+      definitePlural: 'ögonen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har ett blått öga',
+        english: 'She has a blue eye'
+      },
+      definite: {
+        swedish: 'Ögat är rött',
+        english: 'The eye is red'
+      },
+      indefinitePlural: {
+        swedish: 'Hon har bruna ögon',
+        english: 'She has brown eyes'
+      },
+      definitePlural: {
+        swedish: 'Ögonen är trötta',
+        english: 'The eyes are tired'
+      }
+    }
+  },
+  {
+    noun: 'äpple',
+    translation: 'apple',
+    category: 'food',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett äpple',
+      definite: 'äpplet',
+      indefinitePlural: 'äpplen',
+      definitePlural: 'äpplena'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag äter ett äpple',
+        english: 'I am eating an apple'
+      },
+      definite: {
+        swedish: 'Äpplet är rött',
+        english: 'The apple is red'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många äpplen',
+        english: 'There are many apples'
+      },
+      definitePlural: {
+        swedish: 'Äpplena är mogna',
+        english: 'The apples are ripe'
+      }
+    }
+  },
+  {
+    noun: 'dator',
+    translation: 'computer',
+    category: 'technology',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en dator',
+      definite: 'datorn',
+      indefinitePlural: 'datorer',
+      definitePlural: 'datorerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag köpte en dator',
+        english: 'I bought a computer'
+      },
+      definite: {
+        swedish: 'Datorn är ny',
+        english: 'The computer is new'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många datorer',
+        english: 'We have many computers'
+      },
+      definitePlural: {
+        swedish: 'Datorerna är snabba',
+        english: 'The computers are fast'
+      }
+    }
+  },
+  {
+    noun: 'stol',
+    translation: 'chair',
+    category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en stol',
+      definite: 'stolen',
+      indefinitePlural: 'stolar',
+      definitePlural: 'stolarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det finns en stol här',
+        english: 'There is a chair here'
+      },
+      definite: {
+        swedish: 'Stolen är bekväm',
+        english: 'The chair is comfortable'
+      },
+      indefinitePlural: {
+        swedish: 'Vi behöver fler stolar',
+        english: 'We need more chairs'
+      },
+      definitePlural: {
+        swedish: 'Stolarna är gamla',
+        english: 'The chairs are old'
+      }
+    }
+  },
+  {
+    noun: 'skjorta',
+    translation: 'shirt',
+    category: 'clothing',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en skjorta',
+      definite: 'skjortan',
+      indefinitePlural: 'skjortor',
+      definitePlural: 'skjortorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag köpte en skjorta',
+        english: 'I bought a shirt'
+      },
+      definite: {
+        swedish: 'Skjortan är vit',
+        english: 'The shirt is white'
+      },
+      indefinitePlural: {
+        swedish: 'Han har många skjortor',
+        english: 'He has many shirts'
+      },
+      definitePlural: {
+        swedish: 'Skjortorna hänger i garderoben',
+        english: 'The shirts are hanging in the closet'
+      }
+    }
+  },
+  {
+    noun: 'skor',
+    translation: 'shoes',
+    category: 'clothing',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en sko',
+      definite: 'skon',
+      indefinitePlural: 'skor',
+      definitePlural: 'skorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en ny sko',
+        english: 'I need a new shoe'
+      },
+      definite: {
+        swedish: 'Skon är för liten',
+        english: 'The shoe is too small'
+      },
+      indefinitePlural: {
+        swedish: 'Dessa skor är dyra',
+        english: 'These shoes are expensive'
+      },
+      definitePlural: {
+        swedish: 'Skorna är smutsiga',
+        english: 'The shoes are dirty'
+      }
+    }
+  },
+  {
+    noun: 'penna',
+    translation: 'pen',
+    category: 'school',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en penna',
+      definite: 'pennan',
+      indefinitePlural: 'pennor',
+      definitePlural: 'pennorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Kan jag låna en penna?',
+        english: 'Can I borrow a pen?'
+      },
+      definite: {
+        swedish: 'Pennan är blå',
+        english: 'The pen is blue'
+      },
+      indefinitePlural: {
+        swedish: 'Jag har många pennor',
+        english: 'I have many pens'
+      },
+      definitePlural: {
+        swedish: 'Pennorna ligger på bordet',
+        english: 'The pens are on the table'
+      }
+    }
+  },
+  {
+    noun: 'träd',
+    translation: 'tree',
+    category: 'nature',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett träd',
+      definite: 'trädet',
+      indefinitePlural: 'träd',
+      definitePlural: 'träden'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det står ett träd där',
+        english: 'There is a tree there'
+      },
+      definite: {
+        swedish: 'Trädet är högt',
+        english: 'The tree is tall'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många träd i parken',
+        english: 'There are many trees in the park'
+      },
+      definitePlural: {
+        swedish: 'Träden har tappat sina löv',
+        english: 'The trees have lost their leaves'
+      }
+    }
+  },
+  {
+    noun: 'regn',
+    translation: 'rain',
+    category: 'weather',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett regn',
+      definite: 'regnet',
+      indefinitePlural: 'regn',
+      definitePlural: 'regnen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det kommer ett regn',
+        english: 'A rain is coming'
+      },
+      definite: {
+        swedish: 'Regnet är kallt',
+        english: 'The rain is cold'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har haft många regn i år',
+        english: 'We have had many rains this year'
+      },
+      definitePlural: {
+        swedish: 'Regnen kommer ofta på hösten',
+        english: 'The rains often come in autumn'
+      }
+    }
+  },
+  {
+    noun: 'bil',
+    translation: 'car',
+    category: 'transportation',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en bil',
+      definite: 'bilen',
+      indefinitePlural: 'bilar',
+      definitePlural: 'bilarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag vill köpa en bil',
+        english: 'I want to buy a car'
+      },
+      definite: {
+        swedish: 'Bilen är röd',
+        english: 'The car is red'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många bilar här',
+        english: 'There are many cars here'
+      },
+      definitePlural: {
+        swedish: 'Bilarna står på parkeringen',
+        english: 'The cars are in the parking lot'
+      }
+    }
+  },
+  {
+    noun: 'hus',
+    translation: 'house',
+    category: 'buildings',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett hus',
+      definite: 'huset',
+      indefinitePlural: 'hus',
+      definitePlural: 'husen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'De bygger ett hus',
+        english: 'They are building a house'
+      },
+      definite: {
+        swedish: 'Huset är stort',
+        english: 'The house is big'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många hus på gatan',
+        english: 'There are many houses on the street'
+      },
+      definitePlural: {
+        swedish: 'Husen är gamla',
+        english: 'The houses are old'
+      }
+    }
+  },
+  {
+    noun: 'lärare',
+    translation: 'teacher',
+    category: 'professions',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en lärare',
+      definite: 'läraren',
+      indefinitePlural: 'lärare',
+      definitePlural: 'lärarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon är en bra lärare',
+        english: 'She is a good teacher'
+      },
+      definite: {
+        swedish: 'Läraren undervisar svenska',
+        english: 'The teacher teaches Swedish'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många lärare',
+        english: 'We have many teachers'
+      },
+      definitePlural: {
+        swedish: 'Lärarna har möte',
+        english: 'The teachers are having a meeting'
+      }
+    }
+  },
+  {
+    noun: 'tallrik',
+    translation: 'plate',
+    category: 'kitchen',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en tallrik',
+      definite: 'tallriken',
+      indefinitePlural: 'tallrikar',
+      definitePlural: 'tallrikarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en tallrik',
+        english: 'I need a plate'
+      },
+      definite: {
+        swedish: 'Tallriken är ren',
+        english: 'The plate is clean'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många tallrikar',
+        english: 'We have many plates'
+      },
+      definitePlural: {
+        swedish: 'Tallrikarna står i skåpet',
+        english: 'The plates are in the cupboard'
+      }
+    }
+  },
+  {
+    noun: 'mobiltelefon',
+    translation: 'mobile phone',
+    category: 'electronics',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en mobiltelefon',
+      definite: 'mobiltelefonen',
+      indefinitePlural: 'mobiltelefoner',
+      definitePlural: 'mobiltelefonerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag har köpt en mobiltelefon',
+        english: 'I have bought a mobile phone'
+      },
+      definite: {
+        swedish: 'Mobiltelefonen är ny',
+        english: 'The mobile phone is new'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många mobiltelefoner här',
+        english: 'There are many mobile phones here'
+      },
+      definitePlural: {
+        swedish: 'Mobiltelefonerna ligger på bordet',
+        english: 'The mobile phones are on the table'
+      }
+    }
+  },
+  {
+    noun: 'boll',
+    translation: 'ball',
+    category: 'sports',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en boll',
+      definite: 'bollen',
+      indefinitePlural: 'bollar',
+      definitePlural: 'bollarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Kan du kasta en boll?',
+        english: 'Can you throw a ball?'
+      },
+      definite: {
+        swedish: 'Bollen är röd',
+        english: 'The ball is red'
+      },
+      indefinitePlural: {
+        swedish: 'Vi behöver fler bollar',
+        english: 'We need more balls'
+      },
+      definitePlural: {
+        swedish: 'Bollarna är nya',
+        english: 'The balls are new'
+      }
+    }
+  },
+  {
+    noun: 'gitarr',
+    translation: 'guitar',
+    category: 'music',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en gitarr',
+      definite: 'gitarren',
+      indefinitePlural: 'gitarrer',
+      definitePlural: 'gitarrerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon spelar en gitarr',
+        english: 'She plays a guitar'
+      },
+      definite: {
+        swedish: 'Gitarren låter bra',
+        english: 'The guitar sounds good'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många gitarrer i affären',
+        english: 'There are many guitars in the store'
+      },
+      definitePlural: {
+        swedish: 'Gitarrerna är dyra',
+        english: 'The guitars are expensive'
+      }
+    }
+  },
+  {
+    noun: 'syster',
+    translation: 'sister',
+    category: 'family',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en syster',
+      definite: 'systern',
+      indefinitePlural: 'systrar',
+      definitePlural: 'systrarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag har en syster',
+        english: 'I have a sister'
+      },
+      definite: {
+        swedish: 'Systern bor i Stockholm',
+        english: 'The sister lives in Stockholm'
+      },
+      indefinitePlural: {
+        swedish: 'Hon har tre systrar',
+        english: 'She has three sisters'
+      },
+      definitePlural: {
+        swedish: 'Systrarna kommer på besök',
+        english: 'The sisters are coming to visit'
+      }
+    }
+  },
+  {
+    noun: 'kaffe',
+    translation: 'coffee',
+    category: 'drinks',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett kaffe',
+      definite: 'kaffet',
+      indefinitePlural: 'kaffen',
+      definitePlural: 'kaffena'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag vill ha ett kaffe',
+        english: 'I want a coffee'
+      },
+      definite: {
+        swedish: 'Kaffet är varmt',
+        english: 'The coffee is hot'
+      },
+      indefinitePlural: {
+        swedish: 'De serverar olika kaffen',
+        english: 'They serve different coffees'
+      },
+      definitePlural: {
+        swedish: 'Kaffena är goda',
+        english: 'The coffees are good'
+      }
+    }
+  },
+  {
+    noun: 'papper',
+    translation: 'paper',
+    category: 'office',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett papper',
+      definite: 'pappret',
+      indefinitePlural: 'papper',
+      definitePlural: 'pappren'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Kan du ge mig ett papper?',
+        english: 'Can you give me a paper?'
+      },
+      definite: {
+        swedish: 'Pappret är vitt',
+        english: 'The paper is white'
+      },
+      indefinitePlural: {
+        swedish: 'Jag behöver fler papper',
+        english: 'I need more papers'
+      },
+      definitePlural: {
+        swedish: 'Pappren ligger på skrivbordet',
+        english: 'The papers are on the desk'
+      }
+    }
+  },
+  {
+    noun: 'tandborste',
+    translation: 'toothbrush',
+    category: 'bathroom',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en tandborste',
+      definite: 'tandborsten',
+      indefinitePlural: 'tandborstar',
+      definitePlural: 'tandborstarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en ny tandborste',
+        english: 'I need a new toothbrush'
+      },
+      definite: {
+        swedish: 'Tandborsten är blå',
+        english: 'The toothbrush is blue'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har flera tandborstar',
+        english: 'We have several toothbrushes'
+      },
+      definitePlural: {
+        swedish: 'Tandborstarna står i badrummet',
+        english: 'The toothbrushes are in the bathroom'
+      }
+    }
+  },
+  {
+    noun: 'spade',
+    translation: 'shovel',
+    category: 'garden',
+    difficulty: 'intermediate',
+    gender: 'en',
+    forms: {
+      indefinite: 'en spade',
+      definite: 'spaden',
+      indefinitePlural: 'spadar',
+      definitePlural: 'spadarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag köpte en spade',
+        english: 'I bought a shovel'
+      },
+      definite: {
+        swedish: 'Spaden är i garaget',
+        english: 'The shovel is in the garage'
+      },
+      indefinitePlural: {
+        swedish: 'Vi behöver fler spadar',
+        english: 'We need more shovels'
+      },
+      definitePlural: {
+        swedish: 'Spadarna är smutsiga',
+        english: 'The shovels are dirty'
+      }
+    }
+  },
+  {
+    noun: 'cykel',
+    translation: 'bicycle',
+    category: 'vehicles',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en cykel',
+      definite: 'cykeln',
+      indefinitePlural: 'cyklar',
+      definitePlural: 'cyklarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en cykel',
+        english: 'He has a bicycle'
+      },
+      definite: {
+        swedish: 'Cykeln är gammal',
+        english: 'The bicycle is old'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många cyklar här',
+        english: 'There are many bicycles here'
+      },
+      definitePlural: {
+        swedish: 'Cyklarna står utanför',
+        english: 'The bicycles are outside'
+      }
+    }
+  },
+  {
+    noun: 'sovrum',
+    translation: 'bedroom',
+    category: 'rooms',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett sovrum',
+      definite: 'sovrummet',
+      indefinitePlural: 'sovrum',
+      definitePlural: 'sovrummen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'De har ett stort sovrum',
+        english: 'They have a large bedroom'
+      },
+      definite: {
+        swedish: 'Sovrummet är på övervåningen',
+        english: 'The bedroom is upstairs'
+      },
+      indefinitePlural: {
+        swedish: 'Huset har tre sovrum',
+        english: 'The house has three bedrooms'
+      },
+      definitePlural: {
+        swedish: 'Sovrummen är ljusa',
+        english: 'The bedrooms are bright'
+      }
+    }
+  },
+  {
+    noun: 'glädje',
+    translation: 'joy',
+    category: 'emotions',
+    difficulty: 'intermediate',
+    gender: 'en',
+    forms: {
+      indefinite: 'en glädje',
+      definite: 'glädjen',
+      indefinitePlural: 'glädjer',
+      definitePlural: 'glädjerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det var en stor glädje',
+        english: 'It was a great joy'
+      },
+      definite: {
+        swedish: 'Glädjen syns i hennes ögon',
+        english: 'The joy is visible in her eyes'
+      },
+      indefinitePlural: {
+        swedish: 'Livets små glädjer',
+        english: 'Life\'s small joys'
+      },
+      definitePlural: {
+        swedish: 'Glädjerna är många',
+        english: 'The joys are many'
+      }
+    }
+  },
+  {
+    noun: 'timme',
+    translation: 'hour',
+    category: 'time',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en timme',
+      definite: 'timmen',
+      indefinitePlural: 'timmar',
+      definitePlural: 'timmarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag väntar en timme',
+        english: 'I wait for an hour'
+      },
+      definite: {
+        swedish: 'Timmen går fort',
+        english: 'The hour goes by quickly'
+      },
+      indefinitePlural: {
+        swedish: 'Det tar tre timmar',
+        english: 'It takes three hours'
+      },
+      definitePlural: {
+        swedish: 'Timmarna flyger förbi',
+        english: 'The hours fly by'
+      }
+    }
+  },
+  {
+    noun: 'färg',
+    translation: 'color',
+    category: 'colors',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en färg',
+      definite: 'färgen',
+      indefinitePlural: 'färger',
+      definitePlural: 'färgerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Välj en färg',
+        english: 'Choose a color'
+      },
+      definite: {
+        swedish: 'Färgen är vacker',
+        english: 'The color is beautiful'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många färger',
+        english: 'There are many colors'
+      },
+      definitePlural: {
+        swedish: 'Färgerna är starka',
+        english: 'The colors are strong'
+      }
+    }
+  },
+  {
+    noun: 'sommar',
+    translation: 'summer',
+    category: 'seasons',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en sommar',
+      definite: 'sommaren',
+      indefinitePlural: 'somrar',
+      definitePlural: 'somrarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det var en varm sommar',
+        english: 'It was a warm summer'
+      },
+      definite: {
+        swedish: 'Sommaren är här',
+        english: 'The summer is here'
+      },
+      indefinitePlural: {
+        swedish: 'Svenska somrar är korta',
+        english: 'Swedish summers are short'
+      },
+      definitePlural: {
+        swedish: 'Somrarna blir varmare',
+        english: 'The summers are getting warmer'
+      }
+    }
+  },
+  {
+    noun: 'soffa',
+    translation: 'sofa',
+    category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en soffa',
+      definite: 'soffan',
+      indefinitePlural: 'soffor',
+      definitePlural: 'sofforna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi köpte en ny soffa',
+        english: 'We bought a new sofa'
+      },
+      definite: {
+        swedish: 'Soffan är bekväm',
+        english: 'The sofa is comfortable'
+      },
+      indefinitePlural: {
+        swedish: 'De har två soffor',
+        english: 'They have two sofas'
+      },
+      definitePlural: {
+        swedish: 'Sofforna är dyra',
+        english: 'The sofas are expensive'
+      }
+    }
+  },
+  {
+    noun: 'matematik',
+    translation: 'mathematics',
+    category: 'school',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en matematik',
+      definite: 'matematiken',
+      indefinitePlural: '-',
+      definitePlural: '-'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon studerar matematik',
+        english: 'She studies mathematics'
+      },
+      definite: {
+        swedish: 'Matematiken är svår',
+        english: 'The mathematics is difficult'
+      },
+      indefinitePlural: {
+        swedish: '-',
+        english: '-'
+      },
+      definitePlural: {
+        swedish: '-',
+        english: '-'
+      }
+    }
+  },
+  {
+    noun: 'läkare',
+    translation: 'doctor',
+    category: 'professions',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en läkare',
+      definite: 'läkaren',
+      indefinitePlural: 'läkare',
+      definitePlural: 'läkarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon är en bra läkare',
+        english: 'She is a good doctor'
+      },
+      definite: {
+        swedish: 'Läkaren kommer snart',
+        english: 'The doctor is coming soon'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många läkare här',
+        english: 'There are many doctors here'
+      },
+      definitePlural: {
+        swedish: 'Läkarna arbetar hårt',
+        english: 'The doctors work hard'
+      }
+    }
+  },
+  {
+    noun: 'älg',
+    translation: 'moose',
+    category: 'animals',
+    difficulty: 'intermediate',
+    gender: 'en',
+    forms: {
+      indefinite: 'en älg',
+      definite: 'älgen',
+      indefinitePlural: 'älgar',
+      definitePlural: 'älgarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi såg en älg i skogen',
+        english: 'We saw a moose in the forest'
+      },
+      definite: {
+        swedish: 'Älgen är Sveriges största djur',
+        english: 'The moose is Sweden\'s largest animal'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många älgar här',
+        english: 'There are many moose here'
+      },
+      definitePlural: {
+        swedish: 'Älgarna vandrar söderut',
+        english: 'The moose migrate south'
+      }
+    }
+  },
+  {
+    noun: 'blomma',
+    translation: 'flower',
+    category: 'nature',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en blomma',
+      definite: 'blomman',
+      indefinitePlural: 'blommor',
+      definitePlural: 'blommorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag plockade en blomma',
+        english: 'I picked a flower'
+      },
+      definite: {
+        swedish: 'Blomman är röd',
+        english: 'The flower is red'
+      },
+      indefinitePlural: {
+        swedish: 'Det växer blommor i trädgården',
+        english: 'Flowers grow in the garden'
+      },
+      definitePlural: {
+        swedish: 'Blommorna är vackra',
+        english: 'The flowers are beautiful'
+      }
+    }
+  },
+  {
+    noun: 'åska',
+    translation: 'thunder',
+    category: 'weather',
+    difficulty: 'intermediate',
+    gender: 'en',
+    forms: {
+      indefinite: 'en åska',
+      definite: 'åskan',
+      indefinitePlural: 'åskor',
+      definitePlural: 'åskorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det kommer en åska',
+        english: 'A thunderstorm is coming'
+      },
+      definite: {
+        swedish: 'Åskan är nära',
+        english: 'The thunder is close'
+      },
+      indefinitePlural: {
+        swedish: 'Sommarens åskor',
+        english: 'Summer thunderstorms'
+      },
+      definitePlural: {
+        swedish: 'Åskorna är kraftiga',
+        english: 'The thunderstorms are powerful'
+      }
+    }
+  },
+  {
+    noun: 'hjärta',
+    translation: 'heart',
+    category: 'bodyParts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    forms: {
+      indefinite: 'ett hjärta',
+      definite: 'hjärtat',
+      indefinitePlural: 'hjärtan',
+      definitePlural: 'hjärtana'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Ett hjärta slår',
+        english: 'A heart beats'
+      },
+      definite: {
+        swedish: 'Hjärtat är starkt',
+        english: 'The heart is strong'
+      },
+      indefinitePlural: {
+        swedish: 'Våra hjärtan',
+        english: 'Our hearts'
+      },
+      definitePlural: {
+        swedish: 'Hjärtana slår i takt',
+        english: 'The hearts beat in rhythm'
+      }
+    }
+  },
+  {
+    noun: 'halsduk',
+    translation: 'scarf',
+    category: 'clothing',
+    difficulty: 'beginner',
+    gender: 'en',
+    forms: {
+      indefinite: 'en halsduk',
+      definite: 'halsduken',
+      indefinitePlural: 'halsdukar',
+      definitePlural: 'halsdukarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en halsduk',
+        english: 'I need a scarf'
+      },
+      definite: {
+        swedish: 'Halsduken är varm',
+        english: 'The scarf is warm'
+      },
+      indefinitePlural: {
+        swedish: 'Hon har många halsdukar',
+        english: 'She has many scarves'
+      },
+      definitePlural: {
+        swedish: 'Halsdukarna är färgglada',
+        english: 'The scarves are colorful'
+      }
+    }
+  }
+]

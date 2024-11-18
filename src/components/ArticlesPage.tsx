@@ -91,13 +91,15 @@ export function ArticlesPage() {
   };
 
   const handleSessionComplete = (tabType: ArticleType) => {
-    setSessions(prev => ({
-      ...prev,
-      [tabType]: {
-        ...prev[tabType],
-        completed: true
-      }
-    }));
+    console.log('Completing session for tab:', tabType);
+    setSessions(prev => {
+      // Reset the current session and generate new exercises
+      const newSession = initializeSession(tabType);
+      return {
+        ...prev,
+        [tabType]: newSession
+      };
+    });
   };
 
   const handleUpdateProgress = (exerciseId: number, isCorrect: boolean, answer: string) => {
@@ -150,6 +152,7 @@ export function ArticlesPage() {
   };
 
   const handleResetSession = (tabType: ArticleType) => {
+    console.log('Resetting session for tab:', tabType);
     setSessions(prev => ({
       ...prev,
       [tabType]: initializeSession(tabType)
@@ -237,13 +240,13 @@ export function ArticlesPage() {
 
         <ArticleExercise 
           exercises={currentExercises}
-          progress={currentSession.progress}
-          summary={currentSession.summary}
+          progress={sessions[selectedTab].progress}
+          summary={sessions[selectedTab].summary}
           onUpdateProgress={handleUpdateProgress}
           onComplete={() => handleSessionComplete(selectedTab)}
           onReset={() => handleResetSession(selectedTab)}
-          isCompleted={currentSession.completed}
-          currentPage={currentSession.currentPage}
+          isCompleted={sessions[selectedTab].completed}
+          currentPage={sessions[selectedTab].currentPage}
           onPageChange={handlePageChange}
           totalPages={PAGES_PER_SESSION}
         />

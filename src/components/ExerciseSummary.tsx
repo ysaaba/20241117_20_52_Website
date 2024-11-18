@@ -26,6 +26,15 @@ export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummar
     return "Don't give up! Practice makes perfect.";
   };
 
+  console.log('ExerciseSummaryView props:', { onNext, onReset });
+
+  const handleNextClick = () => {
+    if (onNext) {
+      console.log('Handling next click');
+      onNext();
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-6">
       <div className="text-center mb-12">
@@ -121,7 +130,7 @@ export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummar
         </button>
         {onNext && (
           <button
-            onClick={onNext}
+            onClick={handleNextClick}
             className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Next Exercise

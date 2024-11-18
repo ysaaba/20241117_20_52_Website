@@ -1,5 +1,4 @@
-export type ExerciseType = 'articles' | 'nouns' | 'verbGroups' | 'adjectives';
-
+export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives';
 export type NounCategory = 
   | 'animals'
   | 'objects'
@@ -8,6 +7,7 @@ export type NounCategory =
   | 'furniture'
   | 'clothing'
   | 'food'
+  | 'drinks'
   | 'body parts'
   | 'technology'
   | 'profession'
@@ -25,6 +25,8 @@ export type NounCategory =
   | 'business'
   | 'kitchen'
   | 'weather'
+  | 'time'
+  | 'bathroom'
 ;
 
 export interface Noun {

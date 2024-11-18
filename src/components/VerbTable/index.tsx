@@ -63,7 +63,6 @@ export function VerbTable({ onReset }: VerbTableProps) {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     setExpandedVerbs(new Set());
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleInputChange = (verb: string, tense: 'present' | 'past' | 'supine', value: string) => {
@@ -139,7 +138,7 @@ export function VerbTable({ onReset }: VerbTableProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg">
+    <div className="w-full min-w-[1024px]">
       <div className="p-4 lg:p-6">
         <div className="flex flex-col gap-4 mb-6">
           <TableHeader
@@ -162,57 +161,41 @@ export function VerbTable({ onReset }: VerbTableProps) {
           verbCounts={verbCounts}
         />
 
-        <div className="mt-4 overflow-x-auto">
-          <div className="inline-block min-w-full align-middle">
-            <div className="overflow-hidden border rounded-lg">
-              {filteredVerbs.length === 0 ? (
-                <div className="p-8 text-center">
-                  <p className="text-gray-500">No verbs found matching your search criteria.</p>
-                  <button
-                    onClick={handleReset}
-                    className="mt-4 px-4 py-2 text-sm text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    Reset filters
-                  </button>
-                </div>
-              ) : (
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:pl-6">Group</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Level</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Infinitive</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Translation</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Present</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Past</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Supine</th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Listen</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {displayedVerbs.map((verb, index) => (
-                      <VerbRow
-                        key={`${verb.verb}-${verb.category}-${index}`}
-                        verb={verb}
-                        index={index}
-                        isExpanded={expandedVerbs.has(verb.verb)}
-                        onToggleExpand={() => handleToggleExpand(verb)}
-                        answers={answers}
-                        feedback={feedback}
-                        inputRefs={inputRefs}
-                        onInputChange={handleInputChange}
-                        onBlur={handleBlur}
-                        onKeyDown={handleKeyDown}
-                        onPlayAudio={playAudio}
-                        getInputClassName={getInputClassName}
-                      />
-                    ))}
-                  </tbody>
-                </table>
-              )}
-            </div>
-          </div>
+        <div className="mt-4">
+          <table className="w-full border-collapse">
+            <thead className="bg-gray-50">
+              <tr>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:pl-6">Group</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Level</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Infinitive</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Translation</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Present</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Past</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Supine</th>
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Listen</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {displayedVerbs.map((verb, index) => (
+                <VerbRow
+                  key={`${verb.verb}-${verb.category}-${index}`}
+                  verb={verb}
+                  index={index}
+                  isExpanded={expandedVerbs.has(verb.verb)}
+                  onToggleExpand={() => handleToggleExpand(verb)}
+                  answers={answers}
+                  feedback={feedback}
+                  inputRefs={inputRefs}
+                  onInputChange={handleInputChange}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
+                  onPlayAudio={playAudio}
+                  getInputClassName={getInputClassName}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 

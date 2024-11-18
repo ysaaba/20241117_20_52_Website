@@ -35,7 +35,10 @@ export function TablePagination({ currentPage, totalPages, onPageChange }: Table
   return (
     <div className="flex flex-wrap justify-center items-center gap-2 mt-6 max-w-full overflow-x-auto">
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={(e) => {
+          e.preventDefault();
+          onPageChange(currentPage - 1);
+        }}
         disabled={currentPage === 1}
         className={`p-2 rounded-lg flex items-center ${
           currentPage === 1
@@ -53,7 +56,10 @@ export function TablePagination({ currentPage, totalPages, onPageChange }: Table
           ) : (
             <button
               key={`page-${page}`}
-              onClick={() => onPageChange(page as number)}
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(page as number);
+              }}
               className={`w-10 h-10 flex items-center justify-center rounded-lg ${
                 currentPage === page
                   ? 'bg-blue-600 text-white'
@@ -67,7 +73,10 @@ export function TablePagination({ currentPage, totalPages, onPageChange }: Table
       </div>
 
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={(e) => {
+          e.preventDefault();
+          onPageChange(currentPage + 1);
+        }}
         disabled={currentPage === totalPages}
         className={`p-2 rounded-lg flex items-center ${
           currentPage === totalPages

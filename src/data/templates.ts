@@ -199,13 +199,13 @@ export const templates: Record<ArticleType, Template[]> = {
       template: "NOUN___ undervisar svenska",
       translation: "The {noun} teaches Swedish",
       requiresCountable: true,
-      categories: ['professions']
+      categories: ['profession']
     },
     {
       template: "NOUN___ kommer snart",
       translation: "The {noun} is coming soon",
       requiresCountable: true,
-      categories: ['professions']
+      categories: ['profession']
     },
 
     // Animals & Nature (based on lines 1026-1086)
@@ -280,7 +280,7 @@ export const templates: Record<ArticleType, Template[]> = {
       template: "Våra ___ NOUN slår",
       translation: "Our {noun}s beat",
       requiresCountable: true,
-      categories: ['bodyParts']
+      categories: ['body parts']
     },
 
     // Clothing (based on lines 1150-1179)

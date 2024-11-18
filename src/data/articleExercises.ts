@@ -79,22 +79,46 @@ const templates = {
   }
 };
 
+function startsWithVowelSound(word: string): boolean {
+  // Basic vowel check
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const firstLetter = word.toLowerCase().charAt(0);
+  
+  // Special cases for 'h' words where 'h' is silent
+  const silentHWords = ['hour', 'honest', 'honour', 'heir'];
+  if (silentHWords.some(h => word.toLowerCase().startsWith(h))) {
+    return true;
+  }
+  
+  // Special case for 'u' words that sound like 'yu'
+  const uExceptions = ['university', 'uniform', 'union', 'unique', 'unit'];
+  if (uExceptions.some(u => word.toLowerCase().startsWith(u))) {
+    return false;
+  }
+  
+  return vowels.includes(firstLetter);
+}
+
 export function generateExercises(count: number, startId: number, type: ExerciseType): Exercise[] {
   const exercises: Exercise[] = [];
   
   for (let i = 0; i < count; i++) {
-    // Select a random noun from commonNouns
     const noun = commonNouns[Math.floor(Math.random() * commonNouns.length)];
     
-    // Get templates for the noun's category
     const categoryTemplates = templates[type === 'indefinite' ? 'indefinite' : 'definite'][noun.category as keyof typeof templates.indefinite] || 
-      templates[type === 'indefinite' ? 'indefinite' : 'definite'].animals; // fallback to animals if category not found
+      templates[type === 'indefinite' ? 'indefinite' : 'definite'].animals;
     
     const template = categoryTemplates[Math.floor(Math.random() * categoryTemplates.length)];
     
     // Replace {noun} placeholder with actual noun
     const sentence = template.sv.replace('{noun}', noun.noun);
-    const translation = template.en.replace('{noun}', noun.translation);
+    
+    // Determine correct English article
+    const englishArticle = type === 'indefinite' 
+      ? (startsWithVowelSound(noun.translation) ? 'an' : 'a')
+      : 'the';
+    
+    const translation = template.en.replace('a {noun}', `${englishArticle} {noun}`).replace('{noun}', noun.translation);
     
     let correctArticle: string;
     if (type === 'indefinite') {

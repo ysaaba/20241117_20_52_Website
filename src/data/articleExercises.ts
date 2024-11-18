@@ -24,22 +24,26 @@ function startsWithVowelSound(word: string): boolean {
 
 export function generateExercises(count: number, startId: number, type: ExerciseType): Exercise[] {
   const exercises: Exercise[] = [];
+  let availableNouns = [...commonNouns];
   
-  for (let i = 0; i < count; i++) {
-    const noun = commonNouns[Math.floor(Math.random() * commonNouns.length)];
+  // Debug logging
+  console.log('Generating exercises:', { type, count, availableNouns: availableNouns.length });
+  
+  while (exercises.length < count && availableNouns.length > 0) {
+    // Get a random noun
+    const randomIndex = Math.floor(Math.random() * availableNouns.length);
+    const noun = availableNouns[randomIndex];
     
-    // Get templates for the article type, not noun category
+    // Remove used noun from available nouns
+    availableNouns.splice(randomIndex, 1);
+    
     const templateList = templates[type];
-    if (!templateList) {
-      throw new Error(`No templates found for type: ${type}`);
+    if (!templateList || templateList.length === 0) {
+      console.error('No templates found for type:', type);
+      continue;
     }
     
     const template = templateList[Math.floor(Math.random() * templateList.length)];
-    
-    // Only proceed if the template matches the noun's category
-    if (!template.categories.includes(noun.category) && !template.categories.includes('all')) {
-      continue;
-    }
     
     const sentence = template.template.replace('NOUN', noun.noun);
     const englishArticle = type === 'indefinite' 
@@ -50,24 +54,29 @@ export function generateExercises(count: number, startId: number, type: Exercise
       .replace('a {noun}', `${englishArticle} ${noun.translation}`)
       .replace('{noun}', noun.translation);
     
-    let correctArticle: string;
-    if (type === 'indefinite') {
-      correctArticle = noun.gender;
-    } else {
-      correctArticle = noun.gender === 'en' ? 'en' : 'et';
-    }
+    let correctArticle = type === 'indefinite' 
+      ? noun.gender 
+      : (noun.gender === 'en' ? 'en' : 'et');
     
     const correctSentence = sentence.replace('___', correctArticle);
 
     exercises.push({
-      id: startId + i,
+      id: startId + exercises.length,
       sentence,
       correctArticle,
       correctSentence,
       noun: noun.noun,
       translation
     });
+    
+    // If we run out of nouns but still need more exercises, reset the available nouns
+    if (availableNouns.length === 0 && exercises.length < count) {
+      availableNouns = [...commonNouns];
+    }
   }
+  
+  // Debug logging
+  console.log('Generated exercises:', exercises.length);
   
   return exercises;
 } 

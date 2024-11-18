@@ -20,55 +20,43 @@ interface ExerciseSession {
     answeredQuestions: Set<number>;
   };
   summary: ExerciseSummary[];
+  currentPage: number;
 }
+
+const EXERCISES_PER_PAGE = 5;
+const PAGES_PER_SESSION = 5;
+const TOTAL_EXERCISES = EXERCISES_PER_PAGE * PAGES_PER_SESSION;
+
+const initializeSession = (type: ArticleType): ExerciseSession => {
+  console.log('Initializing session for type:', type);
+  const exercises = generateExercises(TOTAL_EXERCISES, 1, type);
+  console.log('Generated exercises for session:', exercises.length);
+  
+  return {
+    exercises,
+    completed: false,
+    progress: {
+      correct: 0,
+      wrong: 0,
+      total: TOTAL_EXERCISES,
+      answeredQuestions: new Set()
+    },
+    summary: [],
+    currentPage: 1
+  };
+};
 
 export function ArticlesPage() {
   const [selectedTab, setSelectedTab] = useState<ArticleType>('indefinite');
-  const [sessions, setSessions] = useState<Record<ArticleType, ExerciseSession>>({
-    indefinite: {
-      exercises: generateExercises(25, 1, 'indefinite'),
-      completed: false,
-      progress: {
-        correct: 0,
-        wrong: 0,
-        total: 25,
-        answeredQuestions: new Set()
-      },
-      summary: []
-    },
-    definite: {
-      exercises: generateExercises(25, 1, 'definite'),
-      completed: false,
-      progress: {
-        correct: 0,
-        wrong: 0,
-        total: 25,
-        answeredQuestions: new Set()
-      },
-      summary: []
-    },
-    indefinitePlural: {
-      exercises: generateExercises(25, 1, 'indefinitePlural'),
-      completed: false,
-      progress: {
-        correct: 0,
-        wrong: 0,
-        total: 25,
-        answeredQuestions: new Set()
-      },
-      summary: []
-    },
-    definitePlural: {
-      exercises: generateExercises(25, 1, 'definitePlural'),
-      completed: false,
-      progress: {
-        correct: 0,
-        wrong: 0,
-        total: 25,
-        answeredQuestions: new Set()
-      },
-      summary: []
-    }
+  const [sessions, setSessions] = useState<Record<ArticleType, ExerciseSession>>(() => {
+    const initialSessions = {
+      indefinite: initializeSession('indefinite'),
+      definite: initializeSession('definite'),
+      indefinitePlural: initializeSession('indefinitePlural'),
+      definitePlural: initializeSession('definitePlural')
+    };
+    console.log('Initial sessions:', initialSessions);
+    return initialSessions;
   });
 
   const tabs = [
@@ -115,69 +103,103 @@ export function ArticlesPage() {
   const handleUpdateProgress = (exerciseId: number, isCorrect: boolean, answer: string) => {
     setSessions(prev => {
       const currentSession = prev[selectedTab];
-      const exercise = currentSession.exercises.find(ex => ex.id === exerciseId);
       
       if (currentSession.progress.answeredQuestions.has(exerciseId)) {
         return prev;
       }
 
+      const exercise = currentSession.exercises.find(ex => ex.id === exerciseId);
+      if (!exercise) return prev;
+
+      const newAnsweredQuestions = new Set(currentSession.progress.answeredQuestions);
+      newAnsweredQuestions.add(exerciseId);
+
+      const newProgress = {
+        ...currentSession.progress,
+        correct: isCorrect ? currentSession.progress.correct + 1 : currentSession.progress.correct,
+        wrong: !isCorrect ? currentSession.progress.wrong + 1 : currentSession.progress.wrong,
+        answeredQuestions: newAnsweredQuestions
+      };
+
+      const newSummary = [
+        ...currentSession.summary,
+        { exercise, userAnswer: answer, isCorrect }
+      ];
+
+      const currentPageExercises = currentExercises;
+      const isPageComplete = currentPageExercises.every(ex => 
+        newAnsweredQuestions.has(ex.id)
+      );
+
+      const shouldAdvancePage = isPageComplete && 
+        currentSession.currentPage < PAGES_PER_SESSION;
+
+      const isAllCompleted = newAnsweredQuestions.size === TOTAL_EXERCISES;
+
       return {
         ...prev,
         [selectedTab]: {
           ...currentSession,
-          progress: {
-            ...currentSession.progress,
-            correct: isCorrect ? currentSession.progress.correct + 1 : currentSession.progress.correct,
-            wrong: !isCorrect ? currentSession.progress.wrong + 1 : currentSession.progress.wrong,
-            answeredQuestions: new Set([...currentSession.progress.answeredQuestions, exerciseId])
-          },
-          summary: exercise ? [
-            ...currentSession.summary,
-            {
-              exercise,
-              userAnswer: answer,
-              isCorrect
-            }
-          ] : currentSession.summary
+          progress: newProgress,
+          summary: newSummary,
+          currentPage: shouldAdvancePage ? currentSession.currentPage + 1 : currentSession.currentPage,
+          completed: isAllCompleted
         }
       };
-    });
-
-    setSessions(prev => {
-      const currentSession = prev[selectedTab];
-      if (currentSession.progress.correct + currentSession.progress.wrong === currentSession.progress.total) {
-        return {
-          ...prev,
-          [selectedTab]: {
-            ...currentSession,
-            completed: true
-          }
-        };
-      }
-      return prev;
     });
   };
 
   const handleResetSession = (tabType: ArticleType) => {
     setSessions(prev => ({
       ...prev,
-      [tabType]: {
-        exercises: generateExercises(25, 1, tabType),
-        completed: false,
-        progress: {
-          correct: 0,
-          wrong: 0,
-          total: 25,
-          answeredQuestions: new Set()
-        },
-        summary: []
-      }
+      [tabType]: initializeSession(tabType)
     }));
   };
 
+  const handlePageChange = (page: number) => {
+    setSessions(prev => {
+      const session = prev[selectedTab];
+      const validPage = Math.max(1, Math.min(page, PAGES_PER_SESSION));
+      
+      return {
+        ...prev,
+        [selectedTab]: {
+          ...session,
+          currentPage: validPage
+        }
+      };
+    });
+  };
+
+  const currentSession = sessions[selectedTab];
+  const currentExercises = useMemo(() => {
+    const session = sessions[selectedTab];
+    const startIndex = (session.currentPage - 1) * EXERCISES_PER_PAGE;
+    const endIndex = startIndex + EXERCISES_PER_PAGE;
+    const exercises = session.exercises.slice(startIndex, endIndex);
+    
+    console.log('Current exercises:', {
+      selectedTab,
+      currentPage: session.currentPage,
+      startIndex,
+      endIndex,
+      exercisesLength: exercises.length,
+      exercises
+    });
+    
+    return exercises;
+  }, [sessions, selectedTab]);
+
+  console.log('Current session state:', {
+    selectedTab,
+    currentExercises,
+    totalPages: PAGES_PER_SESSION,
+    currentPage: sessions[selectedTab].currentPage
+  });
+
   return (
     <main className="py-8">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto px-4">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
             Swedish Articles Practice
@@ -214,13 +236,16 @@ export function ArticlesPage() {
         </header>
 
         <ArticleExercise 
-          exercises={sessions[selectedTab].exercises}
-          progress={sessions[selectedTab].progress}
-          summary={sessions[selectedTab].summary}
+          exercises={currentExercises}
+          progress={currentSession.progress}
+          summary={currentSession.summary}
           onUpdateProgress={handleUpdateProgress}
           onComplete={() => handleSessionComplete(selectedTab)}
           onReset={() => handleResetSession(selectedTab)}
-          isCompleted={sessions[selectedTab].completed}
+          isCompleted={currentSession.completed}
+          currentPage={currentSession.currentPage}
+          onPageChange={handlePageChange}
+          totalPages={PAGES_PER_SESSION}
         />
       </div>
     </main>

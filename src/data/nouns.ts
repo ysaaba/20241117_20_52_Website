@@ -64,7 +64,7 @@ export const commonNouns: Noun[] = [
   {
     noun: 'hand',
     translation: 'hand',
-    category: 'bodyParts',
+    category: 'body parts',
     difficulty: 'beginner',
     gender: 'en',
     forms: {
@@ -95,7 +95,7 @@ export const commonNouns: Noun[] = [
   {
     noun: 'öga',
     translation: 'eye',
-    category: 'bodyParts',
+    category: 'body parts',
     difficulty: 'beginner',
     gender: 'ett',
     forms: {
@@ -1118,7 +1118,7 @@ export const commonNouns: Noun[] = [
   {
     noun: 'hjärta',
     translation: 'heart',
-    category: 'bodyParts',
+    category: 'body parts',
     difficulty: 'beginner',
     gender: 'ett',
     forms: {

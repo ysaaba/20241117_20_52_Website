@@ -1,26 +1,24 @@
 export type ExerciseType = 'articles' | 'nouns' | 'verbGroups' | 'adjectives';
 
 export type NounCategory = 
-  | 'living'
-  | 'object'
-  | 'food'
-  | 'place'
-  | 'abstract'
-  | 'technology'
-  | 'bodyParts'
-  | 'nature'
-  | 'clothing'
+  | 'animals'
   | 'furniture'
+  | 'clothing'
+  | 'food'
+  | 'body parts'
+  | 'technology'
   | 'profession'
-  | 'tools'
-  | 'office'
-  | 'garden'
-  | 'music'
   | 'vehicles'
+  | 'school'
+  | 'nature'
+  | 'colors'
+  | 'seasons'
+  | 'abstract'
+  | 'garden'
   | 'hygiene'
-  | 'jewelry'
-  | 'containers'
-  | 'stationery';
+  | 'music'
+  | 'sports'
+  | 'office';
 
 export interface Noun {
   noun: string;

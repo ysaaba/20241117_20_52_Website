@@ -37,7 +37,7 @@ const tabs = [
 
 export function NounsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<NounCategory | 'all'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [showExamples, setShowExamples] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
@@ -179,9 +179,12 @@ export function NounsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4">
+        <div className="space-y-6">
           {currentNouns.map((noun) => (
-            <div key={noun.noun} className="bg-white rounded-lg shadow-md p-6">
+            <div
+              key={noun.noun}
+              className="bg-white rounded-lg shadow-md p-6 space-y-4"
+            >
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
@@ -197,15 +200,15 @@ export function NounsPage() {
                   <p className="text-gray-600 italic mb-3">{noun.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    noun.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
+                    noun.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-red-100 text-red-800'
+                  }`}>
+                    {noun.difficulty}
+                  </span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
                     {noun.category}
-                  </span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize
-                    ${noun.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                      noun.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'}`}
-                  >
-                    {noun.difficulty}
                   </span>
                 </div>
               </div>
@@ -221,14 +224,25 @@ export function NounsPage() {
 
                 {showExamples[noun.noun] && (
                   <div className="mt-4 space-y-4">
-                    <div>
-                      <h4 className="font-medium text-gray-700 mb-2">Forms</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li><span className="text-gray-600">Indefinite Article:</span> {noun.indefiniteArticle}</li>
-                        <li><span className="text-gray-600">Definite Article:</span> {noun.definiteArticle}</li>
-                        <li><span className="text-gray-600">Indefinite Plural:</span> {noun.indefinitePlural}</li>
-                        <li><span className="text-gray-600">Definite Plural:</span> {noun.definitePlural}</li>
-                      </ul>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <h4 className="font-medium text-gray-700 mb-2">Forms</h4>
+                        <ul className="space-y-1">
+                          <li><span className="text-gray-600">Indefinite:</span> {noun.forms.indefinite}</li>
+                          <li><span className="text-gray-600">Definite:</span> {noun.forms.definite}</li>
+                          <li><span className="text-gray-600">Indefinite Plural:</span> {noun.forms.indefinitePlural}</li>
+                          <li><span className="text-gray-600">Definite Plural:</span> {noun.forms.definitePlural}</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-700 mb-2">Examples</h4>
+                        {Object.entries(noun.examples).map(([form, example]) => (
+                          <div key={form} className="mb-2">
+                            <p className="text-blue-800">{example.swedish}</p>
+                            <p className="text-gray-600 italic">{example.english}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}

@@ -1,5 +1,7 @@
 import { Trophy, ArrowRight, RefreshCw, CheckCircle2, XCircle, Volume2 } from 'lucide-react';
 import { useSound } from '../hooks/useSound';
+import confetti from 'canvas-confetti';
+import { useEffect, useRef } from 'react';
 import type { Exercise } from '../types';
 
 interface ExerciseSummaryItem {
@@ -16,6 +18,7 @@ interface ExerciseSummaryProps {
 
 export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummaryProps) => {
   const { playAudio } = useSound();
+  const trophyRef = useRef<HTMLDivElement>(null);
   const totalQuestions = summary.length;
   const correctAnswers = summary.filter(item => item.isCorrect).length;
   const successRate = Math.round((correctAnswers / totalQuestions) * 100);
@@ -26,19 +29,68 @@ export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummar
     return "Don't give up! Practice makes perfect.";
   };
 
-  console.log('ExerciseSummaryView props:', { onNext, onReset });
+  const fireConfetti = () => {
+    if (!trophyRef.current) return;
+    
+    const rect = trophyRef.current.getBoundingClientRect();
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
 
-  const handleNextClick = () => {
-    if (onNext) {
-      console.log('Handling next click');
-      onNext();
-    }
+    // Fire confetti from the trophy
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x, y },
+      colors: ['#FFD700', '#FFA500', '#FF6347', '#4169E1', '#32CD32'],
+      ticks: 200
+    });
+
+    // Add some delayed bursts for extra effect
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { x, y },
+        colors: ['#FFD700', '#FFA500'],
+        ticks: 150
+      });
+    }, 250);
+
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        spread: 50,
+        origin: { x, y },
+        colors: ['#4169E1', '#32CD32'],
+        ticks: 150
+      });
+    }, 400);
   };
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Fire initial confetti
+    fireConfetti();
+    
+    // Set up interval for periodic confetti
+    const interval = setInterval(fireConfetti, 4000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto p-6">
       <div className="text-center mb-12">
-        <Trophy className="w-20 h-20 text-yellow-400 mx-auto mb-4" />
+        <div 
+          ref={trophyRef}
+          className="relative inline-block animate-bounce"
+          style={{ animation: 'bounce 2s infinite' }}
+        >
+          <Trophy className="w-20 h-20 text-yellow-400 mx-auto mb-4" />
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-200 rounded-full animate-ping" />
+        </div>
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
           Exercise Complete!
         </h2>
@@ -46,19 +98,19 @@ export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummar
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+        <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
           <div className="text-4xl font-bold text-blue-600 mb-2">
             {totalQuestions}
           </div>
           <div className="text-gray-600">Total Questions</div>
         </div>
-        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+        <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
           <div className="text-4xl font-bold text-green-600 mb-2">
             {correctAnswers}
           </div>
           <div className="text-gray-600">Correct Answers</div>
         </div>
-        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+        <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
           <div className="text-4xl font-bold text-purple-600 mb-2">
             {successRate}%
           </div>
@@ -120,18 +172,18 @@ export const ExerciseSummaryView = ({ summary, onReset, onNext }: ExerciseSummar
         </div>
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-4 mt-8">
         <button
           onClick={onReset}
-          className="flex items-center gap-2 px-6 py-3 bg-white text-gray-700 rounded-lg border hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-white text-gray-700 rounded-lg border hover:bg-gray-50 transition-all hover:scale-105"
         >
           <RefreshCw className="w-5 h-5" />
           Try Again
         </button>
         {onNext && (
           <button
-            onClick={handleNextClick}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            onClick={onNext}
+            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105"
           >
             Next Exercise
             <ArrowRight className="w-5 h-5" />

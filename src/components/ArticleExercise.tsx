@@ -59,6 +59,12 @@ export const ArticleExercise = ({
     return answer.toLowerCase() === correctArticle.toLowerCase();
   };
 
+  useEffect(() => {
+    if (isCompleted && summary.length > 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [isCompleted, summary.length]);
+
   if (isCompleted && summary.length > 0) {
     return (
       <ExerciseSummaryView

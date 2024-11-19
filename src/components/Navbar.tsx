@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { BookText, Play, Palette, Book, Home, ChevronDown } from 'lucide-react';
+import { 
+  TextQuote, 
+  Pencil, 
+  Languages, 
+  GraduationCap, 
+  Home, 
+  ChevronDown, 
+  Dumbbell,
+  BookA 
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ExerciseType } from '../types';
 
@@ -96,7 +105,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <Book className="w-4 h-4" />
+                  <GraduationCap className="w-4 h-4" />
                   Learn
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
                     dropdownOpen.learn ? 'rotate-180' : ''
@@ -121,7 +130,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                         >
                           <div className="flex items-center gap-2">
-                            <Palette className="w-4 h-4" />
+                            <Languages className="w-4 h-4" />
                             Adjectives
                           </div>
                         </button>
@@ -133,7 +142,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <div className="flex items-center gap-2">
-                            <Book className="w-4 h-4" />
+                            <TextQuote className="w-4 h-4" />
                             Nouns
                           </div>
                         </button>
@@ -153,7 +162,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <Play className="w-4 h-4" />
+                  <Dumbbell className="w-4 h-4" />
                   Practice
                   <motion.div
                     variants={chevronVariants}
@@ -182,7 +191,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <div className="flex items-center gap-2">
-                            <Play className="w-4 h-4" />
+                            <Pencil className="w-4 h-4" />
                             Verbs
                           </div>
                         </button>
@@ -194,7 +203,7 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <div className="flex items-center gap-2">
-                            <BookText className="w-4 h-4" />
+                            <BookA className="w-4 h-4" />
                             Articles
                           </div>
                         </button>

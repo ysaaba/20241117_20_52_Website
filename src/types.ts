@@ -1,4 +1,4 @@
-export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives';
+export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz';
 export type NounCategory = 
   | 'animals'
   | 'objects'
@@ -122,3 +122,14 @@ export type ExerciseProgress = {
   total: number;
   answeredQuestions: Set<number>;
 };
+
+export interface QuizQuestion {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  translation?: string;
+  audioText?: string;
+  category?: string;
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+}

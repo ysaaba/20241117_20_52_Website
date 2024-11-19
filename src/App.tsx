@@ -5,6 +5,7 @@ import { VerbExercises } from './components/VerbExercises';
 import { AdjectivesPage } from './components/AdjectivesPage';
 import { NounsPage } from './components/NounsPage';
 import { LandingPage } from './components/LandingPage';
+import { QuizPage } from './components/QuizPage';
 import type { ExerciseType } from './types';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         return <VerbExercises />;
       case 'adjectives':
         return <AdjectivesPage />;
+      case 'quiz':
+        return <QuizPage />;
       default:
         return <LandingPage onGetStarted={() => setSelectedType('articles')} />;
     }

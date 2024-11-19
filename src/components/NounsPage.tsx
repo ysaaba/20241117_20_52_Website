@@ -46,14 +46,17 @@ export function NounsPage() {
   const categories = Array.from(new Set(commonNouns.map(noun => noun.category)));
 
   const filteredNouns = useMemo(() => {
-    return commonNouns.filter(noun => {
-      const matchesCategory = selectedCategory === 'all' || noun.category === selectedCategory;
-      const matchesDifficulty = selectedDifficulty === 'all' || noun.difficulty === selectedDifficulty;
-      const matchesSearch = searchQuery === '' || 
-        noun.noun.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        noun.translation.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesDifficulty && matchesSearch;
-    });
+    return commonNouns
+      .slice()
+      .sort((a, b) => a.noun.localeCompare(b.noun))
+      .filter(noun => {
+        const matchesCategory = selectedCategory === 'all' || noun.category === selectedCategory;
+        const matchesDifficulty = selectedDifficulty === 'all' || noun.difficulty === selectedDifficulty;
+        const matchesSearch = searchQuery === '' || 
+          noun.noun.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          noun.translation.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesDifficulty && matchesSearch;
+      });
   }, [selectedCategory, selectedDifficulty, searchQuery]);
 
   const totalPages = Math.ceil(filteredNouns.length / NOUNS_PER_PAGE);

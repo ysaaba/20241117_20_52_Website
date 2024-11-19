@@ -17,15 +17,18 @@ export function AdjectivesPage() {
   const categories = Array.from(new Set(adjectives.map(adj => adj.category)));
 
   const filteredAdjectives = useMemo(() => {
-    return adjectives.filter(adj => {
-      const matchesCategory = selectedCategory === 'all' || adj.category === selectedCategory;
-      const matchesDifficulty = selectedDifficulty === 'all' || adj.difficulty === selectedDifficulty;
-      const matchesSearch = searchQuery === '' || 
-        adj.adjective.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        adj.translation.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesDifficulty && matchesSearch;
-    });
-  }, [selectedCategory, selectedDifficulty, searchQuery]);
+    return adjectives
+      .slice()
+      .sort((a, b) => a.adjective.localeCompare(b.adjective))
+      .filter((adj) => {
+        const matchesSearch =
+          adj.adjective.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          adj.translation.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCategory = selectedCategory === 'all' || adj.category === selectedCategory;
+        const matchesDifficulty = selectedDifficulty === 'all' || adj.difficulty === selectedDifficulty;
+        return matchesSearch && matchesCategory && matchesDifficulty;
+      });
+  }, [searchQuery, selectedCategory, selectedDifficulty]);
 
   const totalPages = Math.ceil(filteredAdjectives.length / ADJECTIVES_PER_PAGE);
   const currentAdjectives = filteredAdjectives.slice(

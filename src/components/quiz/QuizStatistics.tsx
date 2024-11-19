@@ -92,8 +92,8 @@ export function QuizStatistics() {
               >
                 <option value="all">All Categories</option>
                 <option value="nouns">Nouns</option>
-                <option value="verbs">Verbs</option>
                 <option value="adjectives">Adjectives</option>
+                <option value="verbs">Verbs</option>
               </select>
               <button
                 onClick={() => setShowPractice(true)}

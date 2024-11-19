@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { QuizComponent } from './QuizComponent';
 import { verbs } from '../../data/verbs';
 import type { QuizQuestion } from '../../types';
+import { getUniqueRandomOptions } from '../../utils/getUniqueRandomOptions';
 
 export function VerbsQuiz() {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
@@ -85,19 +86,24 @@ export function VerbsQuiz() {
   };
 
   const getRandomTranslations = (correct: string, count: number): string[] => {
-    const translations = verbs
-      .map(v => v.translation)
-      .filter(t => t !== correct);
-    return shuffleArray(translations).slice(0, count);
+    return getUniqueRandomOptions(
+      correct,
+      verbs.map(v => v.translation),
+      count
+    );
   };
 
   const getRandomVerbForms = (correct: string, count: number): string[] => {
-    const commonEndings = ['ar', 'er', 'r', 'de', 'te', 't', 'it'];
-    return Array(count).fill(null).map(() => {
-      const base = correct.slice(0, -2);
-      const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
-      return base + ending;
-    });
+    return getUniqueRandomOptions(
+      correct,
+      verbs.map(v => v.present),
+      count,
+      (base) => {
+        const commonEndings = ['ar', 'er', 'r', 'de', 'te', 't', 'it'];
+        const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
+        return base.slice(0, -2) + ending;
+      }
+    );
   };
 
   const handleComplete = () => {

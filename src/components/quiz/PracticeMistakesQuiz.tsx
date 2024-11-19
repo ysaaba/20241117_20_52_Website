@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { QuizComponent } from './QuizComponent';
 import { useQuizStatistics } from '../../hooks/useQuizStatistics';
 import type { QuizQuestion, QuizMistake } from '../../types';
+import { getUniqueRandomOptions } from '../../utils/quizUtils';
+import { commonNouns } from '../../data/nouns';
+import { verbs } from '../../data/verbs';
+import { adjectives } from '../../data/adjectives';
 
 interface PracticeMistakesQuizProps {
   category: string;
@@ -39,13 +43,40 @@ export function PracticeMistakesQuiz({ category, onClose }: PracticeMistakesQuiz
   }, [category, statistics]);
 
   const generateRandomOptions = (mistake: QuizMistake, count: number): string[] => {
-    // This is a simplified version - you might want to use your existing random option generators
-    const commonEndings = ['ar', 'er', 'r', 'de', 'te', 't', 'it'];
-    return Array(count).fill(null).map(() => {
-      const base = mistake.correctAnswer.slice(0, -2);
-      const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
-      return base + ending;
-    });
+    switch (mistake.category) {
+      case 'nouns':
+        return getUniqueRandomOptions(
+          mistake.correctAnswer,
+          commonNouns.map(n => n.forms.indefinitePlural), // adjust based on type
+          count,
+          (base) => {
+            const commonEndings = ['ar', 'er', 'or', 'n'];
+            return base.slice(0, -2) + commonEndings[Math.floor(Math.random() * commonEndings.length)];
+          }
+        );
+      case 'verbs':
+        return getUniqueRandomOptions(
+          mistake.correctAnswer,
+          verbs.map(v => v.present), // adjust based on type
+          count,
+          (base) => {
+            const commonEndings = ['ar', 'er', 'r', 'de', 'te', 't', 'it'];
+            return base.slice(0, -2) + commonEndings[Math.floor(Math.random() * commonEndings.length)];
+          }
+        );
+      case 'adjectives':
+        return getUniqueRandomOptions(
+          mistake.correctAnswer,
+          adjectives.map(a => a.forms.comparative), // adjust based on type
+          count,
+          (base) => {
+            const wrongPatterns = ['are', 'ere', 'ire', 'ar', 'arer'];
+            return base.slice(0, -3) + wrongPatterns[Math.floor(Math.random() * wrongPatterns.length)];
+          }
+        );
+      default:
+        return [];
+    }
   };
 
   if (questions.length === 0) {

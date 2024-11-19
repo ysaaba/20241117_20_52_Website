@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { QuizComponent } from './QuizComponent';
 import { adjectives } from '../../data/adjectives';
 import type { QuizQuestion } from '../../types';
+import { getUniqueRandomOptions } from '../../utils/getUniqueRandomOptions';
 
 export function AdjectivesQuiz() {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
@@ -15,47 +16,47 @@ export function AdjectivesQuiz() {
     const usedAdjectives = new Set();
     
     while (newQuestions.length < 10 && usedAdjectives.size < adjectives.length) {
-      const adjIndex = Math.floor(Math.random() * adjectives.length);
-      const adj = adjectives[adjIndex];
+      const adjectiveIndex = Math.floor(Math.random() * adjectives.length);
+      const adjective = adjectives[adjectiveIndex];
       
-      if (usedAdjectives.has(adj.adjective)) continue;
-      usedAdjectives.add(adj.adjective);
+      if (usedAdjectives.has(adjective.adjective)) continue;
+      usedAdjectives.add(adjective.adjective);
 
       const questionTypes = [
         {
           type: 'translation',
           generate: () => ({
-            question: `What is the meaning of "${adj.adjective}"?`,
-            correctAnswer: adj.translation,
+            question: `What is the meaning of "${adjective.adjective}"?`,
+            correctAnswer: adjective.translation,
             options: [
-              adj.translation,
-              ...getRandomTranslations(adj.translation, 3)
+              adjective.translation,
+              ...getRandomTranslations(adjective.translation, 3)
             ].sort(() => Math.random() - 0.5),
-            audioText: adj.adjective
+            audioText: adjective.adjective
           })
         },
         {
           type: 'comparative',
           generate: () => ({
-            question: `What is the comparative form of "${adj.adjective}"?`,
-            correctAnswer: adj.forms.comparative,
+            question: `What is the comparative form of "${adjective.adjective}"?`,
+            correctAnswer: adjective.forms.comparative,
             options: [
-              adj.forms.comparative,
-              ...getRandomComparativeForms(adj.forms.comparative, 3)
+              adjective.forms.comparative,
+              ...getRandomComparativeForms(adjective.forms.comparative, 3)
             ].sort(() => Math.random() - 0.5),
-            translation: adj.translation
+            translation: adjective.translation
           })
         },
         {
           type: 'superlative',
           generate: () => ({
-            question: `What is the superlative form of "${adj.adjective}"?`,
-            correctAnswer: adj.forms.superlative,
+            question: `What is the superlative form of "${adjective.adjective}"?`,
+            correctAnswer: adjective.forms.superlative,
             options: [
-              adj.forms.superlative,
-              ...getRandomSuperlativeForms(adj.forms.superlative, 3)
+              adjective.forms.superlative,
+              ...getRandomSuperlativeForms(adjective.forms.superlative, 3)
             ].sort(() => Math.random() - 0.5),
-            translation: adj.translation
+            translation: adjective.translation
           })
         }
       ];
@@ -73,28 +74,49 @@ export function AdjectivesQuiz() {
   };
 
   const getRandomTranslations = (correct: string, count: number): string[] => {
-    const translations = adjectives
-      .map(a => a.translation)
-      .filter(t => t !== correct);
-    return shuffleArray(translations).slice(0, count);
+    return getUniqueRandomOptions(
+      correct,
+      adjectives.map(a => a.translation),
+      count
+    );
   };
 
   const getRandomComparativeForms = (correct: string, count: number): string[] => {
-    const commonEndings = ['are', 're', 'ere'];
-    return Array(count).fill(null).map(() => {
-      const base = correct.slice(0, -3);
-      const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
-      return base + ending;
-    });
+    return getUniqueRandomOptions(
+      correct,
+      adjectives.map(a => a.forms.comparative),
+      count,
+      (base) => {
+        const wrongPatterns = [
+          base + 'are',  // standard comparative
+          base + 'aste', // mixing with superlative
+          base + 'ere',  // similar but wrong
+          base + 'ire',  // similar but wrong
+          base + 'ar',   // similar to present tense
+          base + 'arer'  // double comparative
+        ];
+        return wrongPatterns[Math.floor(Math.random() * wrongPatterns.length)];
+      }
+    );
   };
 
   const getRandomSuperlativeForms = (correct: string, count: number): string[] => {
-    const commonEndings = ['ast', 'est', 'st'];
-    return Array(count).fill(null).map(() => {
-      const base = correct.slice(0, -3);
-      const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
-      return base + ending;
-    });
+    return getUniqueRandomOptions(
+      correct,
+      adjectives.map(a => a.forms.superlative),
+      count,
+      (base) => {
+        const wrongPatterns = [
+          base + 'est',   // similar but wrong
+          base + 'aste',  // similar but wrong
+          base + 'are',   // comparative instead
+          base + 'ast',   // without final 'e'
+          base + 'aste',  // double ending
+          base + 'arast'  // mixed comparative/superlative
+        ];
+        return wrongPatterns[Math.floor(Math.random() * wrongPatterns.length)];
+      }
+    );
   };
 
   const handleComplete = () => {

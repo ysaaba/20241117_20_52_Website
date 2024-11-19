@@ -8,8 +8,8 @@ export function useQuizStatistics() {
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : {
       nouns: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
+      adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
+      verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
     };
   });
 
@@ -72,8 +72,8 @@ export function useQuizStatistics() {
   const resetAllStatistics = () => {
     setStatistics({
       nouns: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
+      adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
+      verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
     });
   };
 

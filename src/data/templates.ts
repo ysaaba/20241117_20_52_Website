@@ -1,6 +1,6 @@
 import { NounCategory } from '../types';
 
-type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
+export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
 
 export interface Template {
   template: string;

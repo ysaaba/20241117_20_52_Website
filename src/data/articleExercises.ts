@@ -1,6 +1,6 @@
-import { Exercise, ExerciseType } from '../types';
+import { Exercise, NounCategory } from '../types';
 import { commonNouns } from './nouns';
-import { templates } from './templates';
+import { templates, Template, ArticleType } from './templates';
 
 function startsWithVowelSound(word: string): boolean {
   // Basic vowel check
@@ -33,7 +33,7 @@ function startsWithVowelSound(word: string): boolean {
   return vowels.includes(firstLetter);
 }
 
-export function generateExercises(count: number, startId: number, type: ExerciseType): Exercise[] {
+export function generateExercises(count: number, startId: number, type: ArticleType): Exercise[] {
   const exercises: Exercise[] = [];
   let availableNouns = [...commonNouns];
   let attempts = 0;
@@ -48,7 +48,7 @@ export function generateExercises(count: number, startId: number, type: Exercise
   });
   
   // Pre-filter templates that are valid for this type
-  const templateList = templates[type];
+  const templateList: Template[] = templates[type];
   if (!templateList || templateList.length === 0) {
     console.error('No templates found for type:', type);
     return exercises;
@@ -56,8 +56,8 @@ export function generateExercises(count: number, startId: number, type: Exercise
   
   console.log('Available templates:', {
     count: templateList.length,
-    categories: [...new Set(templateList.flatMap(t => t.categories))],
-    semanticGroups: [...new Set(templateList.flatMap(t => t.semanticGroups ? Object.keys(t.semanticGroups) : []))]
+    categories: [...new Set(templateList.flatMap((t: { categories: NounCategory[] }) => t.categories))],
+    semanticGroups: [...new Set(templateList.flatMap((t: { semanticGroups?: Record<string, boolean> }) => t.semanticGroups ? Object.keys(t.semanticGroups) : []))]
   });
   
   while (exercises.length < count && availableNouns.length > 0 && attempts < maxAttempts) {
@@ -150,7 +150,7 @@ export function generateExercises(count: number, startId: number, type: Exercise
     // Then handle any remaining {noun} replacements
     translation = translation.replace('{noun}', noun.translation);
     
-    let correctArticle = type === 'indefinite' 
+    const correctArticle = type === 'indefinite' 
       ? noun.gender 
       : (noun.gender === 'en' ? 'en' : 'et');
     

@@ -65,7 +65,9 @@ export function QuizStatistics() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {Object.entries(statistics).map(([category, stats]) => (
+          {Object.entries(statistics)
+            .filter(([category]) => category !== 'all')
+            .map(([category, stats]) => (
             <div key={category} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold capitalize">{category}</h3>

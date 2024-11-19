@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { QuizComponent } from './QuizComponent';
 import { verbs } from '../../data/verbs';
 import type { QuizQuestion } from '../../types';
-import { getUniqueRandomOptions } from '../../utils/getUniqueRandomOptions';
+import { generateVerbOptions } from '../../utils/verbUtils';
 
 export function VerbsQuiz() {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
@@ -40,10 +40,7 @@ export function VerbsQuiz() {
           generate: () => ({
             question: `What is the present tense form of "${verb.verb}"?`,
             correctAnswer: verb.present,
-            options: [
-              verb.present,
-              ...getRandomVerbForms(verb.present, 3)
-            ].sort(() => Math.random() - 0.5),
+            options: generateVerbOptions(verb.present, 'present', verb.verb),
             translation: verb.translation
           })
         },
@@ -52,10 +49,7 @@ export function VerbsQuiz() {
           generate: () => ({
             question: `What is the past tense form of "${verb.verb}"?`,
             correctAnswer: verb.past,
-            options: [
-              verb.past,
-              ...getRandomVerbForms(verb.past, 3)
-            ].sort(() => Math.random() - 0.5),
+            options: generateVerbOptions(verb.past, 'past', verb.verb),
             translation: verb.translation
           })
         },
@@ -64,10 +58,7 @@ export function VerbsQuiz() {
           generate: () => ({
             question: `What is the supine form of "${verb.verb}"?`,
             correctAnswer: verb.supine,
-            options: [
-              verb.supine,
-              ...getRandomVerbForms(verb.supine, 3)
-            ].sort(() => Math.random() - 0.5),
+            options: generateVerbOptions(verb.supine, 'supine', verb.verb),
             translation: verb.translation
           })
         }
@@ -86,24 +77,17 @@ export function VerbsQuiz() {
   };
 
   const getRandomTranslations = (correct: string, count: number): string[] => {
-    return getUniqueRandomOptions(
-      correct,
-      verbs.map(v => v.translation),
-      count
-    );
-  };
-
-  const getRandomVerbForms = (correct: string, count: number): string[] => {
-    return getUniqueRandomOptions(
-      correct,
-      verbs.map(v => v.present),
-      count,
-      (base) => {
-        const commonEndings = ['ar', 'er', 'r', 'de', 'te', 't', 'it'];
-        const ending = commonEndings[Math.floor(Math.random() * commonEndings.length)];
-        return base.slice(0, -2) + ending;
+    const options = new Set<string>();
+    options.add(correct);
+    
+    while (options.size < count + 1) {
+      const randomVerb = verbs[Math.floor(Math.random() * verbs.length)];
+      if (randomVerb.translation !== correct) {
+        options.add(randomVerb.translation);
       }
-    );
+    }
+    
+    return Array.from(options).slice(1); // Exclude the correct answer
   };
 
   const handleComplete = () => {
@@ -135,4 +119,4 @@ function shuffleArray<T>(array: T[]): T[] {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
   return newArray;
-} 
+}

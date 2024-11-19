@@ -117,6 +117,7 @@ export function VerbsQuiz() {
       questions={questions}
       onComplete={handleComplete}
       onReset={handleReset}
+      category="verbs"
     />
   );
 }

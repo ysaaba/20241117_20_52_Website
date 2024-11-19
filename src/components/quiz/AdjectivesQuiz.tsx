@@ -114,6 +114,7 @@ export function AdjectivesQuiz() {
       questions={questions}
       onComplete={handleComplete}
       onReset={handleReset}
+      category="adjectives"
     />
   );
 }

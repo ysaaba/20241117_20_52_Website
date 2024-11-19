@@ -133,3 +133,22 @@ export interface QuizQuestion {
   category?: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
 }
+
+export interface QuizStatistics {
+  totalQuestions: number;
+  correctAnswers: number;
+  wrongAnswers: number;
+  mistakes: QuizMistake[];
+  lastAttempt: Date;
+}
+
+export interface QuizMistake {
+  id: string;
+  question: string;
+  correctAnswer: string;
+  userAnswer: string;
+  category: 'nouns' | 'verbs' | 'adjectives';
+  type: string;
+  translation?: string;
+  timestamp: Date;
+}

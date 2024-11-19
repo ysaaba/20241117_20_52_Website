@@ -133,6 +133,7 @@ export function NounsQuiz() {
       questions={questions}
       onComplete={handleComplete}
       onReset={handleReset}
+      category="nouns"
     />
   );
 } 

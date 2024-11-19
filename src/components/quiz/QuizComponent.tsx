@@ -4,14 +4,16 @@ import { useSound } from '../../hooks/useSound';
 import { QuizSuccessModal } from './QuizSuccessModal';
 import confetti from 'canvas-confetti';
 import type { QuizQuestion } from '../../types';
+import { useQuizStatistics } from '../../hooks/useQuizStatistics';
 
 interface QuizComponentProps {
   questions: QuizQuestion[];
   onComplete: () => void;
   onReset: () => void;
+  category: 'nouns' | 'verbs' | 'adjectives';
 }
 
-export function QuizComponent({ questions, onComplete, onReset }: QuizComponentProps) {
+export function QuizComponent({ questions, onComplete, onReset, category }: QuizComponentProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -19,6 +21,7 @@ export function QuizComponent({ questions, onComplete, onReset }: QuizComponentP
   const [showFeedback, setShowFeedback] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { playAudio } = useSound();
+  const { recordAnswer } = useQuizStatistics();
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -33,6 +36,17 @@ export function QuizComponent({ questions, onComplete, onReset }: QuizComponentP
     const correct = selectedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
     setShowFeedback(true);
+
+    recordAnswer(category, correct, {
+      id: currentQuestion.id.toString(),
+      question: currentQuestion.question,
+      correctAnswer: currentQuestion.correctAnswer,
+      userAnswer: selectedAnswer,
+      category: category,
+      type: currentQuestion.type || 'general',
+      translation: currentQuestion.translation,
+      timestamp: new Date()
+    });
 
     if (correct) {
       setScore(prev => prev + 1);

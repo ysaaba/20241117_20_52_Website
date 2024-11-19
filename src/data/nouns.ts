@@ -1,3 +1,29 @@
+import { NounCategory } from '../types';
+
+interface Noun {
+  noun: string;
+  translation: string;
+  category: NounCategory;
+  difficulty: string;
+  gender: 'en' | 'ett';
+  countable?: boolean;
+  forms: {
+    indefinite: string;
+    definite: string;
+    indefinitePlural: string;
+    definitePlural: string;
+  };
+  examples: {
+    indefinite: { swedish: string; english: string };
+    definite: { swedish: string; english: string };
+    indefinitePlural: { swedish: string; english: string };
+    definitePlural: { swedish: string; english: string };
+  };
+  semantics?: {
+    [key: string]: boolean;
+  };
+}
+
 export const commonNouns: Noun[] = [
   {
     noun: 'hund',
@@ -5,6 +31,7 @@ export const commonNouns: Noun[] = [
     category: 'animals',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en hund',
       definite: 'hunden',
@@ -28,6 +55,21 @@ export const commonNouns: Noun[] = [
         swedish: 'Hundarna springer i parken',
         english: 'The dogs are running in the park'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeFound: true,
+      animate: true,
+      natural: true,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canBeUsedAtWork: false
     }
   },
   {
@@ -36,6 +78,7 @@ export const commonNouns: Noun[] = [
     category: 'animals',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en katt',
       definite: 'katten',
@@ -59,14 +102,30 @@ export const commonNouns: Noun[] = [
         swedish: 'Katterna är hungriga',
         english: 'The cats are hungry'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeFound: true,
+      animate: true,
+      natural: true,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canBeUsedAtWork: false
     }
   },
   {
     noun: 'hand',
     translation: 'hand',
-    category: 'body parts',
+    category: 'bodyParts',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en hand',
       definite: 'handen',
@@ -90,14 +149,26 @@ export const commonNouns: Noun[] = [
         swedish: 'Händerna är starka',
         english: 'The hands are strong'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      bodyPart: true,
+      natural: true,
+      animate: true,
+      canBeFound: false,
+      canBeBought: false,
+      canBeBorrowed: false,
+      canBeUsedAtWork: false
     }
   },
   {
     noun: 'öga',
     translation: 'eye',
-    category: 'body parts',
+    category: 'bodyParts',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett öga',
       definite: 'ögat',
@@ -121,6 +192,21 @@ export const commonNouns: Noun[] = [
         swedish: 'Ögonen är trötta',
         english: 'The eyes are tired'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      bodyPart: true,
+      natural: true,
+      animate: true,
+      canBeFound: false,
+      canBeBought: false,
+      canBeBorrowed: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false
     }
   },
   {
@@ -129,6 +215,7 @@ export const commonNouns: Noun[] = [
     category: 'food',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett äpple',
       definite: 'äpplet',
@@ -137,21 +224,35 @@ export const commonNouns: Noun[] = [
     },
     examples: {
       indefinite: {
-        swedish: 'Jag äter ett äpple',
-        english: 'I am eating an apple'
+        swedish: 'Jag vill ha ett äpple',
+        english: 'I want an apple'
       },
       definite: {
         swedish: 'Äpplet är rött',
         english: 'The apple is red'
       },
       indefinitePlural: {
-        swedish: 'Det finns många äpplen',
-        english: 'There are many apples'
+        swedish: 'Vi behöver fler äpplen',
+        english: 'We need more apples'
       },
       definitePlural: {
-        swedish: 'Äpplena är mogna',
-        english: 'The apples are ripe'
+        swedish: 'Äpplena ligger i kylen',
+        english: 'The apples are in the fridge'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeConsumed: true,
+      natural: true,
+      canGrow: true,
+      animate: false,
+      bodyPart: false,
+      canBeWorn: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      canBeUsedAtWork: false
     }
   },
   {
@@ -160,6 +261,7 @@ export const commonNouns: Noun[] = [
     category: 'technology',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en dator',
       definite: 'datorn',
@@ -183,6 +285,14 @@ export const commonNouns: Noun[] = [
         swedish: 'Datorerna är snabba',
         english: 'The computers are fast'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeBorrowed: true,
+      canBeFound: true,
+      canBeUsedAtWork: true
     }
   },
   {
@@ -191,6 +301,7 @@ export const commonNouns: Noun[] = [
     category: 'furniture',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en stol',
       definite: 'stolen',
@@ -214,6 +325,14 @@ export const commonNouns: Noun[] = [
         swedish: 'Stolarna är gamla',
         english: 'The chairs are old'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeBorrowed: true,
+      canBeFound: true
     }
   },
   {
@@ -222,6 +341,7 @@ export const commonNouns: Noun[] = [
     category: 'clothing',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en skjorta',
       definite: 'skjortan',
@@ -245,14 +365,23 @@ export const commonNouns: Noun[] = [
         swedish: 'Skjortorna hänger i garderoben',
         english: 'The shirts are hanging in the closet'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeWorn: true,
+      canBeBought: true,
+      canBeBorrowed: true,
+      canBeFound: true
     }
   },
   {
-    noun: 'skor',
-    translation: 'shoes',
+    noun: 'sko',
+    translation: 'shoe',
     category: 'clothing',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en sko',
       definite: 'skon',
@@ -261,29 +390,40 @@ export const commonNouns: Noun[] = [
     },
     examples: {
       indefinite: {
-        swedish: 'Jag behöver en ny sko',
-        english: 'I need a new shoe'
+        swedish: 'Jag har tappat en sko',
+        english: 'I have lost a shoe'
       },
       definite: {
         swedish: 'Skon är för liten',
         english: 'The shoe is too small'
       },
       indefinitePlural: {
-        swedish: 'Dessa skor är dyra',
-        english: 'These shoes are expensive'
+        swedish: 'Jag behöver nya skor',
+        english: 'I need new shoes'
       },
       definitePlural: {
-        swedish: 'Skorna är smutsiga',
-        english: 'The shoes are dirty'
+        swedish: 'Skorna är i hallen',
+        english: 'The shoes are in the hallway'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeWorn: true,
+      canBeBought: true,
+      canBeBorrowed: false,
+      canBeFound: true,
+      canBeStored: true,
+      isPersonal: true
     }
   },
   {
     noun: 'penna',
     translation: 'pen',
-    category: 'school',
+    category: 'education',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en penna',
       definite: 'pennan',
@@ -307,6 +447,14 @@ export const commonNouns: Noun[] = [
         swedish: 'Pennorna ligger på bordet',
         english: 'The pens are on the table'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeBorrowed: true,
+      canBeFound: true,
+      canBeUsedAtWork: true
     }
   },
   {
@@ -314,6 +462,7 @@ export const commonNouns: Noun[] = [
     translation: 'tree',
     category: 'nature',
     difficulty: 'beginner',
+    countable: true,
     gender: 'ett',
     forms: {
       indefinite: 'ett träd',
@@ -338,6 +487,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Träden har tappat sina löv',
         english: 'The trees have lost their leaves'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -346,29 +499,44 @@ export const commonNouns: Noun[] = [
     category: 'weather',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: false,
     forms: {
-      indefinite: 'ett regn',
+      indefinite: 'regn',
       definite: 'regnet',
-      indefinitePlural: 'regn',
-      definitePlural: 'regnen'
+      indefinitePlural: '-',
+      definitePlural: '-'
     },
     examples: {
       indefinite: {
-        swedish: 'Det kommer ett regn',
-        english: 'A rain is coming'
+        swedish: 'Det regnar',
+        english: 'It is raining'
       },
       definite: {
-        swedish: 'Regnet är kallt',
-        english: 'The rain is cold'
+        swedish: 'Regnet öser ner',
+        english: 'The rain is pouring down'
       },
       indefinitePlural: {
-        swedish: 'Vi har haft många regn i år',
-        english: 'We have had many rains this year'
+        swedish: '-',
+        english: '-'
       },
       definitePlural: {
-        swedish: 'Regnen kommer ofta på hösten',
-        english: 'The rains often come in autumn'
+        swedish: '-',
+        english: '-'
       }
+    },
+    semantics: {
+      isWeather: true,
+      canBeSeen: true,
+      natural: true,
+      animate: false,
+      bodyPart: false,
+      canBeWorn: false,
+      canBeConsumed: false,
+      canGrow: false,
+      canBeBought: false,
+      canBeBorrowed: false,
+      canBeFound: false,
+      canBeUsedAtWork: false
     }
   },
   {
@@ -377,6 +545,7 @@ export const commonNouns: Noun[] = [
     category: 'transportation',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en bil',
       definite: 'bilen',
@@ -400,6 +569,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Bilarna står på parkeringen',
         english: 'The cars are in the parking lot'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -408,6 +581,7 @@ export const commonNouns: Noun[] = [
     category: 'buildings',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett hus',
       definite: 'huset',
@@ -431,6 +605,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Husen är gamla',
         english: 'The houses are old'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -439,6 +617,7 @@ export const commonNouns: Noun[] = [
     category: 'professions',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en lärare',
       definite: 'läraren',
@@ -462,6 +641,13 @@ export const commonNouns: Noun[] = [
         swedish: 'Lärarna har möte',
         english: 'The teachers are having a meeting'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: false,
+      canBeUsedAtWork: true,
+      animate: true,
+      profession: true
     }
   },
   {
@@ -470,6 +656,7 @@ export const commonNouns: Noun[] = [
     category: 'kitchen',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en tallrik',
       definite: 'tallriken',
@@ -490,9 +677,20 @@ export const commonNouns: Noun[] = [
         english: 'We have many plates'
       },
       definitePlural: {
-        swedish: 'Tallrikarna står i skåpet',
-        english: 'The plates are in the cupboard'
+        swedish: 'Tallrikarna ligger på bordet',
+        english: 'The plates are on the table'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      isBreakable: true,
+      canBeWashed: true,
+      canBeStored: true,
+      canBeFound: true,
+      canBeUsedAtWork: false,
+      canBeBorrowed: true
     }
   },
   {
@@ -501,6 +699,7 @@ export const commonNouns: Noun[] = [
     category: 'electronics',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en mobiltelefon',
       definite: 'mobiltelefonen',
@@ -524,6 +723,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Mobiltelefonerna ligger på bordet',
         english: 'The mobile phones are on the table'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -532,6 +735,7 @@ export const commonNouns: Noun[] = [
     category: 'sports',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en boll',
       definite: 'bollen',
@@ -555,6 +759,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Bollarna är nya',
         english: 'The balls are new'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -563,6 +771,7 @@ export const commonNouns: Noun[] = [
     category: 'music',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en gitarr',
       definite: 'gitarren',
@@ -586,6 +795,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Gitarrerna är dyra',
         english: 'The guitars are expensive'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -617,6 +830,11 @@ export const commonNouns: Noun[] = [
         swedish: 'Systrarna kommer på besök',
         english: 'The sisters are coming to visit'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: false,
+      animate: true
     }
   },
   {
@@ -625,29 +843,36 @@ export const commonNouns: Noun[] = [
     category: 'drinks',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: false,
     forms: {
-      indefinite: 'ett kaffe',
+      indefinite: 'kaffe',
       definite: 'kaffet',
-      indefinitePlural: 'kaffen',
-      definitePlural: 'kaffena'
+      indefinitePlural: 'kaffe',
+      definitePlural: 'kaffet'
     },
     examples: {
       indefinite: {
-        swedish: 'Jag vill ha ett kaffe',
-        english: 'I want a coffee'
+        swedish: 'Jag vill ha kaffe',
+        english: 'I want coffee'
       },
       definite: {
         swedish: 'Kaffet är varmt',
         english: 'The coffee is hot'
       },
       indefinitePlural: {
-        swedish: 'De serverar olika kaffen',
-        english: 'They serve different coffees'
+        swedish: 'De serverar olika kaffe',
+        english: 'They serve different coffee'
       },
       definitePlural: {
-        swedish: 'Kaffena är goda',
-        english: 'The coffees are good'
+        swedish: 'Kaffet är gott',
+        english: 'The coffee is good'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeConsumed: true,
+      canBeBought: true
     }
   },
   {
@@ -656,6 +881,7 @@ export const commonNouns: Noun[] = [
     category: 'office',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett papper',
       definite: 'pappret',
@@ -679,6 +905,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Pappren ligger på skrivbordet',
         english: 'The papers are on the desk'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -710,6 +940,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Tandborstarna står i badrummet',
         english: 'The toothbrushes are in the bathroom'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -718,6 +952,7 @@ export const commonNouns: Noun[] = [
     category: 'garden',
     difficulty: 'intermediate',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en spade',
       definite: 'spaden',
@@ -741,14 +976,19 @@ export const commonNouns: Noun[] = [
         swedish: 'Spadarna är smutsiga',
         english: 'The shovels are dirty'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
     noun: 'cykel',
     translation: 'bicycle',
-    category: 'vehicles',
+    category: 'transportation',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en cykel',
       definite: 'cykeln',
@@ -772,14 +1012,19 @@ export const commonNouns: Noun[] = [
         swedish: 'Cyklarna står utanför',
         english: 'The bicycles are outside'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
     noun: 'sovrum',
     translation: 'bedroom',
-    category: 'rooms',
+    category: 'buildings',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett sovrum',
       definite: 'sovrummet',
@@ -803,6 +1048,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Sovrummen är ljusa',
         english: 'The bedrooms are bright'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
@@ -811,6 +1060,7 @@ export const commonNouns: Noun[] = [
     category: 'emotions',
     difficulty: 'intermediate',
     gender: 'en',
+    countable: false,
     forms: {
       indefinite: 'en glädje',
       definite: 'glädjen',
@@ -834,6 +1084,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Glädjerna är många',
         english: 'The joys are many'
       }
+    },
+    semantics: {
+      canBeSeen: false,
+      isTangible: false
     }
   },
   {
@@ -865,6 +1119,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Timmarna flyger förbi',
         english: 'The hours fly by'
       }
+    },
+    semantics: {
+      canBeSeen: false,
+      isTangible: false
     }
   },
   {
@@ -896,6 +1154,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Färgerna är starka',
         english: 'The colors are strong'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: false
     }
   },
   {
@@ -904,6 +1166,7 @@ export const commonNouns: Noun[] = [
     category: 'seasons',
     difficulty: 'beginner',
     gender: 'en',
+    countable: false,
     forms: {
       indefinite: 'en sommar',
       definite: 'sommaren',
@@ -927,6 +1190,10 @@ export const commonNouns: Noun[] = [
         swedish: 'Somrarna blir varmare',
         english: 'The summers are getting warmer'
       }
+    },
+    semantics: {
+      canBeSeen: false,
+      isTangible: false
     }
   },
   {
@@ -958,16 +1225,21 @@ export const commonNouns: Noun[] = [
         swedish: 'Sofforna är dyra',
         english: 'The sofas are expensive'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true
     }
   },
   {
     noun: 'matematik',
     translation: 'mathematics',
-    category: 'school',
+    category: 'education',
     difficulty: 'beginner',
     gender: 'en',
+    countable: false,
     forms: {
-      indefinite: 'en matematik',
+      indefinite: 'matematik',
       definite: 'matematiken',
       indefinitePlural: '-',
       definitePlural: '-'
@@ -989,6 +1261,22 @@ export const commonNouns: Noun[] = [
         swedish: '-',
         english: '-'
       }
+    },
+    semantics: {
+      abstract: true,
+      canBeUsedAtWork: true,
+      canBeSeen: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBought: false,
+      canBeBorrowed: false,
+      canBeFound: false,
+      animate: false,
+      bodyPart: false,
+      natural: false,
+      profession: false
     }
   },
   {
@@ -1020,6 +1308,13 @@ export const commonNouns: Noun[] = [
         swedish: 'Läkarna arbetar hårt',
         english: 'The doctors work hard'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: false,
+      canBeUsedAtWork: true,
+      animate: true,
+      profession: true
     }
   },
   {
@@ -1051,6 +1346,13 @@ export const commonNouns: Noun[] = [
         swedish: 'Älgarna vandrar söderut',
         english: 'The moose migrate south'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeFound: true,
+      animate: true,
+      natural: true
     }
   },
   {
@@ -1059,6 +1361,7 @@ export const commonNouns: Noun[] = [
     category: 'nature',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en blomma',
       definite: 'blomman',
@@ -1082,6 +1385,19 @@ export const commonNouns: Noun[] = [
         swedish: 'Blommorna är vackra',
         english: 'The flowers are beautiful'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeFound: true,
+      canGrow: true,
+      natural: true,
+      animate: false,
+      bodyPart: false,
+      canBeConsumed: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      canBeUsedAtWork: false
     }
   },
   {
@@ -1090,11 +1406,12 @@ export const commonNouns: Noun[] = [
     category: 'weather',
     difficulty: 'intermediate',
     gender: 'en',
+    countable: false,
     forms: {
-      indefinite: 'en åska',
+      indefinite: 'åska',
       definite: 'åskan',
-      indefinitePlural: 'åskor',
-      definitePlural: 'åskorna'
+      indefinitePlural: '-',
+      definitePlural: '-'
     },
     examples: {
       indefinite: {
@@ -1113,14 +1430,29 @@ export const commonNouns: Noun[] = [
         swedish: 'Åskorna är kraftiga',
         english: 'The thunderstorms are powerful'
       }
+    },
+    semantics: {
+      isWeather: true,
+      canBeSeen: true,
+      natural: true,
+      animate: false,
+      bodyPart: false,
+      canBeWorn: false,
+      canBeConsumed: false,
+      canGrow: false,
+      canBeBought: false,
+      canBeBorrowed: false,
+      canBeFound: false,
+      canBeUsedAtWork: false
     }
   },
   {
     noun: 'hjärta',
     translation: 'heart',
-    category: 'body parts',
+    category: 'bodyParts',
     difficulty: 'beginner',
     gender: 'ett',
+    countable: true,
     forms: {
       indefinite: 'ett hjärta',
       definite: 'hjärtat',
@@ -1144,6 +1476,20 @@ export const commonNouns: Noun[] = [
         swedish: 'Hjärtana slår i takt',
         english: 'The hearts beat in rhythm'
       }
+    },
+    semantics: {
+      bodyPart: true,
+      canBeSeen: true,
+      natural: true,
+      animate: true,
+      canBeFound: false,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false
     }
   },
   {
@@ -1152,6 +1498,7 @@ export const commonNouns: Noun[] = [
     category: 'clothing',
     difficulty: 'beginner',
     gender: 'en',
+    countable: true,
     forms: {
       indefinite: 'en halsduk',
       definite: 'halsduken',
@@ -1175,6 +1522,211 @@ export const commonNouns: Noun[] = [
         swedish: 'Halsdukarna är färgglada',
         english: 'The scarves are colorful'
       }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeWorn: true,
+      canBeBought: true,
+      canBeBorrowed: true,
+      canBeFound: true
+    }
+  },
+  {
+    noun: 'mikrovågsugn',
+    translation: 'microwave',
+    category: 'kitchen',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en mikrovågsugn',
+      definite: 'mikrovågsugnen',
+      indefinitePlural: 'mikrovågsugnar',
+      definitePlural: 'mikrovågsugnarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi har en mikrovågsugn i köket',
+        english: 'We have a microwave in the kitchen'
+      },
+      definite: {
+        swedish: 'Mikrovågsugnen är ny',
+        english: 'The microwave is new'
+      },
+      indefinitePlural: {
+        swedish: 'De säljer mikrovågsugnar på rea',
+        english: 'They sell microwaves on sale'
+      },
+      definitePlural: {
+        swedish: 'Mikrovågsugnarna är på lager',
+        english: 'The microwaves are in stock'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      isBreakable: true,
+      needsElectricity: true
+    }
+  },
+  {
+    noun: 'växt',
+    translation: 'plant',
+    category: 'nature',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en växt',
+      definite: 'växten',
+      indefinitePlural: 'växter',
+      definitePlural: 'växterna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag köpte en växt igår',
+        english: 'I bought a plant yesterday'
+      },
+      definite: {
+        swedish: 'Växten behöver vatten',
+        english: 'The plant needs water'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns växter i trädgården',
+        english: 'There are plants in the garden'
+      },
+      definitePlural: {
+        swedish: 'Växterna växer snabbt',
+        english: 'The plants grow quickly'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canGrow: true,
+      natural: true,
+      isSeasonDependent: true
+    }
+  },
+  {
+    noun: 'laddare',
+    translation: 'charger',
+    category: 'electronics',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en laddare',
+      definite: 'laddaren',
+      indefinitePlural: 'laddare',
+      definitePlural: 'laddarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en laddare',
+        english: 'I need a charger'
+      },
+      definite: {
+        swedish: 'Laddaren är sönder',
+        english: 'The charger is broken'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många laddare hemma',
+        english: 'We have many chargers at home'
+      },
+      definitePlural: {
+        swedish: 'Laddarna ligger i lådan',
+        english: 'The chargers are in the drawer'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeBought: true,
+      canBeBorrowed: true,
+      isBreakable: true,
+      needsElectricity: true,
+      canBeStored: true
+    }
+  },
+  {
+    noun: 'museum',
+    translation: 'museum',
+    category: 'buildings',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett museum',
+      definite: 'museet',
+      indefinitePlural: 'museer',
+      definitePlural: 'museerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det finns ett museum i närheten',
+        english: 'There is a museum nearby'
+      },
+      definite: {
+        swedish: 'Museet är stängt på måndagar',
+        english: 'The museum is closed on Mondays'
+      },
+      indefinitePlural: {
+        swedish: 'Stockholm har många museer',
+        english: 'Stockholm has many museums'
+      },
+      definitePlural: {
+        swedish: 'Museerna är gratis på söndagar',
+        english: 'The museums are free on Sundays'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeFound: true,
+      isSeasonDependent: true
+    }
+  },
+  {
+    noun: 'växthus',
+    translation: 'greenhouse',
+    category: 'garden',
+    difficulty: 'intermediate',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett växthus',
+      definite: 'växthuset',
+      indefinitePlural: 'växthus',
+      definitePlural: 'växthusen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'De har byggt ett växthus',
+        english: 'They have built a greenhouse'
+      },
+      definite: {
+        swedish: 'Växthuset är fullt av tomater',
+        english: 'The greenhouse is full of tomatoes'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många växthus här',
+        english: 'There are many greenhouses here'
+      },
+      definitePlural: {
+        swedish: 'Växthusen är varma på sommaren',
+        english: 'The greenhouses are warm in summer'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      isTangible: true,
+      canBeFound: true,
+      isSeasonDependent: true
     }
   }
 ]

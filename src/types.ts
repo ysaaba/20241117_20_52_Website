@@ -1,32 +1,57 @@
 export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz';
 export type NounCategory = 
+  // People and Professions
+  | 'people'
+  | 'family'
+  | 'professions'
+  
+  // Living Things
   | 'animals'
-  | 'objects'
-  | 'nature'
-  | 'all'
+  
+  // Places and Structures
+  | 'buildings'
+  | 'transportation'
+  | 'garden'
+  
+  // Home and Living
   | 'furniture'
   | 'clothing'
+  | 'kitchen'
+  | 'bathroom'
+  | 'hygiene'
+  
+  // Food and Drink
   | 'food'
   | 'drinks'
-  | 'body parts'
+  
+  // Technology and Work
   | 'technology'
-  | 'profession'
-  | 'vehicles'
-  | 'school'
-  | 'colors'
-  | 'seasons'
-  | 'abstract'
-  | 'garden'
-  | 'hygiene'
-  | 'music'
-  | 'sports'
-  | 'office'
   | 'electronics'
+  | 'office'
   | 'business'
-  | 'kitchen'
+  
+  // Education and Activities
+  | 'education'
+  | 'sports'
+  | 'music'
+  
+  // Nature and Environment
+  | 'nature'
   | 'weather'
+  | 'seasons'
+  
+  // Body and Health
+  | 'bodyParts'
+  
+  // Abstract Concepts
+  | 'emotions'
   | 'time'
-  | 'bathroom'
+  | 'colors'
+  | 'abstract'
+  
+  // Special Categories
+  | 'all'
+  | 'objects'
 ;
 
 export interface Noun {
@@ -47,6 +72,22 @@ export interface Noun {
     definite: { swedish: string; english: string };
     indefinitePlural: { swedish: string; english: string };
     definitePlural: { swedish: string; english: string };
+  };
+  semantics?: {
+    canBeSeen?: boolean;
+    canBeWorn?: boolean;
+    canBeConsumed?: boolean;
+    canBeUsedAtWork?: boolean;
+    canBeBorrowed?: boolean;
+    canBeBought?: boolean;
+    canBeFound?: boolean;
+    canGrow?: boolean;
+    natural?: boolean;
+    isWeather?: boolean;
+    animate?: boolean;
+    bodyPart?: boolean;
+    abstract?: boolean;
+    profession?: boolean;
   };
 }
 
@@ -151,4 +192,23 @@ export interface QuizMistake {
   type: string;
   translation?: string;
   timestamp: Date;
+}
+
+export interface Template {
+  template: string;
+  translation: string;
+  requiresCountable: boolean;
+  type: ArticleType;
+  categories: NounCategory[];
+  semanticGroups?: {
+    canBeWorn?: boolean;
+    canBeConsumed?: boolean;
+    canBeUsedAtWork?: boolean;
+    canGrow?: boolean;
+    isWeather?: boolean;
+    canBeBought?: boolean;
+    canBeBorrowed?: boolean;
+    canBeFound?: boolean;
+    canBeSeen?: boolean;
+  };
 }

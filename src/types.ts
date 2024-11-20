@@ -166,6 +166,7 @@ export type ExerciseProgress = {
 
 export interface QuizQuestion {
   id: number;
+  type: 'form' | 'comparative' | 'superlative' | 'translation';
   question: string;
   options: string[];
   correctAnswer: string;
@@ -173,6 +174,7 @@ export interface QuizQuestion {
   audioText?: string;
   category?: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  context?: string;  // Added for adjective form questions
 }
 
 export interface QuizStatistics {
@@ -191,6 +193,7 @@ export interface QuizMistake {
   category: 'nouns' | 'verbs' | 'adjectives';
   type: string;
   translation?: string;
+  context?: string;  // Added for adjective form questions
   timestamp: Date;
 }
 

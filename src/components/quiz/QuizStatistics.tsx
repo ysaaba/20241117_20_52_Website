@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useQuizStatistics } from '../../hooks/useQuizStatistics';
-import { BarChart3, RefreshCw, BookOpen, Languages, Pencil } from 'lucide-react';
 import { PracticeMistakesQuiz } from './PracticeMistakesQuiz';
+import { BarChart3, RefreshCw } from 'lucide-react';
+import { getCategoryDisplayName } from '../../utils/categoryUtils';
 
 export function QuizStatistics() {
   const { statistics, clearMistakes, resetAllStatistics } = useQuizStatistics();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showPractice, setShowPractice] = useState(false);
 
-  const hasAnyData = Object.values(statistics).some(
-    stats => stats.totalQuestions > 0
+  const getMistakesByCategory = (category: string) => {
+    if (!statistics) return [];
+    if (category === 'all') {
+      return Object.values(statistics).flatMap(stat => stat.mistakes || []);
+    }
+    return statistics[category]?.mistakes || [];
+  };
+
+  const filteredMistakes = useMemo(() => 
+    getMistakesByCategory(selectedCategory),
+    [selectedCategory, statistics]
   );
 
-  const debugStats = () => {
-    console.log('Current statistics:', statistics);
+  const getAccuracyPercentage = (correct: number, total: number) => {
+    if (total === 0) return 0;
+    return Math.round((correct / total) * 100);
   };
 
   if (showPractice) {
@@ -25,29 +36,6 @@ export function QuizStatistics() {
     );
   }
 
-  if (!hasAnyData) {
-    return (
-      <div className="text-center py-12">
-        <BarChart3 className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-        <h2 className="text-2xl font-semibold text-gray-700 mb-2">
-          No Statistics Available
-        </h2>
-        <p className="text-gray-600">
-          Complete some quizzes to see your statistics here!
-        </p>
-      </div>
-    );
-  }
-
-  const getAccuracyPercentage = (correct: number, total: number) => {
-    if (total === 0) return 0;
-    return Math.round((correct / total) * 100);
-  };
-
-  const getMistakesByCategory = (category: string) => {
-    return statistics[category]?.mistakes || [];
-  };
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="max-w-full mx-auto">
@@ -57,7 +45,7 @@ export function QuizStatistics() {
           <div className="mt-4">
             <button
               onClick={resetAllStatistics}
-              className="px-4 py-2 text-red-600 hover:text-red-700 font-medium"
+              className="px-4 py-2 text-red-600 hover:text-red-700 font-medium hover:bg-red-50 rounded-lg transition-colors duration-200"
             >
               Reset All Statistics
             </button>
@@ -65,88 +53,85 @@ export function QuizStatistics() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {Object.entries(statistics)
+          {Object.entries(statistics || {})
             .filter(([category]) => category !== 'all')
             .map(([category, stats]) => (
-            <div key={category} className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold capitalize">{category}</h3>
-                <BarChart3 className="w-5 h-5 text-blue-500" />
+              <div key={category} className="bg-blue-50 rounded-lg shadow-md p-6 border border-blue-100">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold capitalize text-gray-800">{getCategoryDisplayName(category)}</h3>
+                  <BarChart3 className="w-5 h-5 text-blue-500" />
+                </div>
+                <div className="space-y-3">
+                  <p className="text-gray-700">Total Questions: {stats.totalQuestions}</p>
+                  <p className="text-green-600">Correct: {stats.correctAnswers}</p>
+                  <p className="text-red-600">Wrong: {stats.wrongAnswers}</p>
+                  <p className="text-gray-700">
+                    Accuracy: {getAccuracyPercentage(stats.correctAnswers, stats.totalQuestions)}%
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p>Total Questions: {stats.totalQuestions}</p>
-                <p className="text-green-600">Correct: {stats.correctAnswers}</p>
-                <p className="text-red-600">Wrong: {stats.wrongAnswers}</p>
-                <p>Accuracy: {getAccuracyPercentage(stats.correctAnswers, stats.totalQuestions)}%</p>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-blue-50 rounded-lg shadow-md p-6 border border-blue-100">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold">Practice Your Mistakes</h2>
+            <h2 className="text-xl font-semibold text-gray-800">Practice Your Mistakes</h2>
             <div className="flex gap-2">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-2 border rounded-lg"
+                className="px-3 py-2 border rounded-lg bg-white text-gray-800 border-gray-200 focus:border-gray-500 focus:ring-gray-500"
               >
-                <option value="all">All Categories</option>
-                <option value="nouns">Nouns</option>
-                <option value="adjectives">Adjectives</option>
-                <option value="verbs">Verbs</option>
+                <option value="all">{getCategoryDisplayName('all')}</option>
+                <option value="nouns">{getCategoryDisplayName('nouns')}</option>
+                <option value="adjectives">{getCategoryDisplayName('adjectives')}</option>
+                <option value="verbs">{getCategoryDisplayName('verbs')}</option>
               </select>
               <button
                 onClick={() => setShowPractice(true)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
               >
-                Practice Mistakes
+                <RefreshCw className="w-4 h-4" />
+                Practice Now
               </button>
               <button
                 onClick={() => clearMistakes(selectedCategory === 'all' ? undefined : selectedCategory)}
                 className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900"
               >
-                <RefreshCw className="w-4 h-4" />
                 Clear Mistakes
               </button>
             </div>
           </div>
 
           <div className="space-y-4">
-            {(selectedCategory === 'all' ? Object.keys(statistics) : [selectedCategory]).map(category => (
-              <div key={category}>
-                {getMistakesByCategory(category).length > 0 && (
-                  <div className="border rounded-lg p-4">
-                    <h3 className="font-medium mb-4 capitalize">{category} Mistakes</h3>
-                    <div className="space-y-3">
-                      {getMistakesByCategory(category).map((mistake, index) => (
-                        <div key={index} className="flex items-start justify-between p-3 bg-gray-50 rounded-lg">
-                          <div>
-                            <p className="font-medium">{mistake.question}</p>
-                            <p className="text-sm text-gray-600">
-                              Your answer: <span className="text-red-500">{mistake.userAnswer}</span>
-                            </p>
-                            <p className="text-sm text-gray-600">
-                              Correct answer: <span className="text-green-500">{mistake.correctAnswer}</span>
-                            </p>
-                            {mistake.translation && (
-                              <p className="text-sm text-gray-600">Translation: {mistake.translation}</p>
-                            )}
-                          </div>
-                          <span className="text-xs text-gray-500">
-                            {new Date(mistake.timestamp).toLocaleDateString()}
-                          </span>
-                        </div>
-                      ))}
+            {filteredMistakes.length > 0 ? (
+              <div className="space-y-3">
+                {filteredMistakes.map((mistake, index) => (
+                  <div key={mistake.id || index} className="flex items-start justify-between p-3 bg-white rounded-lg border border-gray-100">
+                    <div>
+                      <p className="font-medium">{mistake.question}</p>
+                      <p className="text-sm text-gray-600">
+                        Your answer: <span className="text-red-500">{mistake.userAnswer}</span>
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Correct answer: <span className="text-green-500">{mistake.correctAnswer}</span>
+                      </p>
+                      {mistake.translation && (
+                        <p className="text-sm text-gray-600">Translation: {mistake.translation}</p>
+                      )}
                     </div>
+                    <span className="text-xs text-gray-500">
+                      {new Date(mistake.timestamp).toLocaleDateString()}
+                    </span>
                   </div>
-                )}
+                ))}
               </div>
-            ))}
+            ) : (
+              <p className="text-gray-600 text-center">No mistakes to practice!</p>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}

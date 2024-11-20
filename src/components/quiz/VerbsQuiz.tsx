@@ -3,9 +3,12 @@ import { QuizComponent } from './QuizComponent';
 import { verbs } from '../../data/verbs';
 import type { QuizQuestion } from '../../types';
 import { generateVerbOptions } from '../../utils/verbUtils';
+import { useQuizStatistics } from '../../hooks/useQuizStatistics';
+import { getCategoryDisplayName } from '../../utils/categoryUtils';
 
 export function VerbsQuiz() {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const { recordAnswer } = useQuizStatistics();
 
   useEffect(() => {
     generateQuestions();
@@ -41,7 +44,8 @@ export function VerbsQuiz() {
             question: `What is the present tense form of "${verb.verb}"?`,
             correctAnswer: verb.present,
             options: generateVerbOptions(verb.present, 'present', verb.verb),
-            translation: verb.translation
+            translation: verb.translation,
+            audioText: verb.verb
           })
         },
         {
@@ -50,7 +54,8 @@ export function VerbsQuiz() {
             question: `What is the past tense form of "${verb.verb}"?`,
             correctAnswer: verb.past,
             options: generateVerbOptions(verb.past, 'past', verb.verb),
-            translation: verb.translation
+            translation: verb.translation,
+            audioText: verb.verb
           })
         },
         {
@@ -103,12 +108,16 @@ export function VerbsQuiz() {
   }
 
   return (
-    <QuizComponent
-      questions={questions}
-      onComplete={handleComplete}
-      onReset={handleReset}
-      category="verbs"
-    />
+    <div>
+      <h1 className="text-3xl font-bold text-center mb-8">{getCategoryDisplayName('verbs')}</h1>
+      <QuizComponent
+        questions={questions}
+        onComplete={handleComplete}
+        onReset={handleReset}
+        category="verbs"
+        recordAnswer={recordAnswer}
+      />
+    </div>
   );
 }
 

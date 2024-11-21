@@ -48,6 +48,22 @@ export interface Noun {
     indefinitePlural: { swedish: string; english: string };
     definitePlural: { swedish: string; english: string };
   };
+  semantics?: {
+    canBeSeen?: boolean;
+    canBeWorn?: boolean;
+    canBeConsumed?: boolean;
+    canBeUsedAtWork?: boolean;
+    canBeBorrowed?: boolean;
+    canBeBought?: boolean;
+    canBeFound?: boolean;
+    canGrow?: boolean;
+    natural?: boolean;
+    isWeather?: boolean;
+    animate?: boolean;
+    bodyPart?: boolean;
+    abstract?: boolean;
+    profession?: boolean;
+  };
 }
 
 export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
@@ -114,7 +130,11 @@ export type AdjectiveCategory =
   | 'physical'
   | 'weather'
   | 'distance'
-  | 'time';
+  | 'time'
+  | 'professional'
+  | 'technology'
+  | 'environmental'
+  | 'modern_life';
 
 export type ExerciseProgress = {
   correct: number;
@@ -151,4 +171,23 @@ export interface QuizMistake {
   type: string;
   translation?: string;
   timestamp: Date;
+}
+
+export interface Template {
+  template: string;
+  translation: string;
+  requiresCountable: boolean;
+  type: ArticleType;
+  categories: NounCategory[];
+  semanticGroups?: {
+    canBeWorn?: boolean;
+    canBeConsumed?: boolean;
+    canBeUsedAtWork?: boolean;
+    canGrow?: boolean;
+    isWeather?: boolean;
+    canBeBought?: boolean;
+    canBeBorrowed?: boolean;
+    canBeFound?: boolean;
+    canBeSeen?: boolean;
+  };
 }

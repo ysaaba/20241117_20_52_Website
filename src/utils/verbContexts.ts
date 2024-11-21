@@ -179,6 +179,26 @@ const contextMap: Record<string, Record<string, VerbContext>> = {
         supine: { sv: ' flera gånger', en: ' several times' }
       },
       verb: {}
+    },
+    distansarbeta: {
+      subject: { sv: 'teamet', en: 'the team' },
+      complement: { sv: 'hemifrån', en: 'from home' },
+      timeExpression: {
+        present: { sv: ' under pandemin', en: ' during the pandemic' },
+        past: { sv: ' förra veckan', en: ' last week' },
+        supine: { sv: ' sedan mars', en: ' since March' }
+      },
+      verb: {}
+    },
+    videokonferera: {
+      subject: { sv: 'vi', en: 'we' },
+      complement: { sv: 'med kollegorna', en: 'with colleagues' },
+      timeExpression: {
+        present: { sv: ' varje morgon', en: ' every morning' },
+        past: { sv: ' i två timmar', en: ' for two hours' },
+        supine: { sv: ' regelbundet', en: ' regularly' }
+      },
+      verb: {}
     }
   }
 };

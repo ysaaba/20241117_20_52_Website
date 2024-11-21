@@ -6,370 +6,310 @@ export interface Template {
   template: string;
   translation: string;
   requiresCountable: boolean;
+  type: ArticleType;
   categories: NounCategory[];
+  semanticGroups?: {
+    canBeWorn?: boolean;
+    canBeConsumed?: boolean;
+    canBeUsedAtWork?: boolean;
+    canGrow?: boolean;
+    isWeather?: boolean;
+    canBeBought?: boolean;
+    canBeBorrowed?: boolean;
+    canBeFound?: boolean;
+    canBeSeen?: boolean;
+  };
 }
 
 export const templates: Record<ArticleType, Template[]> = {
   indefinite: [
-    // General templates
     {
       template: "Jag ser ___ NOUN",
       translation: "I see a {noun}",
       requiresCountable: true,
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeSeen: true
+      }
+    },
+    {
+      template: "Jag har ___ NOUN",
+      translation: "I have a {noun}",
+      requiresCountable: true,
+      type: 'indefinite',
       categories: ['all']
     },
     {
       template: "Kan jag låna ___ NOUN?",
       translation: "Can I borrow a {noun}?",
       requiresCountable: true,
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBorrowed: true
+      }
+    },
+    {
+      template: "Jag vill köpa ___ NOUN",
+      translation: "I want to buy a {noun}",
+      requiresCountable: true,
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
+    },
+    {
+      template: "Det finns ___ NOUN här",
+      translation: "There is a {noun} here",
+      requiresCountable: true,
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeFound: true
+      }
+    },
+    {
+      template: "Min vän har ___ NOUN",
+      translation: "My friend has a {noun}",
+      requiresCountable: true,
+      type: 'indefinite',
       categories: ['all']
     },
     {
-      template: "Vi köpte ___ NOUN igår",
-      translation: "We bought a {noun} yesterday",
+      template: "Vi behöver ___ NOUN till festen",
+      translation: "We need a {noun} for the party",
       requiresCountable: true,
-      categories: ['all']
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
     },
     {
-      template: "Jag hittade ___ NOUN",
-      translation: "I found a {noun}",
+      template: "Det växer ___ NOUN i trädgården",
+      translation: "A {noun} is growing in the garden",
       requiresCountable: true,
-      categories: ['all']
+      type: 'indefinite',
+      categories: ['nature', 'food'],
+      semanticGroups: {
+        canGrow: true,
+        natural: true
+      }
     },
-
-    // Food & Drinks
-    {
-      template: "Jag lagar ___ NOUN till middag",
-      translation: "I'm cooking a {noun} for dinner",
-      requiresCountable: true,
-      categories: ['food']
-    },
-    {
-      template: "Han dricker ___ NOUN",
-      translation: "He drinks a {noun}",
-      requiresCountable: true,
-      categories: ['drinks']
-    },
-
-    // Furniture & Home
-    {
-      template: "De har köpt ___ NOUN till vardagsrummet",
-      translation: "They bought a {noun} for the living room",
-      requiresCountable: true,
-      categories: ['furniture']
-    },
-    {
-      template: "Vi behöver ___ NOUN till köket",
-      translation: "We need a {noun} for the kitchen",
-      requiresCountable: true,
-      categories: ['furniture', 'kitchen']
-    },
-
-    // Technology
     {
       template: "Hon använder ___ NOUN på jobbet",
       translation: "She uses a {noun} at work",
       requiresCountable: true,
-      categories: ['technology']
+      type: 'indefinite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeUsedAtWork: true
+      }
     },
     {
-      template: "Jag vill ha ___ ny NOUN",
-      translation: "I want a new {noun}",
+      template: "Jag lagar ___ NOUN till middag",
+      translation: "I'm cooking a {noun} for dinner",
       requiresCountable: true,
-      categories: ['technology']
-    },
-
-    // Clothing (based on lines 220-280)
-    {
-      template: "Hon har på sig ___ ny NOUN",
-      translation: "She is wearing a new {noun}",
-      requiresCountable: true,
-      categories: ['clothing']
-    },
-    {
-      template: "Jag provade ___ NOUN i affären",
-      translation: "I tried on a {noun} in the store",
-      requiresCountable: true,
-      categories: ['clothing']
-    },
-
-    // School & Education (based on lines 282-311)
-    {
-      template: "Hon använder ___ blå NOUN",
-      translation: "She uses a blue {noun}",
-      requiresCountable: true,
-      categories: ['school']
-    },
-    {
-      template: "Det ligger ___ NOUN på bordet",
-      translation: "There is a {noun} on the table",
-      requiresCountable: true,
-      categories: ['school', 'office']
-    },
-
-    // Nature & Weather (based on lines 312-373)
-    {
-      template: "Det växer ___ stor NOUN i parken",
-      translation: "A big {noun} grows in the park",
-      requiresCountable: true,
-      categories: ['nature']
-    },
-    {
-      template: "Det blir ___ NOUN idag",
-      translation: "It will be a {noun} today",
-      requiresCountable: true,
-      categories: ['weather']
-    },
-    {
-      template: "Det är ___ NOUN ute",
-      translation: "It is a {noun} outside",
-      requiresCountable: true,
-      categories: ['weather']
-    },
-    {
-      template: "Vi får ___ NOUN imorgon",
-      translation: "We'll get a {noun} tomorrow",
-      requiresCountable: true,
-      categories: ['weather']
+      type: 'indefinite',
+      categories: ['food'],
+      semanticGroups: {
+        canBeConsumed: true
+      }
     }
   ],
   definite: [
-    // General templates
+    {
+      template: "Jag ser NOUN___",
+      translation: "I see the {noun}",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeSeen: true
+      }
+    },
     {
       template: "NOUN___ är här",
       translation: "The {noun} is here",
-      requiresCountable: true,
+      requiresCountable: false,
+      type: 'definite',
       categories: ['all']
     },
-
-    // Colors & Appearance (from färg example)
     {
-      template: "NOUN___ är vacker",
-      translation: "The {noun} is beautiful",
-      requiresCountable: true,
-      categories: ['colors']
-    },
-
-    // Time & Seasons (from timme, sommar examples)
-    {
-      template: "NOUN___ går fort",
-      translation: "The {noun} goes by quickly",
-      requiresCountable: true,
-      categories: ['time', 'seasons']
-    },
-
-    // Kitchen & Bathroom (from tallrik, tandborste examples)
-    {
-      template: "NOUN___ är ren",
-      translation: "The {noun} is clean",
-      requiresCountable: true,
-      categories: ['kitchen', 'bathroom']
-    },
-
-    // Food & Kitchen
-    {
-      template: "NOUN___ smakar gott",
-      translation: "The {noun} tastes good",
-      requiresCountable: true,
-      categories: ['food']
+      template: "NOUN___ är stor",
+      translation: "The {noun} is big",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeSeen: true
+      }
     },
     {
-      template: "NOUN___ står i kylskåpet",
-      translation: "The {noun} is in the refrigerator",
-      requiresCountable: true,
-      categories: ['food', 'drinks']
-    },
-
-    // Technology
-    {
-      template: "NOUN___ fungerar inte",
-      translation: "The {noun} doesn't work",
-      requiresCountable: true,
-      categories: ['technology']
+      template: "Var är NOUN___?",
+      translation: "Where is the {noun}?",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeFound: true
+      }
     },
     {
-      template: "NOUN___ är ny",
-      translation: "The {noun} is new",
-      requiresCountable: true,
-      categories: ['technology', 'furniture']
-    },
-
-    // Professions (based on lines 437-456)
-    {
-      template: "NOUN___ undervisar svenska",
-      translation: "The {noun} teaches Swedish",
-      requiresCountable: true,
-      categories: ['profession']
+      template: "NOUN___ är sönder",
+      translation: "The {noun} is broken",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
     },
     {
-      template: "NOUN___ kommer snart",
-      translation: "The {noun} is coming soon",
-      requiresCountable: true,
-      categories: ['profession']
-    },
-
-    // Animals & Nature (based on lines 1026-1086)
-    {
-      template: "NOUN___ är Sveriges största djur",
-      translation: "The {noun} is Sweden's largest animal",
-      requiresCountable: true,
-      categories: ['animals']
+      template: "NOUN___ tillhör mig",
+      translation: "The {noun} belongs to me",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
     },
     {
-      template: "NOUN___ växer i trädgården",
-      translation: "The {noun} grows in the garden",
-      requiresCountable: true,
-      categories: ['nature']
+      template: "Jag gillar NOUN___",
+      translation: "I like the {noun}",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all']
+    },
+    {
+      template: "NOUN___ passar perfekt här",
+      translation: "The {noun} fits perfectly here",
+      requiresCountable: false,
+      type: 'definite',
+      categories: ['all']
     }
   ],
   indefinitePlural: [
-    // General templates
     {
-      template: "Det finns många ___ NOUN",
-      translation: "There are many {noun}s",
+      template: "Jag ser många NOUN",
+      translation: "I see many {noun}s",
       requiresCountable: true,
-      categories: ['all']
+      type: 'indefinitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeSeen: true
+      }
     },
-
-    // Garden & Tools (from spade example)
     {
-      template: "Vi behöver fler ___ NOUN",
+      template: "Det finns flera NOUN här",
+      translation: "There are several {noun}s here",
+      requiresCountable: true,
+      type: 'indefinitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeFound: true
+      }
+    },
+    {
+      template: "Vi behöver fler NOUN",
       translation: "We need more {noun}s",
       requiresCountable: true,
-      categories: ['garden']
-    },
-
-    // Nature & Animals (from älg, blomma examples)
-    {
-      template: "Det växer ___ NOUN i trädgården",
-      translation: "There are {noun}s growing in the garden",
-      requiresCountable: true,
-      categories: ['nature']
-    },
-
-    // Food & Drinks
-    {
-      template: "Vi har ___ NOUN i kylen",
-      translation: "We have {noun}s in the fridge",
-      requiresCountable: true,
-      categories: ['food', 'drinks']
+      type: 'indefinitePlural',
+      categories: ['all']
     },
     {
-      template: "De säljer ___ NOUN här",
-      translation: "They sell {noun}s here",
+      template: "De köper NOUN till huset",
+      translation: "They are buying {noun}s for the house",
       requiresCountable: true,
-      categories: ['food', 'drinks']
-    },
-
-    // Furniture
-    {
-      template: "Det står ___ NOUN i rummet",
-      translation: "There are {noun}s in the room",
-      requiresCountable: true,
-      categories: ['furniture']
+      type: 'indefinitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
     },
     {
-      template: "Vi har beställt ___ NOUN",
-      translation: "We have ordered {noun}s",
+      template: "Det finns inga NOUN kvar",
+      translation: "There are no {noun}s left",
       requiresCountable: true,
-      categories: ['furniture', 'technology']
-    },
-
-    // Body Parts (based on lines 1119-1148)
-    {
-      template: "Våra ___ NOUN slår",
-      translation: "Our {noun}s beat",
-      requiresCountable: true,
-      categories: ['body parts']
-    },
-
-    // Clothing (based on lines 1150-1179)
-    {
-      template: "Hon har ___ färgglada NOUN",
-      translation: "She has colorful {noun}s",
-      requiresCountable: true,
-      categories: ['clothing']
+      type: 'indefinitePlural',
+      categories: ['all']
     },
     {
-      template: "De säljer ___ varma NOUN",
-      translation: "They sell warm {noun}s",
+      template: "Hon älskar NOUN",
+      translation: "She loves {noun}s",
       requiresCountable: true,
-      categories: ['clothing']
+      type: 'indefinitePlural',
+      categories: ['all']
+    },
+    {
+      template: "Vi har många NOUN i Sverige",
+      translation: "We have many {noun}s in Sweden",
+      requiresCountable: true,
+      type: 'indefinitePlural',
+      categories: ['all']
     }
   ],
   definitePlural: [
-    // Animals & Nature (from älg example)
     {
-      template: "NOUN___ vandrar söderut",
-      translation: "The {noun}s migrate south",
+      template: "NOUN___ är här",
+      translation: "The {noun}s are here",
       requiresCountable: true,
-      categories: ['animals']
-    },
-
-    // Time & Weather (from timme, regn examples)
-    {
-      template: "NOUN___ flyger förbi",
-      translation: "The {noun}s fly by",
-      requiresCountable: true,
-      categories: ['time', 'weather']
-    },
-
-    // Professions (from lärare, läkare examples)
-    {
-      template: "NOUN___ arbetar hårt",
-      translation: "The {noun}s work hard",
-      requiresCountable: true,
-      categories: ['profession']
-    },
-
-    // Food & Kitchen
-    {
-      template: "NOUN___ ligger på bordet",
-      translation: "The {noun}s are on the table",
-      requiresCountable: true,
-      categories: ['food', 'kitchen']
+      type: 'definitePlural',
+      categories: ['all']
     },
     {
-      template: "NOUN___ är färska",
-      translation: "The {noun}s are fresh",
+      template: "Jag ser NOUN___",
+      translation: "I see the {noun}s",
       requiresCountable: true,
-      categories: ['food']
+      type: 'definitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeSeen: true
+      }
     },
-
-    // Technology
     {
-      template: "NOUN___ måste uppdateras",
-      translation: "The {noun}s need to be updated",
+      template: "Var är NOUN___?",
+      translation: "Where are the {noun}s?",
       requiresCountable: true,
-      categories: ['technology']
+      type: 'definitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeFound: true
+      }
     },
     {
       template: "NOUN___ är dyra",
       translation: "The {noun}s are expensive",
       requiresCountable: true,
-      categories: ['technology', 'furniture']
-    },
-
-    // Weather & Seasons (based on lines 1088-1117)
-    {
-      template: "NOUN___ är kraftiga i år",
-      translation: "The {noun}s are powerful this year",
-      requiresCountable: true,
-      categories: ['weather']
-    },
-
-    // Professions (based on lines 995-1024)
-    {
-      template: "NOUN___ arbetar på sjukhuset",
-      translation: "The {noun}s work at the hospital",
-      requiresCountable: true,
-      categories: ['profession']
+      type: 'definitePlural',
+      categories: ['all'],
+      semanticGroups: {
+        canBeBought: true
+      }
     },
     {
-      template: "NOUN___ har ett viktigt möte",
-      translation: "The {noun}s have an important meeting",
+      template: "Jag tycker om NOUN___",
+      translation: "I like the {noun}s",
       requiresCountable: true,
-      categories: ['profession']
+      type: 'definitePlural',
+      categories: ['all']
+    },
+    {
+      template: "NOUN___ kommer från Sverige",
+      translation: "The {noun}s come from Sweden",
+      requiresCountable: true,
+      type: 'definitePlural',
+      categories: ['all']
+    },
+    {
+      template: "Vi måste rengöra NOUN___",
+      translation: "We must clean the {noun}s",
+      requiresCountable: true,
+      type: 'definitePlural',
+      categories: ['all']
     }
   ]
 };

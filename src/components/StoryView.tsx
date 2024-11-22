@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Award, Share2, MessageCircle } from 'lucide-react';
-import { stories, type Story } from '../data/stories';
+import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCircle } from 'lucide-react';
+import { stories } from '../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface WordTooltipProps {
@@ -126,23 +126,23 @@ const StoryView: React.FC = () => {
   const [notes, setNotes] = useState<string>('');
   const [progress, setProgress] = useState(0);
   const [showShare, setShowShare] = useState(false);
-  const [currentAudioTime, setCurrentAudioTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Update progress based on scroll position
+    const container = containerRef.current;
     const handleScroll = () => {
-      if (containerRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+      if (container) {
+        const { scrollTop, scrollHeight, clientHeight } = container;
         const newProgress = (scrollTop / (scrollHeight - clientHeight)) * 100;
         setProgress(Math.min(newProgress, 100));
       }
     };
 
-    containerRef.current?.addEventListener('scroll', handleScroll);
-    return () => containerRef.current?.removeEventListener('scroll', handleScroll);
+    container?.addEventListener('scroll', handleScroll);
+    return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (!story) {
@@ -182,12 +182,6 @@ const StoryView: React.FC = () => {
         audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      setCurrentAudioTime(audioRef.current.currentTime);
     }
   };
 
@@ -270,15 +264,19 @@ const StoryView: React.FC = () => {
             <div className="prose prose-lg">
               <div className="space-y-4">
                 {story.content.reduce<React.ReactNode[]>((acc, word, index) => {
-                  if (word.text === '.' || word.text === '!' || word.text === '?') {
+                  // Check if the word ends with a sentence-ending punctuation
+                  const endsWithPunctuation = /[.!?]$/.test(word.text);
+                  
+                  acc.push(<WordTooltip key={index} word={word} />);
+                  
+                  // Add line breaks after sentence-ending punctuation
+                  if (endsWithPunctuation) {
                     acc.push(
-                      <WordTooltip key={index} word={word} />,
                       <br key={`br-${index}`} />,
                       <br key={`br2-${index}`} />
                     );
-                  } else {
-                    acc.push(<WordTooltip key={index} word={word} />);
                   }
+                  
                   return acc;
                 }, [])}
               </div>
@@ -318,7 +316,6 @@ const StoryView: React.FC = () => {
       <audio
         ref={audioRef}
         src={story.audioUrl}
-        onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
       />
 

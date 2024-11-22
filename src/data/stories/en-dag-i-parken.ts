@@ -39,7 +39,7 @@ export const enDagIParken: Story = {
     { text: 'sprang', translation: 'ran' },
     { text: 'runt.', translation: 'around.' },
   ],
-  audioUrl: '/audio/en-dag-i-parken.mp3',
+  audioUrl: `${window.location.origin}/audio/en-dag-i-parken.mp3`,
   exercises: [
     {
       question: 'Hur var dagen i parken?',

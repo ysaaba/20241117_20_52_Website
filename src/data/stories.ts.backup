@@ -46,7 +46,7 @@ export const stories: Story[] = [
       { text: 'sjöng', translation: 'sang' },
       { text: '.', translation: null },
     ],
-    audioUrl: '/audio/en-dag-i-parken.mp3',
+    audioUrl: `${window.location.origin}/audio/en-dag-i-parken.mp3`,
     exercises: [
       {
         question: 'Hur var dagen i parken?',

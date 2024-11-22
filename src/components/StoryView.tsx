@@ -124,26 +124,23 @@ const StoryView: React.FC = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [notes, setNotes] = useState<string>('');
-  const [progress, setProgress] = useState(0);
-  const [showShare, setShowShare] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Update progress based on scroll position
-    const container = containerRef.current;
-    const handleScroll = () => {
-      if (container) {
-        const { scrollTop, scrollHeight, clientHeight } = container;
-        const newProgress = (scrollTop / (scrollHeight - clientHeight)) * 100;
-        setProgress(Math.min(newProgress, 100));
+  // Audio handling
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.error('Error playing audio:', error);
+          setIsPlaying(false);
+        });
       }
-    };
-
-    container?.addEventListener('scroll', handleScroll);
-    return () => container?.removeEventListener('scroll', handleScroll);
-  }, []);
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   if (!story) {
     return (
@@ -162,45 +159,12 @@ const StoryView: React.FC = () => {
     );
   }
 
-  const handleShare = () => {
-    setShowShare(true);
-    // Add share functionality
-    navigator.clipboard.writeText(window.location.href);
-    setTimeout(() => setShowShare(false), 2000);
-  };
-
-  const toggleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-    // Add bookmark functionality
-  };
-
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
-        <motion.div
-          className="h-full bg-blue-500"
-          initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 0.2 }}
-        />
-      </div>
-
       {/* Header */}
-      <header className="sticky top-0 bg-white shadow-sm z-40">
-        <div className="max-w-5xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-6">
             <button
               onClick={() => navigate('/stories')}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
@@ -208,84 +172,68 @@ const StoryView: React.FC = () => {
               <ArrowLeft className="w-5 h-5" />
               Back to Stories
             </button>
-
             <div className="flex items-center gap-4">
-              <button
-                onClick={togglePlayPause}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-              >
-                <Volume2 className="w-5 h-5" />
-                {isPlaying ? 'Pause' : 'Play'}
-              </button>
-
+              {story.audioUrl && (
+                <button
+                  onClick={togglePlayPause}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100"
+                >
+                  <Volume2 className="w-5 h-5" />
+                  {isPlaying ? 'Pause' : 'Play Audio'}
+                </button>
+              )}
               <button
                 onClick={() => setShowNotes(!showNotes)}
-                className={`flex items-center gap-2 ${
-                  showNotes ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
+                  showNotes ? 'bg-blue-50 text-blue-600' : 'hover:bg-gray-100'
                 }`}
               >
                 <MessageCircle className="w-5 h-5" />
                 Notes
               </button>
-
-              <button
-                onClick={toggleBookmark}
-                className={`flex items-center gap-2 ${
-                  isBookmarked ? 'text-yellow-500' : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <Bookmark className={`w-5 h-5 ${isBookmarked ? 'fill-yellow-500' : ''}`} />
-                {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-              </button>
-
-              <button
-                onClick={handleShare}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-              >
-                <Share2 className="w-5 h-5" />
-                Share
-              </button>
+            </div>
+          </div>
+          <div className="flex items-start justify-between">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-900 mb-2">{story.title}</h1>
+              <h2 className="text-xl text-gray-600 mb-4">{story.englishTitle}</h2>
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  {story.difficulty.charAt(0).toUpperCase() + story.difficulty.slice(1)}
+                </span>
+                <span className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                  {story.category.charAt(0).toUpperCase() + story.category.slice(1)}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main content */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <main className="max-w-4xl mx-auto px-4 py-12">
         <div className="flex gap-8">
           {/* Story content */}
-          <div
-            ref={containerRef}
-            className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 p-8 max-h-[calc(100vh-12rem)] overflow-y-auto"
-          >
-            <h1 className="text-3xl font-bold mb-2">{story.title}</h1>
-            <h2 className="text-xl text-gray-600 mb-6">{story.englishTitle}</h2>
-
-            <div className="prose prose-lg">
-              <div className="space-y-4">
+          <div className="flex-1">
+            <div className="prose prose-lg max-w-none">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-12">
                 {story.content.reduce<React.ReactNode[]>((acc, word, index) => {
-                  // Check if the word ends with a sentence-ending punctuation
                   const endsWithPunctuation = /[.!?]$/.test(word.text);
-                  
                   acc.push(<WordTooltip key={index} word={word} />);
-                  
-                  // Add line breaks after sentence-ending punctuation
                   if (endsWithPunctuation) {
-                    acc.push(
-                      <br key={`br-${index}`} />,
-                      <br key={`br2-${index}`} />
-                    );
+                    acc.push(<br key={`br-${index}`} />, <br key={`br2-${index}`} />);
                   }
-                  
                   return acc;
                 }, [])}
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Exercises</h3>
-              <div className="space-y-8">
-                {story.exercises.map((exercise, index) => (
-                  <Exercise key={index} exercise={exercise} />
-                ))}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                <h3 className="text-2xl font-bold mb-8">Practice Exercises</h3>
+                <div className="space-y-8">
+                  {story.exercises.map((exercise, index) => (
+                    <Exercise key={index} exercise={exercise} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -297,41 +245,34 @@ const StoryView: React.FC = () => {
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: '20rem', opacity: 1 }}
                 exit={{ width: 0, opacity: 0 }}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6"
+                className="sticky top-6"
               >
-                <h3 className="text-lg font-semibold mb-4">Notes</h3>
-                <textarea
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Write your notes here..."
-                  className="w-full h-[calc(100vh-16rem)] p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                  <h3 className="text-lg font-semibold mb-4">Notes</h3>
+                  <textarea
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="Write your notes here..."
+                    className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows={10}
+                  />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-      </div>
+      </main>
 
       {/* Audio element */}
       <audio
         ref={audioRef}
         src={story.audioUrl}
         onEnded={() => setIsPlaying(false)}
+        onError={(e) => {
+          console.error('Audio failed to load:', e);
+          setIsPlaying(false);
+        }}
       />
-
-      {/* Share notification */}
-      <AnimatePresence>
-        {showShare && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg"
-          >
-            Link copied to clipboard!
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

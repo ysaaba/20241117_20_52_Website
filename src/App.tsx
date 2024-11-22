@@ -12,17 +12,6 @@ import { Navbar } from './components/Navbar';
 import type { ExerciseType } from './types';
 import { useRouteState } from './hooks/useRouteState';
 
-// Map paths to exercise types
-const pathToType: Record<string, ExerciseType> = {
-  '/': 'landing',
-  '/stories': 'stories',
-  '/articles': 'articles',
-  '/verbs': 'verbGroups',
-  '/adjectives': 'adjectives',
-  '/nouns': 'nouns',
-  '/quiz': 'quiz'
-};
-
 // MainContent component to handle the routing and content display
 const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type: ExerciseType) => void }> = ({
   selectedType,

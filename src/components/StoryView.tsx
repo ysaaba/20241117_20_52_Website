@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Award, Share2, MessageCircle } from 'lucide-react';
-import { stories } from '../data/stories';
+import { stories, type Story } from '../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface WordTooltipProps {

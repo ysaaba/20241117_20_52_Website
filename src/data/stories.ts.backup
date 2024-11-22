@@ -1,7 +1,3 @@
-// Re-export everything from the stories directory
-export * from './stories/types';
-export * from './stories/index';
-
 interface Word {
   text: string;
   translation: string | null;

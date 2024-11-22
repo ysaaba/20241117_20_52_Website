@@ -14,7 +14,7 @@ interface VerbRowProps {
   onInputChange: (verb: string, tense: 'present' | 'past' | 'supine', value: string) => void;
   onBlur: (verb: string, tense: 'present' | 'past' | 'supine', value: string) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>, verb: string, tense: 'present' | 'past' | 'supine') => void;
-  onPlayAudio: (text: string) => void;
+  playSound: (text: string) => void;
   getInputClassName: (key: string) => string;
 }
 
@@ -29,7 +29,7 @@ export function VerbRow({
   onInputChange,
   onBlur,
   onKeyDown,
-  onPlayAudio,
+  playSound,
   getInputClassName
 }: VerbRowProps) {
   const baseInputClass = `
@@ -99,7 +99,7 @@ export function VerbRow({
         ))}
         <td className="px-4 py-3">
           <button
-            onClick={() => onPlayAudio(verb.verb)}
+            onClick={() => playSound(verb.verb)}
             className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
             title="Listen to pronunciation"
           >
@@ -110,7 +110,7 @@ export function VerbRow({
       {isExpanded && (
         <tr className="bg-blue-50">
           <td colSpan={9} className="px-8 py-4">
-            <ExampleSentences verb={verb} onPlayAudio={onPlayAudio} />
+            <ExampleSentences verb={verb} playSound={playSound} />
           </td>
         </tr>
       )}

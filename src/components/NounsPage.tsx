@@ -41,7 +41,7 @@ export function NounsPage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [showExamples, setShowExamples] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
-  const { playAudio } = useSound();
+  const { playSound } = useSound();
 
   const categories = Array.from(new Set(commonNouns.map(noun => noun.category)));
 
@@ -183,9 +183,9 @@ export function NounsPage() {
         </div>
 
         <div className="space-y-6">
-          {currentNouns.map((noun) => (
+          {currentNouns.map((noun, index) => (
             <div
-              key={noun.noun}
+              key={`${noun.noun}-${noun.category}-${noun.translation}-${index}`}
               className="bg-white rounded-lg shadow-md p-6 space-y-4"
             >
               <div className="flex items-start justify-between">
@@ -193,7 +193,7 @@ export function NounsPage() {
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-semibold text-gray-800">{noun.noun}</h3>
                     <button
-                      onClick={() => playAudio(noun.noun)}
+                      onClick={() => playSound(noun.noun)}
                       className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
                       title="Listen to pronunciation"
                     >

@@ -63,7 +63,7 @@ export function useResponsiveVoice(voice: string = 'Swedish Male') {
     }
 
     try {
-      window.responsiveVoice.speak(text, 'Swedish Female', {
+      window.responsiveVoice.speak(text, voice, {
         pitch: 1,
         rate: 0.8,
         volume: 1,

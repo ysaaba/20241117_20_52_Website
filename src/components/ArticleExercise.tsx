@@ -42,7 +42,7 @@ export const ArticleExercise = ({
   totalPages
 }: ArticleExerciseProps) => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const { playAudio } = useSound();
+  const { playSound } = useSound();
 
   const handleAnswerChange = (exerciseId: number, value: string) => {
     setAnswers(prev => ({ ...prev, [exerciseId]: value }));
@@ -69,8 +69,8 @@ export const ArticleExercise = ({
     return (
       <ExerciseSummaryView
         summary={summary}
-        onReset={onReset}
-        onNext={onComplete}
+        onReset={() => onReset?.()}
+        onNext={onComplete ?? undefined}
       />
     );
   }
@@ -116,7 +116,6 @@ export const ArticleExercise = ({
       <div className="space-y-6">
         {exercises.map((exercise) => {
           const isAnswered = progress.answeredQuestions.has(exercise.id);
-          const currentAnswer = answers[exercise.id] || '';
           const isAnswerCorrect = isCorrect(exercise.id, exercise.correctArticle);
           const [beforeInput, afterInput] = exercise.sentence.split('___');
 
@@ -138,7 +137,7 @@ export const ArticleExercise = ({
                   </div>
                 </div>
                 <button
-                  onClick={() => playAudio(exercise.correctSentence)}
+                  onClick={() => playSound(exercise.correctSentence)}
                   className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
                   title="Listen to pronunciation"
                 >

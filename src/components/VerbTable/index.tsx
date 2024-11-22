@@ -21,7 +21,7 @@ export function VerbTable({ onReset }: VerbTableProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedVerbs, setExpandedVerbs] = useState<Set<string>>(new Set());
-  const { playAudio } = useSound();
+  const { playSound } = useSound();
   const inputRefs = useRef<Record<string, HTMLInputElement>>({});
   const [isValidating, setIsValidating] = useState(false);
   const verbsPerPage = 10;
@@ -190,7 +190,7 @@ export function VerbTable({ onReset }: VerbTableProps) {
                   onInputChange={handleInputChange}
                   onBlur={handleBlur}
                   onKeyDown={handleKeyDown}
-                  onPlayAudio={playAudio}
+                  playSound={playSound}
                   getInputClassName={getInputClassName}
                 />
               ))}

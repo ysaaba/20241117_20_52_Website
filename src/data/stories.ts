@@ -1,0 +1,365 @@
+interface Word {
+  text: string;
+  translation: string | null;
+}
+
+interface Exercise {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  englishQuestion: string;
+}
+
+export interface Story {
+  id: string;
+  title: string;
+  englishTitle: string;
+  content: Word[];
+  audioUrl: string;
+  exercises: Exercise[];
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  category: 'everyday' | 'culture' | 'nature' | 'travel' | 'food';
+  description: string;
+}
+
+export const stories: Story[] = [
+  {
+    id: 'en-dag-i-parken',
+    title: 'En dag i parken',
+    englishTitle: 'A Day in the Park',
+    difficulty: 'beginner',
+    category: 'everyday',
+    description: 'Learn everyday Swedish vocabulary through a simple story about a beautiful day in the park.',
+    content: [
+      { text: 'Det', translation: 'It' },
+      { text: 'var', translation: 'was' },
+      { text: 'en', translation: 'a' },
+      { text: 'vacker', translation: 'beautiful' },
+      { text: 'dag', translation: 'day' },
+      { text: 'i', translation: 'in' },
+      { text: 'parken', translation: 'the park' },
+      { text: '.', translation: null },
+      { text: 'Solen', translation: 'The sun' },
+      { text: 'sken', translation: 'shone' },
+      { text: 'och', translation: 'and' },
+      { text: 'fåglarna', translation: 'the birds' },
+      { text: 'sjöng', translation: 'sang' },
+      { text: '.', translation: null },
+    ],
+    audioUrl: '/audio/en-dag-i-parken.mp3',
+    exercises: [
+      {
+        question: 'Hur var dagen i parken?',
+        englishQuestion: 'How was the day in the park?',
+        options: ['Regnig (Rainy)', 'Vacker (Beautiful)', 'Kall (Cold)', 'Mörk (Dark)'],
+        correctAnswer: 'Vacker (Beautiful)'
+      },
+      {
+        question: 'Vad gjorde fåglarna?',
+        englishQuestion: 'What did the birds do?',
+        options: ['Flög (Flew)', 'Åt (Ate)', 'Sjöng (Sang)', 'Sov (Slept)'],
+        correctAnswer: 'Sjöng (Sang)'
+      },
+      {
+        question: 'Vilket ord beskriver vädret?',
+        englishQuestion: 'Which word describes the weather?',
+        options: ['Sken (Shone)', 'Sjöng (Sang)', 'Parken (The park)', 'Fåglarna (The birds)'],
+        correctAnswer: 'Sken (Shone)'
+      },
+      {
+        question: 'Vad betyder "det var" på engelska?',
+        englishQuestion: 'What does "det var" mean in English?',
+        options: ['There was', 'It is', 'It was', 'This was'],
+        correctAnswer: 'It was'
+      }
+    ]
+  },
+  {
+    id: 'frukost-pa-cafe',
+    title: 'Frukost på café',
+    englishTitle: 'Breakfast at a Café',
+    difficulty: 'beginner',
+    category: 'food',
+    description: 'Learn Swedish food vocabulary and café expressions through a story about a typical Swedish breakfast.',
+    content: [
+      { text: 'Anna', translation: 'Anna' },
+      { text: 'går', translation: 'goes' },
+      { text: 'till', translation: 'to' },
+      { text: 'sitt', translation: 'her' },
+      { text: 'favoritcafé', translation: 'favorite café' },
+      { text: 'för', translation: 'for' },
+      { text: 'frukost', translation: 'breakfast' },
+      { text: '.', translation: null },
+      { text: 'Hon', translation: 'She' },
+      { text: 'beställer', translation: 'orders' },
+      { text: 'en', translation: 'a' },
+      { text: 'kopp', translation: 'cup' },
+      { text: 'kaffe', translation: 'coffee' },
+      { text: 'och', translation: 'and' },
+      { text: 'en', translation: 'a' },
+      { text: 'kanelbulle', translation: 'cinnamon bun' },
+      { text: '.', translation: null },
+    ],
+    audioUrl: '/audio/frukost-pa-cafe.mp3',
+    exercises: [
+      {
+        question: 'Vad beställer Anna att dricka?',
+        englishQuestion: 'What does Anna order to drink?',
+        options: ['Te (Tea)', 'Kaffe (Coffee)', 'Juice (Juice)', 'Vatten (Water)'],
+        correctAnswer: 'Kaffe (Coffee)'
+      },
+      {
+        question: 'Vilken typ av bulle beställer hon?',
+        englishQuestion: 'What type of bun does she order?',
+        options: ['Vaniljbulle (Vanilla bun)', 'Kanelbulle (Cinnamon bun)', 'Kardemummabulle (Cardamom bun)', 'Chokladbulle (Chocolate bun)'],
+        correctAnswer: 'Kanelbulle (Cinnamon bun)'
+      },
+      {
+        question: 'När går Anna till caféet?',
+        englishQuestion: 'When does Anna go to the café?',
+        options: ['För lunch (For lunch)', 'För middag (For dinner)', 'För frukost (For breakfast)', 'För fika (For fika)'],
+        correctAnswer: 'För frukost (For breakfast)'
+      },
+      {
+        question: 'Vad betyder "sitt favoritcafé"?',
+        englishQuestion: 'What does "sitt favoritcafé" mean?',
+        options: ['Any café', 'The café', 'Her favorite café', 'The best café'],
+        correctAnswer: 'Her favorite café'
+      },
+      {
+        question: 'Vilket verb används för "beställer" på engelska?',
+        englishQuestion: 'What verb is used for "beställer" in English?',
+        options: ['Asks for', 'Orders', 'Wants', 'Takes'],
+        correctAnswer: 'Orders'
+      }
+    ]
+  },
+  {
+    id: 'midsommar-firande',
+    title: 'Midsommarfirande',
+    englishTitle: 'Midsummer Celebration',
+    difficulty: 'intermediate',
+    category: 'culture',
+    description: 'Discover Swedish culture through the traditional Midsummer celebration, one of Sweden\'s most important holidays.',
+    content: [
+      { text: 'Midsommar', translation: 'Midsummer' },
+      { text: 'är', translation: 'is' },
+      { text: 'en', translation: 'a' },
+      { text: 'av', translation: 'of' },
+      { text: 'Sveriges', translation: 'Sweden\'s' },
+      { text: 'viktigaste', translation: 'most important' },
+      { text: 'traditioner', translation: 'traditions' },
+      { text: '.', translation: null },
+      { text: 'Människor', translation: 'People' },
+      { text: 'dansar', translation: 'dance' },
+      { text: 'runt', translation: 'around' },
+      { text: 'midsommarstången', translation: 'the maypole' },
+      { text: ',', translation: null },
+      { text: 'äter', translation: 'eat' },
+      { text: 'sill', translation: 'herring' },
+      { text: 'och', translation: 'and' },
+      { text: 'jordgubbar', translation: 'strawberries' },
+      { text: '.', translation: null },
+    ],
+    audioUrl: '/audio/midsommar-firande.mp3',
+    exercises: [
+      {
+        question: 'Vad dansar människor runt?',
+        englishQuestion: 'What do people dance around?',
+        options: ['Ett träd (A tree)', 'Midsommarstången (The maypole)', 'En eld (A fire)', 'Ett bord (A table)'],
+        correctAnswer: 'Midsommarstången (The maypole)'
+      },
+      {
+        question: 'Vilken mat nämns i texten?',
+        englishQuestion: 'What food is mentioned in the text?',
+        options: ['Köttbullar och potatis (Meatballs and potatoes)', 'Sill och jordgubbar (Herring and strawberries)', 'Pizza och sallad (Pizza and salad)', 'Soppa och bröd (Soup and bread)'],
+        correctAnswer: 'Sill och jordgubbar (Herring and strawberries)'
+      },
+      {
+        question: 'Hur beskrivs midsommar i texten?',
+        englishQuestion: 'How is Midsummer described in the text?',
+        options: [
+          'En rolig fest (A fun party)',
+          'En av Sveriges viktigaste traditioner (One of Sweden\'s most important traditions)',
+          'En sommardag (A summer day)',
+          'En helgdag (A holiday)'
+        ],
+        correctAnswer: 'En av Sveriges viktigaste traditioner (One of Sweden\'s most important traditions)'
+      },
+      {
+        question: 'Vad betyder "jordgubbar"?',
+        englishQuestion: 'What does "jordgubbar" mean?',
+        options: ['Blueberries', 'Raspberries', 'Strawberries', 'Blackberries'],
+        correctAnswer: 'Strawberries'
+      },
+      {
+        question: 'Hur säger man "most important" på svenska enligt texten?',
+        englishQuestion: 'How do you say "most important" in Swedish according to the text?',
+        options: ['Mest viktig', 'Viktigaste', 'Mycket viktig', 'Störst viktig'],
+        correctAnswer: 'Viktigaste'
+      },
+      {
+        question: 'Vilket ord används för "dance" i texten?',
+        englishQuestion: 'What word is used for "dance" in the text?',
+        options: ['Springer', 'Hoppar', 'Dansar', 'Går'],
+        correctAnswer: 'Dansar'
+      }
+    ]
+  },
+  {
+    id: 'vandring-i-fjallen',
+    title: 'Vandring i fjällen',
+    englishTitle: 'Hiking in the Mountains',
+    difficulty: 'intermediate',
+    category: 'nature',
+    description: 'Learn nature-related vocabulary through an exciting hiking adventure in the Swedish mountains.',
+    content: [
+      { text: 'Efter', translation: 'After' },
+      { text: 'tre', translation: 'three' },
+      { text: 'timmars', translation: 'hours\'' },
+      { text: 'vandring', translation: 'hiking' },
+      { text: 'når', translation: 'reach' },
+      { text: 'vi', translation: 'we' },
+      { text: 'toppen', translation: 'the peak' },
+      { text: '.', translation: null },
+      { text: 'Utsikten', translation: 'The view' },
+      { text: 'är', translation: 'is' },
+      { text: 'fantastisk', translation: 'fantastic' },
+      { text: '.', translation: null },
+      { text: 'Vi', translation: 'We' },
+      { text: 'ser', translation: 'see' },
+      { text: 'snöklädda', translation: 'snow-covered' },
+      { text: 'berg', translation: 'mountains' },
+      { text: 'och', translation: 'and' },
+      { text: 'kristallklara', translation: 'crystal clear' },
+      { text: 'sjöar', translation: 'lakes' },
+      { text: '.', translation: null },
+    ],
+    audioUrl: '/audio/vandring-i-fjallen.mp3',
+    exercises: [
+      {
+        question: 'Hur länge vandrade de?',
+        englishQuestion: 'How long did they hike?',
+        options: ['En timme (One hour)', 'Två timmar (Two hours)', 'Tre timmar (Three hours)', 'Fyra timmar (Four hours)'],
+        correctAnswer: 'Tre timmar (Three hours)'
+      },
+      {
+        question: 'Vad ser de från toppen?',
+        englishQuestion: 'What do they see from the peak?',
+        options: ['Städer och byar (Cities and villages)', 'Snöklädda berg och sjöar (Snow-covered mountains and lakes)', 'Skogar och ängar (Forests and meadows)', 'Havet och stranden (The sea and beach)'],
+        correctAnswer: 'Snöklädda berg och sjöar (Snow-covered mountains and lakes)'
+      },
+      {
+        question: 'Hur beskrivs sjöarna i texten?',
+        englishQuestion: 'How are the lakes described in the text?',
+        options: ['Stora (Large)', 'Djupa (Deep)', 'Kristallklara (Crystal clear)', 'Blåa (Blue)'],
+        correctAnswer: 'Kristallklara (Crystal clear)'
+      },
+      {
+        question: 'Vilket ord används för "reach" i texten?',
+        englishQuestion: 'What word is used for "reach" in the text?',
+        options: ['Kommer', 'Når', 'Går', 'Springer'],
+        correctAnswer: 'Når'
+      },
+      {
+        question: 'Hur beskrivs utsikten?',
+        englishQuestion: 'How is the view described?',
+        options: ['Vacker (Beautiful)', 'Fantastisk (Fantastic)', 'Underbar (Wonderful)', 'Fin (Fine)'],
+        correctAnswer: 'Fantastisk (Fantastic)'
+      },
+      {
+        question: 'Vad betyder "snöklädda berg"?',
+        englishQuestion: 'What does "snöklädda berg" mean?',
+        options: [
+          'High mountains',
+          'Snow-covered mountains',
+          'Mountain peaks',
+          'Rocky mountains'
+        ],
+        correctAnswer: 'Snow-covered mountains'
+      }
+    ]
+  },
+  {
+    id: 'nobelpriset',
+    title: 'Nobelpriset',
+    englishTitle: 'The Nobel Prize',
+    difficulty: 'advanced',
+    category: 'culture',
+    description: 'Learn about Swedish culture and formal language through the prestigious Nobel Prize ceremony.',
+    content: [
+      { text: 'Varje', translation: 'Every' },
+      { text: 'år', translation: 'year' },
+      { text: 'den', translation: 'on the' },
+      { text: 'tionde', translation: 'tenth' },
+      { text: 'december', translation: 'December' },
+      { text: 'delas', translation: 'are awarded' },
+      { text: 'Nobelpriset', translation: 'the Nobel Prize' },
+      { text: 'ut', translation: 'out' },
+      { text: 'i', translation: 'in' },
+      { text: 'Stockholm', translation: 'Stockholm' },
+      { text: '.', translation: null },
+      { text: 'Pristagarna', translation: 'The laureates' },
+      { text: 'får', translation: 'receive' },
+      { text: 'sina', translation: 'their' },
+      { text: 'medaljer', translation: 'medals' },
+      { text: 'av', translation: 'from' },
+      { text: 'kungen', translation: 'the king' },
+      { text: 'under', translation: 'during' },
+      { text: 'en', translation: 'a' },
+      { text: 'högtidlig', translation: 'ceremonial' },
+      { text: 'ceremoni', translation: 'ceremony' },
+      { text: '.', translation: null },
+    ],
+    audioUrl: '/audio/nobelpriset.mp3',
+    exercises: [
+      {
+        question: 'När delas Nobelpriset ut?',
+        englishQuestion: 'When is the Nobel Prize awarded?',
+        options: ['1 december (December 1st)', '5 december (December 5th)', '10 december (December 10th)', '15 december (December 15th)'],
+        correctAnswer: '10 december (December 10th)'
+      },
+      {
+        question: 'Vem delar ut medaljerna?',
+        englishQuestion: 'Who presents the medals?',
+        options: ['Statsministern (The Prime Minister)', 'Kungen (The King)', 'Nobelkommittén (The Nobel Committee)', 'Drottningen (The Queen)'],
+        correctAnswer: 'Kungen (The King)'
+      },
+      {
+        question: 'Var äger ceremonin rum?',
+        englishQuestion: 'Where does the ceremony take place?',
+        options: ['Göteborg (Gothenburg)', 'Malmö (Malmö)', 'Stockholm (Stockholm)', 'Uppsala (Uppsala)'],
+        correctAnswer: 'Stockholm (Stockholm)'
+      },
+      {
+        question: 'Hur beskrivs ceremonin i texten?',
+        englishQuestion: 'How is the ceremony described in the text?',
+        options: ['Stor (Big)', 'Högtidlig (Ceremonial)', 'Lång (Long)', 'Traditionell (Traditional)'],
+        correctAnswer: 'Högtidlig (Ceremonial)'
+      },
+      {
+        question: 'Vad betyder "pristagarna"?',
+        englishQuestion: 'What does "pristagarna" mean?',
+        options: [
+          'The prize money',
+          'The laureates',
+          'The winners',
+          'The contestants'
+        ],
+        correctAnswer: 'The laureates'
+      },
+      {
+        question: 'Vilket ord används för "are awarded" i texten?',
+        englishQuestion: 'What word is used for "are awarded" in the text?',
+        options: ['Ges', 'Delas ut', 'Får', 'Tar emot'],
+        correctAnswer: 'Delas ut'
+      },
+      {
+        question: 'Hur säger man "every year" på svenska enligt texten?',
+        englishQuestion: 'How do you say "every year" in Swedish according to the text?',
+        options: ['Alla år', 'Varje år', 'Årligen', 'Per år'],
+        correctAnswer: 'Varje år'
+      }
+    ]
+  }
+];

@@ -1,4 +1,4 @@
-export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz';
+export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz' | 'stories';
 export type NounCategory = 
   // People and Professions
   | 'people'

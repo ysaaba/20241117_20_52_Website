@@ -8,7 +8,8 @@ import {
   ChevronDown, 
   Dumbbell,
   BookA,
-  Sparkles
+  Sparkles,
+  BookOpen
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ExerciseType } from '../types';
@@ -218,6 +219,18 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           <div className="flex items-center gap-2">
                             <Sparkles className="w-4 h-4" />
                             Quiz
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('stories');
+                            closeDropdowns();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <div className="flex items-center gap-2">
+                            <BookOpen className="w-4 h-4" />
+                            Stories
                           </div>
                         </button>
                       </div>

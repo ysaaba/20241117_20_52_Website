@@ -6,6 +6,7 @@ import { AdjectivesPage } from './components/AdjectivesPage';
 import { NounsPage } from './components/NounsPage';
 import { LandingPage } from './components/LandingPage';
 import { QuizPage } from './components/QuizPage';
+import StoriesPage from './components/StoriesPage';
 import type { ExerciseType } from './types';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         return <AdjectivesPage />;
       case 'quiz':
         return <QuizPage />;
+      case 'stories':
+        return <StoriesPage />;
       default:
         return <LandingPage onGetStarted={() => setSelectedType('articles')} />;
     }

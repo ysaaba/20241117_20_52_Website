@@ -184,12 +184,12 @@ export const commonNouns: Noun[] = [
         english: 'The eye is red'
       },
       indefinitePlural: {
-        swedish: 'Katten har gröna ögon',
-        english: 'The cat has green eyes'
+        swedish: 'Han har bruna ögon',
+        english: 'He has brown eyes'
       },
       definitePlural: {
-        swedish: 'Ögonen är trötta efter en lång dag',
-        english: 'The eyes are tired after a long day'
+        swedish: 'Ögonen är trötta',
+        english: 'The eyes are tired'
       }
     },
     semantics: {
@@ -230,12 +230,12 @@ export const commonNouns: Noun[] = [
         english: 'The apple is red'
       },
       indefinitePlural: {
-        swedish: 'Det finns äpplen i korgen',
-        english: 'There are apples in the basket'
+        swedish: 'Det finns många äpplen i korgen',
+        english: 'There are many apples in the basket'
       },
       definitePlural: {
-        swedish: 'Äpplena är från Sverige',
-        english: 'The apples are from Sweden'
+        swedish: 'Äpplena är mogna',
+        english: 'The apples are ripe'
       }
     },
     semantics: {
@@ -1261,7 +1261,15 @@ export const commonNouns: Noun[] = [
       canBeSeen: true,
       canBeFound: true,
       animate: true,
-      natural: true
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
     }
   },
   {
@@ -1732,12 +1740,12 @@ export const commonNouns: Noun[] = [
     },
     examples: {
       indefinite: {
-        swedish: 'Jag köpte en bil igår',
-        english: 'I bought a car yesterday'
+        swedish: 'Jag vill köpa en bil',
+        english: 'I want to buy a car'
       },
       definite: {
-        swedish: 'Bilen är ny',
-        english: 'The car is new'
+        swedish: 'Bilen är röd',
+        english: 'The car is red'
       },
       indefinitePlural: {
         swedish: 'Det finns många bilar på gatan',
@@ -2865,6 +2873,2766 @@ export const commonNouns: Noun[] = [
       isWeather: true,
       canBeBorrowed: false,
       bodyPart: false
+    }
+  },
+  {
+    noun: 'tandborste',
+    translation: 'toothbrush',
+    category: 'bathroom',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en tandborste',
+      definite: 'tandborsten',
+      indefinitePlural: 'tandborstar',
+      definitePlural: 'tandborstarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en ny tandborste',
+        english: 'I need a new toothbrush'
+      },
+      definite: {
+        swedish: 'Tandborsten är blå',
+        english: 'The toothbrush is blue'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har extra tandborstar',
+        english: 'We have extra toothbrushes'
+      },
+      definitePlural: {
+        swedish: 'Tandborstarna ligger i badrummet',
+        english: 'The toothbrushes are in the bathroom'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'dator',
+    translation: 'computer',
+    category: 'technology',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en dator',
+      definite: 'datorn',
+      indefinitePlural: 'datorer',
+      definitePlural: 'datorerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han köpte en ny dator',
+        english: 'He bought a new computer'
+      },
+      definite: {
+        swedish: 'Datorn är snabb',
+        english: 'The computer is fast'
+      },
+      indefinitePlural: {
+        swedish: 'Alla datorer är upptagna',
+        english: 'All computers are occupied'
+      },
+      definitePlural: {
+        swedish: 'Datorerna behöver uppdateras',
+        english: 'The computers need to be updated'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'hjärta',
+    translation: 'heart',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett hjärta',
+      definite: 'hjärtat',
+      indefinitePlural: 'hjärtan',
+      definitePlural: 'hjärtana'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Ett hjärta slår snabbt',
+        english: 'A heart beats fast'
+      },
+      definite: {
+        swedish: 'Hjärtat är en muskel',
+        english: 'The heart is a muscle'
+      },
+      indefinitePlural: {
+        swedish: 'Deras hjärtan är starka',
+        english: 'Their hearts are strong'
+      },
+      definitePlural: {
+        swedish: 'Hjärtana slår i takt',
+        english: 'The hearts beat in rhythm'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'hylla',
+    translation: 'shelf',
+    category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en hylla',
+      definite: 'hyllan',
+      indefinitePlural: 'hyllor',
+      definitePlural: 'hyllorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi behöver en ny hylla',
+        english: 'We need a new shelf'
+      },
+      definite: {
+        swedish: 'Hyllan är full med böcker',
+        english: 'The shelf is full of books'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns tomma hyllor här',
+        english: 'There are empty shelves here'
+      },
+      definitePlural: {
+        swedish: 'Hyllorna är gjorda av trä',
+        english: 'The shelves are made of wood'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'moln',
+    translation: 'cloud',
+    category: 'weather',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett moln',
+      definite: 'molnet',
+      indefinitePlural: 'moln',
+      definitePlural: 'molnen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag ser ett stort moln',
+        english: 'I see a big cloud'
+      },
+      definite: {
+        swedish: 'Molnet ser ut som en häst',
+        english: 'The cloud looks like a horse'
+      },
+      indefinitePlural: {
+        swedish: 'Det är många moln på himlen',
+        english: 'There are many clouds in the sky'
+      },
+      definitePlural: {
+        swedish: 'Molnen är mörka',
+        english: 'The clouds are dark'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: true,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'spegel',
+    translation: 'mirror',
+    category: 'household',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en spegel',
+      definite: 'spegeln',
+      indefinitePlural: 'speglar',
+      definitePlural: 'speglarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon köpte en ny spegel',
+        english: 'She bought a new mirror'
+      },
+      definite: {
+        swedish: 'Spegeln är smutsig',
+        english: 'The mirror is dirty'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många speglar i rummet',
+        english: 'There are many mirrors in the room'
+      },
+      definitePlural: {
+        swedish: 'Speglarna reflekterar ljuset',
+        english: 'The mirrors reflect the light'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'nyckel',
+    translation: 'key',
+    category: 'objects',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en nyckel',
+      definite: 'nyckeln',
+      indefinitePlural: 'nycklar',
+      definitePlural: 'nycklarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag hittade en nyckel',
+        english: 'I found a key'
+      },
+      definite: {
+        swedish: 'Nyckeln passar inte i låset',
+        english: 'The key doesn\'t fit in the lock'
+      },
+      indefinitePlural: {
+        swedish: 'Jag har många nycklar',
+        english: 'I have many keys'
+      },
+      definitePlural: {
+        swedish: 'Nycklarna ligger på bordet',
+        english: 'The keys are on the table'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'öga',
+    translation: 'eye',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett öga',
+      definite: 'ögat',
+      indefinitePlural: 'ögon',
+      definitePlural: 'ögonen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har ett blått öga',
+        english: 'She has a blue eye'
+      },
+      definite: {
+        swedish: 'Ögat är rött',
+        english: 'The eye is red'
+      },
+      indefinitePlural: {
+        swedish: 'Han har bruna ögon',
+        english: 'He has brown eyes'
+      },
+      definitePlural: {
+        swedish: 'Ögonen är trötta',
+        english: 'The eyes are tired'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'tidning',
+    translation: 'newspaper',
+    category: 'media',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en tidning',
+      definite: 'tidningen',
+      indefinitePlural: 'tidningar',
+      definitePlural: 'tidningarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag läser en tidning',
+        english: 'I am reading a newspaper'
+      },
+      definite: {
+        swedish: 'Tidningen kommer varje morgon',
+        english: 'The newspaper comes every morning'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många tidningar här',
+        english: 'There are many newspapers here'
+      },
+      definitePlural: {
+        swedish: 'Tidningarna är på svenska',
+        english: 'The newspapers are in Swedish'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'väska',
+    translation: 'bag',
+    category: 'accessories',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en väska',
+      definite: 'väskan',
+      indefinitePlural: 'väskor',
+      definitePlural: 'väskorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har en ny väska',
+        english: 'She has a new bag'
+      },
+      definite: {
+        swedish: 'Väskan är full',
+        english: 'The bag is full'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många väskor i affären',
+        english: 'There are many bags in the store'
+      },
+      definitePlural: {
+        swedish: 'Väskorna är dyra',
+        english: 'The bags are expensive'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: true,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'kudde',
+    translation: 'pillow',
+    category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en kudde',
+      definite: 'kudden',
+      indefinitePlural: 'kuddar',
+      definitePlural: 'kuddarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver en ny kudde',
+        english: 'I need a new pillow'
+      },
+      definite: {
+        swedish: 'Kudden är mjuk',
+        english: 'The pillow is soft'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många kuddar i soffan',
+        english: 'There are many pillows on the couch'
+      },
+      definitePlural: {
+        swedish: 'Kuddarna behöver tvättas',
+        english: 'The pillows need to be washed'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'vante',
+    translation: 'mitten',
+    category: 'clothing',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en vante',
+      definite: 'vanten',
+      indefinitePlural: 'vantar',
+      definitePlural: 'vantarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon tappade en vante',
+        english: 'She lost a mitten'
+      },
+      definite: {
+        swedish: 'Vanten är för liten',
+        english: 'The mitten is too small'
+      },
+      indefinitePlural: {
+        swedish: 'Jag köpte nya vantar igår',
+        english: 'I bought new mittens yesterday'
+      },
+      definitePlural: {
+        swedish: 'Vantarna är varma',
+        english: 'The mittens are warm'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: true,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'paraply',
+    translation: 'umbrella',
+    category: 'accessories',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett paraply',
+      definite: 'paraplyet',
+      indefinitePlural: 'paraplyer',
+      definitePlural: 'paraplyerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag behöver ett paraply',
+        english: 'I need an umbrella'
+      },
+      definite: {
+        swedish: 'Paraplyet är sönder',
+        english: 'The umbrella is broken'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns paraplyer i hallen',
+        english: 'There are umbrellas in the hallway'
+      },
+      definitePlural: {
+        swedish: 'Paraplyerna är blöta',
+        english: 'The umbrellas are wet'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'kruka',
+    translation: 'pot',
+    category: 'garden',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en kruka',
+      definite: 'krukan',
+      indefinitePlural: 'krukor',
+      definitePlural: 'krukorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Jag köpte en kruka till växten',
+        english: 'I bought a pot for the plant'
+      },
+      definite: {
+        swedish: 'Krukan är av keramik',
+        english: 'The pot is made of ceramic'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många krukor i trädgården',
+        english: 'We have many pots in the garden'
+      },
+      definitePlural: {
+        swedish: 'Krukorna står på balkongen',
+        english: 'The pots are on the balcony'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'kniv',
+    translation: 'knife',
+    category: 'kitchen',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en kniv',
+      definite: 'kniven',
+      indefinitePlural: 'knivar',
+      definitePlural: 'knivarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Kan du ge mig en kniv?',
+        english: 'Can you give me a knife?'
+      },
+      definite: {
+        swedish: 'Kniven är vass',
+        english: 'The knife is sharp'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många knivar',
+        english: 'We have many knives'
+      },
+      definitePlural: {
+        swedish: 'Knivarna ligger i lådan',
+        english: 'The knives are in the drawer'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'näsa',
+    translation: 'nose',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en näsa',
+      definite: 'näsan',
+      indefinitePlural: 'näsor',
+      definitePlural: 'näsorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en stor näsa',
+        english: 'He has a big nose'
+      },
+      definite: {
+        swedish: 'Näsan är röd av kylan',
+        english: 'The nose is red from the cold'
+      },
+      indefinitePlural: {
+        swedish: 'Hundar har känsliga näsor',
+        english: 'Dogs have sensitive noses'
+      },
+      definitePlural: {
+        swedish: 'Näsorna är olika på alla människor',
+        english: 'The noses are different on all people'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'måne',
+    translation: 'moon',
+    category: 'nature',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en måne',
+      definite: 'månen',
+      indefinitePlural: 'månar',
+      definitePlural: 'månarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'En måne lyser på himlen',
+        english: 'A moon shines in the sky'
+      },
+      definite: {
+        swedish: 'Månen är full ikväll',
+        english: 'The moon is full tonight'
+      },
+      indefinitePlural: {
+        swedish: 'Jupiter har många månar',
+        english: 'Jupiter has many moons'
+      },
+      definitePlural: {
+        swedish: 'Månarna kretsar runt planeten',
+        english: 'The moons orbit around the planet'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'kaka',
+    translation: 'cookie',
+    category: 'food',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en kaka',
+      definite: 'kakan',
+      indefinitePlural: 'kakor',
+      definitePlural: 'kakorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vill du ha en kaka?',
+        english: 'Would you like a cookie?'
+      },
+      definite: {
+        swedish: 'Kakan smakar gott',
+        english: 'The cookie tastes good'
+      },
+      indefinitePlural: {
+        swedish: 'Vi bakade kakor igår',
+        english: 'We baked cookies yesterday'
+      },
+      definitePlural: {
+        swedish: 'Kakorna är nybakade',
+        english: 'The cookies are freshly baked'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: true,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'strand',
+    translation: 'beach',
+    category: 'places',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en strand',
+      definite: 'stranden',
+      indefinitePlural: 'stränder',
+      definitePlural: 'stränderna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi hittade en fin strand',
+        english: 'We found a nice beach'
+      },
+      definite: {
+        swedish: 'Stranden är full av människor',
+        english: 'The beach is full of people'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många stränder här',
+        english: 'There are many beaches here'
+      },
+      definitePlural: {
+        swedish: 'Stränderna är populära på sommaren',
+        english: 'The beaches are popular in summer'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'fjäril',
+    translation: 'butterfly',
+    category: 'animals',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en fjäril',
+      definite: 'fjärilen',
+      indefinitePlural: 'fjärilar',
+      definitePlural: 'fjärilarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'En fjäril flög förbi',
+        english: 'A butterfly flew by'
+      },
+      definite: {
+        swedish: 'Fjärilen är vacker',
+        english: 'The butterfly is beautiful'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många fjärilar i trädgården',
+        english: 'There are many butterflies in the garden'
+      },
+      definitePlural: {
+        swedish: 'Fjärilarna dansar i luften',
+        english: 'The butterflies dance in the air'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: true,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'ilska',
+    translation: 'anger',
+    category: 'emotions',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: false,
+    forms: {
+      indefinite: 'en ilska',
+      definite: 'ilskan',
+      indefinitePlural: '-',
+      definitePlural: '-'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han kände en stor ilska',
+        english: 'He felt a great anger'
+      },
+      definite: {
+        swedish: 'Ilskan växte inom honom',
+        english: 'The anger grew within him'
+      },
+      indefinitePlural: {
+        swedish: '-',
+        english: '-'
+      },
+      definitePlural: {
+        swedish: '-',
+        english: '-'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'vår',
+    translation: 'spring',
+    category: 'seasons',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: false,
+    forms: {
+      indefinite: 'en vår',
+      definite: 'våren',
+      indefinitePlural: 'vårar',
+      definitePlural: 'vårarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det blir en varm vår',
+        english: 'It will be a warm spring'
+      },
+      definite: {
+        swedish: 'Våren kommer tidigt i år',
+        english: 'Spring is coming early this year'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har upplevt många vårar tillsammans',
+        english: 'We have experienced many springs together'
+      },
+      definitePlural: {
+        swedish: 'Vårarna blir varmare',
+        english: 'The springs are getting warmer'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'ingenjör',
+    translation: 'engineer',
+    category: 'professions',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en ingenjör',
+      definite: 'ingenjören',
+      indefinitePlural: 'ingenjörer',
+      definitePlural: 'ingenjörerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon är en duktig ingenjör',
+        english: 'She is a skilled engineer'
+      },
+      definite: {
+        swedish: 'Ingenjören löste problemet',
+        english: 'The engineer solved the problem'
+      },
+      indefinitePlural: {
+        swedish: 'Vi behöver fler ingenjörer',
+        english: 'We need more engineers'
+      },
+      definitePlural: {
+        swedish: 'Ingenjörerna arbetar på projektet',
+        english: 'The engineers are working on the project'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: true,
+      natural: false,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'trumma',
+    translation: 'drum',
+    category: 'music',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en trumma',
+      definite: 'trumman',
+      indefinitePlural: 'trummor',
+      definitePlural: 'trummorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han spelar en trumma',
+        english: 'He plays a drum'
+      },
+      definite: {
+        swedish: 'Trumman låter högt',
+        english: 'The drum sounds loud'
+      },
+      indefinitePlural: {
+        swedish: 'Hon har många trummor',
+        english: 'She has many drums'
+      },
+      definitePlural: {
+        swedish: 'Trummorna står i hörnet',
+        english: 'The drums are in the corner'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'fotboll',
+    translation: 'football/soccer',
+    category: 'sports',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en fotboll',
+      definite: 'fotbollen',
+      indefinitePlural: 'fotbollar',
+      definitePlural: 'fotbollarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Vi behöver en ny fotboll',
+        english: 'We need a new football'
+      },
+      definite: {
+        swedish: 'Fotbollen är punkterad',
+        english: 'The football is flat'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns fotbollar i gymnastiksalen',
+        english: 'There are footballs in the gym'
+      },
+      definitePlural: {
+        swedish: 'Fotbollarna måste pumpas',
+        english: 'The footballs need to be pumped'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'suddgummi',
+    translation: 'eraser',
+    category: 'school',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett suddgummi',
+      definite: 'suddgummit',
+      indefinitePlural: 'suddgummin',
+      definitePlural: 'suddgummina'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Kan jag låna ett suddgummi?',
+        english: 'Can I borrow an eraser?'
+      },
+      definite: {
+        swedish: 'Suddgummit är nytt',
+        english: 'The eraser is new'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har många suddgummin',
+        english: 'We have many erasers'
+      },
+      definitePlural: {
+        swedish: 'Suddgummina ligger i pennskålen',
+        english: 'The erasers are in the pencil holder'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'surfplatta',
+    translation: 'tablet',
+    category: 'electronics',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en surfplatta',
+      definite: 'surfplattan',
+      indefinitePlural: 'surfplattor',
+      definitePlural: 'surfplattorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon köpte en ny surfplatta',
+        english: 'She bought a new tablet'
+      },
+      definite: {
+        swedish: 'Surfplattan är laddad',
+        english: 'The tablet is charged'
+      },
+      indefinitePlural: {
+        swedish: 'Skolan har många surfplattor',
+        english: 'The school has many tablets'
+      },
+      definitePlural: {
+        swedish: 'Surfplattorna används i klassrummet',
+        english: 'The tablets are used in the classroom'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: true,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'glädje',
+    translation: 'joy',
+    category: 'emotions',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: false,
+    forms: {
+      indefinite: 'en glädje',
+      definite: 'glädjen',
+      indefinitePlural: '-',
+      definitePlural: '-'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon kände en stor glädje',
+        english: 'She felt a great joy'
+      },
+      definite: {
+        swedish: 'Glädjen lyste i hennes ögon',
+        english: 'The joy shone in her eyes'
+      },
+      indefinitePlural: {
+        swedish: '-',
+        english: '-'
+      },
+      definitePlural: {
+        swedish: '-',
+        english: '-'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'höst',
+    translation: 'autumn/fall',
+    category: 'seasons',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: false,
+    forms: {
+      indefinite: 'en höst',
+      definite: 'hösten',
+      indefinitePlural: 'höstar',
+      definitePlural: 'höstarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Det blir en kall höst',
+        english: 'It will be a cold autumn'
+      },
+      definite: {
+        swedish: 'Hösten är min favoritsäsong',
+        english: 'Autumn is my favorite season'
+      },
+      indefinitePlural: {
+        swedish: 'Vi har upplevt många höstar här',
+        english: 'We have experienced many autumns here'
+      },
+      definitePlural: {
+        swedish: 'Höstarna blir kortare',
+        english: 'The autumns are getting shorter'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'lila',
+    translation: 'purple',
+    category: 'colors',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: false,
+    forms: {
+      indefinite: 'en lila',
+      definite: 'lilan',
+      indefinitePlural: '-',
+      definitePlural: '-'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon valde en vacker lila',
+        english: 'She chose a beautiful purple'
+      },
+      definite: {
+        swedish: 'Lilan passar perfekt här',
+        english: 'The purple fits perfectly here'
+      },
+      indefinitePlural: {
+        swedish: '-',
+        english: '-'
+      },
+      definitePlural: {
+        swedish: '-',
+        english: '-'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: false,
+      canBeBought: true,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: false
+    }
+  },
+  {
+    noun: 'näsa',
+    translation: 'nose',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en näsa',
+      definite: 'näsan',
+      indefinitePlural: 'näsor',
+      definitePlural: 'näsorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har en liten näsa',
+        english: 'She has a small nose'
+      },
+      definite: {
+        swedish: 'Näsan är röd från kylan',
+        english: 'The nose is red from the cold'
+      },
+      indefinitePlural: {
+        swedish: 'Clownerna hade röda näsor',
+        english: 'The clowns had red noses'
+      },
+      definitePlural: {
+        swedish: 'Näsorna på snögubbarna var morötter',
+        english: 'The noses on the snowmen were carrots'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'öra',
+    translation: 'ear',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett öra',
+      definite: 'örat',
+      indefinitePlural: 'öron',
+      definitePlural: 'öronen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har ett öra för musik',
+        english: 'He has an ear for music'
+      },
+      definite: {
+        swedish: 'Örat gör ont',
+        english: 'The ear hurts'
+      },
+      indefinitePlural: {
+        swedish: 'Kaninerna har långa öron',
+        english: 'The rabbits have long ears'
+      },
+      definitePlural: {
+        swedish: 'Öronen är känsliga för höga ljud',
+        english: 'The ears are sensitive to loud sounds'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'mun',
+    translation: 'mouth',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en mun',
+      definite: 'munnen',
+      indefinitePlural: 'munnar',
+      definitePlural: 'munnarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har en vacker mun',
+        english: 'She has a beautiful mouth'
+      },
+      definite: {
+        swedish: 'Munnen är torr',
+        english: 'The mouth is dry'
+      },
+      indefinitePlural: {
+        swedish: 'Fiskarna öppnade sina munnar',
+        english: 'The fish opened their mouths'
+      },
+      definitePlural: {
+        swedish: 'Munnarna på bilderna log',
+        english: 'The mouths in the pictures smiled'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'arm',
+    translation: 'arm',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en arm',
+      definite: 'armen',
+      indefinitePlural: 'armar',
+      definitePlural: 'armarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han bröt en arm',
+        english: 'He broke an arm'
+      },
+      definite: {
+        swedish: 'Armen är stark',
+        english: 'The arm is strong'
+      },
+      indefinitePlural: {
+        swedish: 'Hon sträckte ut sina armar',
+        english: 'She stretched out her arms'
+      },
+      definitePlural: {
+        swedish: 'Armarna var trötta efter träningen',
+        english: 'The arms were tired after the workout'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'ben',
+    translation: 'leg',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett ben',
+      definite: 'benet',
+      indefinitePlural: 'ben',
+      definitePlural: 'benen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har ett långt ben',
+        english: 'She has a long leg'
+      },
+      definite: {
+        swedish: 'Benet värker',
+        english: 'The leg hurts'
+      },
+      indefinitePlural: {
+        swedish: 'Spindeln har åtta ben',
+        english: 'The spider has eight legs'
+      },
+      definitePlural: {
+        swedish: 'Benen är starka efter träningen',
+        english: 'The legs are strong after the workout'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'finger',
+    translation: 'finger',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett finger',
+      definite: 'fingret',
+      indefinitePlural: 'fingrar',
+      definitePlural: 'fingrarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon skar sig i ett finger',
+        english: 'She cut herself in a finger'
+      },
+      definite: {
+        swedish: 'Fingret är svullet',
+        english: 'The finger is swollen'
+      },
+      indefinitePlural: {
+        swedish: 'Hon har långa fingrar',
+        english: 'She has long fingers'
+      },
+      definitePlural: {
+        swedish: 'Fingrarna är kalla',
+        english: 'The fingers are cold'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'mage',
+    translation: 'stomach',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en mage',
+      definite: 'magen',
+      indefinitePlural: 'magar',
+      definitePlural: 'magarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en stor mage',
+        english: 'He has a big stomach'
+      },
+      definite: {
+        swedish: 'Magen kurrar',
+        english: 'The stomach is growling'
+      },
+      indefinitePlural: {
+        swedish: 'Många magar var mätta efter festen',
+        english: 'Many stomachs were full after the party'
+      },
+      definitePlural: {
+        swedish: 'Magarna var fulla av god mat',
+        english: 'The stomachs were full of good food'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'rygg',
+    translation: 'back',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en rygg',
+      definite: 'ryggen',
+      indefinitePlural: 'ryggar',
+      definitePlural: 'ryggarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en stark rygg',
+        english: 'He has a strong back'
+      },
+      definite: {
+        swedish: 'Ryggen värker',
+        english: 'The back hurts'
+      },
+      indefinitePlural: {
+        swedish: 'Hästarna hade starka ryggar',
+        english: 'The horses had strong backs'
+      },
+      definitePlural: {
+        swedish: 'Ryggarna på stolarna var höga',
+        english: 'The backs of the chairs were tall'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'axel',
+    translation: 'shoulder',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en axel',
+      definite: 'axeln',
+      indefinitePlural: 'axlar',
+      definitePlural: 'axlarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en bred axel',
+        english: 'He has a broad shoulder'
+      },
+      definite: {
+        swedish: 'Axeln är öm',
+        english: 'The shoulder is sore'
+      },
+      indefinitePlural: {
+        swedish: 'Hon ryckte på axlarna',
+        english: 'She shrugged her shoulders'
+      },
+      definitePlural: {
+        swedish: 'Axlarna var spända',
+        english: 'The shoulders were tense'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'knä',
+    translation: 'knee',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett knä',
+      definite: 'knät',
+      indefinitePlural: 'knän',
+      definitePlural: 'knäna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han skadade ett knä',
+        english: 'He injured a knee'
+      },
+      definite: {
+        swedish: 'Knät är svullet',
+        english: 'The knee is swollen'
+      },
+      indefinitePlural: {
+        swedish: 'Hon föll på sina knän',
+        english: 'She fell on her knees'
+      },
+      definitePlural: {
+        swedish: 'Knäna värkte efter löpningen',
+        english: 'The knees hurt after running'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'hals',
+    translation: 'neck/throat',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en hals',
+      definite: 'halsen',
+      indefinitePlural: 'halsar',
+      definitePlural: 'halsarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har ont i en hals',
+        english: 'She has a sore throat'
+      },
+      definite: {
+        swedish: 'Halsen är svullen',
+        english: 'The throat is swollen'
+      },
+      indefinitePlural: {
+        swedish: 'Girafferna har långa halsar',
+        english: 'The giraffes have long necks'
+      },
+      definitePlural: {
+        swedish: 'Halsarna på flaskorna var smala',
+        english: 'The necks of the bottles were narrow'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'tå',
+    translation: 'toe',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en tå',
+      definite: 'tån',
+      indefinitePlural: 'tår',
+      definitePlural: 'tårna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon stötte en tå mot bordet',
+        english: 'She hit a toe against the table'
+      },
+      definite: {
+        swedish: 'Tån är blå',
+        english: 'The toe is blue'
+      },
+      indefinitePlural: {
+        swedish: 'Hon målade sina tår röda',
+        english: 'She painted her toes red'
+      },
+      definitePlural: {
+        swedish: 'Tårna var kalla i snön',
+        english: 'The toes were cold in the snow'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'tunga',
+    translation: 'tongue',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en tunga',
+      definite: 'tungan',
+      indefinitePlural: 'tungor',
+      definitePlural: 'tungorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Katten har en rosa tunga',
+        english: 'The cat has a pink tongue'
+      },
+      definite: {
+        swedish: 'Tungan känner smaken',
+        english: 'The tongue tastes the flavor'
+      },
+      indefinitePlural: {
+        swedish: 'Ormarna stack ut sina tungor',
+        english: 'The snakes stuck out their tongues'
+      },
+      definitePlural: {
+        swedish: 'Tungorna var röda av glassen',
+        english: 'The tongues were red from the ice cream'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'kind',
+    translation: 'cheek',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en kind',
+      definite: 'kinden',
+      indefinitePlural: 'kinder',
+      definitePlural: 'kinderna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har en röd kind',
+        english: 'She has a red cheek'
+      },
+      definite: {
+        swedish: 'Kinden är varm',
+        english: 'The cheek is warm'
+      },
+      indefinitePlural: {
+        swedish: 'Hennes kinder var rosa av kylan',
+        english: 'Her cheeks were pink from the cold'
+      },
+      definitePlural: {
+        swedish: 'Kinderna blev röda när hon rodnade',
+        english: 'The cheeks turned red when she blushed'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'nagel',
+    translation: 'nail',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en nagel',
+      definite: 'nageln',
+      indefinitePlural: 'naglar',
+      definitePlural: 'naglarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon bröt en nagel',
+        english: 'She broke a nail'
+      },
+      definite: {
+        swedish: 'Nageln växer snabbt',
+        english: 'The nail grows quickly'
+      },
+      indefinitePlural: {
+        swedish: 'Hon målade sina naglar röda',
+        english: 'She painted her nails red'
+      },
+      definitePlural: {
+        swedish: 'Naglarna behöver klippas',
+        english: 'The nails need to be cut'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'haka',
+    translation: 'chin',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en haka',
+      definite: 'hakan',
+      indefinitePlural: 'hakor',
+      definitePlural: 'hakorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han har en stark haka',
+        english: 'He has a strong chin'
+      },
+      definite: {
+        swedish: 'Hakan skrapades i fallet',
+        english: 'The chin was scraped in the fall'
+      },
+      indefinitePlural: {
+        swedish: 'Barnen hade choklad på sina hakor',
+        english: 'The children had chocolate on their chins'
+      },
+      definitePlural: {
+        swedish: 'Hakorna var täckta av skägg',
+        english: 'The chins were covered with beards'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'panna',
+    translation: 'forehead',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en panna',
+      definite: 'pannan',
+      indefinitePlural: 'pannor',
+      definitePlural: 'pannorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon hade en hög panna',
+        english: 'She had a high forehead'
+      },
+      definite: {
+        swedish: 'Pannan var varm av feber',
+        english: 'The forehead was warm from fever'
+      },
+      indefinitePlural: {
+        swedish: 'De torkade svetten från sina pannor',
+        english: 'They wiped the sweat from their foreheads'
+      },
+      definitePlural: {
+        swedish: 'Pannorna var rynkade av oro',
+        english: 'The foreheads were wrinkled with worry'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'lunga',
+    translation: 'lung',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en lunga',
+      definite: 'lungan',
+      indefinitePlural: 'lungor',
+      definitePlural: 'lungorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'En lunga var påverkad av rökningen',
+        english: 'One lung was affected by the smoking'
+      },
+      definite: {
+        swedish: 'Lungan behöver undersökas',
+        english: 'The lung needs to be examined'
+      },
+      indefinitePlural: {
+        swedish: 'Friska lungor är viktiga',
+        english: 'Healthy lungs are important'
+      },
+      definitePlural: {
+        swedish: 'Lungorna fylldes med frisk luft',
+        english: 'The lungs filled with fresh air'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'lever',
+    translation: 'liver',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en lever',
+      definite: 'levern',
+      indefinitePlural: 'levrar',
+      definitePlural: 'levrarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'En frisk lever är viktig',
+        english: 'A healthy liver is important'
+      },
+      definite: {
+        swedish: 'Levern renar blodet',
+        english: 'The liver cleanses the blood'
+      },
+      indefinitePlural: {
+        swedish: 'Levrar studeras i laboratoriet',
+        english: 'Livers are studied in the laboratory'
+      },
+      definitePlural: {
+        swedish: 'Levrarna var i gott skick',
+        english: 'The livers were in good condition'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: true,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'armbåge',
+    translation: 'elbow',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en armbåge',
+      definite: 'armbågen',
+      indefinitePlural: 'armbågar',
+      definitePlural: 'armbågarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han slog en armbåge i väggen',
+        english: 'He hit an elbow on the wall'
+      },
+      definite: {
+        swedish: 'Armbågen är skrubbad',
+        english: 'The elbow is scraped'
+      },
+      indefinitePlural: {
+        swedish: 'Hon stödde armbågarna på bordet',
+        english: 'She rested her elbows on the table'
+      },
+      definitePlural: {
+        swedish: 'Armbågarna var smutsiga',
+        english: 'The elbows were dirty'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'hår',
+    translation: 'hair',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: false,
+    forms: {
+      indefinite: 'ett hår',
+      definite: 'håret',
+      indefinitePlural: 'hår',
+      definitePlural: 'håren'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Ett hår föll på golvet',
+        english: 'A hair fell on the floor'
+      },
+      definite: {
+        swedish: 'Håret är långt och brunt',
+        english: 'The hair is long and brown'
+      },
+      indefinitePlural: {
+        swedish: 'Det fanns grå hår i skägget',
+        english: 'There were gray hairs in the beard'
+      },
+      definitePlural: {
+        swedish: 'Håren på armarna reste sig',
+        english: 'The hairs on the arms stood up'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'skalle',
+    translation: 'skull',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en skalle',
+      definite: 'skallen',
+      indefinitePlural: 'skallar',
+      definitePlural: 'skallarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han hade en hård skalle',
+        english: 'He had a hard skull'
+      },
+      definite: {
+        swedish: 'Skallen skyddade hjärnan',
+        english: 'The skull protected the brain'
+      },
+      indefinitePlural: {
+        swedish: 'Arkeologerna hittade skallar i graven',
+        english: 'The archaeologists found skulls in the grave'
+      },
+      definitePlural: {
+        swedish: 'Skallarna var mycket gamla',
+        english: 'The skulls were very old'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'hjärna',
+    translation: 'brain',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en hjärna',
+      definite: 'hjärnan',
+      indefinitePlural: 'hjärnor',
+      definitePlural: 'hjärnorna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'En hjärna behöver mycket syre',
+        english: 'A brain needs a lot of oxygen'
+      },
+      definite: {
+        swedish: 'Hjärnan är aktiv när vi sover',
+        english: 'The brain is active when we sleep'
+      },
+      indefinitePlural: {
+        swedish: 'Forskare studerar hjärnor',
+        english: 'Scientists study brains'
+      },
+      definitePlural: {
+        swedish: 'Hjärnorna skannas i maskinen',
+        english: 'The brains are scanned in the machine'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'handled',
+    translation: 'wrist',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en handled',
+      definite: 'handleden',
+      indefinitePlural: 'handleder',
+      definitePlural: 'handlederna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har stukat en handled',
+        english: 'She has sprained a wrist'
+      },
+      definite: {
+        swedish: 'Handleden är svullen',
+        english: 'The wrist is swollen'
+      },
+      indefinitePlural: {
+        swedish: 'Många handleder skadas i vintersport',
+        english: 'Many wrists are injured in winter sports'
+      },
+      definitePlural: {
+        swedish: 'Handlederna behöver vila',
+        english: 'The wrists need rest'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'vrist',
+    translation: 'ankle',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en vrist',
+      definite: 'vristen',
+      indefinitePlural: 'vrister',
+      definitePlural: 'vristerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han stukade en vrist',
+        english: 'He sprained an ankle'
+      },
+      definite: {
+        swedish: 'Vristen är öm',
+        english: 'The ankle is sore'
+      },
+      indefinitePlural: {
+        swedish: 'Dansare har starka vrister',
+        english: 'Dancers have strong ankles'
+      },
+      definitePlural: {
+        swedish: 'Vristerna var svullna efter löpningen',
+        english: 'The ankles were swollen after running'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'revben',
+    translation: 'rib',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'ett',
+    countable: true,
+    forms: {
+      indefinite: 'ett revben',
+      definite: 'revbenet',
+      indefinitePlural: 'revben',
+      definitePlural: 'revbenen'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han bröt ett revben',
+        english: 'He broke a rib'
+      },
+      definite: {
+        swedish: 'Revbenet läker långsamt',
+        english: 'The rib heals slowly'
+      },
+      indefinitePlural: {
+        swedish: 'Människor har tolv revben',
+        english: 'Humans have twelve ribs'
+      },
+      definitePlural: {
+        swedish: 'Revbenen skyddar lungorna',
+        english: 'The ribs protect the lungs'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'höft',
+    translation: 'hip',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en höft',
+      definite: 'höften',
+      indefinitePlural: 'höfter',
+      definitePlural: 'höfterna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon har ont i en höft',
+        english: 'She has pain in a hip'
+      },
+      definite: {
+        swedish: 'Höften opererades förra året',
+        english: 'The hip was operated on last year'
+      },
+      indefinitePlural: {
+        swedish: 'Dansare har flexibla höfter',
+        english: 'Dancers have flexible hips'
+      },
+      definitePlural: {
+        swedish: 'Höfterna behöver träning',
+        english: 'The hips need exercise'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'muskel',
+    translation: 'muscle',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en muskel',
+      definite: 'muskeln',
+      indefinitePlural: 'muskler',
+      definitePlural: 'musklerna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Han sträckte en muskel',
+        english: 'He strained a muscle'
+      },
+      definite: {
+        swedish: 'Muskeln är stark',
+        english: 'The muscle is strong'
+      },
+      indefinitePlural: {
+        swedish: 'Träning bygger muskler',
+        english: 'Exercise builds muscles'
+      },
+      definitePlural: {
+        swedish: 'Musklerna är ömma efter träningen',
+        english: 'The muscles are sore after the workout'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: true,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: true,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'läpp',
+    translation: 'lip',
+    category: 'body parts',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en läpp',
+      definite: 'läppen',
+      indefinitePlural: 'läppar',
+      definitePlural: 'läpparna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Hon bet sig i en läpp',
+        english: 'She bit herself in a lip'
+      },
+      definite: {
+        swedish: 'Läppen är torr',
+        english: 'The lip is dry'
+      },
+      indefinitePlural: {
+        swedish: 'Hon målade sina läppar röda',
+        english: 'She painted her lips red'
+      },
+      definitePlural: {
+        swedish: 'Läpparna var blåa av kylan',
+        english: 'The lips were blue from the cold'
+      }
+    },
+    semantics: {
+      canBeSeen: true,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: false,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
+    }
+  },
+  {
+    noun: 'njure',
+    translation: 'kidney',
+    category: 'body parts',
+    difficulty: 'intermediate',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en njure',
+      definite: 'njuren',
+      indefinitePlural: 'njurar',
+      definitePlural: 'njurarna'
+    },
+    examples: {
+      indefinite: {
+        swedish: 'Man kan leva med en njure',
+        english: 'One can live with one kidney'
+      },
+      definite: {
+        swedish: 'Njuren renar blodet',
+        english: 'The kidney cleanses the blood'
+      },
+      indefinitePlural: {
+        swedish: 'Människor har två njurar',
+        english: 'Humans have two kidneys'
+      },
+      definitePlural: {
+        swedish: 'Njurarna är viktiga organ',
+        english: 'The kidneys are important organs'
+      }
+    },
+    semantics: {
+      canBeSeen: false,
+      canBeFound: true,
+      animate: false,
+      natural: true,
+      canBeBought: false,
+      canBeUsedAtWork: false,
+      canBeConsumed: true,
+      canBeWorn: false,
+      canGrow: false,
+      isWeather: false,
+      canBeBorrowed: false,
+      bodyPart: true
     }
   }
 ]

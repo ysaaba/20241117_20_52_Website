@@ -1,32 +1,57 @@
 export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz';
 export type NounCategory = 
+  // People and Professions
+  | 'people'
+  | 'family'
+  | 'professions'
+  
+  // Living Things
   | 'animals'
-  | 'objects'
-  | 'nature'
-  | 'all'
+  
+  // Places and Structures
+  | 'buildings'
+  | 'transportation'
+  | 'garden'
+  
+  // Home and Living
   | 'furniture'
   | 'clothing'
+  | 'kitchen'
+  | 'bathroom'
+  | 'hygiene'
+  
+  // Food and Drink
   | 'food'
   | 'drinks'
-  | 'body parts'
+  
+  // Technology and Work
   | 'technology'
-  | 'profession'
-  | 'vehicles'
-  | 'school'
-  | 'colors'
-  | 'seasons'
-  | 'abstract'
-  | 'garden'
-  | 'hygiene'
-  | 'music'
-  | 'sports'
-  | 'office'
   | 'electronics'
+  | 'office'
   | 'business'
-  | 'kitchen'
+  
+  // Education and Activities
+  | 'education'
+  | 'sports'
+  | 'music'
+  
+  // Nature and Environment
+  | 'nature'
   | 'weather'
+  | 'seasons'
+  
+  // Body and Health
+  | 'bodyParts'
+  
+  // Abstract Concepts
+  | 'emotions'
   | 'time'
-  | 'bathroom'
+  | 'colors'
+  | 'abstract'
+  
+  // Special Categories
+  | 'all'
+  | 'objects'
 ;
 
 export interface Noun {
@@ -145,6 +170,7 @@ export type ExerciseProgress = {
 
 export interface QuizQuestion {
   id: number;
+  type: 'form' | 'comparative' | 'superlative' | 'translation';
   question: string;
   options: string[];
   correctAnswer: string;
@@ -152,6 +178,7 @@ export interface QuizQuestion {
   audioText?: string;
   category?: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  context?: string;  // Added for adjective form questions
 }
 
 export interface QuizStatistics {
@@ -170,6 +197,7 @@ export interface QuizMistake {
   category: 'nouns' | 'verbs' | 'adjectives';
   type: string;
   translation?: string;
+  context?: string;  // Added for adjective form questions
   timestamp: Date;
 }
 

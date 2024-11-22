@@ -6,18 +6,33 @@ const STORAGE_KEY = 'quiz-statistics';
 export function useQuizStatistics() {
   const [statistics, setStatistics] = useState<Record<string, QuizStatistics>>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : {
-      nouns: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
-      verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
-    };
+    if (!stored) {
+      return {
+        nouns: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
+        adjectives: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null },
+        verbs: { totalQuestions: 0, correctAnswers: 0, wrongAnswers: 0, mistakes: [], lastAttempt: null }
+      };
+    }
+
+    // Parse stored data and convert string dates back to Date objects
+    const parsedStats = JSON.parse(stored);
+    Object.values(parsedStats).forEach((stats: any) => {
+      if (stats.lastAttempt) {
+        stats.lastAttempt = new Date(stats.lastAttempt);
+      }
+      stats.mistakes = stats.mistakes.map((mistake: any) => ({
+        ...mistake,
+        timestamp: new Date(mistake.timestamp)
+      }));
+    });
+    return parsedStats;
   });
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(statistics));
   }, [statistics]);
 
-  const recordAnswer = (category: string, isCorrect: boolean, questionData: QuizMistake) => {
+  const recordAnswer = (category: string, isCorrect: boolean, questionData: Omit<QuizMistake, 'id' | 'timestamp'>) => {
     console.log('Recording answer:', { category, isCorrect, questionData });
     
     setStatistics(prev => {
@@ -38,7 +53,12 @@ export function useQuizStatistics() {
       };
 
       if (!isCorrect) {
-        newStats.mistakes = [...categoryStats.mistakes, { ...questionData, timestamp: new Date() }];
+        const mistake: QuizMistake = {
+          ...questionData,
+          id: `${category}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          timestamp: new Date()
+        };
+        newStats.mistakes = [...categoryStats.mistakes, mistake];
       }
 
       const updatedStats = { ...prev, [category]: newStats };
@@ -78,4 +98,4 @@ export function useQuizStatistics() {
   };
 
   return { statistics, recordAnswer, clearMistakes, resetAllStatistics };
-} 
+}

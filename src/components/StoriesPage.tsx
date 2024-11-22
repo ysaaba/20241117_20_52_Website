@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { stories, type Story } from '../data/stories';
 import { motion } from 'framer-motion';
-import { BookOpen, Clock, BarChart2, Volume2, Bookmark, Search, Filter, X } from 'lucide-react';
+import { BookOpen, Clock, BarChart2, Volume2, Bookmark, Search, Filter, X, Copy, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const STORIES_PER_PAGE = 6;
@@ -9,6 +9,7 @@ const STORIES_PER_PAGE = 6;
 const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
   const navigate = useNavigate();
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -57,6 +58,15 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
     return Math.min(complexityScore, 100); // Cap at 100
   };
 
+  const handleCopyText = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const storyText = story.content.map(word => word.text).join(' ');
+    navigator.clipboard.writeText(storyText).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -102,6 +112,17 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
             <BarChart2 className="w-4 h-4" />
             <span>{getComplexityScore()}% unique</span>
           </div>
+          <button
+            onClick={handleCopyText}
+            className="flex items-center gap-1 hover:text-gray-700 transition-colors duration-200"
+            title="Copy story text"
+          >
+            {isCopied ? (
+              <Check className="w-4 h-4 text-green-500" />
+            ) : (
+              <Copy className="w-4 h-4" />
+            )}
+          </button>
           {story.audioUrl && (
             <div className="flex items-center gap-1">
               <Volume2 className="w-4 h-4" />

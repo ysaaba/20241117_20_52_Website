@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCircle } from 'lucide-react';
+import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCircle, Copy, Check } from 'lucide-react';
 import { stories } from '../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -125,6 +125,7 @@ const StoryView: React.FC = () => {
   const [showNotes, setShowNotes] = useState(false);
   const [notes, setNotes] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Audio handling
@@ -139,6 +140,16 @@ const StoryView: React.FC = () => {
         });
       }
       setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleCopyText = () => {
+    if (story) {
+      const storyText = story.content.map(word => word.text).join(' ');
+      navigator.clipboard.writeText(storyText).then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+      });
     }
   };
 
@@ -182,6 +193,23 @@ const StoryView: React.FC = () => {
                   {isPlaying ? 'Pause' : 'Play Audio'}
                 </button>
               )}
+              <button
+                onClick={handleCopyText}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100"
+                title="Copy story text"
+              >
+                {isCopied ? (
+                  <>
+                    <Check className="w-5 h-5 text-green-500" />
+                    <span className="text-green-500">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-5 h-5" />
+                    <span>Copy Text</span>
+                  </>
+                )}
+              </button>
               <button
                 onClick={() => setShowNotes(!showNotes)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg ${

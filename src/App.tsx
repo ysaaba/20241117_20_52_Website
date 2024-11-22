@@ -11,6 +11,7 @@ import StoryView from './components/StoryView';
 import { Navbar } from './components/Navbar';
 import type { ExerciseType } from './types';
 import { useRouteState } from './hooks/useRouteState';
+import { AdverbsPage } from './components/AdverbsPage';
 
 // MainContent component to handle the routing and content display
 const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type: ExerciseType) => void }> = ({
@@ -30,6 +31,7 @@ const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/verbs" element={<VerbExercises />} />
           <Route path="/adjectives" element={<AdjectivesPage />} />
+          <Route path="/adverbs" element={<AdverbsPage />} />
           <Route path="/nouns" element={<NounsPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -8,6 +8,7 @@ const pathToType: Record<string, ExerciseType> = {
   '/articles': 'articles',
   '/verbs': 'verbGroups',
   '/adjectives': 'adjectives',
+  '/adverbs': 'adverbs',
   '/nouns': 'nouns',
   '/quiz': 'quiz'
 };
@@ -18,6 +19,7 @@ const typeToPath: Record<ExerciseType, string> = {
   'articles': '/articles',
   'verbGroups': '/verbs',
   'adjectives': '/adjectives',
+  'adverbs': '/adverbs',
   'nouns': '/nouns',
   'quiz': '/quiz'
 };

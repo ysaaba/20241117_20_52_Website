@@ -6,7 +6,7 @@ import type { AdjectiveCategory, AdjectiveData } from '../types';
 
 const ADJECTIVES_PER_PAGE = 10;
 
-export function AdjectivesPage() {
+export default function AdjectivesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<AdjectiveCategory | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');

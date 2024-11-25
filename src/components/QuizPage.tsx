@@ -5,7 +5,7 @@ import { VerbsQuiz } from './quiz/VerbsQuiz';
 import { BookOpen, Languages, Pencil, BarChart3 } from 'lucide-react';
 import { QuizStatistics } from './quiz/QuizStatistics';
 
-export function QuizPage() {
+export default function QuizPage() {
   const [activeTab, setActiveTab] = useState('nouns');
 
   return (

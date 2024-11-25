@@ -46,7 +46,7 @@ const initializeSession = (type: ArticleType): ExerciseSession => {
   };
 };
 
-export function ArticlesPage() {
+export default function ArticlesPage() {
   const [selectedTab, setSelectedTab] = useState<ArticleType>('indefinite');
   const [sessions, setSessions] = useState<Record<ArticleType, ExerciseSession>>(() => {
     const initialSessions = {

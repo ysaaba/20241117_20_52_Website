@@ -10,7 +10,10 @@ const pathToType: Record<string, ExerciseType> = {
   '/adjectives': 'adjectives',
   '/adverbs': 'adverbs',
   '/nouns': 'nouns',
-  '/quiz': 'quiz'
+  '/quiz': 'quiz',
+  '/grammar-visualizer': 'grammar-visualizer',
+  '/grammar-animation': 'grammar-animation',
+  '/grammar-practice': 'grammar-practice'
 };
 
 const typeToPath: Record<ExerciseType, string> = {
@@ -21,10 +24,13 @@ const typeToPath: Record<ExerciseType, string> = {
   'adjectives': '/adjectives',
   'adverbs': '/adverbs',
   'nouns': '/nouns',
-  'quiz': '/quiz'
+  'quiz': '/quiz',
+  'grammar-visualizer': '/grammar-visualizer',
+  'grammar-animation': '/grammar-animation',
+  'grammar-practice': '/grammar-practice'
 };
 
-export function useRouteState(
+export default function useRouteState(
   selectedType: ExerciseType,
   setSelectedType: (type: ExerciseType) => void
 ) {

@@ -6,7 +6,7 @@ import type { AdverbCategory, AdverbData } from '../types';
 
 const ADVERBS_PER_PAGE = 10;
 
-export function AdverbsPage() {
+export default function AdverbsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<AdverbCategory | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');

@@ -35,7 +35,7 @@ const tabs = [
   }
 ];
 
-export function NounsPage() {
+export default function NounsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');

@@ -1622,5 +1622,480 @@ export const adjectives: AdjectiveData[] = [
       comparative: { swedish: "Ett svartare tyg", english: "A blacker fabric" },
       superlative: { swedish: "Den svartaste natten", english: "The blackest night" }
     }
+  },
+  {
+    adjective: "ambitiös",
+    translation: "ambitious",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "ambitiös",
+      definite: "ambitiösa",
+      plural: "ambitiösa",
+      comparative: "ambitiösare",
+      superlative: "ambitiösast"
+    },
+    examples: {
+      base: { swedish: "En ambitiös student", english: "An ambitious student" },
+      definite: { swedish: "Den ambitiösa planen", english: "The ambitious plan" },
+      comparative: { swedish: "En ambitiösare målsättning", english: "A more ambitious goal" },
+      superlative: { swedish: "Den ambitiösaste medarbetaren", english: "The most ambitious employee" }
+    }
+  },
+  {
+    adjective: "effektiv",
+    translation: "efficient",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "effektiv",
+      definite: "effektiva",
+      plural: "effektiva",
+      comparative: "effektivare",
+      superlative: "effektivast"
+    },
+    examples: {
+      base: { swedish: "En effektiv metod", english: "An efficient method" },
+      definite: { swedish: "Den effektiva lösningen", english: "The efficient solution" },
+      comparative: { swedish: "Ett effektivare system", english: "A more efficient system" },
+      superlative: { swedish: "Det effektivaste sättet", english: "The most efficient way" }
+    }
+  },
+  {
+    adjective: "digital",
+    translation: "digital",
+    category: "technology",
+    difficulty: "intermediate",
+    forms: {
+      base: "digital",
+      definite: "digitala",
+      plural: "digitala",
+      comparative: "mer digital",
+      superlative: "mest digital"
+    },
+    examples: {
+      base: { swedish: "En digital plattform", english: "A digital platform" },
+      definite: { swedish: "Den digitala lösningen", english: "The digital solution" },
+      comparative: { swedish: "En mer digital version", english: "A more digital version" },
+      superlative: { swedish: "Den mest digitala processen", english: "The most digital process" }
+    }
+  },
+  {
+    adjective: "miljövänlig",
+    translation: "environmentally friendly",
+    category: "environmental",
+    difficulty: "intermediate",
+    forms: {
+      base: "miljövänlig",
+      definite: "miljövänliga",
+      plural: "miljövänliga",
+      comparative: "miljövänligare",
+      superlative: "miljövänligast"
+    },
+    examples: {
+      base: { swedish: "En miljövänlig produkt", english: "An environmentally friendly product" },
+      definite: { swedish: "Den miljövänliga lösningen", english: "The environmentally friendly solution" },
+      comparative: { swedish: "Ett miljövänligare alternativ", english: "A more environmentally friendly alternative" },
+      superlative: { swedish: "Det miljövänligaste valet", english: "The most environmentally friendly choice" }
+    }
+  },
+  {
+    adjective: "flexibel",
+    translation: "flexible",
+    category: "modern_life",
+    difficulty: "intermediate",
+    forms: {
+      base: "flexibel",
+      definite: "flexibla",
+      plural: "flexibla",
+      comparative: "flexiblare",
+      superlative: "flexiblast"
+    },
+    examples: {
+      base: { swedish: "Ett flexibelt schema", english: "A flexible schedule" },
+      definite: { swedish: "Den flexibla arbetstiden", english: "The flexible working hours" },
+      comparative: { swedish: "En flexiblare lösning", english: "A more flexible solution" },
+      superlative: { swedish: "Det flexiblaste alternativet", english: "The most flexible option" }
+    }
+  },
+  {
+    adjective: "kreativ",
+    translation: "creative",
+    category: "personality",
+    difficulty: "intermediate",
+    forms: {
+      base: "kreativ",
+      definite: "kreativa",
+      plural: "kreativa",
+      comparative: "kreativare",
+      superlative: "kreativast"
+    },
+    examples: {
+      base: { swedish: "En kreativ lösning", english: "A creative solution" },
+      definite: { swedish: "Den kreativa processen", english: "The creative process" },
+      comparative: { swedish: "Ett kreativare förslag", english: "A more creative suggestion" },
+      superlative: { swedish: "Det kreativaste projektet", english: "The most creative project" }
+    }
+  },
+  {
+    adjective: "självständig",
+    translation: "independent",
+    category: "personality",
+    difficulty: "intermediate",
+    forms: {
+      base: "självständig",
+      definite: "självständiga",
+      plural: "självständiga",
+      comparative: "mer självständig",
+      superlative: "mest självständig"
+    },
+    examples: {
+      base: { swedish: "En självständig person", english: "An independent person" },
+      definite: { swedish: "Den självständiga arbetaren", english: "The independent worker" },
+      comparative: { swedish: "En mer självständig approach", english: "A more independent approach" },
+      superlative: { swedish: "Den mest självständiga medarbetaren", english: "The most independent employee" }
+    }
+  },
+  {
+    adjective: "kompetent",
+    translation: "competent",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "kompetent",
+      definite: "kompetenta",
+      plural: "kompetenta",
+      comparative: "mer kompetent",
+      superlative: "mest kompetent"
+    },
+    examples: {
+      base: { swedish: "En kompetent chef", english: "A competent manager" },
+      definite: { swedish: "Den kompetenta personalen", english: "The competent staff" },
+      comparative: { swedish: "En mer kompetent kandidat", english: "A more competent candidate" },
+      superlative: { swedish: "Den mest kompetenta experten", english: "The most competent expert" }
+    }
+  },
+  {
+    adjective: "produktiv",
+    translation: "productive",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "produktiv",
+      definite: "produktiva",
+      plural: "produktiva",
+      comparative: "produktivare",
+      superlative: "produktivast"
+    },
+    examples: {
+      base: { swedish: "En produktiv dag", english: "A productive day" },
+      definite: { swedish: "Den produktiva gruppen", english: "The productive group" },
+      comparative: { swedish: "Ett produktivare möte", english: "A more productive meeting" },
+      superlative: { swedish: "Den produktivaste månaden", english: "The most productive month" }
+    }
+  },
+  {
+    adjective: "uppkopplad",
+    translation: "connected",
+    category: "technology",
+    difficulty: "intermediate",
+    forms: {
+      base: "uppkopplad",
+      definite: "uppkopplade",
+      plural: "uppkopplade",
+      comparative: "mer uppkopplad",
+      superlative: "mest uppkopplad"
+    },
+    examples: {
+      base: { swedish: "En uppkopplad enhet", english: "A connected device" },
+      definite: { swedish: "Den uppkopplade datorn", english: "The connected computer" },
+      comparative: { swedish: "Ett mer uppkopplat hem", english: "A more connected home" },
+      superlative: { swedish: "Det mest uppkopplade kontoret", english: "The most connected office" }
+    }
+  },
+  {
+    adjective: "interaktiv",
+    translation: "interactive",
+    category: "technology",
+    difficulty: "intermediate",
+    forms: {
+      base: "interaktiv",
+      definite: "interaktiva",
+      plural: "interaktiva",
+      comparative: "mer interaktiv",
+      superlative: "mest interaktiv"
+    },
+    examples: {
+      base: { swedish: "En interaktiv presentation", english: "An interactive presentation" },
+      definite: { swedish: "Den interaktiva skärmen", english: "The interactive screen" },
+      comparative: { swedish: "En mer interaktiv upplevelse", english: "A more interactive experience" },
+      superlative: { swedish: "Den mest interaktiva appen", english: "The most interactive app" }
+    }
+  },
+  {
+    adjective: "hållbar",
+    translation: "sustainable",
+    category: "environmental",
+    difficulty: "intermediate",
+    forms: {
+      base: "hållbar",
+      definite: "hållbara",
+      plural: "hållbara",
+      comparative: "hållbarare",
+      superlative: "hållbarast"
+    },
+    examples: {
+      base: { swedish: "En hållbar utveckling", english: "A sustainable development" },
+      definite: { swedish: "Den hållbara framtiden", english: "The sustainable future" },
+      comparative: { swedish: "En hållbarare livsstil", english: "A more sustainable lifestyle" },
+      superlative: { swedish: "Det hållbaraste systemet", english: "The most sustainable system" }
+    }
+  },
+  {
+    adjective: "förnybar",
+    translation: "renewable",
+    category: "environmental",
+    difficulty: "intermediate",
+    forms: {
+      base: "förnybar",
+      definite: "förnybara",
+      plural: "förnybara",
+      comparative: "mer förnybar",
+      superlative: "mest förnybar"
+    },
+    examples: {
+      base: { swedish: "En förnybar energikälla", english: "A renewable energy source" },
+      definite: { swedish: "Den förnybara energin", english: "The renewable energy" },
+      comparative: { swedish: "En mer förnybar lösning", english: "A more renewable solution" },
+      superlative: { swedish: "Den mest förnybara tekniken", english: "The most renewable technology" }
+    }
+  },
+  {
+    adjective: "tillgänglig",
+    translation: "accessible",
+    category: "modern_life",
+    difficulty: "intermediate",
+    forms: {
+      base: "tillgänglig",
+      definite: "tillgängliga",
+      plural: "tillgängliga",
+      comparative: "mer tillgänglig",
+      superlative: "mest tillgänglig"
+    },
+    examples: {
+      base: { swedish: "En tillgänglig service", english: "An accessible service" },
+      definite: { swedish: "Den tillgängliga informationen", english: "The accessible information" },
+      comparative: { swedish: "En mer tillgänglig plattform", english: "A more accessible platform" },
+      superlative: { swedish: "Den mest tillgängliga versionen", english: "The most accessible version" }
+    }
+  },
+  {
+    adjective: "mobil",
+    translation: "mobile",
+    category: "modern_life",
+    difficulty: "intermediate",
+    forms: {
+      base: "mobil",
+      definite: "mobila",
+      plural: "mobila",
+      comparative: "mer mobil",
+      superlative: "mest mobil"
+    },
+    examples: {
+      base: { swedish: "En mobil arbetsplats", english: "A mobile workplace" },
+      definite: { swedish: "Den mobila enheten", english: "The mobile device" },
+      comparative: { swedish: "En mer mobil lösning", english: "A more mobile solution" },
+      superlative: { swedish: "Den mest mobila versionen", english: "The most mobile version" }
+    }
+  },
+  {
+    adjective: "innovativ",
+    translation: "innovative",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "innovativ",
+      definite: "innovativa",
+      plural: "innovativa",
+      comparative: "mer innovativ",
+      superlative: "mest innovativ"
+    },
+    examples: {
+      base: { swedish: "En innovativ idé", english: "An innovative idea" },
+      definite: { swedish: "Den innovativa lösningen", english: "The innovative solution" },
+      comparative: { swedish: "En mer innovativ approach", english: "A more innovative approach" },
+      superlative: { swedish: "Det mest innovativa företaget", english: "The most innovative company" }
+    }
+  },
+  {
+    adjective: "strategisk",
+    translation: "strategic",
+    category: "professional",
+    difficulty: "intermediate",
+    forms: {
+      base: "strategisk",
+      definite: "strategiska",
+      plural: "strategiska",
+      comparative: "mer strategisk",
+      superlative: "mest strategisk"
+    },
+    examples: {
+      base: { swedish: "Ett strategiskt beslut", english: "A strategic decision" },
+      definite: { swedish: "Den strategiska planen", english: "The strategic plan" },
+      comparative: { swedish: "En mer strategisk position", english: "A more strategic position" },
+      superlative: { swedish: "Det mest strategiska draget", english: "The most strategic move" }
+    }
+  },
+  {
+    adjective: "virtuell",
+    translation: "virtual",
+    category: "technology",
+    difficulty: "intermediate",
+    forms: {
+      base: "virtuell",
+      definite: "virtuella",
+      plural: "virtuella",
+      comparative: "mer virtuell",
+      superlative: "mest virtuell"
+    },
+    examples: {
+      base: { swedish: "Ett virtuellt möte", english: "A virtual meeting" },
+      definite: { swedish: "Den virtuella världen", english: "The virtual world" },
+      comparative: { swedish: "En mer virtuell upplevelse", english: "A more virtual experience" },
+      superlative: { swedish: "Den mest virtuella miljön", english: "The most virtual environment" }
+    }
+  },
+  {
+    adjective: "automatisk",
+    translation: "automatic",
+    category: "technology",
+    difficulty: "intermediate",
+    forms: {
+      base: "automatisk",
+      definite: "automatiska",
+      plural: "automatiska",
+      comparative: "mer automatisk",
+      superlative: "mest automatisk"
+    },
+    examples: {
+      base: { swedish: "Ett automatiskt system", english: "An automatic system" },
+      definite: { swedish: "Den automatiska processen", english: "The automatic process" },
+      comparative: { swedish: "En mer automatisk lösning", english: "A more automatic solution" },
+      superlative: { swedish: "Det mest automatiska flödet", english: "The most automatic flow" }
+    }
+  },
+  {
+    adjective: "klimatsmart",
+    translation: "climate-smart",
+    category: "environmental",
+    difficulty: "intermediate",
+    forms: {
+      base: "klimatsmart",
+      definite: "klimatsmarta",
+      plural: "klimatsmarta",
+      comparative: "mer klimatsmart",
+      superlative: "mest klimatsmart"
+    },
+    examples: {
+      base: { swedish: "Ett klimatsmart val", english: "A climate-smart choice" },
+      definite: { swedish: "Den klimatsmarta lösningen", english: "The climate-smart solution" },
+      comparative: { swedish: "En mer klimatsmart approach", english: "A more climate-smart approach" },
+      superlative: { swedish: "Det mest klimatsmarta alternativet", english: "The most climate-smart alternative" }
+    }
+  },
+  {
+    adjective: "energieffektiv",
+    translation: "energy-efficient",
+    category: "environmental",
+    difficulty: "intermediate",
+    forms: {
+      base: "energieffektiv",
+      definite: "energieffektiva",
+      plural: "energieffektiva",
+      comparative: "mer energieffektiv",
+      superlative: "mest energieffektiv"
+    },
+    examples: {
+      base: { swedish: "En energieffektiv byggnad", english: "An energy-efficient building" },
+      definite: { swedish: "Den energieffektiva maskinen", english: "The energy-efficient machine" },
+      comparative: { swedish: "Ett mer energieffektivt system", english: "A more energy-efficient system" },
+      superlative: { swedish: "Den mest energieffektiva modellen", english: "The most energy-efficient model" }
+    }
+  },
+  {
+    adjective: "anpassningsbar",
+    translation: "adaptable",
+    category: "modern_life",
+    difficulty: "intermediate",
+    forms: {
+      base: "anpassningsbar",
+      definite: "anpassningsbara",
+      plural: "anpassningsbara",
+      comparative: "mer anpassningsbar",
+      superlative: "mest anpassningsbar"
+    },
+    examples: {
+      base: { swedish: "En anpassningsbar lösning", english: "An adaptable solution" },
+      definite: { swedish: "Den anpassningsbara designen", english: "The adaptable design" },
+      comparative: { swedish: "Ett mer anpassningsbart system", english: "A more adaptable system" },
+      superlative: { swedish: "Den mest anpassningsbara metoden", english: "The most adaptable method" }
+    }
+  },
+  {
+    adjective: "dynamisk",
+    translation: "dynamic",
+    category: "modern_life",
+    difficulty: "intermediate",
+    forms: {
+      base: "dynamisk",
+      definite: "dynamiska",
+      plural: "dynamiska",
+      comparative: "mer dynamisk",
+      superlative: "mest dynamisk"
+    },
+    examples: {
+      base: { swedish: "En dynamisk miljö", english: "A dynamic environment" },
+      definite: { swedish: "Den dynamiska utvecklingen", english: "The dynamic development" },
+      comparative: { swedish: "En mer dynamisk approach", english: "A more dynamic approach" },
+      superlative: { swedish: "Det mest dynamiska teamet", english: "The most dynamic team" }
+    }
+  },
+  {
+    adjective: "utåtriktad",
+    translation: "outgoing",
+    category: "personality",
+    difficulty: "intermediate",
+    forms: {
+      base: "utåtriktad",
+      definite: "utåtriktade",
+      plural: "utåtriktade",
+      comparative: "mer utåtriktad",
+      superlative: "mest utåtriktad"
+    },
+    examples: {
+      base: { swedish: "En utåtriktad person", english: "An outgoing person" },
+      definite: { swedish: "Den utåtriktade säljaren", english: "The outgoing salesperson" },
+      comparative: { swedish: "En mer utåtriktad personlighet", english: "A more outgoing personality" },
+      superlative: { swedish: "Den mest utåtriktade deltagaren", english: "The most outgoing participant" }
+    }
+  },
+  {
+    adjective: "målmedveten",
+    translation: "goal-oriented",
+    category: "personality",
+    difficulty: "intermediate",
+    forms: {
+      base: "målmedveten",
+      definite: "målmedvetna",
+      plural: "målmedvetna",
+      comparative: "mer målmedveten",
+      superlative: "mest målmedveten"
+    },
+    examples: {
+      base: { swedish: "En målmedveten student", english: "A goal-oriented student" },
+      definite: { swedish: "Den målmedvetna chefen", english: "The goal-oriented manager" },
+      comparative: { swedish: "En mer målmedveten approach", english: "A more goal-oriented approach" },
+      superlative: { swedish: "Den mest målmedvetna medarbetaren", english: "The most goal-oriented employee" }
+    }
   }
 ];

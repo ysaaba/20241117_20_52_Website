@@ -1,4 +1,4 @@
-export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'quiz';
+export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'adverbs' | 'quiz' | 'stories' | 'grammar-visualizer' | 'grammar-animation' | 'grammar-practice';
 export type NounCategory = 
   // People and Professions
   | 'people'
@@ -155,7 +155,30 @@ export type AdjectiveCategory =
   | 'physical'
   | 'weather'
   | 'distance'
-  | 'time';
+  | 'time'
+  | 'professional'
+  | 'technology'
+  | 'environmental'
+  | 'modern_life';
+
+export type AdverbCategory = 
+  | 'frequency'
+  | 'manner'
+  | 'place'
+  | 'time'
+  | 'degree'
+  | 'interrogative'
+  | 'relative';
+
+export interface AdverbData {
+  adverb: string;
+  translation: string;
+  category: AdverbCategory;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  example: string;
+  exampleTranslation: string;
+  audioUrl: string;
+}
 
 export type ExerciseProgress = {
   correct: number;

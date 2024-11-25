@@ -5,10 +5,10 @@ import { getContextualExample } from '../../utils/getContextualExample';
 
 interface ExampleSentencesProps {
   verb: VerbData;
-  onPlayAudio: (text: string) => void;
+  playSound: (text: string) => void;
 }
 
-export function ExampleSentences({ verb, onPlayAudio }: ExampleSentencesProps) {
+export function ExampleSentences({ verb, playSound }: ExampleSentencesProps) {
   return (
     <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2 p-4">
       {(['present', 'past', 'supine'] as const).map((tense) => {
@@ -24,7 +24,7 @@ export function ExampleSentences({ verb, onPlayAudio }: ExampleSentencesProps) {
                   {example.swedish}
                 </p>
                 <button
-                  onClick={() => onPlayAudio(example.swedish)}
+                  onClick={() => playSound(example.swedish)}
                   className="p-1 text-blue-400 hover:text-blue-600 transition-colors"
                   title="Listen to pronunciation"
                 >

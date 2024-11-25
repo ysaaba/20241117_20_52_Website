@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]  # Changed from "new" to "main"
+    branches: [ "new" ]
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -23,16 +23,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v4  # Updated to v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Updated to Node 20
+          node-version: '18'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4  # Updated to v4
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
@@ -45,4 +45,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4  # Updated to v4
+        uses: actions/deploy-pages@v2

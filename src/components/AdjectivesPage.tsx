@@ -6,13 +6,13 @@ import type { AdjectiveCategory, AdjectiveData } from '../types';
 
 const ADJECTIVES_PER_PAGE = 10;
 
-export function AdjectivesPage() {
+export default function AdjectivesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<AdjectiveCategory | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [showExamples, setShowExamples] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
-  const { playAudio } = useSound();
+  const { playSound } = useSound();
 
   const categories = Array.from(new Set(adjectives.map(adj => adj.category)));
 
@@ -161,7 +161,7 @@ export function AdjectivesPage() {
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-semibold text-gray-800">{adj.adjective}</h3>
                     <button
-                      onClick={() => playAudio(adj.adjective)}
+                      onClick={() => playSound(adj.adjective)}
                       className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
                       title="Listen to pronunciation"
                     >

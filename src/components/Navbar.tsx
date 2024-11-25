@@ -8,7 +8,10 @@ import {
   ChevronDown, 
   Dumbbell,
   BookA,
-  Sparkles
+  Sparkles,
+  BookOpen,
+  LayoutTemplate,
+  PlayCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ExerciseType } from '../types';
@@ -21,12 +24,14 @@ interface NavbarProps {
 interface DropdownState {
   learn: boolean;
   practice: boolean;
+  grammar: boolean;
 }
 
-export function Navbar({ selectedType, onSelectType }: NavbarProps) {
+export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
   const [dropdownOpen, setDropdownOpen] = useState<DropdownState>({
     learn: false,
-    practice: false
+    practice: false,
+    grammar: false
   });
 
   const isLandingPage = selectedType === 'landing';
@@ -35,12 +40,13 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
     setDropdownOpen(prev => ({
       learn: false,
       practice: false,
+      grammar: false,
       [dropdown]: !prev[dropdown]
     }));
   };
 
   const closeDropdowns = () => {
-    setDropdownOpen({ learn: false, practice: false });
+    setDropdownOpen({ learn: false, practice: false, grammar: false });
   };
 
   const dropdownVariants = {
@@ -137,6 +143,18 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                         </button>
                         <button
                           onClick={() => {
+                            onSelectType('adverbs');
+                            closeDropdowns();
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-4 h-4" />
+                            Adverbs
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
                             onSelectType('nouns');
                             closeDropdowns();
                           }}
@@ -218,6 +236,91 @@ export function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           <div className="flex items-center gap-2">
                             <Sparkles className="w-4 h-4" />
                             Quiz
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('stories');
+                            closeDropdowns();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <div className="flex items-center gap-2">
+                            <BookOpen className="w-4 h-4" />
+                            Stories
+                          </div>
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Grammar Visualization dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => handleDropdownToggle('grammar')}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isLandingPage
+                      ? 'text-white/80 hover:bg-white/10 hover:text-white'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                >
+                  <LayoutTemplate className="w-4 h-4" />
+                  Grammar
+                  <motion.div
+                    variants={chevronVariants}
+                    animate={dropdownOpen.grammar ? 'open' : 'closed'}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {dropdownOpen.grammar && (
+                    <motion.div
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
+                    >
+                      <div className="py-1">
+                        <button
+                          onClick={() => {
+                            onSelectType('grammar-visualizer');
+                            closeDropdowns();
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <LayoutTemplate className="w-4 h-4" />
+                            <span>Sentence Structure</span>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('grammar-animation');
+                            closeDropdowns();
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <PlayCircle className="w-4 h-4" />
+                            <span>Animated Rules</span>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('grammar-practice');
+                            closeDropdowns();
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Dumbbell className="w-4 h-4" />
+                            <span>Practice</span>
                           </div>
                         </button>
                       </div>

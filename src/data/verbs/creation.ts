@@ -7,6 +7,9 @@ export const creation: VerbData[] = [
   { verb: "tillverka", group: 1, present: "tillverkar", past: "tillverkade", supine: "tillverkat", translation: "manufacture", category: "creation", difficulty: "intermediate" },
   { verb: "konstruera", group: 1, present: "konstruerar", past: "konstruerade", supine: "konstruerat", translation: "construct", category: "creation", difficulty: "advanced" },
   { verb: "forma", group: 1, present: "formar", past: "formade", supine: "format", translation: "shape", category: "creation", difficulty: "intermediate" },
+  { verb: "producera", group: 1, present: "producerar", past: "producerade", supine: "producerat", translation: "produce", category: "creation", difficulty: "intermediate" },
+  { verb: "fabricera", group: 1, present: "fabricerar", past: "fabricerade", supine: "fabricerat", translation: "fabricate", category: "creation", difficulty: "advanced" },
+  { verb: "montera", group: 1, present: "monterar", past: "monterade", supine: "monterat", translation: "assemble", category: "creation", difficulty: "intermediate" },
 
   // Artistic Creation
   { verb: "måla", group: 1, present: "målar", past: "målade", supine: "målat", translation: "paint", category: "creation", difficulty: "beginner" },
@@ -14,6 +17,9 @@ export const creation: VerbData[] = [
   { verb: "skulptera", group: 1, present: "skulpterar", past: "skulpterade", supine: "skulpterat", translation: "sculpt", category: "creation", difficulty: "advanced" },
   { verb: "komponera", group: 1, present: "komponerar", past: "komponerade", supine: "komponerat", translation: "compose", category: "creation", difficulty: "advanced" },
   { verb: "designa", group: 1, present: "designar", past: "designade", supine: "designat", translation: "design", category: "creation", difficulty: "intermediate" },
+  { verb: "teckna", group: 1, present: "tecknar", past: "tecknade", supine: "tecknat", translation: "sketch", category: "creation", difficulty: "beginner" },
+  { verb: "brodera", group: 1, present: "broderar", past: "broderade", supine: "broderat", translation: "embroider", category: "creation", difficulty: "advanced" },
+  { verb: "väva", group: 2, present: "väver", past: "vävde", supine: "vävt", translation: "weave", category: "creation", difficulty: "advanced" },
 
   // Digital Creation
   { verb: "programmera", group: 1, present: "programmerar", past: "programmerade", supine: "programmerat", translation: "program", category: "creation", difficulty: "advanced" },
@@ -21,11 +27,19 @@ export const creation: VerbData[] = [
   { verb: "animera", group: 1, present: "animerar", past: "animerade", supine: "animerat", translation: "animate", category: "creation", difficulty: "advanced" },
   { verb: "redigera", group: 1, present: "redigerar", past: "redigerade", supine: "redigerat", translation: "edit", category: "creation", difficulty: "intermediate" },
   { verb: "formatera", group: 1, present: "formaterar", past: "formaterade", supine: "formaterat", translation: "format", category: "creation", difficulty: "intermediate" },
-
-  // Food Creation
-  { verb: "baka", group: 1, present: "bakar", past: "bakade", supine: "bakat", translation: "bake", category: "creation", difficulty: "beginner" },
-  { verb: "laga", group: 1, present: "lagar", past: "lagade", supine: "lagat", translation: "cook", category: "creation", difficulty: "beginner" },
-  { verb: "brygga", group: 2, present: "brygger", past: "bryggde", supine: "bryggt", translation: "brew", category: "creation", difficulty: "intermediate" },
-  { verb: "marinera", group: 1, present: "marinerar", past: "marinerade", supine: "marinerat", translation: "marinate", category: "creation", difficulty: "intermediate" },
-  { verb: "garnera", group: 1, present: "garnerar", past: "garnerade", supine: "garnerat", translation: "garnish", category: "creation", difficulty: "intermediate" }
+  { verb: "rendera", group: 1, present: "renderar", past: "renderade", supine: "renderat", translation: "render", category: "creation", difficulty: "advanced" },
+  { verb: "modellera", group: 1, present: "modellerar", past: "modellerade", supine: "modellerat", translation: "model (3D)", category: "creation", difficulty: "advanced" },
+  
+  // Writing and Composition
+  { verb: "författa", group: 1, present: "författar", past: "författade", supine: "författat", translation: "author/write", category: "creation", difficulty: "advanced" },
+  { verb: "dikta", group: 1, present: "diktar", past: "diktade", supine: "diktat", translation: "compose poetry", category: "creation", difficulty: "advanced" },
+  { verb: "texta", group: 1, present: "textar", past: "textade", supine: "textat", translation: "write text", category: "creation", difficulty: "beginner" },
+  { verb: "formulera", group: 1, present: "formulerar", past: "formulerade", supine: "formulerat", translation: "formulate", category: "creation", difficulty: "intermediate" },
+  
+  // Crafting and Handiwork
+  { verb: "snickra", group: 1, present: "snickrar", past: "snickrade", supine: "snickrat", translation: "do carpentry", category: "creation", difficulty: "advanced" },
+  { verb: "sy", group: 3, present: "syr", past: "sydde", supine: "sytt", translation: "sew", category: "creation", difficulty: "intermediate" },
+  { verb: "sticka", group: 1, present: "stickar", past: "stickade", supine: "stickat", translation: "knit", category: "creation", difficulty: "intermediate" },
+  { verb: "virka", group: 1, present: "virkar", past: "virkade", supine: "virkat", translation: "crochet", category: "creation", difficulty: "intermediate" },
+  { verb: "smida", group: 2, present: "smider", past: "smidde", supine: "smitt", translation: "forge", category: "creation", difficulty: "advanced" }
 ];

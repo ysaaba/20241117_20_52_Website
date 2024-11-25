@@ -6,7 +6,7 @@ import { useVerbExercises } from '../hooks/useVerbExercises';
 
 type ViewMode = 'cards' | 'table';
 
-export function VerbExercises() {
+export default function VerbExercises() {
   const [viewMode, setViewMode] = useState<ViewMode>('table');
   const {
     currentVerbs,

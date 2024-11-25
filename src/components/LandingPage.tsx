@@ -38,7 +38,7 @@ const FeatureCard = ({ icon, title, description, delay }: {
   </motion.div>
 );
 
-export function LandingPage({ onGetStarted }: LandingPageProps) {
+export default function LandingPage({ onGetStarted }: LandingPageProps) {
   return (
     <div>
       {/* Hero Section */}

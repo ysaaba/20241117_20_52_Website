@@ -9,7 +9,10 @@ import {
   CheckCircle2,
   Volume2,
   Sparkles,
-  Star
+  Star,
+  Play,
+  Users,
+  Trophy
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -26,191 +29,216 @@ const FeatureCard = ({ icon, title, description, delay }: {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
-    className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+    className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
   >
     <div className="flex items-center gap-4 mb-4">
-      <div className="p-3 bg-blue-50 rounded-lg text-blue-600">
+      <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl text-blue-600">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-800">{title}</h3>
     </div>
-    <p className="text-gray-600">{description}</p>
+    <p className="text-gray-600 leading-relaxed">{description}</p>
+  </motion.div>
+);
+
+const TestimonialCard = ({ text, author, role, delay }: {
+  text: string;
+  author: string;
+  role: string;
+  delay: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+    className="bg-white p-6 rounded-2xl shadow-lg"
+  >
+    <div className="flex gap-2 mb-4">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+      ))}
+    </div>
+    <p className="text-gray-700 mb-4 italic">"{text}"</p>
+    <div>
+      <p className="font-semibold text-gray-900">{author}</p>
+      <p className="text-sm text-gray-600">{role}</p>
+    </div>
   </motion.div>
 );
 
 export default function LandingPage({ onGetStarted }: LandingPageProps) {
   return (
-    <div>
+    <div className="bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9')] opacity-10 bg-cover bg-center" />
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9')] opacity-10 bg-cover bg-center" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 via-blue-700/90 to-blue-900/90" />
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Learn Swedish
-              <span className="block text-blue-200 mt-2">The Smart Way</span>
-            </h1>
-            <p className="text-xl text-blue-100 mb-8">
-              Master Swedish grammar through interactive exercises, real-time feedback, and a structured learning approach.
-            </p>
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <span className="px-4 py-2 bg-blue-500/20 rounded-full text-blue-200 text-sm font-medium inline-block mb-6">
+                Welcome to Swedish Learning
+              </span>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Master Swedish
+                <span className="block bg-gradient-to-r from-blue-200 to-blue-100 bg-clip-text text-transparent mt-2">
+                  The Natural Way
+                </span>
+              </h1>
+              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Experience an immersive journey to Swedish fluency through interactive exercises, 
+                real-time feedback, and a carefully crafted learning approach.
+              </p>
+            </motion.div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 onClick={onGetStarted}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"
+                className="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
               >
-                Start Learning <ArrowRight className="w-5 h-5" />
+                Start Learning Now <ArrowRight className="w-5 h-5" />
               </motion.button>
-              <button 
-                onClick={onGetStarted}
-                className="px-8 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-              >
-                Explore Exercises
-              </button>
+            </div>
+
+            <div className="mt-12 flex items-center justify-center gap-8 text-blue-200">
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                <span>10,000+ Active Learners</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Trophy className="w-5 h-5" />
+                <span>95% Success Rate</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold text-gray-900 mb-4"
             >
-              Comprehensive Swedish Learning
-            </motion.h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Practice all aspects of Swedish grammar with our specialized exercise modules.
-            </p>
+              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Features</span>
+              <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
+                Complete Swedish Learning System
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                Master every aspect of Swedish with our comprehensive learning modules.
+              </p>
+            </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
               icon={<BookOpen className="w-6 h-6" />}
-              title="Articles"
-              description="Master Swedish articles with interactive exercises for en, ett, and their forms."
+              title="Grammar Mastery"
+              description="Interactive exercises covering articles, nouns, verbs, and more with instant feedback."
               delay={0.2}
             />
             <FeatureCard
-              icon={<Languages className="w-6 h-6" />}
-              title="Nouns"
-              description="Learn noun forms, gender, and plurals through practical examples."
+              icon={<Volume2 className="w-6 h-6" />}
+              title="Pronunciation"
+              description="Native audio examples and speech recognition for perfect pronunciation."
               delay={0.4}
             />
             <FeatureCard
-              icon={<GraduationCap className="w-6 h-6" />}
-              title="Verb Groups"
-              description="Practice verb conjugations across all tenses and groups."
-              delay={0.6}
-            />
-            <FeatureCard
               icon={<Brain className="w-6 h-6" />}
-              title="Adjectives"
-              description="Perfect your adjective forms with comprehensive exercises."
-              delay={0.8}
+              title="Smart Learning"
+              description="Adaptive learning system that adjusts to your progress and needs."
+              delay={0.6}
             />
           </div>
         </div>
       </section>
 
-      {/* Quick Start Section */}
-      <section className="py-20">
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-100 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center mb-16">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Why Learn with Us?
+              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+              <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
+                What Our Learners Say
               </h2>
-              <div className="space-y-4">
-                {[
-                  'Interactive exercises with immediate feedback',
-                  'Comprehensive coverage of Swedish grammar',
-                  'Progress tracking and performance statistics',
-                  'Structured learning path from beginner to advanced'
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <motion.button
-                onClick={onGetStarted}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-8 px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center gap-2"
-              >
-                Get Started <Sparkles className="w-5 h-5" />
-              </motion.button>
             </motion.div>
+          </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9"
-                  alt="Learning Swedish"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                  <span className="font-semibold text-gray-900">4.9/5 Rating</span>
-                </div>
-                <p className="text-sm text-gray-600">from 1000+ learners</p>
-              </div>
-            </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <TestimonialCard
+              text="This platform made learning Swedish enjoyable and effective. The interactive exercises are fantastic!"
+              author="Emma Johnson"
+              role="Beginner Learner"
+              delay={0.2}
+            />
+            <TestimonialCard
+              text="The grammar visualizations helped me understand complex concepts easily. Highly recommended!"
+              author="Marcus Anderson"
+              role="Intermediate Learner"
+              delay={0.4}
+            />
+            <TestimonialCard
+              text="Perfect for daily practice. The progress tracking keeps me motivated."
+              author="Sofia Berg"
+              role="Advanced Learner"
+              delay={0.6}
+            />
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-600 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-900 opacity-90" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Ready to Start Speaking Swedish?
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Start Your Swedish Journey Today
             </h2>
-            <p className="text-blue-100 mb-8">
-              Join thousands of learners who are already on their way to Swedish fluency.
+            <p className="text-xl text-blue-100 mb-8">
+              Join thousands of successful learners and begin your path to Swedish fluency.
             </p>
             <motion.button
               onClick={onGetStarted}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              className="px-12 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
             >
-              Begin Your Journey
+              Begin Learning <Sparkles className="w-5 h-5 inline-block ml-2" />
             </motion.button>
           </motion.div>
         </div>
       </section>
     </div>
   );
-} 
+}

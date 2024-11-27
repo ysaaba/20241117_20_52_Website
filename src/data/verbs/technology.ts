@@ -43,37 +43,5 @@ export const technology: VerbData[] = [
   { verb: "klicka", group: 1, present: "klickar", past: "klickade", supine: "klickat", translation: "click", category: "technology", difficulty: "beginner" },
   { verb: "ladda ner", group: 1, present: "laddar ner", past: "laddade ner", supine: "laddat ner", translation: "download", category: "technology", difficulty: "beginner" },
   { verb: "ladda upp", group: 1, present: "laddar upp", past: "laddade upp", supine: "laddat upp", translation: "upload", category: "technology", difficulty: "beginner" },
-  { verb: "starta om", group: 1, present: "startar om", past: "startade om", supine: "startat om", translation: "restart", category: "technology", difficulty: "beginner" },
-
-  // Group 3 Verbs
-  {
-    verb: 'försvinna',
-    translation: 'disappear',
-    group: 3,
-    present: 'försvinner',
-    past: 'försvann',
-    supine: 'försvunnit',
-    category: 'technology',
-    difficulty: 'intermediate',
-    examples: {
-      present: { swedish: 'Filen försvinner från skärmen', english: 'The file disappears from the screen' },
-      past: { swedish: 'Datan försvann plötsligt', english: 'The data disappeared suddenly' },
-      supine: { swedish: 'Dokumentet har försvunnit', english: 'The document has disappeared' }
-    }
-  },
-  {
-    verb: 'försvara',
-    translation: 'defend',
-    group: 3,
-    present: 'försvarar',
-    past: 'försvarade',
-    supine: 'försvarat',
-    category: 'technology',
-    difficulty: 'intermediate',
-    examples: {
-      present: { swedish: 'Systemet försvarar mot cyberattacker', english: 'The system defends against cyber attacks' },
-      past: { swedish: 'Brandväggen försvarade nätverket', english: 'The firewall defended the network' },
-      supine: { swedish: 'Programmet har försvarat våra data', english: 'The program has defended our data' }
-    }
-  }
+  { verb: "starta om", group: 1, present: "startar om", past: "startade om", supine: "startat om", translation: "restart", category: "technology", difficulty: "beginner" }
 ];

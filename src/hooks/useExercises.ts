@@ -37,10 +37,15 @@ export function useExercises(exerciseType: ExerciseType) {
 
   const validateAnswer = useCallback((userAnswer: string, exercise: typeof exercises[0]) => {
     const normalizedUserAnswer = userAnswer.trim().toLowerCase();
-    const isCorrect = normalizedUserAnswer === exercise.correctArticle;
+    const normalizedCorrectAnswer = exercise.correctArticle.toLowerCase();
+    
+    // For definite forms, we need to check if the answer matches either the suffix or the complete word
+    const isCorrect = normalizedUserAnswer === normalizedCorrectAnswer || 
+                     normalizedUserAnswer === exercise.correctSentence.toLowerCase();
+    
     return {
       isCorrect,
-      mistakes: isCorrect ? [] : [`Incorrect form. The correct form is "${exercise.correctArticle}"`]
+      mistakes: isCorrect ? [] : [`Correct form: "${exercise.correctArticle}"`]
     };
   }, []);
 

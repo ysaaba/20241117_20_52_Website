@@ -1602,52 +1602,6 @@ export const commonNouns: Noun[] = removeDuplicates([
     }
   },
   {
-    noun: 'öga',
-    translation: 'eye',
-    category: 'body parts',
-    difficulty: 'beginner',
-    gender: 'ett',
-    countable: true,
-    forms: {
-      indefinite: 'ett öga',
-      definite: 'ögat',
-      indefinitePlural: 'ögon',
-      definitePlural: 'ögonen'
-    },
-    examples: {
-      indefinite: {
-        swedish: 'Hon har ett blått öga',
-        english: 'She has a blue eye'
-      },
-      definite: {
-        swedish: 'Ögat är rött',
-        english: 'The eye is red'
-      },
-      indefinitePlural: {
-        swedish: 'Katten har gröna ögon',
-        english: 'The cat has green eyes'
-      },
-      definitePlural: {
-        swedish: 'Ögonen är trötta efter en lång dag',
-        english: 'The eyes are tired after a long day'
-      }
-    },
-    semantics: {
-      canBeSeen: true,
-      canBeFound: true,
-      animate: false,
-      natural: true,
-      canBeBought: false,
-      canBeUsedAtWork: true,
-      canBeConsumed: false,
-      canBeWorn: false,
-      canGrow: false,
-      isWeather: false,
-      canBeBorrowed: false,
-      bodyPart: true
-    }
-  },
-  {
     noun: 'bord',
     translation: 'table',
     category: 'furniture',

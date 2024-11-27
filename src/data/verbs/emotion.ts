@@ -28,5 +28,7 @@ export const emotion: VerbData[] = [
   { verb: "lugna", group: 1, present: "lugnar", past: "lugnade", supine: "lugnat", translation: "calm", category: "emotion", difficulty: "intermediate" },
   { verb: "irritera", group: 1, present: "irriterar", past: "irriterade", supine: "irriterat", translation: "irritate", category: "emotion", difficulty: "intermediate" },
   { verb: "trösta", group: 1, present: "tröstar", past: "tröstade", supine: "tröstat", translation: "comfort", category: "emotion", difficulty: "intermediate" },
-  { verb: "reta", group: 1, present: "retar", past: "retade", supine: "retat", translation: "tease/annoy", category: "emotion", difficulty: "intermediate" }
+  { verb: "reta", group: 1, present: "retar", past: "retade", supine: "retat", translation: "tease/annoy", category: "emotion", difficulty: "intermediate" },
+  { verb: "må", group: 3, present: "mår", past: "mådde", supine: "mått", translation: "feel", category: "emotion", difficulty: "beginner" },
+  { verb: "gry", group: 3, present: "gryr", past: "grydde", supine: "grytt", translation: "dawn", category: "emotion", difficulty: "advanced" }
 ];

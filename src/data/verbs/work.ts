@@ -14,6 +14,8 @@ export const work: VerbData[] = [
   { verb: "fakturera", group: 1, present: "fakturerar", past: "fakturerade", supine: "fakturerat", translation: "invoice", category: "work", difficulty: "intermediate" },
   { verb: "kopiera", group: 1, present: "kopierar", past: "kopierade", supine: "kopierat", translation: "copy", category: "work", difficulty: "beginner" },
   { verb: "scanna", group: 1, present: "scannar", past: "scannade", supine: "scannat", translation: "scan", category: "work", difficulty: "beginner" },
+  { verb: "ske", group: 3, present: "sker", past: "skedde", supine: "skett", translation: "occur", category: "work", difficulty: "intermediate" },
+  { verb: "strö", group: 3, present: "strör", past: "strödde", supine: "strött", translation: "scatter/spread", category: "work", difficulty: "advanced" },
 
   // Management
   { verb: "leda", group: 2, present: "leder", past: "ledde", supine: "lett", translation: "lead", category: "work", difficulty: "advanced" },

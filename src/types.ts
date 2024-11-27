@@ -236,5 +236,7 @@ export interface Template {
     canBeBorrowed?: boolean;
     canBeFound?: boolean;
     canBeSeen?: boolean;
+    canBeLiked?: boolean;
+    natural?: boolean;
   };
 }

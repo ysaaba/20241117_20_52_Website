@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookOpen, Users, Sparkles, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
-import type { VerbData } from '../types';
+// import type { VerbData } from '../types';
 
 interface VerbTableTabsProps {
   selectedGroup: number | 'all';

@@ -35,5 +35,7 @@ export const communication: VerbData[] = [
   { verb: "föreläsa", group: 2, present: "föreläser", past: "föreläste", supine: "föreläst", translation: "lecture", category: "communication", difficulty: "advanced" },
   { verb: "debattera", group: 1, present: "debatterar", past: "debatterade", supine: "debatterat", translation: "debate", category: "communication", difficulty: "advanced" },
   { verb: "intervjua", group: 1, present: "intervjuar", past: "intervjuade", supine: "intervjuat", translation: "interview", category: "communication", difficulty: "intermediate" },
-  { verb: "förhandla", group: 1, present: "förhandlar", past: "förhandlade", supine: "förhandlat", translation: "negotiate", category: "communication", difficulty: "advanced" }
+  { verb: "förhandla", group: 1, present: "förhandlar", past: "förhandlade", supine: "förhandlat", translation: "negotiate", category: "communication", difficulty: "advanced" },
+  { verb: "be", group: 3, present: "ber", past: "bad", supine: "bett", translation: "ask/request", category: "communication", difficulty: "beginner" },
+  { verb: "rå", group: 3, present: "rår", past: "rådde", supine: "rått", translation: "have power over", category: "communication", difficulty: "advanced" }
 ];

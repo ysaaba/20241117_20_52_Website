@@ -41,5 +41,7 @@ export const creation: VerbData[] = [
   { verb: "sy", group: 3, present: "syr", past: "sydde", supine: "sytt", translation: "sew", category: "creation", difficulty: "intermediate" },
   { verb: "sticka", group: 1, present: "stickar", past: "stickade", supine: "stickat", translation: "knit", category: "creation", difficulty: "intermediate" },
   { verb: "virka", group: 1, present: "virkar", past: "virkade", supine: "virkat", translation: "crochet", category: "creation", difficulty: "intermediate" },
-  { verb: "smida", group: 2, present: "smider", past: "smidde", supine: "smitt", translation: "forge", category: "creation", difficulty: "advanced" }
+  { verb: "smida", group: 2, present: "smider", past: "smidde", supine: "smitt", translation: "forge", category: "creation", difficulty: "advanced" },
+  { verb: "så", group: 3, present: "sår", past: "sådde", supine: "sått", translation: "sow", category: "creation", difficulty: "intermediate" },
+  { verb: "slå", group: 3, present: "slår", past: "slog", supine: "slagit", translation: "hit/strike", category: "creation", difficulty: "intermediate" }
 ];

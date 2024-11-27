@@ -27,5 +27,6 @@ export const cognition: VerbData[] = [
   { verb: "välja", group: 2, present: "väljer", past: "valde", supine: "valt", translation: "choose", category: "cognition", difficulty: "intermediate" },
   { verb: "överväga", group: 2, present: "överväger", past: "övervägde", supine: "övervägt", translation: "consider", category: "cognition", difficulty: "advanced" },
   { verb: "resonera", group: 1, present: "resonerar", past: "resonerade", supine: "resonerat", translation: "reason", category: "cognition", difficulty: "advanced" },
-  { verb: "bedöma", group: 2, present: "bedömer", past: "bedömde", supine: "bedömt", translation: "assess", category: "cognition", difficulty: "advanced" }
+  { verb: "bedöma", group: 2, present: "bedömer", past: "bedömde", supine: "bedömt", translation: "assess", category: "cognition", difficulty: "advanced" },
+  { verb: "tro", group: 3, present: "tror", past: "trodde", supine: "trott", translation: "believe", category: "cognition", difficulty: "beginner" }
 ];

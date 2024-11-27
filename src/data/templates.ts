@@ -18,6 +18,8 @@ export interface Template {
     canBeBorrowed?: boolean;
     canBeFound?: boolean;
     canBeSeen?: boolean;
+    canBeLiked?: boolean;
+    natural?: boolean;
   };
 }
 
@@ -94,8 +96,7 @@ export const templates: Record<ArticleType, Template[]> = {
       type: 'indefinite',
       categories: ['nature', 'food'],
       semanticGroups: {
-        canGrow: true,
-        natural: true
+        canGrow: true
       }
     },
     {
@@ -182,7 +183,10 @@ export const templates: Record<ArticleType, Template[]> = {
       translation: "I like the {noun}",
       requiresCountable: false,
       type: 'definite',
-      categories: ['all']
+      categories: ['all'],
+      semanticGroups: {
+        canBeLiked: true
+      }
     },
     {
       template: "NOUN___ passar perfekt här",

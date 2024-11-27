@@ -33,5 +33,8 @@ export const movement: VerbData[] = [
   { verb: "skaka", group: 1, present: "skakar", past: "skakade", supine: "skakat", translation: "shake", category: "movement", difficulty: "beginner" },
   { verb: "vicka", group: 1, present: "vickar", past: "vickade", supine: "vickat", translation: "wiggle", category: "movement", difficulty: "intermediate" },
   { verb: "vingla", group: 1, present: "vinglar", past: "vinglade", supine: "vinglat", translation: "wobble", category: "movement", difficulty: "intermediate" },
-  { verb: "gunga", group: 1, present: "gungar", past: "gungade", supine: "gungat", translation: "swing/rock", category: "movement", difficulty: "beginner" }
+  { verb: "gunga", group: 1, present: "gungar", past: "gungade", supine: "gungat", translation: "swing/rock", category: "movement", difficulty: "beginner" },
+  { verb: "fly", group: 3, present: "flyr", past: "flydde", supine: "flytt", translation: "flee", category: "movement", difficulty: "intermediate" },
+  { verb: "nå", group: 3, present: "når", past: "nådde", supine: "nått", translation: "reach", category: "movement", difficulty: "intermediate" },
+  { verb: "ro", group: 3, present: "ror", past: "rodde", supine: "rott", translation: "row", category: "movement", difficulty: "intermediate" }
 ];

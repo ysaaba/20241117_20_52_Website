@@ -12,7 +12,7 @@ export const daily: VerbData[] = [
   { verb: "andas", group: 1, present: "andas", past: "andades", supine: "andats", translation: "breathe", category: "daily", difficulty: "beginner" },
 
   // Group 3 Daily Activities
-  { verb: "stå", group: 3, present: "står", past: "stod", supine: "stått", translation: "stand", category: "daily", difficulty: "beginner" },
+  { verb: "stå", group: 4, present: "står", past: "stod", supine: "stått", translation: "stand", category: "daily", difficulty: "beginner" },
   { verb: "sitta", group: 2, present: "sitter", past: "satt", supine: "suttit", translation: "sit", category: "daily", difficulty: "beginner" },
   { verb: "ligga", group: 4, present: "ligger", past: "låg", supine: "legat", translation: "lie down", category: "daily", difficulty: "beginner" },
   { verb: "klä", group: 3, present: "klär", past: "klädde", supine: "klätt", translation: "dress", category: "daily", difficulty: "intermediate" },
@@ -20,6 +20,11 @@ export const daily: VerbData[] = [
   { verb: "gå", group: 3, present: "går", past: "gick", supine: "gått", translation: "walk/go", category: "daily", difficulty: "beginner" },
   { verb: "springa", group: 4, present: "springer", past: "sprang", supine: "sprungit", translation: "run", category: "daily", difficulty: "intermediate" },
   { verb: "cykla", group: 1, present: "cyklar", past: "cyklade", supine: "cyklat", translation: "cycle", category: "daily", difficulty: "intermediate" },
+  { verb: "bry", group: 3, present: "bryr", past: "brydde", supine: "brytt", translation: "care", category: "daily", difficulty: "intermediate" },
+  { verb: "nå", group: 3, present: "når", past: "nådde", supine: "nått", translation: "reach", category: "daily", difficulty: "intermediate" },
+  { verb: "ske", group: 3, present: "sker", past: "skedde", supine: "skett", translation: "happen", category: "daily", difficulty: "intermediate" },
+  { verb: "se", group: 3, present: "ser", past: "såg", supine: "sett", translation: "see", category: "daily", difficulty: "beginner" },
+  { verb: "dö", group: 3, present: "dör", past: "dog", supine: "dött", translation: "die", category: "daily", difficulty: "intermediate" },
 
   // Morning Routines
   { verb: "vakna", group: 1, present: "vaknar", past: "vaknade", supine: "vaknat", translation: "wake up", category: "daily", difficulty: "beginner" },
@@ -45,6 +50,5 @@ export const daily: VerbData[] = [
   { verb: "äta middag", group: 4, present: "äter middag", past: "åt middag", supine: "ätit middag", translation: "have dinner", category: "daily", difficulty: "beginner" },
   { verb: "koppla av", group: 1, present: "kopplar av", past: "kopplade av", supine: "kopplat av", translation: "relax", category: "daily", difficulty: "intermediate" },
   { verb: "borsta tänderna", group: 1, present: "borstar tänderna", past: "borstade tänderna", supine: "borstat tänderna", translation: "brush teeth", category: "daily", difficulty: "beginner" },
-  { verb: "ta av sig", group: 4, present: "tar av sig", past: "tog av sig", supine: "tagit av sig", translation: "undress", category: "daily", difficulty: "intermediate" },
-  { verb: "gå och lägga sig", group: 3, present: "går och lägger sig", past: "gick och la sig", supine: "gått och lagt sig", translation: "go to bed", category: "daily", difficulty: "intermediate" }
+  { verb: "ta av sig", group: 4, present: "tar av sig", past: "tog av sig", supine: "tagit av sig", translation: "undress", category: "daily", difficulty: "intermediate" }
 ];

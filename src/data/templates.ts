@@ -1,6 +1,6 @@
 import { NounCategory } from '../types';
 
-type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
+export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
 
 export interface Template {
   template: string;
@@ -122,19 +122,26 @@ export const templates: Record<ArticleType, Template[]> = {
   ],
   definite: [
     {
-      template: "Jag ser NOUN___",
-      translation: "I see the {noun}",
-      requiresCountable: false,
+      template: "NOUN___ är här",
+      translation: "The {noun} is here",
+      requiresCountable: true,
+      type: 'definite',
+      categories: ['all']
+    },
+    {
+      template: "Jag gillar NOUN___",
+      translation: "I like the {noun}",
+      requiresCountable: true,
       type: 'definite',
       categories: ['all'],
       semanticGroups: {
-        canBeSeen: true
+        canBeLiked: true
       }
     },
     {
-      template: "NOUN___ är här",
-      translation: "The {noun} is here",
-      requiresCountable: false,
+      template: "Var är NOUN___?",
+      translation: "Where is the {noun}?",
+      requiresCountable: true,
       type: 'definite',
       categories: ['all']
     },
@@ -146,16 +153,6 @@ export const templates: Record<ArticleType, Template[]> = {
       categories: ['all'],
       semanticGroups: {
         canBeSeen: true
-      }
-    },
-    {
-      template: "Var är NOUN___?",
-      translation: "Where is the {noun}?",
-      requiresCountable: false,
-      type: 'definite',
-      categories: ['all'],
-      semanticGroups: {
-        canBeFound: true
       }
     },
     {
@@ -179,26 +176,30 @@ export const templates: Record<ArticleType, Template[]> = {
       }
     },
     {
-      template: "Jag gillar NOUN___",
-      translation: "I like the {noun}",
-      requiresCountable: false,
-      type: 'definite',
-      categories: ['all'],
-      semanticGroups: {
-        canBeLiked: true
-      }
-    },
-    {
       template: "NOUN___ passar perfekt här",
       translation: "The {noun} fits perfectly here",
       requiresCountable: false,
+      type: 'definite',
+      categories: ['all']
+    },
+    {
+      template: "NOUN___ är min",
+      translation: "The {noun} is mine",
+      requiresCountable: true,
+      type: 'definite',
+      categories: ['all']
+    },
+    {
+      template: "NOUN___ är röd",
+      translation: "The {noun} is red",
+      requiresCountable: true,
       type: 'definite',
       categories: ['all']
     }
   ],
   indefinitePlural: [
     {
-      template: "Jag ser många NOUN",
+      template: "Jag ser många NOUN___",
       translation: "I see many {noun}s",
       requiresCountable: true,
       type: 'indefinitePlural',
@@ -208,52 +209,28 @@ export const templates: Record<ArticleType, Template[]> = {
       }
     },
     {
-      template: "Det finns flera NOUN här",
-      translation: "There are several {noun}s here",
-      requiresCountable: true,
-      type: 'indefinitePlural',
-      categories: ['all'],
-      semanticGroups: {
-        canBeFound: true
-      }
-    },
-    {
-      template: "Vi behöver fler NOUN",
-      translation: "We need more {noun}s",
+      template: "Det finns flera NOUN___",
+      translation: "There are several {noun}s",
       requiresCountable: true,
       type: 'indefinitePlural',
       categories: ['all']
     },
     {
-      template: "De köper NOUN till huset",
-      translation: "They are buying {noun}s for the house",
+      template: "Vi har några NOUN___",
+      translation: "We have some {noun}s",
+      requiresCountable: true,
+      type: 'indefinitePlural',
+      categories: ['all']
+    },
+    {
+      template: "De köpte tre NOUN___",
+      translation: "They bought three {noun}s",
       requiresCountable: true,
       type: 'indefinitePlural',
       categories: ['all'],
       semanticGroups: {
         canBeBought: true
       }
-    },
-    {
-      template: "Det finns inga NOUN kvar",
-      translation: "There are no {noun}s left",
-      requiresCountable: true,
-      type: 'indefinitePlural',
-      categories: ['all']
-    },
-    {
-      template: "Hon älskar NOUN",
-      translation: "She loves {noun}s",
-      requiresCountable: true,
-      type: 'indefinitePlural',
-      categories: ['all']
-    },
-    {
-      template: "Vi har många NOUN i Sverige",
-      translation: "We have many {noun}s in Sweden",
-      requiresCountable: true,
-      type: 'indefinitePlural',
-      categories: ['all']
     }
   ],
   definitePlural: [
@@ -265,13 +242,13 @@ export const templates: Record<ArticleType, Template[]> = {
       categories: ['all']
     },
     {
-      template: "Jag ser NOUN___",
-      translation: "I see the {noun}s",
+      template: "Jag gillar NOUN___",
+      translation: "I like the {noun}s",
       requiresCountable: true,
       type: 'definitePlural',
       categories: ['all'],
       semanticGroups: {
-        canBeSeen: true
+        canBeLiked: true
       }
     },
     {
@@ -279,10 +256,7 @@ export const templates: Record<ArticleType, Template[]> = {
       translation: "Where are the {noun}s?",
       requiresCountable: true,
       type: 'definitePlural',
-      categories: ['all'],
-      semanticGroups: {
-        canBeFound: true
-      }
+      categories: ['all']
     },
     {
       template: "NOUN___ är dyra",
@@ -295,13 +269,6 @@ export const templates: Record<ArticleType, Template[]> = {
       }
     },
     {
-      template: "Jag tycker om NOUN___",
-      translation: "I like the {noun}s",
-      requiresCountable: true,
-      type: 'definitePlural',
-      categories: ['all']
-    },
-    {
       template: "NOUN___ kommer från Sverige",
       translation: "The {noun}s come from Sweden",
       requiresCountable: true,
@@ -311,6 +278,13 @@ export const templates: Record<ArticleType, Template[]> = {
     {
       template: "Vi måste rengöra NOUN___",
       translation: "We must clean the {noun}s",
+      requiresCountable: true,
+      type: 'definitePlural',
+      categories: ['all']
+    },
+    {
+      template: "NOUN___ är röda",
+      translation: "The {noun}s are red",
       requiresCountable: true,
       type: 'definitePlural',
       categories: ['all']

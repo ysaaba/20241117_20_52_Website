@@ -95,6 +95,11 @@ export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'defi
 
 export interface Exercise {
   id: number;
+  type: 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
+  baseForm: string;
+  definiteForm: string;
+  indefinitePluralForm: string;
+  definitePluralForm: string;
   sentence: string;
   correctArticle: string;
   correctSentence: string;

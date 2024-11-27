@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Volume2, CheckCircle2, XCircle } from 'lucide-react';
-import { Exercise } from '../types';
-import { ProgressBar } from './ProgressBar';
-import { useSound } from '../hooks/useSound';
+import { Exercise, ExerciseProgress, ExerciseSummaryItem } from '../types';
 import { ExerciseSummaryView } from './ExerciseSummary';
+import { ExerciseCard } from './ExerciseCard';
+import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface ArticleExerciseProps {
   exercises: Exercise[];
@@ -13,50 +12,69 @@ interface ArticleExerciseProps {
     total: number;
     answeredQuestions: Set<number>;
   };
-  summary: ExerciseSummary[];
+  summary: ExerciseSummaryItem[];
   onUpdateProgress: (exerciseId: number, isCorrect: boolean, answer: string) => void;
-  onComplete?: () => void;
-  onReset?: () => void;
-  isCompleted?: boolean;
+  onComplete: () => void;
+  isCompleted: boolean;
   currentPage: number;
   onPageChange: (page: number) => void;
   totalPages: number;
+  totalExercises: number;
+  onReset?: () => void;
 }
 
-interface ExerciseSummary {
-  exercise: Exercise;
-  userAnswer: string;
-  isCorrect: boolean;
-}
-
-export const ArticleExercise = ({ 
-  exercises, 
+export const ArticleExercise = ({
+  exercises,
   progress,
   summary,
   onUpdateProgress,
-  onComplete, 
-  onReset,
+  onComplete,
   isCompleted,
   currentPage,
   onPageChange,
-  totalPages
+  totalPages,
+  totalExercises,
+  onReset
 }: ArticleExerciseProps) => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const { playSound } = useSound();
+  const [feedback, setFeedback] = useState<Record<number, { isCorrect: boolean | null; mistakes: string[] }>>({});
 
   const handleAnswerChange = (exerciseId: number, value: string) => {
     setAnswers(prev => ({ ...prev, [exerciseId]: value }));
+    setFeedback(prev => ({ ...prev, [exerciseId]: { isCorrect: null, mistakes: [] } }));
   };
 
-  const handleSubmit = (exerciseId: number, correctArticle: string) => {
+  const handleSubmit = (exerciseId: number, correctAnswer: string) => {
     const answer = answers[exerciseId] || '';
-    const isCorrect = answer.toLowerCase() === correctArticle.toLowerCase();
+    const isCorrect = answer.toLowerCase() === correctAnswer.toLowerCase();
     onUpdateProgress(exerciseId, isCorrect, answer);
+    setFeedback(prev => ({
+      ...prev,
+      [exerciseId]: { isCorrect, mistakes: isCorrect ? [] : [correctAnswer] }
+    }));
   };
 
-  const isCorrect = (exerciseId: number, correctArticle: string) => {
-    const answer = answers[exerciseId] || '';
-    return answer.toLowerCase() === correctArticle.toLowerCase();
+  const getCorrectFormKey = (type: Exercise['type']): keyof Pick<Exercise, 'baseForm' | 'definiteForm' | 'indefinitePluralForm' | 'definitePluralForm'> => {
+    switch (type) {
+      case 'indefinite':
+        return 'baseForm';
+      case 'definite':
+        return 'definiteForm';
+      case 'indefinitePlural':
+        return 'indefinitePluralForm';
+      case 'definitePlural':
+        return 'definitePluralForm';
+    }
+  };
+
+  const handleCheckPageAnswers = () => {
+    exercises.forEach(exercise => {
+      const answer = answers[exercise.id] || '';
+      if (answer) {
+        const correctFormKey = getCorrectFormKey(exercise.type);
+        handleSubmit(exercise.id, exercise[correctFormKey]);
+      }
+    });
   };
 
   useEffect(() => {
@@ -65,115 +83,102 @@ export const ArticleExercise = ({
     }
   }, [isCompleted, summary.length]);
 
-  if (isCompleted && summary.length > 0) {
-    return (
-      <ExerciseSummaryView
-        summary={summary}
-        onReset={() => onReset?.()}
-        onNext={onComplete ?? undefined}
-      />
-    );
-  }
+  const isPageComplete = exercises.every(ex => progress.answeredQuestions.has(ex.id));
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <ProgressBar 
-        correct={progress.correct}
-        wrong={progress.wrong}
-        total={progress.total}
-      />
-      
-      <div className="flex items-center justify-between mb-6">
-        <div className="text-sm text-gray-600">
-          Page {currentPage} of {totalPages}
-        </div>
-        <div className="flex gap-2">
-          <button
-            onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded ${
-              currentPage === 1 
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-100 text-blue-600 hover:bg-blue-200'
-            }`}
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded ${
-              currentPage === totalPages 
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-100 text-blue-600 hover:bg-blue-200'
-            }`}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+    <div className="h-full flex flex-col">
+      {isCompleted ? (
+        <ExerciseSummaryView
+          summary={summary}
+          onReset={onReset || (() => {})}
+          onNext={currentPage < totalPages ? () => onPageChange(currentPage + 1) : undefined}
+        />
+      ) : (
+        <div className="flex-1">
+          {/* Progress Bar */}
+          <div className="mb-6 bg-white rounded-xl shadow-md p-6">
+            <div className="flex justify-between text-sm text-gray-600 mb-2">
+              <span>Progress: {progress.answeredQuestions.size} / {totalExercises} exercises</span>
+              <span>Score: {progress.correct} correct, {progress.wrong} incorrect</span>
+            </div>
+            <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-blue-600 transition-all duration-300"
+                style={{ width: `${(progress.answeredQuestions.size / totalExercises) * 100}%` }}
+              />
+            </div>
+          </div>
 
-      <div className="space-y-6">
-        {exercises.map((exercise) => {
-          const isAnswered = progress.answeredQuestions.has(exercise.id);
-          const isAnswerCorrect = isCorrect(exercise.id, exercise.correctArticle);
-          const [beforeInput, afterInput] = exercise.sentence.split('___');
+          {/* Exercise Cards */}
+          <div className="space-y-4">
+            {exercises.map((exercise) => (
+              <ExerciseCard
+                key={exercise.id}
+                exercise={exercise}
+                userAnswer={answers[exercise.id] || ''}
+                feedback={feedback[exercise.id] || { isCorrect: null, mistakes: [] }}
+                onChange={(value) => handleAnswerChange(exercise.id, value)}
+                exerciseType={exercise.type}
+                onSubmit={() => handleSubmit(exercise.id, exercise[getCorrectFormKey(exercise.type)])}
+                isAnswered={progress.answeredQuestions.has(exercise.id)}
+              />
+            ))}
+          </div>
 
-          return (
-            <div key={exercise.id} className="bg-white rounded-lg shadow-sm p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 text-lg">
-                    <span className="text-gray-700">{beforeInput}</span>
-                    <input
-                      type="text"
-                      value={answers[exercise.id] || ''}
-                      onChange={(e) => handleAnswerChange(exercise.id, e.target.value)}
-                      disabled={isAnswered}
-                      className="w-24 px-2 py-1 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      placeholder="en/ett"
-                    />
-                    <span className="text-gray-700">{afterInput}</span>
-                  </div>
-                </div>
+          {/* Pagination and Submit Button */}
+          <div className="flex flex-col gap-4 pt-6 border-t border-gray-200">
+            <div className="flex justify-between items-center">
+              <button
+                onClick={() => onPageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md ${
+                  currentPage === 1
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Previous
+              </button>
+              <span className="text-sm text-gray-600">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() => onPageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md ${
+                  currentPage === totalPages
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Next
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={handleCheckPageAnswers}
+                className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Check Page Answers</span>
+                <CheckCircle2 className="w-5 h-5" />
+              </button>
+
+              {progress.answeredQuestions.size === totalExercises && (
                 <button
-                  onClick={() => playSound(exercise.correctSentence)}
-                  className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
-                  title="Listen to pronunciation"
+                  onClick={onComplete}
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
                 >
-                  <Volume2 className="w-5 h-5" />
+                  <span>Submit Answers</span>
+                  <ArrowRight className="w-5 h-5" />
                 </button>
-                {isAnswered && (
-                  <div className="ml-2">
-                    {isAnswerCorrect ? (
-                      <CheckCircle2 className="w-6 h-6 text-green-500" />
-                    ) : (
-                      <XCircle className="w-6 h-6 text-red-500" />
-                    )}
-                  </div>
-                )}
-              </div>
-
-              <p className="text-sm text-gray-600 italic mb-4">{exercise.translation}</p>
-              
-              {!isAnswered && (
-                <button
-                  onClick={() => handleSubmit(exercise.id, exercise.correctArticle)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-                >
-                  Check Answer
-                </button>
-              )}
-              
-              {isAnswered && !isAnswerCorrect && (
-                <p className="text-sm text-red-600">
-                  Correct answer: {exercise.correctSentence}
-                </p>
               )}
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-}; 
+};

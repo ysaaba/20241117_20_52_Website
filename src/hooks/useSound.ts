@@ -1,13 +1,18 @@
 import { useCallback } from 'react';
-import { useResponsiveVoice } from './useResponsiveVoice';
 
-export function useSound() {
-  const { speak, speaking, initialized } = useResponsiveVoice('Swedish Male');
+export const useSound = () => {
+  const playAudio = useCallback((text: string) => {
+    // Create a new SpeechSynthesisUtterance
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Set Swedish language
+    utterance.lang = 'sv-SE';
+    
+    // Speak the text
+    window.speechSynthesis.speak(utterance);
+  }, []);
 
-  const playSound = useCallback((questionPart: string) => {
-    if (!initialized || speaking) return;
-    speak(questionPart);
-  }, [initialized, speaking, speak]);
-
-  return { playSound, speaking };
-}
+  return {
+    playAudio
+  };
+};

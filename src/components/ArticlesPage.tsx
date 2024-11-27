@@ -23,9 +23,9 @@ interface ExerciseSession {
   currentPage: number;
 }
 
-const EXERCISES_PER_PAGE = 5;
-const PAGES_PER_SESSION = 5;
-const TOTAL_EXERCISES = EXERCISES_PER_PAGE * PAGES_PER_SESSION;
+const EXERCISES_PER_PAGE = 10;
+const TOTAL_PAGES = 3;
+const TOTAL_EXERCISES = EXERCISES_PER_PAGE * TOTAL_PAGES;
 
 const initializeSession = (type: ArticleType): ExerciseSession => {
   console.log('Initializing session for type:', type);
@@ -93,34 +93,43 @@ export default function ArticlesPage() {
   const handleSessionComplete = (tabType: ArticleType) => {
     console.log('Completing session for tab:', tabType);
     setSessions(prev => {
-      // Reset the current session and generate new exercises
-      const newSession = initializeSession(tabType);
+      const currentSession = prev[tabType];
       return {
         ...prev,
-        [tabType]: newSession
+        [tabType]: {
+          ...currentSession,
+          completed: true
+        }
       };
     });
+  };
+
+  const handleNewSession = (tabType: ArticleType) => {
+    console.log('Starting new session for tab:', tabType);
+    setSessions(prev => ({
+      ...prev,
+      [tabType]: initializeSession(tabType)
+    }));
   };
 
   const handleUpdateProgress = (exerciseId: number, isCorrect: boolean, answer: string) => {
     setSessions(prev => {
       const currentSession = prev[selectedTab];
+      const exercise = currentSession.exercises.find(ex => ex.id === exerciseId);
       
-      if (currentSession.progress.answeredQuestions.has(exerciseId)) {
+      if (!exercise || currentSession.progress.answeredQuestions.has(exerciseId)) {
         return prev;
       }
-
-      const exercise = currentSession.exercises.find(ex => ex.id === exerciseId);
-      if (!exercise) return prev;
 
       const newAnsweredQuestions = new Set(currentSession.progress.answeredQuestions);
       newAnsweredQuestions.add(exerciseId);
 
       const newProgress = {
         ...currentSession.progress,
-        correct: isCorrect ? currentSession.progress.correct + 1 : currentSession.progress.correct,
-        wrong: !isCorrect ? currentSession.progress.wrong + 1 : currentSession.progress.wrong,
-        answeredQuestions: newAnsweredQuestions
+        correct: currentSession.progress.correct + (isCorrect ? 1 : 0),
+        wrong: currentSession.progress.wrong + (isCorrect ? 0 : 1),
+        answeredQuestions: newAnsweredQuestions,
+        total: TOTAL_EXERCISES
       };
 
       const newSummary = [
@@ -128,129 +137,89 @@ export default function ArticlesPage() {
         { exercise, userAnswer: answer, isCorrect }
       ];
 
-      const currentPageExercises = currentExercises;
-      const isPageComplete = currentPageExercises.every(ex => 
-        newAnsweredQuestions.has(ex.id)
-      );
-
-      const shouldAdvancePage = isPageComplete && 
-        currentSession.currentPage < PAGES_PER_SESSION;
-
-      const isAllCompleted = newAnsweredQuestions.size === TOTAL_EXERCISES;
-
       return {
         ...prev,
         [selectedTab]: {
           ...currentSession,
           progress: newProgress,
-          summary: newSummary,
-          currentPage: shouldAdvancePage ? currentSession.currentPage + 1 : currentSession.currentPage,
-          completed: isAllCompleted
+          summary: newSummary
         }
       };
     });
-  };
-
-  const handleResetSession = (tabType: ArticleType) => {
-    console.log('Resetting session for tab:', tabType);
-    setSessions(prev => ({
-      ...prev,
-      [tabType]: initializeSession(tabType)
-    }));
   };
 
   const handlePageChange = (page: number) => {
-    setSessions(prev => {
-      const session = prev[selectedTab];
-      const validPage = Math.max(1, Math.min(page, PAGES_PER_SESSION));
-      
-      return {
-        ...prev,
-        [selectedTab]: {
-          ...session,
-          currentPage: validPage
-        }
-      };
-    });
+    setSessions(prev => ({
+      ...prev,
+      [selectedTab]: {
+        ...prev[selectedTab],
+        currentPage: page
+      }
+    }));
   };
 
   const currentSession = sessions[selectedTab];
-  const currentExercises = useMemo(() => {
-    const session = sessions[selectedTab];
-    const startIndex = (session.currentPage - 1) * EXERCISES_PER_PAGE;
-    const endIndex = startIndex + EXERCISES_PER_PAGE;
-    const exercises = session.exercises.slice(startIndex, endIndex);
-    
-    console.log('Current exercises:', {
-      selectedTab,
-      currentPage: session.currentPage,
-      startIndex,
-      endIndex,
-      exercisesLength: exercises.length,
-      exercises
-    });
-    
-    return exercises;
-  }, [sessions, selectedTab]);
-
-  console.log('Current session state:', {
-    selectedTab,
-    currentExercises,
-    totalPages: PAGES_PER_SESSION,
-    currentPage: sessions[selectedTab].currentPage
-  });
+  const startIdx = (currentSession.currentPage - 1) * EXERCISES_PER_PAGE;
+  const currentExercises = currentSession.exercises.slice(startIdx, startIdx + EXERCISES_PER_PAGE);
 
   return (
-    <main className="py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
-            Swedish Articles Practice
-          </h1>
-          <p className="text-gray-600 mb-6">
-            Master Swedish articles and noun forms through interactive exercises
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {tabs.map(tab => {
-              const Icon = tab.icon;
-              const isCompleted = sessions[tab.id as ArticleType].completed;
-              
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabChange(tab.id as ArticleType)}
-                  className={`flex flex-col items-center p-4 rounded-lg transition-colors relative ${
-                    selectedTab === tab.id
-                      ? 'bg-blue-50 text-blue-700'
-                      : 'hover:bg-gray-50 text-gray-700'
-                  }`}
-                >
-                  {isCompleted && (
-                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full" />
-                  )}
-                  <Icon className="w-6 h-6 mb-2" />
-                  <span className="font-medium text-sm">{tab.title}</span>
-                  <span className="text-xs text-gray-500">{tab.description}</span>
-                </button>
-              );
-            })}
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="container mx-auto px-4 py-8 flex-1 flex flex-col">
+        {/* Exercise Area with Tabs */}
+        <div className="max-w-3xl mx-auto w-full flex-1 flex flex-col">
+          {/* Tabs */}
+          <div className="mb-8">
+            <div className="bg-white rounded-xl shadow-md">
+              <nav className="flex" aria-label="Tabs">
+                {tabs.map((tab) => {
+                  const isActive = tab.id === selectedTab;
+                  const Icon = tab.icon;
+                  const isCompleted = sessions[tab.id as ArticleType].completed;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => handleTabChange(tab.id as ArticleType)}
+                      className={`
+                        flex items-center justify-center gap-2 py-4 px-1 flex-1 font-medium text-sm
+                        ${isActive
+                          ? 'text-blue-600 border-b-2 border-blue-500'
+                          : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                        }
+                        ${tab.id === 'indefinite' ? 'rounded-l-xl' : ''}
+                        ${tab.id === 'definitePlural' ? 'rounded-r-xl' : ''}
+                        transition-colors duration-200 relative
+                      `}
+                    >
+                      <Icon className="w-5 h-5" />
+                      <span>{tab.title}</span>
+                      {isCompleted && (
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full" />
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
           </div>
-        </header>
 
-        <ArticleExercise 
-          exercises={currentExercises}
-          progress={sessions[selectedTab].progress}
-          summary={sessions[selectedTab].summary}
-          onUpdateProgress={handleUpdateProgress}
-          onComplete={() => handleSessionComplete(selectedTab)}
-          onReset={() => handleResetSession(selectedTab)}
-          isCompleted={sessions[selectedTab].completed}
-          currentPage={sessions[selectedTab].currentPage}
-          onPageChange={handlePageChange}
-          totalPages={PAGES_PER_SESSION}
-        />
+          {/* Main Content Area */}
+          <div className="flex-1 flex flex-col">
+            <ArticleExercise
+              exercises={currentExercises}
+              progress={currentSession.progress}
+              summary={currentSession.summary}
+              onUpdateProgress={handleUpdateProgress}
+              onComplete={() => handleSessionComplete(selectedTab)}
+              isCompleted={currentSession.completed}
+              currentPage={currentSession.currentPage}
+              onPageChange={handlePageChange}
+              totalPages={TOTAL_PAGES}
+              totalExercises={TOTAL_EXERCISES}
+              onReset={() => handleNewSession(selectedTab)}
+            />
+          </div>
+        </div>
       </div>
-    </main>
+    </div>
   );
-} 
+}

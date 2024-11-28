@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Book, RefreshCw, Sparkles, Table2 } from 'lucide-react';
 import { VerbExerciseCard } from './VerbExerciseCard';
 import { VerbTable } from './VerbTable';
-import { useVerbExercises } from '../hooks/useVerbExercises';
+import { useVerbExercises } from '../../hooks/useVerbExercises';
 import { VolumeUp } from '@mui/icons-material';
 
 declare global {

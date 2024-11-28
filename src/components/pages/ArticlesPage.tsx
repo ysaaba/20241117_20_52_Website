@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { BookOpen, GraduationCap, Users, Building } from 'lucide-react';
-import { ArticleExercise } from './ArticleExercise';
-import { generateExercises } from '../data/articleExercises';
-import type { ArticleType, Exercise } from '../types';
+import { ArticleExercise } from '../features/ArticleExercise';
+import { generateExercises } from '../../data/articleExercises';
+import type { ArticleType, Exercise, ExerciseSummaryItem } from '../../types';
 
 interface ExerciseSummary {
   exercise: Exercise;

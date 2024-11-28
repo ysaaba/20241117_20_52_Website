@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { useSound } from '../../hooks/useSound';
+import { useSound } from '../../../hooks/useSound';
 import { VerbTableTabs } from '../VerbTableTabs';
 import { TableHeader } from './TableHeader';
 import { TableFilters } from './TableFilters';
 import { VerbRow } from './VerbRow';
 import { TablePagination } from './TablePagination';
-import { verbs } from '../../data/verbs';
-import type { VerbData } from '../../types';
+import { verbs } from '../../../data/verbs';
+import type { VerbData } from '../../../types';
 
 interface VerbTableProps {
   onReset: () => void;

@@ -1,45 +1,45 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { adverbs } from '../data/adverbs';
-import { useSound } from '../hooks/useSound';
-import type { AdverbCategory, AdverbData } from '../types';
+import { adjectives } from '../../data/adjectives';
+import { useSound } from '../../hooks/useSound';
+import type { AdjectiveCategory, AdjectiveData } from '../../types';
 
-const ADVERBS_PER_PAGE = 10;
+const ADJECTIVES_PER_PAGE = 10;
 
-export default function AdverbsPage() {
+export default function AdjectivesPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<AdverbCategory | 'all'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<AdjectiveCategory | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [showExamples, setShowExamples] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
   const { playSound } = useSound();
 
-  const categories = Array.from(new Set(adverbs.map(adv => adv.category)));
+  const categories = Array.from(new Set(adjectives.map(adj => adj.category)));
 
-  const filteredAdverbs = useMemo(() => {
-    return adverbs
+  const filteredAdjectives = useMemo(() => {
+    return adjectives
       .slice()
-      .sort((a, b) => a.adverb.localeCompare(b.adverb))
-      .filter((adv) => {
+      .sort((a, b) => a.adjective.localeCompare(b.adjective))
+      .filter((adj) => {
         const matchesSearch =
-          adv.adverb.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          adv.translation.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesCategory = selectedCategory === 'all' || adv.category === selectedCategory;
-        const matchesDifficulty = selectedDifficulty === 'all' || adv.difficulty === selectedDifficulty;
+          adj.adjective.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          adj.translation.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCategory = selectedCategory === 'all' || adj.category === selectedCategory;
+        const matchesDifficulty = selectedDifficulty === 'all' || adj.difficulty === selectedDifficulty;
         return matchesSearch && matchesCategory && matchesDifficulty;
       });
   }, [searchQuery, selectedCategory, selectedDifficulty]);
 
-  const totalPages = Math.ceil(filteredAdverbs.length / ADVERBS_PER_PAGE);
-  const currentAdverbs = filteredAdverbs.slice(
-    (currentPage - 1) * ADVERBS_PER_PAGE,
-    currentPage * ADVERBS_PER_PAGE
+  const totalPages = Math.ceil(filteredAdjectives.length / ADJECTIVES_PER_PAGE);
+  const currentAdjectives = filteredAdjectives.slice(
+    (currentPage - 1) * ADJECTIVES_PER_PAGE,
+    currentPage * ADJECTIVES_PER_PAGE
   );
 
-  const toggleExample = (adverb: string) => {
+  const toggleExample = (adjective: string) => {
     setShowExamples(prev => ({
       ...prev,
-      [adverb]: !prev[adverb]
+      [adjective]: !prev[adjective]
     }));
   };
 
@@ -54,10 +54,10 @@ export default function AdverbsPage() {
     <div className="py-8">
       <div className="max-w-4xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Swedish Adverbs</h1>
-          <p className="text-gray-600">Learn and practice Swedish adverbs with examples and pronunciation</p>
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Swedish Adjectives</h1>
+          <p className="text-gray-600">Learn and practice Swedish adjectives with examples and pronunciation</p>
           <p className="text-sm text-gray-500 mt-2">
-            Showing {currentAdverbs.length} of {filteredAdverbs.length} adverbs
+            Showing {currentAdjectives.length} of {filteredAdjectives.length} adjectives
           </p>
         </header>
 
@@ -66,7 +66,7 @@ export default function AdverbsPage() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
               type="text"
-              placeholder="Search adverbs..."
+              placeholder="Search adjectives..."
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -94,7 +94,7 @@ export default function AdverbsPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => {
-                  setSelectedCategory(e.target.value as AdverbCategory | 'all');
+                  setSelectedCategory(e.target.value as AdjectiveCategory | 'all');
                   setCurrentPage(1);
                 }}
                 className="w-full appearance-none pr-8 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -154,56 +154,84 @@ export default function AdverbsPage() {
         </div>
 
         <div className="grid gap-4">
-          {currentAdverbs.map((adv) => (
-            <div key={adv.adverb} className="bg-white rounded-lg shadow-md p-6">
+          {currentAdjectives.map((adj) => (
+            <div key={adj.adjective} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-800">{adv.adverb}</h3>
+                    <h3 className="text-xl font-semibold text-gray-800">{adj.adjective}</h3>
                     <button
-                      onClick={() => playSound(adv.adverb)}
+                      onClick={() => playSound(adj.adjective)}
                       className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
                       title="Listen to pronunciation"
                     >
                       <Volume2 className="w-5 h-5" />
                     </button>
                   </div>
-                  <p className="text-gray-600 italic mb-3">{adv.translation}</p>
+                  <p className="text-gray-600 italic mb-3">{adj.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    adv.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                    adv.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                    adj.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
+                    adj.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-red-100 text-red-800'
                   }`}>
-                    {adv.difficulty}
+                    {adj.difficulty}
                   </span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
-                    {adv.category}
+                    {adj.category}
                   </span>
                 </div>
               </div>
 
               <div className="mt-4">
                 <button
-                  onClick={() => toggleExample(adv.adverb)}
+                  onClick={() => toggleExample(adj.adjective)}
                   className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   <BookOpen className="w-4 h-4" />
-                  {showExamples[adv.adverb] ? 'Hide Details' : 'Show Details'}
+                  {showExamples[adj.adjective] ? 'Hide Details' : 'Show Details'}
                 </button>
 
-                {showExamples[adv.adverb] && (
+                {showExamples[adj.adjective] && (
                   <div className="mt-4 space-y-4">
-                    <div className="grid gap-4 text-sm">
+                    <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <h4 className="font-medium text-gray-700 mb-2">Example Usage</h4>
-                        <div className="space-y-2">
-                          <p className="text-blue-800">{adv.example}</p>
-                          <p className="text-gray-600 italic">{adv.exampleTranslation}</p>
-                        </div>
+                        <h4 className="font-medium text-gray-700 mb-2">Forms</h4>
+                        <ul className="space-y-1">
+                          <li><span className="text-gray-600">Base:</span> {adj.forms.base}</li>
+                          <li><span className="text-gray-600">Definite:</span> {adj.forms.definite}</li>
+                          <li><span className="text-gray-600">Plural:</span> {adj.forms.plural}</li>
+                          <li><span className="text-gray-600">Comparative:</span> {adj.forms.comparative}</li>
+                          <li><span className="text-gray-600">Superlative:</span> {adj.forms.superlative}</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-700 mb-2">Examples</h4>
+                        {Object.entries(adj.examples).map(([form, example]) => (
+                          <div key={form} className="mb-2">
+                            <p className="text-blue-800">{example.swedish}</p>
+                            <p className="text-gray-600 italic">{example.english}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
+                    {(adj.synonym || adj.antonym) && (
+                      <div className="pt-4 border-t">
+                        {adj.synonym && (
+                          <p className="text-sm">
+                            <span className="text-gray-600">Synonyms:</span>{' '}
+                            {adj.synonym.join(', ')}
+                          </p>
+                        )}
+                        {adj.antonym && (
+                          <p className="text-sm">
+                            <span className="text-gray-600">Antonym:</span>{' '}
+                            {adj.antonym}
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

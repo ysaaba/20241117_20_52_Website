@@ -1,74 +1,45 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X, GraduationCap, Users, Building } from 'lucide-react';
-import { commonNouns } from '../data/nouns';
-import { useSound } from '../hooks/useSound';
-import type { NounCategory } from '../types';
+import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { adverbs } from '../../data/adverbs';
+import { useSound } from '../../hooks/useSound';
+import type { AdverbCategory, AdverbData } from '../../types';
 
-type NounFormType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
+const ADVERBS_PER_PAGE = 10;
 
-const NOUNS_PER_PAGE = 10;
-
-const tabs = [
-  {
-    id: 'indefinite',
-    title: 'Indefinite Articles',
-    description: 'Practice using en/ett',
-    icon: BookOpen
-  },
-  {
-    id: 'definite',
-    title: 'Definite Articles',
-    description: 'Practice using -en/-et',
-    icon: GraduationCap
-  },
-  {
-    id: 'indefinitePlural',
-    title: 'Plural Indefinite',
-    description: 'Practice using -ar/-er/-or',
-    icon: Users
-  },
-  {
-    id: 'definitePlural',
-    title: 'Definite Plural',
-    description: 'Practice using -arna/-erna',
-    icon: Building
-  }
-];
-
-export default function NounsPage() {
+export default function AdverbsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<AdverbCategory | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [showExamples, setShowExamples] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
   const { playSound } = useSound();
 
-  const categories = Array.from(new Set(commonNouns.map(noun => noun.category)));
+  const categories = Array.from(new Set(adverbs.map(adv => adv.category)));
 
-  const filteredNouns = useMemo(() => {
-    return commonNouns
+  const filteredAdverbs = useMemo(() => {
+    return adverbs
       .slice()
-      .sort((a, b) => a.noun.localeCompare(b.noun))
-      .filter(noun => {
-        const matchesCategory = selectedCategory === 'all' || noun.category === selectedCategory;
-        const matchesDifficulty = selectedDifficulty === 'all' || noun.difficulty === selectedDifficulty;
-        const matchesSearch = searchQuery === '' || 
-          noun.noun.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          noun.translation.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesDifficulty && matchesSearch;
+      .sort((a, b) => a.adverb.localeCompare(b.adverb))
+      .filter((adv) => {
+        const matchesSearch =
+          adv.adverb.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          adv.translation.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCategory = selectedCategory === 'all' || adv.category === selectedCategory;
+        const matchesDifficulty = selectedDifficulty === 'all' || adv.difficulty === selectedDifficulty;
+        return matchesSearch && matchesCategory && matchesDifficulty;
       });
-  }, [selectedCategory, selectedDifficulty, searchQuery]);
+  }, [searchQuery, selectedCategory, selectedDifficulty]);
 
-  const totalPages = Math.ceil(filteredNouns.length / NOUNS_PER_PAGE);
-  const currentNouns = filteredNouns.slice(
-    (currentPage - 1) * NOUNS_PER_PAGE,
-    currentPage * NOUNS_PER_PAGE
+  const totalPages = Math.ceil(filteredAdverbs.length / ADVERBS_PER_PAGE);
+  const currentAdverbs = filteredAdverbs.slice(
+    (currentPage - 1) * ADVERBS_PER_PAGE,
+    currentPage * ADVERBS_PER_PAGE
   );
 
-  const toggleExample = (noun: string) => {
+  const toggleExample = (adverb: string) => {
     setShowExamples(prev => ({
       ...prev,
-      [noun]: !prev[noun]
+      [adverb]: !prev[adverb]
     }));
   };
 
@@ -83,10 +54,10 @@ export default function NounsPage() {
     <div className="py-8">
       <div className="max-w-4xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Swedish Nouns</h1>
-          <p className="text-gray-600">Learn and practice Swedish nouns with their articles and forms</p>
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Swedish Adverbs</h1>
+          <p className="text-gray-600">Learn and practice Swedish adverbs with examples and pronunciation</p>
           <p className="text-sm text-gray-500 mt-2">
-            Showing {currentNouns.length} of {filteredNouns.length} nouns
+            Showing {currentAdverbs.length} of {filteredAdverbs.length} adverbs
           </p>
         </header>
 
@@ -95,7 +66,7 @@ export default function NounsPage() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
               type="text"
-              placeholder="Search nouns..."
+              placeholder="Search adverbs..."
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -123,7 +94,7 @@ export default function NounsPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => {
-                  setSelectedCategory(e.target.value as NounCategory | 'all');
+                  setSelectedCategory(e.target.value as AdverbCategory | 'all');
                   setCurrentPage(1);
                 }}
                 className="w-full appearance-none pr-8 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -182,69 +153,55 @@ export default function NounsPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
-          {currentNouns.map((noun, index) => (
-            <div
-              key={`${noun.noun}-${noun.category}-${noun.translation}-${index}`}
-              className="bg-white rounded-lg shadow-md p-6 space-y-4"
-            >
+        <div className="grid gap-4">
+          {currentAdverbs.map((adv) => (
+            <div key={adv.adverb} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-800">{noun.noun}</h3>
+                    <h3 className="text-xl font-semibold text-gray-800">{adv.adverb}</h3>
                     <button
-                      onClick={() => playSound(noun.noun)}
+                      onClick={() => playSound(adv.adverb)}
                       className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
                       title="Listen to pronunciation"
                     >
                       <Volume2 className="w-5 h-5" />
                     </button>
                   </div>
-                  <p className="text-gray-600 italic mb-3">{noun.translation}</p>
+                  <p className="text-gray-600 italic mb-3">{adv.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    noun.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                    noun.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                    adv.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
+                    adv.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-red-100 text-red-800'
                   }`}>
-                    {noun.difficulty}
+                    {adv.difficulty}
                   </span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
-                    {noun.category}
+                    {adv.category}
                   </span>
                 </div>
               </div>
 
               <div className="mt-4">
                 <button
-                  onClick={() => toggleExample(noun.noun)}
+                  onClick={() => toggleExample(adv.adverb)}
                   className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   <BookOpen className="w-4 h-4" />
-                  {showExamples[noun.noun] ? 'Hide Details' : 'Show Details'}
+                  {showExamples[adv.adverb] ? 'Hide Details' : 'Show Details'}
                 </button>
 
-                {showExamples[noun.noun] && (
+                {showExamples[adv.adverb] && (
                   <div className="mt-4 space-y-4">
-                    <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div className="grid gap-4 text-sm">
                       <div>
-                        <h4 className="font-medium text-gray-700 mb-2">Forms</h4>
-                        <ul className="space-y-1">
-                          <li><span className="text-gray-600">Indefinite:</span> {noun.forms.indefinite}</li>
-                          <li><span className="text-gray-600">Definite:</span> {noun.forms.definite}</li>
-                          <li><span className="text-gray-600">Indefinite Plural:</span> {noun.forms.indefinitePlural}</li>
-                          <li><span className="text-gray-600">Definite Plural:</span> {noun.forms.definitePlural}</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-700 mb-2">Examples</h4>
-                        {Object.entries(noun.examples).map(([form, example]) => (
-                          <div key={form} className="mb-2">
-                            <p className="text-blue-800">{example.swedish}</p>
-                            <p className="text-gray-600 italic">{example.english}</p>
-                          </div>
-                        ))}
+                        <h4 className="font-medium text-gray-700 mb-2">Example Usage</h4>
+                        <div className="space-y-2">
+                          <p className="text-blue-800">{adv.example}</p>
+                          <p className="text-gray-600 italic">{adv.exampleTranslation}</p>
+                        </div>
                       </div>
                     </div>
                   </div>

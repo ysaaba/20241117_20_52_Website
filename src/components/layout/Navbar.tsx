@@ -14,7 +14,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { ExerciseType } from '../types';
+import type { ExerciseType } from '../../types';
 
 interface NavbarProps {
   selectedType: ExerciseType;

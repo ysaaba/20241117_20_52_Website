@@ -1,4 +1,4 @@
-import type { VerbData } from '../../types';
+import type { VerbData } from '../../types/verbs';
 
 export const emotion: VerbData[] = [
   // Basic Emotions

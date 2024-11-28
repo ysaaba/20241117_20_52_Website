@@ -1,20 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import ArticlesPage from './components/ArticlesPage';
-import VerbExercises from './components/VerbExercises';
-import AdjectivesPage from './components/AdjectivesPage';
-import NounsPage from './components/NounsPage';
-import LandingPage from './components/LandingPage';
-import QuizPage from './components/QuizPage';
-import StoriesPage from './components/StoriesPage';
-import StoryView from './components/StoryView';
-import Navbar from './components/Navbar';
+import ArticlesPage from './components/pages/ArticlesPage';
+import VerbExercises from './components/features/VerbExercises';
+import AdjectivesPage from './components/pages/AdjectivesPage';
+import NounsPage from './components/pages/NounsPage';
+import LandingPage from './components/pages/LandingPage';
+import QuizPage from './components/pages/QuizPage';
+import StoriesPage from './components/pages/StoriesPage';
+import StoryView from './components/pages/StoryView';
+import Navbar from './components/layout/Navbar';
 import type { ExerciseType } from './types';
 import useRouteState from './hooks/useRouteState';
-import AdverbsPage from './components/AdverbsPage';
-import GrammarVisualizerPage from './components/GrammarVisualizerPage';
-import GrammarAnimation from './components/GrammarAnimation';
-import GrammarPractice from './components/GrammarPractice';
+import AdverbsPage from './components/pages/AdverbsPage';
+import GrammarVisualizerPage from './components/pages/GrammarVisualizerPage';
+import GrammarAnimation from './components/features/GrammarAnimation';
+import GrammarPractice from './components/features/GrammarPractice';
 
 // MainContent component to handle the routing and content display
 const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type: ExerciseType) => void }> = ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Volume2 } from 'lucide-react';
-import type { VerbData } from '../../types';
-import { getContextualExample } from '../../utils/getContextualExample';
+import type { VerbData } from '../../../types';
+import { getContextualExample } from '../../../utils/getContextualExample';
 
 interface ExampleSentencesProps {
   verb: VerbData;

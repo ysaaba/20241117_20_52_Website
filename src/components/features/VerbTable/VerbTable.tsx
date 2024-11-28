@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { CheckCircle2, XCircle, Volume2, ChevronDown, ChevronUp, Search, RefreshCw, Filter } from 'lucide-react';
-import { useSound } from '../../hooks/useSound';
+import React, { useState } from 'react';
+import { VerbRow } from './VerbRow';
+import { useSound } from '../../../hooks/useSound';
 import { VerbTableTabs } from '../VerbTableTabs';
-import type { VerbData } from '../../types';
-import { verbs } from '../../data/verbs';
+import type { VerbData } from '../../../types';
+import { verbs } from '../../../data/verbs';
 
 interface VerbTableProps {
   onReset: () => void;
@@ -19,7 +19,7 @@ export function VerbTable({ onReset }: VerbTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedVerbs, setExpandedVerbs] = useState<Set<string>>(new Set());
   const { playAudio } = useSound();
-  const inputRefs = useRef<Record<string, HTMLInputElement>>({});
+  const inputRefs = useState<Record<string, HTMLInputElement>>({});
   const [isValidating, setIsValidating] = useState(false);
   const verbsPerPage = 10;
 

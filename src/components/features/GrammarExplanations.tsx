@@ -242,43 +242,212 @@ const grammarRules: GrammarRule[] = [
     ]
   },
   {
-    id: 'prepositions',
+    id: 'prepositions-location',
     category: 'Prepositions',
-    title: 'Common Prepositions and Their Usage',
+    title: '1. Location Prepositions (På, I, Vid)',
     level: 'beginner',
-    explanation: 'Swedish prepositions indicate relationships between words in a sentence. They can express location, time, movement, and other relationships.',
+    explanation: 'Location prepositions in Swedish indicate where something or someone is. The most common ones are "på" (on/at) and "i" (in). The choice between them follows specific patterns that often differ from English.',
     examples: [
       {
         swedish: 'Boken ligger på bordet',
-        english: 'The book is (lying) on the table',
-        notes: 'på = on (location)'
+        english: 'The book is on the table',
+        notes: 'på = on (for surfaces)'
       },
       {
-        swedish: 'Vi ses i skolan',
-        english: 'We\'ll see each other at school',
-        notes: 'i = in/at (location)'
+        swedish: 'Kläderna är i lådan',
+        english: 'The clothes are in the drawer',
+        notes: 'i = in (for containers/enclosed spaces)'
       },
       {
-        swedish: 'Hon åker till Stockholm',
-        english: 'She goes to Stockholm',
-        notes: 'till = to (direction)'
+        swedish: 'Tavlan hänger på väggen',
+        english: 'The painting hangs on the wall',
+        notes: 'på = on (for vertical surfaces)'
       },
       {
-        swedish: 'Jag pratar med min vän',
-        english: 'I\'m talking with my friend',
-        notes: 'med = with (accompaniment)'
+        swedish: 'Han bor i Stockholm',
+        english: 'He lives in Stockholm',
+        notes: 'i = in (for cities)'
+      },
+      {
+        swedish: 'Hon bor på Kungsgatan',
+        english: 'She lives on Kungsgatan',
+        notes: 'på = on (for streets)'
       }
     ],
     additionalNotes: [
-      'Most common prepositions: i (in), på (on), till (to), från (from), med (with), av (of/by)',
-      'Same preposition can have multiple meanings',
-      'Some verbs require specific prepositions',
-      'Prepositions often differ from English equivalents'
+      'Use på for:',
+      '- Surfaces (bordet, golvet)',
+      '- Streets (Kungsgatan)',
+      '- Islands (Gotland)',
+      '- Some institutions (universitet, sjukhuset)',
+      
+      'Use i for:',
+      '- Enclosed spaces (rummet, huset)',
+      '- Cities and countries (Stockholm, Sverige)',
+      '- Containers (lådan, väskan)',
+      
+      'Use vid/bredvid for:',
+      '- Proximity ("by/near")',
+      '- Next to something'
     ],
     commonMistakes: [
-      'Direct translation from English prepositions',
-      'Wrong preposition with time expressions',
-      'Forgetting required prepositions with certain verbs'
+      'Using i instead of på for streets (wrong: *i Kungsgatan)',
+      'Using på instead of i for cities (wrong: *på Stockholm)',
+      'Forgetting to use på with islands (should be: på Gotland)',
+      'Using wrong preposition with buildings/institutions'
+    ]
+  },
+  {
+    id: 'prepositions-movement',
+    category: 'Prepositions',
+    title: '2. Movement Prepositions (Till, Från, Genom)',
+    level: 'beginner',
+    explanation: 'Movement prepositions show direction and motion. They indicate where something or someone is moving to, from, or through.',
+    examples: [
+      {
+        swedish: 'Vi går till parken',
+        english: 'We are going to the park',
+        notes: 'till = to (direction towards)'
+      },
+      {
+        swedish: 'Han springer från huset',
+        english: 'He runs from the house',
+        notes: 'från = from (direction away)'
+      },
+      {
+        swedish: 'De åker genom tunneln',
+        english: 'They drive through the tunnel',
+        notes: 'genom = through'
+      },
+      {
+        swedish: 'Hon går förbi affären',
+        english: 'She walks past the store',
+        notes: 'förbi = past'
+      }
+    ],
+    additionalNotes: [
+      'Common movement prepositions:',
+      '- till: to (destination)',
+      '- från: from (origin)',
+      '- genom/igenom: through',
+      '- förbi: past',
+      '- mot: towards',
+      '- över: across/over',
+      
+      'Special cases:',
+      '- Use till for destinations',
+      '- Use från for starting points',
+      '- genom can be either genom or igenom'
+    ],
+    commonMistakes: [
+      'Using i or på instead of till for movement',
+      'Forgetting the preposition with motion verbs',
+      'Using wrong preposition with transportation (åka med buss, not *åka i buss)'
+    ]
+  },
+  {
+    id: 'prepositions-time',
+    category: 'Prepositions',
+    title: '3. Time Prepositions (På, I, Om)',
+    level: 'beginner',
+    explanation: 'Time prepositions in Swedish follow specific patterns depending on whether you are talking about days, months, years, or general time expressions.',
+    examples: [
+      {
+        swedish: 'Vi ses på måndag',
+        english: 'See you on Monday',
+        notes: 'på = on (for days)'
+      },
+      {
+        swedish: 'Han kommer i december',
+        english: 'He comes in December',
+        notes: 'i = in (for months)'
+      },
+      {
+        swedish: 'Mötet börjar om en timme',
+        english: 'The meeting starts in an hour',
+        notes: 'om = in (future time)'
+      },
+      {
+        swedish: 'De träffades under sommaren',
+        english: 'They met during the summer',
+        notes: 'under = during'
+      }
+    ],
+    additionalNotes: [
+      'Use på for:',
+      '- Days of the week (på måndag)',
+      '- Times of day (på morgonen)',
+      '- Dates (på fredag den 13:e)',
+      
+      'Use i for:',
+      '- Months (i december)',
+      '- Years (i 2024)',
+      '- Seasons (i sommar - when future)',
+      
+      'Use om for:',
+      '- Future time (om en timme)',
+      '- Regular intervals (om dagarna)',
+      
+      'Use under for:',
+      '- Duration (under dagen)',
+      '- Past events (under sommaren)'
+    ],
+    commonMistakes: [
+      'Using i instead of på for days',
+      'Using på instead of i for months',
+      'Confusing om and i for future expressions',
+      'Forgetting prepositions in time expressions'
+    ]
+  },
+  {
+    id: 'prepositions-verb-combinations',
+    category: 'Prepositions',
+    title: '4. Common Verb + Preposition Combinations',
+    level: 'beginner',
+    explanation: 'Many Swedish verbs require specific prepositions that might differ from their English counterparts. These combinations often need to be memorized.',
+    examples: [
+      {
+        swedish: 'Jag lyssnar på musik',
+        english: 'I listen to music',
+        notes: 'lyssna på = listen to'
+      },
+      {
+        swedish: 'Hon tänker på sommaren',
+        english: 'She thinks about summer',
+        notes: 'tänka på = think about'
+      },
+      {
+        swedish: 'Vi pratar om vädret',
+        english: 'We talk about the weather',
+        notes: 'prata om = talk about'
+      },
+      {
+        swedish: 'De väntar på bussen',
+        english: 'They wait for the bus',
+        notes: 'vänta på = wait for'
+      }
+    ],
+    additionalNotes: [
+      'Common combinations:',
+      '- tänka på (think about)',
+      '- prata om (talk about)',
+      '- titta på (look at)',
+      '- lyssna på (listen to)',
+      '- vänta på (wait for)',
+      '- bry sig om (care about)',
+      '- tro på (believe in)',
+      '- skratta åt (laugh at)',
+      
+      'Tips for learning:',
+      '- Learn verbs together with their prepositions',
+      '- Practice with common phrases',
+      '- Notice patterns (many verbs use på)'
+    ],
+    commonMistakes: [
+      'Omitting required prepositions',
+      'Using English preposition patterns',
+      'Mixing up om and på with different verbs',
+      'Forgetting that some verbs need no preposition in Swedish'
     ]
   },
   {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { BookOpen, Users, Sparkles, Zap } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { Book, Table2, Sparkles } from 'lucide-react';
+import { cn } from '../../lib/utils';
 // import type { VerbData } from '../types';
 
 interface VerbTableTabsProps {
@@ -11,11 +11,11 @@ interface VerbTableTabsProps {
 
 export function VerbTableTabs({ selectedGroup, onSelectGroup, verbCounts }: VerbTableTabsProps) {
   const tabs = [
-    { id: 'all', label: 'All Verbs', icon: BookOpen },
-    { id: 1, label: 'Group 1 (-ar)', icon: Users, description: 'Regular -ar verbs' },
+    { id: 'all', label: 'All Verbs', icon: Book },
+    { id: 1, label: 'Group 1 (-ar)', icon: Table2, description: 'Regular -ar verbs' },
     { id: 2, label: 'Group 2 (-er)', icon: Sparkles, description: 'Regular -er verbs' },
-    { id: 3, label: 'Group 3', icon: Zap, description: 'Short vowel verbs' },
-    { id: 4, label: 'Group 4', icon: Zap, description: 'Strong/Irregular verbs' },
+    { id: 3, label: 'Group 3', icon: Sparkles, description: 'Short vowel verbs' },
+    { id: 4, label: 'Group 4', icon: Sparkles, description: 'Strong/Irregular verbs' },
   ];
 
   return (

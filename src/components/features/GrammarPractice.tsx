@@ -458,31 +458,33 @@ const GrammarPractice: React.FC = () => {
 
                           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                             {currentQuestion.options.map((option) => (
-                              <button
+                              <div
                                 key={option}
-                                onClick={() => handleAnswerSelect(option)}
-                                disabled={showFeedback}
                                 className={`${
                                   selectedAnswer === option
                                     ? option === currentQuestion.correctAnswer
                                       ? 'bg-green-100 text-green-700 ring-green-700'
                                       : 'bg-red-100 text-red-700 ring-red-700'
                                     : 'bg-white text-gray-900 ring-gray-300'
-                                } relative rounded-lg px-6 py-4 shadow-sm ring-1 ring-inset hover:bg-gray-50`}
+                                } relative rounded-lg px-6 py-4 shadow-sm ring-1 ring-inset hover:bg-gray-50 flex items-center justify-between`}
                               >
-                                <div className="flex items-center justify-between">
+                                <button
+                                  onClick={() => handleAnswerSelect(option)}
+                                  disabled={showFeedback}
+                                  className="flex-1 text-left"
+                                >
                                   <span>{option}</span>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleSpeak(option);
-                                    }}
-                                    className="opacity-0 group-hover:opacity-100 p-1 rounded-full hover:bg-gray-200 transition-opacity"
-                                  >
-                                    <VolumeUp className="text-gray-600" />
-                                  </button>
+                                </button>
+                                <div
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSpeak(option);
+                                  }}
+                                  className="opacity-0 group-hover:opacity-100 p-1 rounded-full hover:bg-gray-200 transition-opacity cursor-pointer"
+                                >
+                                  <VolumeUp className="text-gray-600" />
                                 </div>
-                              </button>
+                              </div>
                             ))}
                           </div>
 

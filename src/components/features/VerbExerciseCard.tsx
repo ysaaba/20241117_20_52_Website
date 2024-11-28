@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, XCircle } from 'lucide-react';
-import type { VerbData } from '../types';
+import type { VerbData } from '../../types';
 
 interface VerbExerciseCardProps {
   verb: VerbData;

@@ -1,4 +1,4 @@
-import { NounCategory } from '../types';
+import { NounCategory } from '../types/nouns';
 
 export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
 

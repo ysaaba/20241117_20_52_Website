@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { NounsQuiz } from './quiz/NounsQuiz';
-import { AdjectivesQuiz } from './quiz/AdjectivesQuiz';
-import { VerbsQuiz } from './quiz/VerbsQuiz';
+import { NounsQuiz } from '../quiz/NounsQuiz';
+import { AdjectivesQuiz } from '../quiz/AdjectivesQuiz';
+import { VerbsQuiz } from '../quiz/VerbsQuiz';
 import { BookOpen, Languages, Pencil, BarChart3 } from 'lucide-react';
-import { QuizStatistics } from './quiz/QuizStatistics';
+import { QuizStatistics } from '../quiz/QuizStatistics';
 
 export default function QuizPage() {
   const [activeTab, setActiveTab] = useState('nouns');

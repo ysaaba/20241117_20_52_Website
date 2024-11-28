@@ -1,8 +1,8 @@
 import { Trophy, ArrowRight, RefreshCw, CheckCircle2, XCircle, Volume2 } from 'lucide-react';
-import { useSound } from '../hooks/useSound';
+import { useSound } from '../../hooks/useSound';
 import confetti from 'canvas-confetti';
 import { useEffect, useRef } from 'react';
-import type { Exercise, ExerciseSummaryItem } from '../types';
+import type { Exercise, ExerciseSummaryItem } from '../../types';
 
 interface ExerciseSummaryProps {
   summary: ExerciseSummaryItem[];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle2, XCircle, Volume2, HelpCircle, Info } from 'lucide-react';
-import { useSound } from '../hooks/useSound';
-import type { Exercise, ExerciseType } from '../types';
+import { useSound } from '../../hooks/useSound';
+import type { Exercise, ExerciseType } from '../../types';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface ExerciseCardProps {

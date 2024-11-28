@@ -1,4 +1,4 @@
-import type { VerbData } from '../../types';
+import type { VerbData } from '../../types/verbs';
 
 export const creation: VerbData[] = [
   // Making and Building

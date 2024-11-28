@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { stories, type Story } from '../data/stories';
+import { stories, type Story } from '../../data/stories';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, BarChart2, Volume2, Bookmark, Search, Filter, X, Copy, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

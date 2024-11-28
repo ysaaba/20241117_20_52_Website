@@ -1,4 +1,4 @@
-import type { AdjectiveData } from '../types';
+import type { AdjectiveData } from '../types/adjectives';
 
 export const adjectives: AdjectiveData[] = [
   // Appearance

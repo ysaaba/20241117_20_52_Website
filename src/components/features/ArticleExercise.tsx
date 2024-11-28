@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Exercise, ExerciseProgress, ExerciseSummaryItem } from '../types';
+import { Exercise, ExerciseProgress, ExerciseSummaryItem } from '../../types';
 import { ExerciseSummaryView } from './ExerciseSummary';
 import { ExerciseCard } from './ExerciseCard';
 import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle2 } from 'lucide-react';

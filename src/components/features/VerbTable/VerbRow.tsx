@@ -1,8 +1,9 @@
 import React from 'react';
-import { CheckCircle2, XCircle, Volume2, ChevronDown, ChevronUp } from 'lucide-react';
-import type { VerbData } from '../../types';
+import { Volume2, ChevronDown, ChevronUp, XCircle, CheckCircle } from 'lucide-react';
+import type { VerbData } from '../../../types';
+import { cn } from '../../../lib/utils';
+import { useSound } from '../../../hooks/useSound';
 import { ExampleSentences } from './ExampleSentences';
-import { useSound } from '../../hooks/useSound';
 
 interface VerbRowProps {
   verb: VerbData;
@@ -87,7 +88,7 @@ export function VerbRow({
               />
               {answers[`${verb.verb}-${tense}`] && feedback[`${verb.verb}-${tense}`] !== undefined && (
                 feedback[`${verb.verb}-${tense}`] 
-                  ? <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  ? <CheckCircle className="w-5 h-5 text-green-500" />
                   : <XCircle className="w-5 h-5 text-red-500" />
               )}
             </div>

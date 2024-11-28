@@ -1,4 +1,4 @@
-import type { AdverbData } from '../types';
+import type { AdverbData } from '../types/adverbs';
 
 export const adverbs: AdverbData[] = [
     {

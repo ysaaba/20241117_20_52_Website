@@ -1,3 +1,12 @@
+// Re-export all types from their respective modules
+export * from './nouns';
+export * from './verbs';
+export * from './adjectives';
+export * from './adverbs';
+export * from './quiz';
+export * from './exercises';
+
+// Additional types that don't fit in other categories
 export type ArticleType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
 
 export interface Exercise {

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { adverbs } from '../../data/adverbs';
 import { useSound } from '../../hooks/useSound';
 import type { AdverbCategory, AdverbData } from '../../types';
@@ -171,16 +172,19 @@ export default function AdverbsPage() {
                   <p className="text-gray-600 italic mb-3">{adv.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    adv.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                    adv.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-red-100 text-red-800'
-                  }`}>
+                  <Badge 
+                    variant={
+                      adv.difficulty === 'beginner' ? 'green' :
+                      adv.difficulty === 'intermediate' ? 'yellow' :
+                      'red'
+                    }
+                    size="sm"
+                  >
                     {adv.difficulty}
-                  </span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
+                  </Badge>
+                  <Badge variant="blue" size="sm" className="capitalize">
                     {adv.category}
-                  </span>
+                  </Badge>
                 </div>
               </div>
 

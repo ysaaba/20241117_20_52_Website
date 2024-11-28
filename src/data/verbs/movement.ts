@@ -36,5 +36,16 @@ export const movement: VerbData[] = [
   { verb: "gunga", group: 1, present: "gungar", past: "gungade", supine: "gungat", translation: "swing/rock", category: "movement", difficulty: "beginner" },
   { verb: "fly", group: 3, present: "flyr", past: "flydde", supine: "flytt", translation: "flee", category: "movement", difficulty: "intermediate" },
   { verb: "nå", group: 3, present: "når", past: "nådde", supine: "nått", translation: "reach", category: "movement", difficulty: "intermediate" },
-  { verb: "ro", group: 3, present: "ror", past: "rodde", supine: "rott", translation: "row", category: "movement", difficulty: "intermediate" }
+  { verb: "ro", group: 3, present: "ror", past: "rodde", supine: "rott", translation: "row", category: "movement", difficulty: "intermediate" },
+  
+  // Sports Movement
+  { verb: "dribbla", group: 1, present: "dribblar", past: "dribblade", supine: "dribblat", translation: "dribble", category: "movement", difficulty: "intermediate" },
+  { verb: "tackla", group: 1, present: "tacklar", past: "tacklade", supine: "tacklat", translation: "tackle", category: "movement", difficulty: "intermediate" },
+  { verb: "jonglera", group: 1, present: "jonglerar", past: "jonglerade", supine: "jonglerat", translation: "juggle", category: "movement", difficulty: "advanced" },
+  { verb: "balansera", group: 1, present: "balanserar", past: "balanserade", supine: "balanserat", translation: "balance", category: "movement", difficulty: "intermediate" },
+  
+  // Complex Movement
+  { verb: "accelerera", group: 1, present: "accelererar", past: "accelererade", supine: "accelererat", translation: "accelerate", category: "movement", difficulty: "advanced" },
+  { verb: "navigera", group: 1, present: "navigerar", past: "navigerade", supine: "navigerat", translation: "navigate", category: "movement", difficulty: "intermediate" },
+  { verb: "parera", group: 1, present: "parerar", past: "parerade", supine: "parerat", translation: "parry/dodge", category: "movement", difficulty: "advanced" }
 ];

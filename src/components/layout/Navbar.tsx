@@ -11,7 +11,8 @@ import {
   Sparkles,
   BookOpen,
   LayoutTemplate,
-  PlayCircle
+  PlayCircle,
+  BookText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ExerciseType } from '../../types';
@@ -256,7 +257,7 @@ export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
                 </AnimatePresence>
               </div>
 
-              {/* Grammar Visualization dropdown */}
+              {/* Grammar Dropdown */}
               <div className="relative">
                 <button
                   onClick={() => handleDropdownToggle('grammar')}
@@ -266,7 +267,7 @@ export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <LayoutTemplate className="w-4 h-4" />
+                  <BookText className="w-4 h-4" />
                   Grammar
                   <motion.div
                     variants={chevronVariants}
@@ -289,26 +290,14 @@ export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
                       <div className="py-1">
                         <button
                           onClick={() => {
-                            onSelectType('grammar-visualizer');
+                            onSelectType('grammarExplanations');
                             closeDropdowns();
                           }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <div className="flex items-center gap-2">
-                            <LayoutTemplate className="w-4 h-4" />
-                            <span>Sentence Structure</span>
-                          </div>
-                        </button>
-                        <button
-                          onClick={() => {
-                            onSelectType('grammar-animation');
-                            closeDropdowns();
-                          }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                        >
-                          <div className="flex items-center gap-2">
-                            <PlayCircle className="w-4 h-4" />
-                            <span>Animated Rules</span>
+                            <BookText className="w-4 h-4" />
+                            Explanations
                           </div>
                         </button>
                         <button
@@ -316,11 +305,35 @@ export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
                             onSelectType('grammar-practice');
                             closeDropdowns();
                           }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <div className="flex items-center gap-2">
                             <Dumbbell className="w-4 h-4" />
-                            <span>Practice</span>
+                            Practice
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('grammar-visualizer');
+                            closeDropdowns();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <div className="flex items-center gap-2">
+                            <LayoutTemplate className="w-4 h-4" />
+                            Sentence Structure
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('grammar-animation');
+                            closeDropdowns();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <div className="flex items-center gap-2">
+                            <PlayCircle className="w-4 h-4" />
+                            Animated Rules
                           </div>
                         </button>
                       </div>

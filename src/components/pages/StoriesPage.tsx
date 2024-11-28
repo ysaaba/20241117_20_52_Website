@@ -3,6 +3,7 @@ import { stories, type Story } from '../../data/stories';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, BarChart2, Volume2, Bookmark, Search, Filter, X, Copy, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
 
 const STORIES_PER_PAGE = 6;
 
@@ -75,12 +76,12 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
       <div className="p-6" onClick={() => navigate(`/stories/${encodeURIComponent(story.id)}`)}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(story.difficulty)}`}>
+            <Badge variant="blue" size="sm">
               {story.difficulty.charAt(0).toUpperCase() + story.difficulty.slice(1)}
-            </span>
-            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(story.category)}`}>
+            </Badge>
+            <Badge variant="purple" size="sm">
               {story.category.charAt(0).toUpperCase() + story.category.slice(1)}
-            </span>
+            </Badge>
           </div>
           <button
             onClick={(e) => {

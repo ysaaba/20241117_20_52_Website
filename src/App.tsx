@@ -15,6 +15,7 @@ import AdverbsPage from './components/pages/AdverbsPage';
 import GrammarVisualizerPage from './components/pages/GrammarVisualizerPage';
 import GrammarAnimation from './components/features/GrammarAnimation';
 import GrammarPractice from './components/features/GrammarPractice';
+import GrammarExplanationsPage from './components/pages/GrammarExplanationsPage';
 
 // MainContent component to handle the routing and content display
 const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type: ExerciseType) => void }> = ({
@@ -40,6 +41,7 @@ const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type
           <Route path="/grammar-visualizer" element={<GrammarVisualizerPage />} />
           <Route path="/grammar-animation" element={<GrammarAnimation />} />
           <Route path="/grammar-practice" element={<GrammarPractice />} />
+          <Route path="/grammar-explanations" element={<GrammarExplanationsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

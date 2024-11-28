@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { adjectives } from '../../data/adjectives';
 import { useSound } from '../../hooks/useSound';
+import { Badge } from '@/components/ui/badge';
 import type { AdjectiveCategory, AdjectiveData } from '../../types';
 
 const ADJECTIVES_PER_PAGE = 10;
@@ -171,16 +172,19 @@ export default function AdjectivesPage() {
                   <p className="text-gray-600 italic mb-3">{adj.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    adj.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                    adj.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-red-100 text-red-800'
-                  }`}>
+                  <Badge 
+                    variant={
+                      adj.difficulty === 'beginner' ? 'green' :
+                      adj.difficulty === 'intermediate' ? 'yellow' :
+                      'red'
+                    }
+                    size="sm"
+                  >
                     {adj.difficulty}
-                  </span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
+                  </Badge>
+                  <Badge variant="blue" size="sm" className="capitalize">
                     {adj.category}
-                  </span>
+                  </Badge>
                 </div>
               </div>
 

@@ -25,5 +25,16 @@ export const academic: VerbData[] = [
   { verb: "referera", group: 1, present: "refererar", past: "refererade", supine: "refererat", translation: "reference", category: "academic", difficulty: "intermediate" },
   { verb: "sammanfatta", group: 1, present: "sammanfattar", past: "sammanfattade", supine: "sammanfattat", translation: "summarize", category: "academic", difficulty: "intermediate" },
   { verb: "redovisa", group: 1, present: "redovisar", past: "redovisade", supine: "redovisat", translation: "present/report", category: "academic", difficulty: "intermediate" },
-  { verb: "disputera", group: 1, present: "disputerar", past: "disputerade", supine: "disputerat", translation: "defend thesis", category: "academic", difficulty: "advanced" }
+  { verb: "disputera", group: 1, present: "disputerar", past: "disputerade", supine: "disputerat", translation: "defend thesis", category: "academic", difficulty: "advanced" },
+
+  // Research Methods
+  { verb: "hypotisera", group: 1, present: "hypotiserar", past: "hypotiserade", supine: "hypotiserat", translation: "hypothesize", category: "academic", difficulty: "advanced" },
+  { verb: "citera", group: 1, present: "citerar", past: "citerade", supine: "citerat", translation: "cite", category: "academic", difficulty: "intermediate" },
+  { verb: "referera", group: 1, present: "refererar", past: "refererade", supine: "refererat", translation: "reference", category: "academic", difficulty: "intermediate" },
+  { verb: "sammanfatta", group: 1, present: "sammanfattar", past: "sammanfattade", supine: "sammanfattat", translation: "summarize", category: "academic", difficulty: "intermediate" },
+
+  // Academic Writing
+  { verb: "dissertera", group: 1, present: "disserterar", past: "disserterade", supine: "disserterat", translation: "dissertate", category: "academic", difficulty: "advanced" },
+  { verb: "recensera", group: 1, present: "recenserar", past: "recenserade", supine: "recenserat", translation: "review", category: "academic", difficulty: "advanced" },
+  { verb: "korrekturläsa", group: 2, present: "korrekturläser", past: "korrekturläste", supine: "korrekturläst", translation: "proofread", category: "academic", difficulty: "advanced" }
 ];

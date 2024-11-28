@@ -17,7 +17,7 @@ export const emotion: VerbData[] = [
   { verb: "frukta", group: 1, present: "fruktar", past: "fruktade", supine: "fruktat", translation: "fear", category: "emotion", difficulty: "intermediate" },
   { verb: "avundas", group: 1, present: "avundas", past: "avundades", supine: "avundats", translation: "envy", category: "emotion", difficulty: "advanced" },
   { verb: "skämmas", group: 2, present: "skäms", past: "skämdes", supine: "skämts", translation: "be ashamed", category: "emotion", difficulty: "intermediate" },
-  { verb: "glädjas", group: 2, present: "gläds", past: "gladdes", supine: "glätts", translation: "rejoice", category: "emotion", difficulty: "advanced" },
+  { verb: "glädjas", group: 2, present: "gläds", past: "gladdes", supine: "glätts", translation: "rejoice", category: "emotion", difficulty: "intermediate" },
   { verb: "förtvivla", group: 1, present: "förtvivlar", past: "förtvivlade", supine: "förtvivlat", translation: "despair", category: "emotion", difficulty: "advanced" },
 
   // Emotional Reactions
@@ -30,5 +30,12 @@ export const emotion: VerbData[] = [
   { verb: "trösta", group: 1, present: "tröstar", past: "tröstade", supine: "tröstat", translation: "comfort", category: "emotion", difficulty: "intermediate" },
   { verb: "reta", group: 1, present: "retar", past: "retade", supine: "retat", translation: "tease/annoy", category: "emotion", difficulty: "intermediate" },
   { verb: "må", group: 3, present: "mår", past: "mådde", supine: "mått", translation: "feel", category: "emotion", difficulty: "beginner" },
-  { verb: "gry", group: 3, present: "gryr", past: "grydde", supine: "grytt", translation: "dawn", category: "emotion", difficulty: "advanced" }
+  { verb: "gry", group: 3, present: "gryr", past: "grydde", supine: "grytt", translation: "dawn", category: "emotion", difficulty: "advanced" },
+
+  // Expressing Emotions
+  { verb: "förundras", group: 1, present: "förundras", past: "förundrades", supine: "förundrats", translation: "marvel", category: "emotion", difficulty: "advanced" },
+  { verb: "förarga", group: 1, present: "förargar", past: "förargade", supine: "förargat", translation: "annoy", category: "emotion", difficulty: "intermediate" },
+
+  // Household Verbs
+  { verb: "rodna", group: 1, present: "rodnar", past: "rodnade", supine: "rodnat", translation: "blush", category: "emotion", difficulty: "intermediate" }
 ];

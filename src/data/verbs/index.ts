@@ -13,7 +13,9 @@ import { social } from './social';
 import { work } from './work';
 import { nature } from './nature';
 import { household } from './household';
-import { daily } from './daily';
+import { daily } from './daily'; 
+import { hobbies } from './hobbies';
+import { crafts } from './crafts';
 
 // Combine all verb categories and ensure uniqueness by verb name
 const allVerbs = [
@@ -32,6 +34,8 @@ const allVerbs = [
   ...work,
   ...nature,
   ...household,
+  ...hobbies,
+  ...crafts,
   ...daily
 ];
 

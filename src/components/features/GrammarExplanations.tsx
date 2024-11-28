@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ExpandMore, ExpandLess, VolumeUp } from '@mui/icons-material';
+import { ChevronDown, ChevronUp, Volume2 } from 'lucide-react';
 import PronunciationGuide from './PronunciationGuide';
+import { Badge } from '@/components/ui/badge';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToggleGroup';
 
 declare global {
   interface Window {
@@ -458,7 +460,7 @@ const grammarRules: GrammarRule[] = [
     explanation: 'Swedish has specific patterns for expressing numbers, time, and dates. Numbers follow regular patterns with some exceptions for common numbers.',
     examples: [
       {
-        swedish: 'Klockan är tre och kvart',
+        swedish: 'Klockan r tre och kvart',
         english: 'It\'s quarter past three',
         notes: 'Time expression'
       },
@@ -705,6 +707,8 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showPronunciation, setShowPronunciation] = useState(false);
   const [voiceReady, setVoiceReady] = useState(false);
+  const [activeLevel, setActiveLevel] = useState<string | null>(selectedLevel || null);
+  const levels: Array<'beginner' | 'intermediate' | 'advanced'> = ['beginner', 'intermediate', 'advanced'];
 
   useEffect(() => {
     // Load ResponsiveVoice script
@@ -722,11 +726,18 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
     };
   }, []);
 
-  const filteredRules = selectedLevel
-    ? grammarRules.filter(rule => rule.level === selectedLevel)
-    : grammarRules;
+  const filteredRules = grammarRules
+    .filter(rule => !activeLevel || rule.level === activeLevel)
+    .filter(rule => !selectedCategory || rule.category === selectedCategory);
 
-  const categories = Array.from(new Set(grammarRules.map(rule => rule.category)));
+  const availableCategories = Array.from(
+    new Set(
+      (activeLevel 
+        ? grammarRules.filter(rule => rule.level === activeLevel)
+        : grammarRules
+      ).map(rule => rule.category)
+    )
+  );
 
   const handleExampleClick = (swedish: string) => {
     if (voiceReady && window.responsiveVoice) {
@@ -786,31 +797,59 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4">
       <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-gray-900">Grammar Categories</h2>
+        <div className="flex flex-col gap-4">
+          <ToggleGroup
+            className="w-full"
+            type="single"
+            variant="solid"
+            value={activeLevel ? [activeLevel] : []}
+            onValueChange={(value) => {
+              const level = value[0] as 'beginner' | 'intermediate' | 'advanced' | undefined;
+              setActiveLevel(level || null);
+              setSelectedCategory(null);
+            }}
+          >
+            {levels.map(level => (
+              <ToggleGroupItem
+                key={level}
+                value={level}
+                className="capitalize"
+              >
+                {level}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+
+          <ToggleGroup
+            className="w-full"
+            type="single"
+            variant="solid"
+            value={selectedCategory ? [selectedCategory] : []}
+            onValueChange={(value) => {
+              const category = value.length ? value[0] : null;
+              setSelectedCategory(category);
+            }}
+          >
+            {availableCategories.map(category => (
+              <ToggleGroupItem
+                key={category}
+                value={category}
+              >
+                {category}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
+
+        <div className="mt-6 flex justify-end">
           <button
             onClick={() => setShowPronunciation(!showPronunciation)}
             className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             {showPronunciation ? 'Hide Pronunciation Guide' : 'Show Pronunciation Guide'}
           </button>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category === selectedCategory ? null : category)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                category === selectedCategory
-                  ? 'bg-blue-100 text-blue-700 hover:bg-blue-200'
-                  : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
         </div>
       </div>
 
@@ -821,83 +860,91 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
       )}
 
       <div className="space-y-6">
-        {filteredRules
-          .filter(rule => !selectedCategory || rule.category === selectedCategory)
-          .map(rule => (
-            <div
-              key={rule.id}
-              className="rounded-lg border border-gray-200 overflow-hidden"
+        {filteredRules.map(rule => (
+          <div
+            key={rule.id}
+            className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+          >
+            <button
+              onClick={() => setExpandedRule(expandedRule === rule.id ? null : rule.id)}
+              className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 bg-white"
             >
-              <button
-                onClick={() => setExpandedRule(expandedRule === rule.id ? null : rule.id)}
-                className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50"
-              >
-                <div className="flex flex-col items-start">
-                  <h3 className="text-lg font-medium text-gray-900">{rule.title}</h3>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <span>{rule.category}</span>
-                    <span>•</span>
-                    <span>{rule.level}</span>
-                  </div>
+              <div className="flex flex-col items-start">
+                <h3 className="text-lg font-medium text-gray-900">{rule.title}</h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge 
+                    variant={
+                      rule.level === 'beginner' ? 'green' :
+                      rule.level === 'intermediate' ? 'yellow' :
+                      'red'
+                    }
+                    size="sm"
+                  >
+                    {rule.level}
+                  </Badge>
+                  <Badge variant="blue" size="sm" className="capitalize">
+                    {rule.category}
+                  </Badge>
                 </div>
-                {expandedRule === rule.id ? <ExpandLess /> : <ExpandMore />}
-              </button>
+              </div>
+              {expandedRule === rule.id ? <ChevronUp /> : <ChevronDown />}
+            </button>
 
-              {expandedRule === rule.id && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-700 mb-4">{rule.explanation}</p>
+            {expandedRule === rule.id && (
+              <div className="px-6 pb-4">
+                <p className="text-gray-700 mb-4">{rule.explanation}</p>
 
-                  <div className="space-y-4">
-                    <h4 className="font-medium text-gray-900">Examples:</h4>
-                    {rule.examples.map((example, index) => (
-                      <div
-                        key={index}
-                        className="bg-white rounded-md p-3 border border-gray-200"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <p className="font-medium text-green-600">{example.swedish}</p>
-                          <button
-                            onClick={() => handleExampleClick(example.swedish)}
-                            className="text-gray-400 hover:text-gray-600"
-                          >
-                            <VolumeUp />
-                          </button>
-                        </div>
-                        <p className="text-gray-600">{example.english}</p>
-                        {example.notes && (
-                          <p className="text-sm text-gray-500 mt-1">{example.notes}</p>
-                        )}
+                <div className="space-y-4">
+                  <h4 className="font-medium text-gray-900">Examples:</h4>
+                  {rule.examples.map((example, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-md p-3 border border-gray-200"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <p className="font-medium text-green-600">{example.swedish}</p>
+                        <button
+                          onClick={() => handleExampleClick(example.swedish)}
+                          className="text-gray-400 hover:text-gray-600"
+                        >
+                          <Volume2 className="h-5 w-5" />
+                        </button>
                       </div>
-                    ))}
-                  </div>
-
-                  {renderVisualizations(rule.id)}
-
-                  {rule.additionalNotes && (
-                    <div className="mt-4">
-                      <h4 className="font-medium text-gray-900 mb-2">Key Points:</h4>
-                      <ul className="list-disc list-inside space-y-1">
-                        {rule.additionalNotes.map((note, index) => (
-                          <li key={index} className="text-gray-700">{note}</li>
-                        ))}
-                      </ul>
+                      <p className="text-gray-600">{example.english}</p>
+                      {example.notes && (
+                        <p className="text-sm text-gray-500 mt-1">{example.notes}</p>
+                      )}
                     </div>
-                  )}
-
-                  {rule.commonMistakes && (
-                    <div className="mt-4">
-                      <h4 className="font-medium text-gray-900 mb-2">Common Mistakes:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-red-600">
-                        {rule.commonMistakes.map((mistake, index) => (
-                          <li key={index}>{mistake}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  ))}
                 </div>
-              )}
-            </div>
-          ))}
+
+                {renderVisualizations(rule.id)}
+
+                {rule.additionalNotes && (
+                  <div className="mt-4">
+                    <h4 className="font-medium text-gray-900 mb-2">Key Points:</h4>
+                    <ul className="list-disc list-inside space-y-1">
+                      {rule.additionalNotes.map((note, index) => (
+                        <li key={index} className="text-gray-700">{note}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {rule.commonMistakes && (
+                  <div className="mt-4">
+                    <h4 className="font-medium text-gray-900 mb-2">Common Mistakes:</h4>
+                    <ul className="list-disc list-inside space-y-1 text-red-600">
+                      {rule.commonMistakes.map((mistake, index) => (
+                        <li key={index}>{mistake}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

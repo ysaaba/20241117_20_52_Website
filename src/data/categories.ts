@@ -40,7 +40,11 @@ export type VerbCategory =
   | 'leisure'
   | 'daily'
   | 'change'
-  | 'weather';
+  | 'weather'
+  | 'hobbies'
+  | 'crafts'
+  | 'arts'
+  | 'household';
 
 export interface CategoryMetadata {
   id: string;

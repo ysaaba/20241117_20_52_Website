@@ -37,5 +37,12 @@ export const communication: VerbData[] = [
   { verb: "intervjua", group: 1, present: "intervjuar", past: "intervjuade", supine: "intervjuat", translation: "interview", category: "communication", difficulty: "intermediate" },
   { verb: "förhandla", group: 1, present: "förhandlar", past: "förhandlade", supine: "förhandlat", translation: "negotiate", category: "communication", difficulty: "advanced" },
   { verb: "be", group: 3, present: "ber", past: "bad", supine: "bett", translation: "ask/request", category: "communication", difficulty: "beginner" },
-  { verb: "rå", group: 3, present: "rår", past: "rådde", supine: "rått", translation: "have power over", category: "communication", difficulty: "advanced" }
+  { verb: "rå", group: 3, present: "rår", past: "rådde", supine: "rått", translation: "have power over", category: "communication", difficulty: "advanced" },
+  
+  // Digital Communication
+  { verb: "mejla", group: 1, present: "mejlar", past: "mejlade", supine: "mejlat", translation: "email", category: "communication", difficulty: "beginner" },
+  { verb: "posta", group: 1, present: "postar", past: "postade", supine: "postat", translation: "post", category: "communication", difficulty: "beginner" },
+  { verb: "twittra", group: 1, present: "twittrar", past: "twittrade", supine: "twittrat", translation: "tweet", category: "communication", difficulty: "intermediate" },
+  { verb: "streama", group: 1, present: "streamar", past: "streamade", supine: "streamat", translation: "stream", category: "communication", difficulty: "intermediate" },
+  { verb: "rapportera", group: 1, present: "rapporterar", past: "rapporterade", supine: "rapporterat", translation: "report", category: "communication", difficulty: "intermediate" }
 ];

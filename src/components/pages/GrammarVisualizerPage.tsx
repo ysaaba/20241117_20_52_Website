@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VolumeUp, ArrowForward, ArrowBack } from '@mui/icons-material';
+import { Badge } from '@/components/ui/badge';
 
 declare global {
   interface Window {
@@ -210,9 +211,9 @@ const GrammarVisualizerPage: React.FC = () => {
                   <h2 className="text-2xl font-semibold text-gray-900">{currentExample.title}</h2>
                   <p className="mt-1 text-sm text-gray-500">{currentExample.description}</p>
                 </div>
-                <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                  Pattern {currentExampleIndex + 1}/{examples.length}
-                </span>
+                <Badge variant="blue" size="sm">
+                  {currentExampleIndex + 1} of {examples.length}
+                </Badge>
               </div>
 
               <div className="mt-8">

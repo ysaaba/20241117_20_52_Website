@@ -13,8 +13,8 @@ export const perception: VerbData[] = [
   // Auditory Perception
   { verb: "höra", group: 2, present: "hör", past: "hörde", supine: "hört", translation: "hear", category: "perception", difficulty: "beginner" },
   { verb: "lyssna", group: 1, present: "lyssnar", past: "lyssnade", supine: "lyssnat", translation: "listen", category: "perception", difficulty: "beginner" },
+  { verb: "urskilja", group: 2, present: "urskiljer", past: "urskiljde", supine: "urskiljt", translation: "distinguish", category: "perception", difficulty: "advanced" },
   { verb: "uppfatta", group: 1, present: "uppfattar", past: "uppfattade", supine: "uppfattat", translation: "perceive", category: "perception", difficulty: "intermediate" },
-  { verb: "urskilja", group: 2, present: "urskiljer", past: "urskilde", supine: "urskilt", translation: "distinguish", category: "perception", difficulty: "advanced" },
   { verb: "överrösta", group: 1, present: "överröstar", past: "överröstade", supine: "överröstat", translation: "drown out", category: "perception", difficulty: "advanced" },
   { verb: "tjuvlyssna", group: 1, present: "tjuvlyssnar", past: "tjuvlyssnade", supine: "tjuvlyssnat", translation: "eavesdrop", category: "perception", difficulty: "advanced" },
   { verb: "avlyssna", group: 1, present: "avlyssnar", past: "avlyssnade", supine: "avlyssnat", translation: "wiretap/monitor", category: "perception", difficulty: "advanced" },
@@ -31,7 +31,7 @@ export const perception: VerbData[] = [
   // Taste and Smell
   { verb: "smaka", group: 1, present: "smakar", past: "smakade", supine: "smakat", translation: "taste", category: "perception", difficulty: "beginner" },
   { verb: "lukta", group: 1, present: "luktar", past: "luktade", supine: "luktat", translation: "smell", category: "perception", difficulty: "beginner" },
-  { verb: "dofta", group: 1, present: "doftar", past: "doftade", supine: "doftat", translation: "scent/smell nice", category: "perception", difficulty: "intermediate" },
+  { verb: "dofta", group: 1, present: "doftar", past: "doftade", supine: "doftat", translation: "smell nice", category: "perception", difficulty: "intermediate" },
   { verb: "stinka", group: 2, present: "stinker", past: "stank", supine: "stunkit", translation: "stink", category: "perception", difficulty: "intermediate" },
   { verb: "provsmaka", group: 1, present: "provsmakar", past: "provsmakade", supine: "provsmakat", translation: "taste-test", category: "perception", difficulty: "advanced" }
 ];

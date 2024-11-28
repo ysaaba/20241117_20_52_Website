@@ -21,12 +21,23 @@ export const cognition: VerbData[] = [
   
   // Problem Solving
   { verb: "lösa", group: 2, present: "löser", past: "löste", supine: "löst", translation: "solve", category: "cognition", difficulty: "intermediate" },
+  { verb: "resonera", group: 1, present: "resonerar", past: "resonerade", supine: "resonerat", translation: "reason", category: "cognition", difficulty: "advanced" },
+  { verb: "beräkna", group: 1, present: "beräknar", past: "beräknade", supine: "beräknat", translation: "calculate", category: "cognition", difficulty: "intermediate" },
+  { verb: "utvärdera", group: 1, present: "utvärderar", past: "utvärderade", supine: "utvärderat", translation: "evaluate", category: "cognition", difficulty: "advanced" },
+  { verb: "associera", group: 1, present: "associerar", past: "associerade", supine: "associerat", translation: "associate", category: "cognition", difficulty: "advanced" },
+  { verb: "reflektera", group: 1, present: "reflekterar", past: "reflekterade", supine: "reflekterat", translation: "reflect", category: "cognition", difficulty: "intermediate" },
+  { verb: "koncentrera", group: 1, present: "koncentrerar", past: "koncentrerade", supine: "koncentrerat", translation: "concentrate", category: "cognition", difficulty: "intermediate" },
   { verb: "analysera", group: 1, present: "analyserar", past: "analyserade", supine: "analyserat", translation: "analyze", category: "cognition", difficulty: "advanced" },
   { verb: "planera", group: 1, present: "planerar", past: "planerade", supine: "planerat", translation: "plan", category: "cognition", difficulty: "intermediate" },
   { verb: "besluta", group: 1, present: "beslutar", past: "beslutade", supine: "beslutat", translation: "decide", category: "cognition", difficulty: "intermediate" },
   { verb: "välja", group: 2, present: "väljer", past: "valde", supine: "valt", translation: "choose", category: "cognition", difficulty: "intermediate" },
   { verb: "överväga", group: 2, present: "överväger", past: "övervägde", supine: "övervägt", translation: "consider", category: "cognition", difficulty: "advanced" },
-  { verb: "resonera", group: 1, present: "resonerar", past: "resonerade", supine: "resonerat", translation: "reason", category: "cognition", difficulty: "advanced" },
   { verb: "bedöma", group: 2, present: "bedömer", past: "bedömde", supine: "bedömt", translation: "assess", category: "cognition", difficulty: "advanced" },
-  { verb: "tro", group: 3, present: "tror", past: "trodde", supine: "trott", translation: "believe", category: "cognition", difficulty: "beginner" }
+  { verb: "tro", group: 3, present: "tror", past: "trodde", supine: "trott", translation: "believe", category: "cognition", difficulty: "beginner" },
+  
+  // Mental Processing
+  { verb: "processa", group: 1, present: "processar", past: "processade", supine: "processat", translation: "process", category: "cognition", difficulty: "intermediate" },
+  { verb: "visualisera", group: 1, present: "visualiserar", past: "visualiserade", supine: "visualiserat", translation: "visualize", category: "cognition", difficulty: "advanced" },
+  { verb: "kategorisera", group: 1, present: "kategoriserar", past: "kategoriserade", supine: "kategoriserat", translation: "categorize", category: "cognition", difficulty: "advanced" },
+  { verb: "systematisera", group: 1, present: "systematiserar", past: "systematiserade", supine: "systematiserat", translation: "systematize", category: "cognition", difficulty: "advanced" }
 ];

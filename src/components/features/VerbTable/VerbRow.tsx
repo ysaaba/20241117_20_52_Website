@@ -1,5 +1,6 @@
 import React from 'react';
 import { Volume2, ChevronDown, ChevronUp, XCircle, CheckCircle } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import type { VerbData } from '../../../types';
 import { cn } from '../../../lib/utils';
 import { useSound } from '../../../hooks/useSound';
@@ -51,12 +52,17 @@ export function VerbRow({
         </td>
         <td className="px-4 py-3 text-sm text-gray-500 capitalize">{verb.category}</td>
         <td className="px-4 py-3 text-sm">
-          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-            verb.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-            verb.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-            'bg-red-100 text-red-800'
-          }`}>
-            {verb.difficulty}
+          <span>
+            <Badge 
+              variant={
+                verb.difficulty === 'beginner' ? 'green' :
+                verb.difficulty === 'intermediate' ? 'yellow' :
+                'red'
+              }
+              size="sm"
+            >
+              {verb.difficulty}
+            </Badge>
           </span>
         </td>
         <td className="px-4 py-3">

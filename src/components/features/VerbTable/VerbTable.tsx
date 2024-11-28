@@ -4,6 +4,7 @@ import { useSound } from '../../../hooks/useSound';
 import { VerbTableTabs } from '../VerbTableTabs';
 import type { VerbData } from '../../../types';
 import { verbs } from '../../../data/verbs';
+import { Badge } from '@/components/ui/badge';
 
 interface VerbTableProps {
   onReset: () => void;
@@ -260,13 +261,16 @@ export function VerbTable({ onReset }: VerbTableProps) {
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-500 capitalize">{verb.category}</td>
                   <td className="px-4 py-3 text-sm">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      verb.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                      verb.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'
-                    }`}>
+                    <Badge 
+                      variant={
+                        verb.difficulty === 'beginner' ? 'green' :
+                        verb.difficulty === 'intermediate' ? 'yellow' :
+                        'red'
+                      }
+                      size="sm"
+                    >
                       {verb.difficulty}
-                    </span>
+                    </Badge>
                   </td>
                   <td className="px-4 py-3">
                     <button

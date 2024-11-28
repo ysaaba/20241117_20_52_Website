@@ -68,5 +68,24 @@ export const work: VerbData[] = [
   { verb: "videokonferera", group: 1, present: "videokonfererar", past: "videokonfererade", supine: "videokonfererat", translation: "video conference", category: "work", difficulty: "intermediate" },
   { verb: "fjärransluta", group: 4, present: "fjärransluter", past: "fjärranslöt", supine: "fjärranslutit", translation: "connect remotely", category: "work", difficulty: "advanced" },
   { verb: "skärmdelning", group: 2, present: "skärmdelar", past: "skärmdelade", supine: "skärmdelat", translation: "screen share", category: "work", difficulty: "intermediate" },
-  { verb: "molnlagra", group: 1, present: "molnlagrar", past: "molnlagrade", supine: "molnlagrat", translation: "cloud store", category: "work", difficulty: "intermediate" }
+  { verb: "molnlagra", group: 1, present: "molnlagrar", past: "molnlagrade", supine: "molnlagrat", translation: "cloud store", category: "work", difficulty: "intermediate" },
+
+  // Quality Management
+  { verb: "standardisera", group: 1, present: "standardiserar", past: "standardiserade", supine: "standardiserat", translation: "standardize", category: "work", difficulty: "advanced" },
+  { verb: "certifiera", group: 1, present: "certifierar", past: "certifierade", supine: "certifierat", translation: "certify", category: "work", difficulty: "advanced" },
+  { verb: "validera", group: 1, present: "validerar", past: "validerade", supine: "validerat", translation: "validate", category: "work", difficulty: "advanced" },
+
+  // Business Development
+  { verb: "marknadsundersöka", group: 2, present: "marknadsundersöker", past: "marknadsundersökte", supine: "marknadsundersökt", translation: "conduct market research", category: "work", difficulty: "advanced" },
+  { verb: "kundanpassa", group: 1, present: "kundanpassar", past: "kundanpassade", supine: "kundanpassat", translation: "customize for customer", category: "work", difficulty: "advanced" },
+
+  // Project Planning
+  { verb: "resursplanera", group: 1, present: "resursplanerar", past: "resursplanerade", supine: "resursplanerat", translation: "plan resources", category: "work", difficulty: "advanced" },
+  { verb: "milstolpeplanera", group: 1, present: "milstolpeplanerar", past: "milstolpeplanerade", supine: "milstolpeplanerat", translation: "plan milestones", category: "work", difficulty: "advanced" },
+  { verb: "riskhantera", group: 1, present: "riskhanterar", past: "riskhanterade", supine: "riskhanterat", translation: "manage risks", category: "work", difficulty: "advanced" },
+
+  // Business Operations
+  { verb: "marknadsföra", group: 2, present: "marknadsför", past: "marknadsförde", supine: "marknadsfört", translation: "market", category: "work", difficulty: "advanced" },
+  { verb: "kundvårda", group: 1, present: "kundvårdar", past: "kundvårdade", supine: "kundvårdat", translation: "maintain customer relations", category: "work", difficulty: "advanced" },
+  { verb: "affärsutveckla", group: 1, present: "affärsutvecklar", past: "affärsutvecklade", supine: "affärsutvecklat", translation: "develop business", category: "work", difficulty: "advanced" }
 ];

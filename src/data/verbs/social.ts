@@ -10,6 +10,10 @@ export const social: VerbData[] = [
   { verb: "kramas", group: 1, present: "kramas", past: "kramades", supine: "kramats", translation: "hug", category: "social", difficulty: "beginner" },
   { verb: "pussas", group: 1, present: "pussas", past: "pussades", supine: "pussats", translation: "kiss", category: "social", difficulty: "beginner" },
   { verb: "bråka", group: 1, present: "bråkar", past: "bråkade", supine: "bråkat", translation: "quarrel", category: "social", difficulty: "intermediate" },
+  { verb: "diskutera", group: 1, present: "diskuterar", past: "diskuterade", supine: "diskuterat", translation: "discuss", category: "social", difficulty: "intermediate" },
+  { verb: "debattera", group: 1, present: "debatterar", past: "debatterade", supine: "debatterat", translation: "debate", category: "social", difficulty: "advanced" },
+  { verb: "förhandla", group: 1, present: "förhandlar", past: "förhandlade", supine: "förhandlat", translation: "negotiate", category: "social", difficulty: "advanced" },
+  { verb: "medla", group: 1, present: "medlar", past: "medlade", supine: "medlat", translation: "mediate", category: "social", difficulty: "advanced" },
 
   // Celebration
   { verb: "fira", group: 1, present: "firar", past: "firade", supine: "firat", translation: "celebrate", category: "social", difficulty: "beginner" },
@@ -25,5 +29,10 @@ export const social: VerbData[] = [
   { verb: "gifta", group: 2, present: "gifter", past: "gifte", supine: "gift", translation: "marry", category: "social", difficulty: "intermediate" },
   { verb: "försonas", group: 1, present: "försonas", past: "försonades", supine: "försonats", translation: "reconcile", category: "social", difficulty: "advanced" },
   { verb: "förlova", group: 1, present: "förlovar", past: "förlovade", supine: "förlovat", translation: "engage", category: "social", difficulty: "advanced" },
-  { verb: "sällskapa", group: 1, present: "sällskapar", past: "sällskapade", supine: "sällskapat", translation: "court/date", category: "social", difficulty: "advanced" }
+  { verb: "sällskapa", group: 1, present: "sällskapar", past: "sällskapade", supine: "sällskapat", translation: "court/date", category: "social", difficulty: "advanced" },
+
+  // Social Gatherings
+  { verb: "samlas", group: 1, present: "samlas", past: "samlades", supine: "samlats", translation: "gather", category: "social", difficulty: "beginner" },
+  { verb: "umgås", group: 2, present: "umgås", past: "umgicks", supine: "umgåtts", translation: "socialize", category: "social", difficulty: "intermediate" },
+  { verb: "nätverka", group: 1, present: "nätverkar", past: "nätverkade", supine: "nätverkat", translation: "network", category: "social", difficulty: "advanced" }
 ];

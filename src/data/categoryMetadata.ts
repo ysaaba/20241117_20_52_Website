@@ -243,5 +243,17 @@ export const verbCategoryMetadata: Record<string, CategoryMetadata> = {
     name: 'Weather',
     description: 'Verbs related to weather phenomena',
     difficulty: 'advanced'
+  },
+  hobbies: {
+    id: 'hobbies',
+    name: 'Hobbies',
+    description: 'Verbs related to hobbies and recreational activities',
+    difficulty: 'intermediate'
+  },
+  crafts: {
+    id: 'crafts',
+    name: 'Crafts',
+    description: 'Verbs related to crafting and making things',
+    difficulty: 'intermediate'
   }
 };

@@ -3,6 +3,7 @@ import { BookOpen, GraduationCap, Users, Building } from 'lucide-react';
 import { ArticleExercise } from '../features/ArticleExercise';
 import { generateExercises } from '../../data/articleExercises';
 import type { ArticleType, Exercise, ExerciseSummaryItem } from '../../types';
+import { Badge } from '@/components/ui/badge';
 
 interface ExerciseSummary {
   exercise: Exercise;

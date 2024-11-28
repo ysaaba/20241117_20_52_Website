@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlayCircle, PauseCircle, RotateCcw, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface ResponsiveVoice {
   speak: (text: string, voice: string, options?: object) => void;
@@ -304,9 +305,9 @@ const GrammarAnimation: React.FC = () => {
                   <ChevronLeft className="w-5 h-5 mr-1" />
                   Previous
                 </button>
-                <span className="text-sm text-gray-500">
-                  Animation {currentOverallStep + 1} of {totalSteps}
-                </span>
+                <Badge variant="default" size="sm">
+                  {currentOverallStep + 1} of {totalSteps}
+                </Badge>
               </div>
 
               <div className="flex items-center space-x-4">
@@ -331,9 +332,9 @@ const GrammarAnimation: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500">
+                <Badge variant="default" size="sm">
                   Rule: {currentRule + 1} of {grammarRules.length}
-                </span>
+                </Badge>
                 <button
                   onClick={handleNext}
                   disabled={currentOverallStep === totalSteps - 1}
@@ -363,9 +364,9 @@ const GrammarAnimation: React.FC = () => {
               <h2 className="text-2xl font-medium text-gray-900 mb-2">
                 {currentRuleData.title}
               </h2>
-              <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+              <Badge variant="default" size="sm">
                 Step {currentStep + 1} of {currentRuleData.steps.length}
-              </div>
+              </Badge>
             </div>
 
             {/* Animation Area */}

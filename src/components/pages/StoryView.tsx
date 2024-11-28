@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCircle, Copy, Check } from 'lucide-react';
 import { stories } from '../../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
 
 declare global {
   interface Window {
@@ -266,12 +267,12 @@ const StoryView: React.FC = () => {
               <h1 className="text-4xl font-bold text-gray-900 mb-2">{story.title}</h1>
               <h2 className="text-xl text-gray-600 mb-4">{story.englishTitle}</h2>
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                  {story.difficulty.charAt(0).toUpperCase() + story.difficulty.slice(1)}
-                </span>
-                <span className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                  {story.category.charAt(0).toUpperCase() + story.category.slice(1)}
-                </span>
+                <Badge variant="blue" size="sm">
+                  {story.level}
+                </Badge>
+                <Badge variant="purple" size="sm">
+                  {story.category}
+                </Badge>
               </div>
             </div>
           </div>

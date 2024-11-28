@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { VolumeUp, ExpandMore, ExpandLess } from '@mui/icons-material';
+import { Volume2, ChevronDown, ChevronUp, X } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -187,18 +187,18 @@ const PronunciationGuide: React.FC<Props> = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-xl max-w-4xl mx-auto p-6">
+    <div className="w-full bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Swedish Pronunciation Guide</h2>
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-500"
-          >
-            <span className="sr-only">Close</span>
-            ×
-          </button>
-        )}
+        <h2 className="text-2xl font-bold text-gray-900">
+          Swedish Pronunciation Guide
+        </h2>
+        <button
+          onClick={onClose}
+          className="text-gray-400 hover:text-gray-500"
+          aria-label="Close pronunciation guide"
+        >
+          <X className="h-6 w-6" />
+        </button>
       </div>
 
       <div className="flex space-x-4 mb-6">
@@ -239,7 +239,7 @@ const PronunciationGuide: React.FC<Props> = ({ onClose }) => {
                 <span className="text-xl font-medium">{sound.symbol}</span>
                 <span className="text-sm text-gray-500">{sound.ipa}</span>
               </div>
-              {selectedSound === sound.symbol ? <ExpandLess /> : <ExpandMore />}
+              {selectedSound === sound.symbol ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
             </button>
 
             <AnimatePresence>
@@ -267,7 +267,7 @@ const PronunciationGuide: React.FC<Props> = ({ onClose }) => {
                                 className="p-1 rounded-full hover:bg-gray-100 transition-colors"
                                 aria-label="Listen to pronunciation"
                               >
-                                <VolumeUp className="h-5 w-5 text-blue-500" />
+                                <Volume2 className="h-5 w-5" />
                               </button>
                             </div>
                             <div className="text-sm text-gray-500 mt-1">

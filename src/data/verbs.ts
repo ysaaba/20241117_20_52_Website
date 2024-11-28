@@ -13,6 +13,8 @@ import { social } from './verbs/social';
 import { work } from './verbs/work';
 import { household } from './verbs/household';
 import { daily } from './verbs/daily';
+import { hobbies } from './verbs/hobbies';
+import { crafts } from './verbs/crafts';
 
 export const verbs = [
   ...movement,
@@ -29,5 +31,7 @@ export const verbs = [
   ...social,
   ...work,
   ...household,
-  ...daily
+  ...daily,
+  ...hobbies,
+  ...crafts
 ];

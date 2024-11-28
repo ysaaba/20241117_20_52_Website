@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Search, Filter, Volume2, BookOpen, ChevronLeft, ChevronRight, X, GraduationCap, Users, Building } from 'lucide-react';
 import { commonNouns } from '../../data/nouns';
 import { useSound } from '../../hooks/useSound';
+import { Badge } from '@/components/ui/badge';
 import type { NounCategory } from '../../types';
 
 type NounFormType = 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
@@ -203,16 +204,20 @@ export default function NounsPage() {
                   <p className="text-gray-600 italic mb-3">{noun.translation}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    noun.difficulty === 'beginner' ? 'bg-green-100 text-green-800' :
-                    noun.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-red-100 text-red-800'
-                  }`}>
+                  <Badge 
+                    variant={
+                      noun.difficulty === 'beginner' ? 'green' :
+                      noun.difficulty === 'intermediate' ? 'yellow' :
+                      'red'
+                    }
+                    size="sm"
+                    border
+                  >
                     {noun.difficulty}
-                  </span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
+                  </Badge>
+                  <Badge variant="blue" size="sm" border className="capitalize">
                     {noun.category}
-                  </span>
+                  </Badge>
                 </div>
               </div>
 

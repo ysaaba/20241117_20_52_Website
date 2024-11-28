@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VolumeUp, ArrowForward, ArrowBack } from '@mui/icons-material';
+
+declare global {
+  interface Window {
+    responsiveVoice: any;
+  }
+}
 
 interface SentencePart {
   type: string;
@@ -24,7 +30,7 @@ interface PatternExample {
 const examples: PatternExample[] = [
   {
     title: "Basic Statement",
-    description: "Simple subject-verb-object sentences",
+    description: "Simple subject-verb-object sentences following the V2 rule",
     sentences: [
       {
         parts: [
@@ -47,57 +53,86 @@ const examples: PatternExample[] = [
     ]
   },
   {
-    title: "Complex Time Expressions",
-    description: "Multiple time expressions in one sentence",
+    title: "Time Expressions",
+    description: "Understanding word order with time expressions",
     sentences: [
       {
         parts: [
-          { type: "Time (General)", word: "på sommaren", color: "#FF9800", explanation: "General time expression comes first" },
-          { type: "Verb", word: "simmar", color: "#2196F3", explanation: "Verb maintains second position" },
-          { type: "Subject", word: "jag", color: "#4CAF50", explanation: "Subject moves after verb due to time expression" },
-          { type: "Time (Specific)", word: "varje morgon", color: "#FF9800", explanation: "Specific time expression typically comes later" }
+          { type: "Time", word: "på morgonen", color: "#FF9800", explanation: "Time expressions can come first" },
+          { type: "Verb", word: "dricker", color: "#2196F3", explanation: "Verb still comes second (V2 rule)" },
+          { type: "Subject", word: "jag", color: "#4CAF50", explanation: "Subject moves after verb when time expression is first" },
+          { type: "Object", word: "kaffe", color: "#9C27B0", explanation: "Object follows the subject" }
         ],
-        pronunciation: "paw SOM-mar-en SIM-mar yah VAR-ye MOR-gon",
-        english: "In the summer, I swim every morning"
+        pronunciation: "paw mor-GO-nen DRICK-er yah KAF-fe",
+        english: "In the morning, I drink coffee"
+      },
+      {
+        parts: [
+          { type: "Subject", word: "vi", color: "#4CAF50", explanation: "Subject first" },
+          { type: "Verb", word: "åker", color: "#2196F3", explanation: "Verb second" },
+          { type: "Object", word: "till stranden", color: "#9C27B0", explanation: "Destination" },
+          { type: "Time", word: "varje sommar", color: "#FF9800", explanation: "Time expression at the end" }
+        ],
+        pronunciation: "vee OH-ker till STRAN-den VAR-ye SOM-mar",
+        english: "We go to the beach every summer"
       }
     ]
   },
   {
-    title: "Nested Clauses",
-    description: "Complex sentences with multiple clauses",
+    title: "Questions",
+    description: "Question formation in Swedish",
     sentences: [
       {
         parts: [
-          { type: "Subject", word: "jag", color: "#4CAF50", explanation: "Main clause subject" },
-          { type: "Verb", word: "tror", color: "#2196F3", explanation: "Main clause verb" },
-          { type: "Subordinator", word: "att", color: "#FF5722", explanation: "Introduces first subordinate clause" },
-          { type: "Sub. Subject", word: "hon", color: "#4CAF50", explanation: "Subject of first subordinate clause" },
-          { type: "Sub. Verb", word: "vet", color: "#2196F3", explanation: "Verb of first subordinate clause" },
-          { type: "Subordinator", word: "när", color: "#FF5722", explanation: "Introduces second subordinate clause" },
-          { type: "Sub. Subject 2", word: "vi", color: "#4CAF50", explanation: "Subject of second subordinate clause" },
-          { type: "Sub. Verb 2", word: "kommer", color: "#2196F3", explanation: "Verb of second subordinate clause" }
+          { type: "Question", word: "var", color: "#FF5722", explanation: "Question word comes first" },
+          { type: "Verb", word: "bor", color: "#2196F3", explanation: "Verb must be second" },
+          { type: "Subject", word: "du", color: "#4CAF50", explanation: "Subject comes after verb in questions" },
+          { type: "Location", word: "nu", color: "#FF9800", explanation: "Time/location information" }
         ],
-        pronunciation: "yah TROOR at hoon VAYT nair vee KOM-er",
-        english: "I think that she knows when we are coming"
+        pronunciation: "var BOOR du nu",
+        english: "Where do you live now?"
+      },
+      {
+        parts: [
+          { type: "Verb", word: "pratar", color: "#2196F3", explanation: "Verb first in yes/no questions" },
+          { type: "Subject", word: "du", color: "#4CAF50", explanation: "Subject follows verb" },
+          { type: "Object", word: "svenska", color: "#9C27B0", explanation: "Object comes after subject" }
+        ],
+        pronunciation: "PRAH-tar du SVEN-ska",
+        english: "Do you speak Swedish?"
       }
     ]
   },
   {
-    title: "Relative Clauses",
-    description: "Sentences with relative pronouns",
+    title: "Adjective Agreement",
+    description: "How adjectives change based on the noun they modify",
     sentences: [
       {
         parts: [
-          { type: "Subject", word: "mannen", color: "#4CAF50", explanation: "Main clause subject" },
-          { type: "Relative", word: "som", color: "#FF99FF", explanation: "Relative pronoun" },
-          { type: "Verb", word: "bor", color: "#2196F3", explanation: "Verb in relative clause" },
-          { type: "Location", word: "bredvid", color: "#FFCC99", explanation: "Preposition" },
-          { type: "Object", word: "mig", color: "#FFCC99", explanation: "Object pronoun" },
-          { type: "Main Verb", word: "är", color: "#2196F3", explanation: "Main clause verb" },
-          { type: "Complement", word: "läkare", color: "#FFCC99", explanation: "Complement" }
+          { type: "Article", word: "en", color: "#FF5722", explanation: "Indefinite article for en-words" },
+          { type: "Adjective", word: "röd", color: "#673AB7", explanation: "Basic form for singular en-words" },
+          { type: "Noun", word: "bil", color: "#4CAF50", explanation: "En-word noun" }
         ],
-        pronunciation: "MAN-nen som boor BRED-veed may air LAY-kar-e",
-        english: "The man who lives next to me is a doctor"
+        pronunciation: "en rööd beel",
+        english: "A red car"
+      },
+      {
+        parts: [
+          { type: "Article", word: "ett", color: "#FF5722", explanation: "Indefinite article for ett-words" },
+          { type: "Adjective", word: "rött", color: "#673AB7", explanation: "Adds -t for ett-words" },
+          { type: "Noun", word: "hus", color: "#4CAF50", explanation: "Ett-word noun" }
+        ],
+        pronunciation: "et röt hoos",
+        english: "A red house"
+      },
+      {
+        parts: [
+          { type: "Article", word: "den", color: "#FF5722", explanation: "Definite article for en-words" },
+          { type: "Adjective", word: "röda", color: "#673AB7", explanation: "Adds -a in definite form" },
+          { type: "Noun", word: "bilen", color: "#4CAF50", explanation: "Definite form of en-word" }
+        ],
+        pronunciation: "den RÖ-da BEE-len",
+        english: "The red car"
       }
     ]
   }
@@ -106,6 +141,33 @@ const examples: PatternExample[] = [
 const GrammarVisualizerPage: React.FC = () => {
   const [currentExampleIndex, setCurrentExampleIndex] = useState(0);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
+  const [voiceReady, setVoiceReady] = useState(false);
+
+  useEffect(() => {
+    // Load ResponsiveVoice script
+    const script = document.createElement('script');
+    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
+    script.async = true;
+    script.onload = () => setVoiceReady(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+      if (window.responsiveVoice) {
+        window.responsiveVoice.cancel();
+      }
+    };
+  }, []);
+
+  const handleSpeak = (text: string) => {
+    if (voiceReady && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, 'Swedish Male', {
+        pitch: 1,
+        rate: 0.9,
+        volume: 1
+      });
+    }
+  };
 
   const currentExample = examples[currentExampleIndex];
   const currentSentence = currentExample.sentences[currentSentenceIndex];
@@ -126,12 +188,6 @@ const GrammarVisualizerPage: React.FC = () => {
       setCurrentExampleIndex(currentExampleIndex - 1);
       setCurrentSentenceIndex(examples[currentExampleIndex - 1].sentences.length - 1);
     }
-  };
-
-  const speak = (text: string) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'sv-SE';
-    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -178,7 +234,7 @@ const GrammarVisualizerPage: React.FC = () => {
                           >
                             <span className="text-lg font-medium">{part.word}</span>
                             <button
-                              onClick={() => speak(part.word)}
+                              onClick={() => handleSpeak(part.word)}
                               className="rounded-full p-1 transition-colors hover:bg-white/20"
                             >
                               <VolumeUp className="h-4 w-4" />
@@ -198,6 +254,12 @@ const GrammarVisualizerPage: React.FC = () => {
                       Pronunciation: <span className="text-gray-900">{currentSentence.pronunciation}</span>
                     </p>
                     <p className="mt-2 text-lg text-gray-900">{currentSentence.english}</p>
+                    <button
+                      onClick={() => handleSpeak(currentSentence.pronunciation)}
+                      className="ml-2 p-2 rounded-full hover:bg-gray-100 transition-colors"
+                    >
+                      <VolumeUp className="text-gray-600" />
+                    </button>
                   </div>
                 </div>
               </div>

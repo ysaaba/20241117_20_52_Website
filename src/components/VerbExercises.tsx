@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Book, RefreshCw, Sparkles, Table2 } from 'lucide-react';
 import { VerbExerciseCard } from './VerbExerciseCard';
 import { VerbTable } from './VerbTable';
 import { useVerbExercises } from '../hooks/useVerbExercises';
+import { VolumeUp } from '@mui/icons-material';
+
+declare global {
+  interface Window {
+    responsiveVoice: any;
+  }
+}
 
 type ViewMode = 'cards' | 'table';
 
 export default function VerbExercises() {
   const [viewMode, setViewMode] = useState<ViewMode>('table');
+  const [voiceReady, setVoiceReady] = useState(false);
+
   const {
     currentVerbs,
     answers,
@@ -20,6 +29,32 @@ export default function VerbExercises() {
   } = useVerbExercises();
 
   const isComplete = currentVerbs.every((_, index) => answers[`${currentVerbs[index].verb}-${index}`]);
+
+  useEffect(() => {
+    // Load ResponsiveVoice script
+    const script = document.createElement('script');
+    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
+    script.async = true;
+    script.onload = () => setVoiceReady(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+      if (window.responsiveVoice) {
+        window.responsiveVoice.cancel();
+      }
+    };
+  }, []);
+
+  const handleSpeak = (text: string) => {
+    if (voiceReady && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, 'Swedish Male', {
+        pitch: 1,
+        rate: 0.9,
+        volume: 1
+      });
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -70,7 +105,20 @@ export default function VerbExercises() {
                   onChange={(value) => handleAnswerChange(index, value)}
                   showTranslation={showTranslations}
                   tenseType={verb.tenseType}
-                />
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg font-medium">{verb.sentence}</span>
+                      <button
+                        onClick={() => handleSpeak(verb.sentence)}
+                        className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                        aria-label="Listen to sentence"
+                      >
+                        <VolumeUp className="h-5 w-5 text-blue-500" />
+                      </button>
+                    </div>
+                  </div>
+                </VerbExerciseCard>
               ))}
             </div>
 

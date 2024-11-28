@@ -22,7 +22,7 @@ export function NounsQuiz() {
       const noun = availableNouns[randomIndex];
       availableNouns.splice(randomIndex, 1);
 
-      const formType = ['definite', 'indefinitePlural', 'definitePlural'][Math.floor(Math.random() * 3)] as const;
+      const formType = ['definite', 'indefinitePlural', 'definitePlural'][Math.floor(Math.random() * 3)] as 'definite' | 'indefinitePlural' | 'definitePlural';
       let variations = generateNounFormVariations(noun, formType);
       
       // Filter out any invalid variations
@@ -134,85 +134,110 @@ export function NounsQuiz() {
     
     switch (formType) {
       case 'definite':
+        // Common definite form patterns
         if (noun.gender === 'en') {
           variations.push(
-            baseNoun + 'et',  // Wrong gender ending
-            baseNoun + 'n',   // Missing 'e'
-            noun.forms.indefinitePlural // Using plural instead
+            baseNoun + 'et',    // Wrong gender ending
+            baseNoun + 'n',     // Missing 'e'
+            baseNoun + 'den'    // Adding wrong definite article
           );
-        } else {
+        } else { // ett-words
           variations.push(
-            baseNoun + 'en',  // Wrong gender ending
-            baseNoun + 't',   // Missing 'e'
-            noun.forms.indefinitePlural // Using plural instead
+            baseNoun + 'en',    // Wrong gender ending
+            baseNoun + 't',     // Missing 'e'
+            baseNoun + 'det'    // Adding wrong definite article
           );
         }
         break;
         
       case 'indefinitePlural':
-        // Common plural patterns in Swedish
-        const pluralEndings = ['ar', 'er', 'or'];
-        pluralEndings.forEach(ending => {
-          if (noun.forms.indefinitePlural !== baseNoun + ending) {
-            variations.push(baseNoun + ending);
+        // Common indefinite plural patterns
+        const commonPluralEndings = ['ar', 'er', 'or', 'r'];
+        commonPluralEndings.forEach(ending => {
+          // Handle words ending in vowels
+          if (baseNoun.match(/[aeiouyåäö]$/)) {
+            if (baseNoun + ending !== noun.forms.indefinitePlural) {
+              variations.push(baseNoun + ending);
+            }
+            if (baseNoun.slice(0, -1) + ending !== noun.forms.indefinitePlural) {
+              variations.push(baseNoun.slice(0, -1) + ending);
+            }
+          } else {
+            if (baseNoun + ending !== noun.forms.indefinitePlural) {
+              variations.push(baseNoun + ending);
+            }
+            if (baseNoun + 'e' + ending !== noun.forms.indefinitePlural) {
+              variations.push(baseNoun + 'e' + ending);
+            }
           }
         });
-        // Add the definite form as a variation
-        if (noun.forms.definite !== baseNoun) {
-          variations.push(noun.forms.definite);
-        }
         break;
         
       case 'definitePlural':
-        const baseForm = noun.forms.indefinitePlural;
-        const definitePluralEndings = ['na', 'a', 'arna', 'erna', 'orna'];
-        definitePluralEndings.forEach(ending => {
-          const variation = baseForm + ending;
-          if (variation !== noun.forms.definitePlural) {
-            variations.push(variation);
-          }
-        });
+        const indefinitePlural = noun.forms.indefinitePlural;
+        // Common definite plural patterns based on indefinite plural ending
+        if (indefinitePlural.endsWith('ar')) {
+          variations.push(
+            indefinitePlural + 'ne',
+            indefinitePlural.slice(0, -2) + 'orna',
+            indefinitePlural.slice(0, -2) + 'erna'
+          );
+        } else if (indefinitePlural.endsWith('er')) {
+          variations.push(
+            indefinitePlural + 'ne',
+            indefinitePlural.slice(0, -2) + 'arna',
+            indefinitePlural.slice(0, -2) + 'orna'
+          );
+        } else if (indefinitePlural.endsWith('or')) {
+          variations.push(
+            indefinitePlural + 'ne',
+            indefinitePlural.slice(0, -2) + 'arna',
+            indefinitePlural.slice(0, -2) + 'erna'
+          );
+        } else {
+          variations.push(
+            indefinitePlural + 'en',
+            indefinitePlural + 'et',
+            indefinitePlural + 'erna'
+          );
+        }
         break;
     }
     
-    // Filter out invalid variations
+    // Filter out variations that match the correct form or are invalid
     return variations.filter(v => 
       v && 
       v.trim() !== '' && 
       v !== '-' && 
       v !== noun.forms[formType] && 
       v !== baseNoun &&
-      v.length > 1
+      v.length > 1 &&
+      !v.includes('undefined')
     );
   };
 
   const generateBackupFormVariations = (noun: typeof commonNouns[0], formType: 'definite' | 'indefinitePlural' | 'definitePlural'): string[] => {
-    const backups: string[] = [];
     const baseNoun = noun.noun;
-    
     const commonEndings = {
-      definite: ['en', 'et', 'n', 't', 'det', 'den'],
-      indefinitePlural: ['ar', 'er', 'or', 'rar', 'ror', 'ar'],
-      definitePlural: ['arna', 'erna', 'orna', 'na', 'ena', 'rna']
+      definite: noun.gender === 'en' 
+        ? ['et', 'n', 'den', 'det']
+        : ['en', 't', 'det', 'den'],
+      indefinitePlural: ['ar', 'er', 'or', 'r', 'rar', 'ror'],
+      definitePlural: ['na', 'arna', 'erna', 'orna', 'ena', 'rna']
     };
     
-    const endings = commonEndings[formType];
-    
-    for (const ending of endings) {
-      const variation = formType === 'definitePlural' 
+    return commonEndings[formType]
+      .map(ending => formType === 'definitePlural' 
         ? noun.forms.indefinitePlural + ending
-        : baseNoun + ending;
-        
-      if (variation && 
-          variation.trim() !== '' && 
-          variation !== '-' &&
-          variation !== noun.forms[formType] && 
-          !backups.includes(variation)) {
-        backups.push(variation);
-      }
-    }
-    
-    return backups;
+        : baseNoun + ending
+      )
+      .filter(variation => 
+        variation && 
+        variation.trim() !== '' && 
+        variation !== '-' &&
+        variation !== noun.forms[formType] && 
+        variation.length > 1
+      );
   };
 
   const generateBackupTranslation = (correctTranslation: string, existingOptions: string[]): string => {

@@ -1,6 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlayCircle, PauseCircle, RotateCcw, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react';
+
+interface ResponsiveVoice {
+  speak: (text: string, voice: string, options?: object) => void;
+  isPlaying: () => boolean;
+  cancel: () => void;
+  voiceSupport: () => boolean;
+  init: () => void;
+}
+
+declare global {
+  interface Window {
+    responsiveVoice: ResponsiveVoice;
+  }
+}
 
 interface AnimationStep {
   words: string[];
@@ -17,10 +31,9 @@ const GrammarAnimation: React.FC = () => {
   const [currentRule, setCurrentRule] = useState<number>(0);
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(0);
-  const [showRuleOverview, setShowRuleOverview] = useState<boolean>(false);
+  const [voiceReady, setVoiceReady] = useState(false);
 
-  const grammarRules: GrammarRule[] = [
+  const grammarRules: GrammarRule[] = useMemo(() => [
     {
       title: "V2 Rule (Verb Second)",
       steps: [
@@ -151,81 +164,291 @@ const GrammarAnimation: React.FC = () => {
         }
       ]
     }
-  ];
+  ], []);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isPlaying) {
-      const rule = grammarRules[currentRule];
-      const totalDuration = rule.steps.length * 5000;
-      const startTime = Date.now();
+    // Load ResponsiveVoice script
+    const script = document.createElement('script');
+    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
+    script.async = true;
+    script.onload = () => setVoiceReady(true);
+    document.body.appendChild(script);
 
-      const updateProgress = () => {
-        const elapsed = Date.now() - startTime;
-        const newProgress = Math.min((elapsed / totalDuration) * 100, 100);
-        setProgress(newProgress);
+    return () => {
+      document.body.removeChild(script);
+      if (window.responsiveVoice) {
+        window.responsiveVoice.cancel();
+      }
+    };
+  }, []);
 
-        if (elapsed < totalDuration) {
-          timer = setTimeout(updateProgress, 50);
-        }
-      };
+  const handleSpeak = useCallback((text: string) => {
+    if (voiceReady && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, 'Swedish Male', {
+        pitch: 1,
+        rate: 0.9,
+        volume: 1
+      });
+    }
+  }, [voiceReady]);
 
-      timer = setTimeout(updateProgress, 50);
+  useEffect(() => {
+    let intervalId: number | undefined;
+
+    if (isPlaying && currentStep < grammarRules[currentRule].steps.length - 1) {
+      intervalId = window.setInterval(() => {
+        setCurrentStep(prev => {
+          if (prev < grammarRules[currentRule].steps.length - 1) {
+            return prev + 1;
+          }
+          setIsPlaying(false);
+          return prev;
+        });
+      }, 3000);
     }
 
     return () => {
-      if (timer) clearTimeout(timer);
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
     };
-  }, [isPlaying, currentRule]);
+  }, [isPlaying, currentStep, currentRule, grammarRules]);
 
-  const startAnimation = () => {
-    setIsPlaying(true);
-    setCurrentStep(0);
-    setProgress(0);
-    const rule = grammarRules[currentRule];
-    
-    rule.steps.forEach((_, index) => {
-      setTimeout(() => {
-        setCurrentStep(index);
-      }, index * 5000);
-    });
-
-    setTimeout(() => {
-      setIsPlaying(false);
-      setProgress(100);
-    }, rule.steps.length * 5000);
+  const handlePlayPause = () => {
+    if (currentStep === grammarRules[currentRule].steps.length - 1) {
+      setCurrentStep(0);
+    }
+    setIsPlaying(!isPlaying);
   };
 
-  const stopAnimation = () => {
+  const handleReset = () => {
+    setCurrentStep(0);
     setIsPlaying(false);
-    setProgress(0);
   };
 
-  const navigateRule = (direction: 'prev' | 'next') => {
-    stopAnimation();
-    setCurrentStep(0);
-    setCurrentRule(prev => {
-      if (direction === 'prev') {
-        return prev === 0 ? grammarRules.length - 1 : prev - 1;
-      } else {
-        return (prev + 1) % grammarRules.length;
-      }
-    });
+  const handleNext = () => {
+    if (currentStep < grammarRules[currentRule].steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+      setIsPlaying(false);
+    }
   };
 
-  const navigateStep = (direction: 'prev' | 'next') => {
-    stopAnimation();
-    setCurrentStep(prev => {
-      if (direction === 'prev') {
-        return prev === 0 ? currentRuleData.steps.length - 1 : prev - 1;
-      } else {
-        return (prev + 1) % currentRuleData.steps.length;
-      }
-    });
+  const handlePrev = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      setIsPlaying(false);
+    }
+  };
+
+  const handleNextRule = () => {
+    if (currentRule < grammarRules.length - 1) {
+      setCurrentRule(currentRule + 1);
+      setCurrentStep(0);
+      setIsPlaying(false);
+    }
+  };
+
+  const handlePrevRule = () => {
+    if (currentRule > 0) {
+      setCurrentRule(currentRule - 1);
+      setCurrentStep(0);
+      setIsPlaying(false);
+    }
   };
 
   const currentRuleData = grammarRules[currentRule];
   const currentStepData = currentRuleData.steps[currentStep];
+  const progress = (currentStep / (currentRuleData.steps.length - 1)) * 100;
+
+  const renderWordOrderAnimation = () => (
+    <div className="relative h-64 bg-gray-100 rounded-lg p-4">
+      <motion.div
+        initial={{ x: 0 }}
+        animate={{ x: [0, 100, 200, 0], transition: { duration: 4, repeat: Infinity } }}
+        className="absolute top-8 left-4 bg-blue-500 text-white p-2 rounded"
+      >
+        Subject
+      </motion.div>
+      <motion.div
+        initial={{ x: 100 }}
+        animate={{ x: [100, 200, 0, 100], transition: { duration: 4, repeat: Infinity } }}
+        className="absolute top-8 left-4 bg-green-500 text-white p-2 rounded"
+      >
+        Verb
+      </motion.div>
+      <motion.div
+        initial={{ x: 200 }}
+        animate={{ x: [200, 0, 100, 200], transition: { duration: 4, repeat: Infinity } }}
+        className="absolute top-8 left-4 bg-purple-500 text-white p-2 rounded"
+      >
+        Object
+      </motion.div>
+      <div className="absolute bottom-4 left-4 right-4 text-center text-sm text-gray-600">
+        Watch how the verb always stays in second position
+      </div>
+    </div>
+  );
+
+  const renderDefiniteFormsAnimation = () => (
+    <div className="relative h-64 bg-gray-100 rounded-lg p-4">
+      <motion.div
+        initial={{ scale: 1 }}
+        animate={{ scale: [1, 1.2, 1], transition: { duration: 2, repeat: Infinity } }}
+        className="absolute top-8 left-4 bg-blue-500 text-white p-2 rounded"
+      >
+        bok
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: [0, 1, 0], x: [50, 0, 50], transition: { duration: 2, repeat: Infinity } }}
+        className="absolute top-8 left-16 bg-green-500 text-white p-2 rounded"
+      >
+        +en
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1], transition: { duration: 1, delay: 1 } }}
+        className="absolute top-32 left-4 text-2xl font-bold text-blue-800"
+      >
+        boken
+      </motion.div>
+      <div className="absolute bottom-4 left-4 right-4 text-center text-sm text-gray-600">
+        Watch how the definite article is added as a suffix
+      </div>
+    </div>
+  );
+
+  const renderVerbConjugationAnimation = () => (
+    <div className="relative h-64 bg-gray-100 rounded-lg p-4">
+      <div className="flex justify-center space-x-8">
+        <motion.div
+          initial={{ y: 0, opacity: 1 }}
+          animate={{
+            y: [-10, 0],
+            opacity: [0.5, 1],
+            transition: { duration: 1, repeat: Infinity, repeatType: "reverse" }
+          }}
+          className="text-center"
+        >
+          <div className="bg-blue-500 text-white p-2 rounded mb-2">att tala</div>
+          <div className="text-sm text-gray-600">Infinitive</div>
+        </motion.div>
+        <motion.div
+          initial={{ y: 0, opacity: 1 }}
+          animate={{
+            y: [-10, 0],
+            opacity: [0.5, 1],
+            transition: { duration: 1, delay: 0.3, repeat: Infinity, repeatType: "reverse" }
+          }}
+          className="text-center"
+        >
+          <div className="bg-green-500 text-white p-2 rounded mb-2">talar</div>
+          <div className="text-sm text-gray-600">Present</div>
+        </motion.div>
+        <motion.div
+          initial={{ y: 0, opacity: 1 }}
+          animate={{
+            y: [-10, 0],
+            opacity: [0.5, 1],
+            transition: { duration: 1, delay: 0.6, repeat: Infinity, repeatType: "reverse" }
+          }}
+          className="text-center"
+        >
+          <div className="bg-purple-500 text-white p-2 rounded mb-2">talade</div>
+          <div className="text-sm text-gray-600">Past</div>
+        </motion.div>
+      </div>
+      <div className="absolute bottom-4 left-4 right-4 text-center text-sm text-gray-600">
+        See how verbs change form in different tenses
+      </div>
+    </div>
+  );
+
+  const renderAdjectiveAgreementAnimation = () => (
+    <div className="relative h-64 bg-gray-100 rounded-lg p-4">
+      <div className="grid grid-cols-2 gap-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <div className="bg-blue-500 text-white p-2 rounded mb-2">en röd bil</div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="bg-green-500 text-white p-2 rounded"
+          >
+            den röda bilen
+          </motion.div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="text-center"
+        >
+          <div className="bg-purple-500 text-white p-2 rounded mb-2">ett rött hus</div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+            className="bg-yellow-500 text-white p-2 rounded"
+          >
+            det röda huset
+          </motion.div>
+        </motion.div>
+      </div>
+      <div className="absolute bottom-4 left-4 right-4 text-center text-sm text-gray-600">
+        Watch how adjectives change based on gender and definiteness
+      </div>
+    </div>
+  );
+
+  const renderSubordinateClausesAnimation = () => (
+    <div className="relative h-64 bg-gray-100 rounded-lg p-4">
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="bg-blue-500 text-white p-2 rounded mb-4 inline-block"
+      >
+        Main Clause
+      </motion.div>
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="bg-green-500 text-white p-2 rounded mb-4 ml-4 inline-block"
+      >
+        Subordinate Clause
+      </motion.div>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="text-center"
+      >
+        <div className="mb-2">Jag vet</div>
+        <div className="mb-2">↓</div>
+        <div>att han inte kommer</div>
+      </motion.div>
+      <div className="absolute bottom-4 left-4 right-4 text-center text-sm text-gray-600">
+        Notice the different word order in subordinate clauses
+      </div>
+    </div>
+  );
+
+  const animations: { [key: string]: () => JSX.Element } = {
+    wordOrder: renderWordOrderAnimation,
+    definiteForms: renderDefiniteFormsAnimation,
+    verbConjugation: renderVerbConjugationAnimation,
+    adjectiveAgreement: renderAdjectiveAgreementAnimation,
+    subordinateClauses: renderSubordinateClausesAnimation,
+  };
+
+  const renderAnimation = animations[currentRuleData.title] || (() => <div>Animation not found</div>);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
@@ -243,7 +466,7 @@ const GrammarAnimation: React.FC = () => {
         {/* Rule Navigation */}
         <div className="flex items-center justify-between mb-6">
           <button
-            onClick={() => navigateRule('prev')}
+            onClick={handlePrevRule}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -258,7 +481,7 @@ const GrammarAnimation: React.FC = () => {
             </div>
           </div>
           <button
-            onClick={() => navigateRule('next')}
+            onClick={handleNextRule}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
           >
             Next Rule
@@ -301,7 +524,7 @@ const GrammarAnimation: React.FC = () => {
                       {word}
                       {/* Pronunciation Button */}
                       <button
-                        onClick={() => {/* Implement speech synthesis */}}
+                        onClick={() => handleSpeak(word)}
                         className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
                       >
                         <Volume2 className="w-4 h-4" />
@@ -324,13 +547,16 @@ const GrammarAnimation: React.FC = () => {
                 {currentStepData.explanation}
               </p>
             </motion.div>
+
+            {/* Grammar Animation */}
+            {renderAnimation()}
           </div>
         </div>
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-6 mt-8">
           <button
-            onClick={() => navigateStep('prev')}
+            onClick={handlePrev}
             className="p-2 text-gray-600 hover:text-gray-800 transition-colors disabled:opacity-50"
             disabled={isPlaying}
           >
@@ -339,14 +565,14 @@ const GrammarAnimation: React.FC = () => {
             
           {!isPlaying ? (
             <button
-              onClick={startAnimation}
+              onClick={handlePlayPause}
               className="p-2 text-blue-500 hover:text-blue-600 transition-colors"
             >
               <PlayCircle className="w-8 h-8" />
             </button>
           ) : (
             <button
-              onClick={stopAnimation}
+              onClick={handlePlayPause}
               className="p-2 text-blue-500 hover:text-blue-600 transition-colors"
             >
               <PauseCircle className="w-8 h-8" />
@@ -354,7 +580,7 @@ const GrammarAnimation: React.FC = () => {
           )}
             
           <button
-            onClick={() => navigateStep('next')}
+            onClick={handleNext}
             className="p-2 text-gray-600 hover:text-gray-800 transition-colors disabled:opacity-50"
             disabled={isPlaying}
           >
@@ -362,60 +588,11 @@ const GrammarAnimation: React.FC = () => {
           </button>
             
           <button
-            onClick={() => {
-              setCurrentStep(0);
-              setProgress(0);
-            }}
+            onClick={handleReset}
             className="p-2 text-gray-600 hover:text-gray-800 transition-colors ml-4"
           >
             <RotateCcw className="w-6 h-6" />
           </button>
-        </div>
-
-        {/* Rule Overview Panel */}
-        <div className="mt-8">
-          <button
-            onClick={() => setShowRuleOverview(!showRuleOverview)}
-            className="w-full text-left px-4 py-2 text-gray-600 hover:text-gray-800
-                     bg-white rounded-lg shadow-sm hover:shadow transition-all"
-          >
-            {showRuleOverview ? 'Hide' : 'Show'} All Rules
-          </button>
-          <AnimatePresence>
-            {showRuleOverview && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-4 bg-white rounded-lg shadow-sm p-4"
-              >
-                <div className="grid gap-4">
-                  {grammarRules.map((rule, index) => (
-                    <button
-                      key={rule.title}
-                      onClick={() => {
-                        setCurrentRule(index);
-                        setCurrentStep(0);
-                        setProgress(0);
-                        setShowRuleOverview(false);
-                      }}
-                      className={`
-                        p-4 rounded-lg text-left transition-all
-                        ${currentRule === index
-                          ? 'bg-blue-50 text-blue-700 font-semibold'
-                          : 'hover:bg-gray-50'}
-                      `}
-                    >
-                      <h3 className="font-medium">{rule.title}</h3>
-                      <p className="text-sm text-gray-500">
-                        {rule.steps.length} steps
-                      </p>
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </div>
     </div>

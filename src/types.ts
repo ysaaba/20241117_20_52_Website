@@ -245,3 +245,9 @@ export interface Template {
     natural?: boolean;
   };
 }
+
+export interface ExerciseSummaryItem {
+  exercise: Exercise;
+  userAnswer: string;
+  isCorrect: boolean;
+}

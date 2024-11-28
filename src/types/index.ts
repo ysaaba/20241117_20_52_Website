@@ -25,3 +25,15 @@ export interface ExerciseSummaryItem {
   userAnswer: string;
   isCorrect: boolean;
 }
+
+export type QuizCategory = 'Nouns' | 'Verbs' | 'Adjectives';
+
+export interface MistakeData {
+  question: string;
+  correctAnswer: string;
+  userAnswer: string;
+  category: QuizCategory;
+  type: string;
+  translation?: string;
+  context?: string;
+}

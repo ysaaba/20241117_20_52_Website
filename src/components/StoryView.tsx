@@ -4,6 +4,12 @@ import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCir
 import { stories } from '../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 
+declare global {
+  interface Window {
+    responsiveVoice: any;
+  }
+}
+
 interface WordTooltipProps {
   word: {
     text: string;
@@ -126,7 +132,34 @@ const StoryView: React.FC = () => {
   const [notes, setNotes] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [voiceReady, setVoiceReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Load ResponsiveVoice script
+    const script = document.createElement('script');
+    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
+    script.async = true;
+    script.onload = () => setVoiceReady(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+      if (window.responsiveVoice) {
+        window.responsiveVoice.cancel();
+      }
+    };
+  }, []);
+
+  const handleSpeak = (text: string) => {
+    if (voiceReady && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, 'Swedish Male', {
+        pitch: 1,
+        rate: 0.9,
+        volume: 1
+      });
+    }
+  };
 
   // Audio handling
   const togglePlayPause = () => {
@@ -218,6 +251,13 @@ const StoryView: React.FC = () => {
               >
                 <MessageCircle className="w-5 h-5" />
                 Notes
+              </button>
+              <button
+                onClick={() => handleSpeak(story.content.map(word => word.text).join(' '))}
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                aria-label="Listen to story"
+              >
+                <Volume2 className="w-5 h-5 text-blue-500" />
               </button>
             </div>
           </div>

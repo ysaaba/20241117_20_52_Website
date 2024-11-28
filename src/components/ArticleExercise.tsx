@@ -3,6 +3,13 @@ import { Exercise, ExerciseProgress, ExerciseSummaryItem } from '../types';
 import { ExerciseSummaryView } from './ExerciseSummary';
 import { ExerciseCard } from './ExerciseCard';
 import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { VolumeUp } from '@mui/icons-material';
+
+declare global {
+  interface Window {
+    responsiveVoice: any;
+  }
+}
 
 interface ArticleExerciseProps {
   exercises: Exercise[];
@@ -38,6 +45,33 @@ export const ArticleExercise = ({
 }: ArticleExerciseProps) => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [feedback, setFeedback] = useState<Record<number, { isCorrect: boolean | null; mistakes: string[] }>>({});
+  const [voiceReady, setVoiceReady] = useState(false);
+
+  useEffect(() => {
+    // Load ResponsiveVoice script
+    const script = document.createElement('script');
+    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
+    script.async = true;
+    script.onload = () => setVoiceReady(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+      if (window.responsiveVoice) {
+        window.responsiveVoice.cancel();
+      }
+    };
+  }, []);
+
+  const handleSpeak = (text: string) => {
+    if (voiceReady && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, 'Swedish Male', {
+        pitch: 1,
+        rate: 0.9,
+        volume: 1
+      });
+    }
+  };
 
   const handleAnswerChange = (exerciseId: number, value: string) => {
     setAnswers(prev => ({ ...prev, [exerciseId]: value }));
@@ -54,7 +88,7 @@ export const ArticleExercise = ({
     }));
   };
 
-  const getCorrectFormKey = (type: Exercise['type']): keyof Pick<Exercise, 'baseForm' | 'definiteForm' | 'indefinitePluralForm' | 'definitePluralForm'> => {
+  const getCorrectFormKey = (type: ArticleType): keyof Pick<Exercise, 'baseForm' | 'definiteForm' | 'indefinitePluralForm' | 'definitePluralForm'> => {
     switch (type) {
       case 'indefinite':
         return 'baseForm';
@@ -121,6 +155,7 @@ export const ArticleExercise = ({
                 exerciseType={exercise.type}
                 onSubmit={() => handleSubmit(exercise.id, exercise[getCorrectFormKey(exercise.type)])}
                 isAnswered={progress.answeredQuestions.has(exercise.id)}
+                onSpeak={() => handleSpeak(exercise.sentence.replace('___', exercise.correctArticle))}
               />
             ))}
           </div>

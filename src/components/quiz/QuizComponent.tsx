@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { QuizQuestion } from '../../types';
+import { QuizQuestion, MistakeData, QuizCategory } from '../../types';
 import { Button } from '../common/Button';
 import { useResponsiveVoice } from '../../hooks/useResponsiveVoice';
 import { CheckCircle2, XCircle, Volume2 } from 'lucide-react';
@@ -9,7 +9,7 @@ interface QuizComponentProps {
   onComplete: () => void;
   onReset: () => void;
   category: string;
-  recordAnswer: (category: string, correct: boolean, mistakeData: any) => void;
+  recordAnswer: (category: string, correct: boolean, mistakeData: MistakeData) => void;
 }
 
 export function QuizComponent({ questions, onComplete, onReset, category, recordAnswer }: QuizComponentProps) {
@@ -38,11 +38,11 @@ export function QuizComponent({ questions, onComplete, onReset, category, record
     if (correct) setScore(score + 1);
 
     // Record the answer in statistics
-    const mistakeData = {
+    const mistakeData: MistakeData = {
       question: currentQuestion.question,
       correctAnswer: currentQuestion.correctAnswer,
       userAnswer: answer,
-      category: category as 'nouns' | 'verbs' | 'adjectives',
+      category: category as QuizCategory,
       type: currentQuestion.type,
       translation: currentQuestion.translation,
       context: currentQuestion.context
@@ -80,7 +80,7 @@ export function QuizComponent({ questions, onComplete, onReset, category, record
     <div className="w-full max-w-3xl mx-auto">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">{category} Quiz</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{category.charAt(0).toUpperCase() + category.slice(1)} Quiz</h2>
         <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
           <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
           <span className="font-medium">Score: {score}/{questions.length}</span>

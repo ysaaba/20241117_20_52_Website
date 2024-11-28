@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckCircle2, XCircle, Volume2, ChevronDown, ChevronUp } from 'lucide-react';
 import type { VerbData } from '../../types';
 import { ExampleSentences } from './ExampleSentences';
+import { useSound } from '../../hooks/useSound';
 
 interface VerbRowProps {
   verb: VerbData;
@@ -14,7 +15,6 @@ interface VerbRowProps {
   onInputChange: (verb: string, tense: 'present' | 'past' | 'supine', value: string) => void;
   onBlur: (verb: string, tense: 'present' | 'past' | 'supine', value: string) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>, verb: string, tense: 'present' | 'past' | 'supine') => void;
-  playSound: (text: string) => void;
   getInputClassName: (key: string) => string;
 }
 
@@ -29,9 +29,10 @@ export function VerbRow({
   onInputChange,
   onBlur,
   onKeyDown,
-  playSound,
   getInputClassName
 }: VerbRowProps) {
+  const { playAudio } = useSound();
+  
   const baseInputClass = `
     block w-full min-w-[120px] px-2 py-1.5 text-sm
     border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400
@@ -99,7 +100,7 @@ export function VerbRow({
         ))}
         <td className="px-4 py-3">
           <button
-            onClick={() => playSound(verb.verb)}
+            onClick={() => playAudio(verb.verb)}
             className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
             title="Listen to pronunciation"
           >
@@ -110,7 +111,7 @@ export function VerbRow({
       {isExpanded && (
         <tr className="bg-blue-50">
           <td colSpan={9} className="px-8 py-4">
-            <ExampleSentences verb={verb} playSound={playSound} />
+            <ExampleSentences verb={verb} playAudio={playAudio} />
           </td>
         </tr>
       )}

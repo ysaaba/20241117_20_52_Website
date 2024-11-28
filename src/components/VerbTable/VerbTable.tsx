@@ -134,37 +134,39 @@ export function VerbTable({ onReset }: VerbTableProps) {
     });
   };
 
+  const exampleVerb = verbs.find(v => v.translation === 'run') || verbs[0];  // Default to first verb if 'run' not found
+  const examples = {
+    movement: {
+      present: { swedish: `Hon ${exampleVerb.present} i parken varje morgon.`, english: `She ${exampleVerb.translation}s in the park every morning.` },
+      past: { swedish: `Hon ${exampleVerb.past} i parken igår kväll.`, english: `She ${exampleVerb.translation === 'run' ? 'ran' : exampleVerb.translation + 'ed'} in the park last night.` },
+      supine: { swedish: `Hon har ${exampleVerb.supine} i parken i två timmar.`, english: `She has ${exampleVerb.translation === 'run' ? 'run' : exampleVerb.translation + 'ed'} in the park for two hours.` }
+    },
+    communication: {
+      present: { swedish: `Han ${exampleVerb.present} med sin vän på svenska.`, english: `He ${exampleVerb.translation}s with his friend in Swedish.` },
+      past: { swedish: `De ${exampleVerb.past} i telefon igår.`, english: `They ${exampleVerb.translation === 'speak' ? 'spoke' : exampleVerb.translation + 'ed'} on the phone yesterday.` },
+      supine: { swedish: `Vi har ${exampleVerb.supine} om vädret.`, english: `We have ${exampleVerb.translation === 'speak' ? 'spoken' : exampleVerb.translation + 'ed'} about the weather.` }
+    },
+    cognition: {
+      present: { swedish: `Jag ${exampleVerb.present} på mitt arbete.`, english: `I ${exampleVerb.translation} about my work.` },
+      past: { swedish: `Hon ${exampleVerb.past} på svaret länge.`, english: `She ${exampleVerb.translation === 'think' ? 'thought' : exampleVerb.translation + 'ed'} about the answer for a long time.` },
+      supine: { swedish: `De har ${exampleVerb.supine} på saken hela dagen.`, english: `They have ${exampleVerb.translation === 'think' ? 'thought' : exampleVerb.translation + 'ed'} about the matter all day.` }
+    },
+    emotion: {
+      present: { swedish: `Barnet ${exampleVerb.present} när det får glass.`, english: `The child ${exampleVerb.translation}s when they get ice cream.` },
+      past: { swedish: `Han ${exampleVerb.past} när han fick bra nyheter.`, english: `He ${exampleVerb.translation === 'smile' ? 'smiled' : exampleVerb.translation + 'ed'} when he got good news.` },
+      supine: { swedish: `Hon har ${exampleVerb.supine} mycket idag.`, english: `She has ${exampleVerb.translation === 'smile' ? 'smiled' : exampleVerb.translation + 'ed'} a lot today.` }
+    }
+  };
+
+  const defaultExample = {
+    present: { swedish: `Vi ${exampleVerb.present} varje dag.`, english: `We ${exampleVerb.translation} every day.` },
+    past: { swedish: `De ${exampleVerb.past} igår.`, english: `They ${exampleVerb.translation === 'run' ? 'ran' : exampleVerb.translation + 'ed'} yesterday.` },
+    supine: { swedish: `Jag har ${exampleVerb.supine} hela veckan.`, english: `I have ${exampleVerb.translation === 'run' ? 'run' : exampleVerb.translation + 'ed'} all week.` }
+  };
+
   const getContextualExample = (verb: VerbData, tense: 'present' | 'past' | 'supine') => {
-    const examples = {
-      movement: {
-        present: { swedish: `Hon ${verb.present} till skolan varje dag.`, english: `She ${verb.translation}s to school every day.` },
-        past: { swedish: `Vi ${verb.past} genom parken igår.`, english: `We ${verb.translation} through the park yesterday.` },
-        supine: { swedish: `De har ${verb.supine} hela vägen hem.`, english: `They have ${verb.translation} all the way home.` }
-      },
-      communication: {
-        present: { swedish: `Han ${verb.present} med sina vänner.`, english: `He ${verb.translation}s with his friends.` },
-        past: { swedish: `De ${verb.past} i telefon i går kväll.`, english: `They ${verb.translation}ed on the phone last night.` },
-        supine: { swedish: `Vi har ${verb.supine} om det hela dagen.`, english: `We have ${verb.translation}ed about it all day.` }
-      },
-      cognition: {
-        present: { swedish: `Jag ${verb.present} på framtiden.`, english: `I ${verb.translation} about the future.` },
-        past: { swedish: `Hon ${verb.past} länge på svaret.`, english: `She ${verb.translation}ed about the answer for a long time.` },
-        supine: { swedish: `Han har ${verb.supine} mycket på det.`, english: `He has ${verb.translation}ed about it a lot.` }
-      },
-      emotion: {
-        present: { swedish: `De ${verb.present} när de ser varandra.`, english: `They ${verb.translation} when they see each other.` },
-        past: { swedish: `Barnet ${verb.past} av glädje.`, english: `The child ${verb.translation}ed with joy.` },
-        supine: { swedish: `Hon har ${verb.supine} hela morgonen.`, english: `She has ${verb.translation}ed all morning.` }
-      }
-    };
-
-    const defaultExample = {
-      present: { swedish: `Jag ${verb.present} ofta.`, english: `I often ${verb.translation}.` },
-      past: { swedish: `Igår ${verb.past} vi.`, english: `Yesterday we ${verb.translation}ed.` },
-      supine: { swedish: `De har ${verb.supine} många gånger.`, english: `They have ${verb.translation}ed many times.` }
-    };
-
-    return examples[verb.category as keyof typeof examples]?.[tense] || defaultExample[tense];
+    const example = examples[verb.category as keyof typeof examples]?.[tense] || defaultExample[tense];
+    return example;
   };
 
   return (

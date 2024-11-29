@@ -631,7 +631,101 @@ const grammarRules: GrammarRule[] = [
       'Incorrect word order after conjunction',
       'Missing necessary conjunctions'
     ]
-  }
+  },
+  {
+    id: 'noun-declensions',
+    category: 'Nouns',
+    title: 'Swedish Noun Declensions',
+    level: 'beginner',
+    explanation: 'Swedish nouns are classified as either "en" words or "ett" words. This classification determines how the noun changes in its definite and plural forms.',
+    examples: [
+      {
+        swedish: 'En pinne → pinnen → pinnar → pinnarna',
+        english: 'A stick → the stick → sticks → the sticks',
+        notes: '"En" word ending in "e"'
+      },
+      {
+        swedish: 'En flicka → flickan → flickor → flickorna',
+        english: 'A girl → the girl → girls → the girls',
+        notes: '"En" word ending in "a"'
+      },
+      {
+        swedish: 'En telefon → telefonen → telefoner → telefonerna',
+        english: 'A phone → the phone → phones → the phones',
+        notes: '"En" borrowed word'
+      },
+      {
+        swedish: 'Ett piano → pianot → pianon → pianona',
+        english: 'A piano → the piano → pianos → the pianos',
+        notes: '"Ett" word ending in vowel'
+      },
+      {
+        swedish: 'Ett bord → bordet → bord → borden',
+        english: 'A table → the table → tables → the tables',
+        notes: '"Ett" word ending in consonant'
+      }
+    ],
+    additionalNotes: [
+      'For "en" words ending in "e": add -en (definite), -ar (plural), -arna (definite plural)',
+      'For "en" words ending in "a": replace "a" with -an (definite), add -or (plural), add -na (definite plural)',
+      'For borrowed "en" words: add -en (definite), -er (plural), -erna (definite plural)',
+      'For "ett" words ending in vowel: add -t (definite), -n (plural), -na (definite plural)',
+      'For "ett" words ending in consonant: add -et (definite), no change (plural), -en (definite plural)'
+    ],
+    commonMistakes: [
+      'Using wrong article ("en" vs "ett")',
+      'Adding wrong plural ending',
+      'Forgetting to replace final "a" in words like "flicka"',
+      'Using wrong definite plural ending'
+    ]
+  },
+  {
+    id: 'irregular-nouns',
+    category: 'Nouns',
+    title: 'Irregular Noun Patterns',
+    level: 'intermediate',
+    explanation: 'Some Swedish nouns follow irregular patterns in their plural and definite forms. These are often common, frequently used words that have preserved older grammatical patterns.',
+    examples: [
+      {
+        swedish: 'En man → mannen → män → männen',
+        english: 'A man → the man → men → the men',
+        notes: 'Umlaut change in plural (a → ä)'
+      },
+      {
+        swedish: 'Ett öga → ögat → ögon → ögonen',
+        english: 'An eye → the eye → eyes → the eyes',
+        notes: 'Changes -a to -on in plural'
+      },
+      {
+        swedish: 'En fot → foten → fötter → fötterna',
+        english: 'A foot → the foot → feet → the feet',
+        notes: 'Umlaut change (o → ö) and -ter ending'
+      },
+      {
+        swedish: 'En mus → musen → möss → mössen',
+        english: 'A mouse → the mouse → mice → the mice',
+        notes: 'Umlaut change (u → ö) and consonant doubling'
+      },
+      {
+        swedish: 'Ett barn → barnet → barn → barnen',
+        english: 'A child → the child → children → the children',
+        notes: 'No change in indefinite plural form'
+      }
+    ],
+    additionalNotes: [
+      'Many irregular nouns show umlaut changes (a→ä, o→ö, u→y) in their plural forms',
+      'Some nouns have unique plural endings not found in regular patterns',
+      'Many body parts and family terms have irregular forms',
+      'Some irregular nouns preserve Old Norse grammatical patterns',
+      'The definite plural often follows regular patterns even when the indefinite plural is irregular'
+    ],
+    commonMistakes: [
+      'Applying regular plural rules to irregular nouns',
+      'Forgetting the umlaut change in plural forms',
+      'Using wrong definite plural endings',
+      'Missing consonant doubling in certain forms'
+    ]
+  },
 ];
 
 interface Props {

@@ -4,7 +4,17 @@ import { Volume2, ChevronDown, ChevronUp, X } from 'lucide-react';
 
 declare global {
   interface Window {
-    responsiveVoice: any;
+    responsiveVoice: {
+      speak: (text: string, voice: string, options?: {
+        pitch: number;
+        rate: number;
+        volume: number;
+      }) => void;
+      isPlaying: () => boolean;
+      cancel: () => void;
+      voiceSupport: () => boolean;
+      init: () => void;
+    };
   }
 }
 

@@ -29,6 +29,7 @@ interface GrammarRule {
   }>;
   additionalNotes?: string[];
   commonMistakes?: string[];
+  proTips?: string[];
 }
 
 const grammarRules: GrammarRule[] = [
@@ -71,6 +72,104 @@ const grammarRules: GrammarRule[] = [
       'Putting the verb in third position (*Igår jag läste boken)',
       'Forgetting to invert subject and verb when another element starts the sentence',
       'Applying main clause word order to subordinate clauses'
+    ],
+    proTips: [
+      'Practice by starting sentences with different elements (time, place, object) to get comfortable with inversion',
+      'Remember that "verb second" means position, not necessarily the second word',
+      'When in doubt, identify the verb first and ensure it\'s in position two',
+      'Think of the first position as one unit, even if it contains multiple words'
+    ]
+  },
+  {
+    id: 'future-tense',
+    category: 'Tenses',
+    title: 'Future Tense: Kommer att vs. Ska',
+    level: 'intermediate',
+    explanation: 'Swedish uses two main constructions to express future events: "kommer att" and "ska". While both indicate future actions, they have subtle differences in usage and implication.',
+    examples: [
+      {
+        swedish: 'Jag kommer att resa till Sverige nästa år.',
+        english: 'I will travel to Sweden next year.',
+        notes: 'Neutral statement about a future plan'
+      },
+      {
+        swedish: 'Jag ska resa till Sverige nästa år.',
+        english: 'I am going to travel to Sweden next year.',
+        notes: 'Implies a decision or intention'
+      },
+      {
+        swedish: 'Det kommer att regna imorgon.',
+        english: 'It will rain tomorrow.',
+        notes: 'Prediction based on facts or evidence'
+      },
+      {
+        swedish: 'Jag ska lära mig svenska.',
+        english: 'I am going to learn Swedish.',
+        notes: 'Expresses a personal intention or promise'
+      }
+    ],
+    additionalNotes: [
+      '"Kommer att" is more neutral and often used for predictions or statements about the future',
+      '"Ska" implies intention, decision, or promise',
+      '"Ska" can also be used for scheduled events or instructions',
+      'In some cases, the simple present tense can also express future actions in Swedish'
+    ],
+    commonMistakes: [
+      'Using "kommer att" for personal intentions or promises',
+      'Using "ska" for neutral predictions about the future',
+      'Confusing "ska" (future) with "skulle" (conditional)'
+    ],
+    proTips: [
+      'Use "kommer att" when talking about weather predictions or other neutral future events',
+      'Use "ska" when making promises or expressing personal plans',
+      'Listen to native speakers to get a feel for when each form is more natural',
+      'Remember that the present tense can often replace both forms for scheduled events'
+    ]
+  },
+  {
+    id: 'adverbs',
+    category: 'Adverbs',
+    title: 'Placement and Usage of Adverbs',
+    level: 'intermediate',
+    explanation: 'In Swedish, adverbs typically come after the verb in main clauses, but before the verb in subordinate clauses. They modify verbs, adjectives, or other adverbs.',
+    examples: [
+      {
+        swedish: 'Hon springer snabbt.',
+        english: 'She runs quickly.',
+        notes: 'Adverb after verb in main clause'
+      },
+      {
+        swedish: 'Jag vet att hon ofta läser böcker.',
+        english: 'I know that she often reads books.',
+        notes: 'Adverb before verb in subordinate clause'
+      },
+      {
+        swedish: 'Han är mycket intelligent.',
+        english: 'He is very intelligent.',
+        notes: 'Adverb modifying an adjective'
+      },
+      {
+        swedish: 'De kommer alltid i tid.',
+        english: 'They always come on time.',
+        notes: 'Time adverb in a main clause'
+      }
+    ],
+    additionalNotes: [
+      'Common adverbs: ofta (often), alltid (always), aldrig (never), snabbt (quickly), mycket (very)',
+      'Some adverbs can be placed at the beginning of a sentence for emphasis',
+      'Adverbs do not change form based on the word they modify',
+      'The placement of "inte" (not) follows the same rules as other adverbs'
+    ],
+    commonMistakes: [
+      'Placing adverbs before the verb in main clauses',
+      'Putting adverbs after the verb in subordinate clauses',
+      'Confusing adverbs with adjectives'
+    ],
+    proTips: [
+      'Learn the BIFF rule (I Bisats kommer Inte Före Finita verbet) for subordinate clauses',
+      'Practice with "inte" first, as it\'s the most common adverb and follows the same rules',
+      'When you hear a new adverb, note whether it\'s in a main or subordinate clause',
+      'Remember that modal adverbs like "kanske" can affect word order'
     ]
   },
   {
@@ -116,8 +215,95 @@ const grammarRules: GrammarRule[] = [
       'Using subject pronouns after prepositions',
       'Forgetting to match possessive pronouns with noun gender',
       'Using wrong form with reflexive verbs'
+    ],
+    proTips: [
+      'Create memory aids by grouping pronouns by person (first, second, third)',
+      'Practice with common phrases to internalize preposition + pronoun combinations',
+      'Pay attention to the gender of nouns when using possessive pronouns',
+      'Learn reflexive pronouns alongside regular pronouns as they often work together'
     ]
   },
+  {
+    id: 'subjunctive-mood',
+    category: 'Verbs',
+    title: 'The Subjunctive Mood',
+    level: 'advanced',
+    explanation: 'The subjunctive mood in Swedish is used to express wishes, hypothetical situations, or doubt. It is relatively rare in modern Swedish but still appears in certain fixed expressions and formal language.',
+    examples: [
+      {
+        swedish: 'Leve kungen!',
+        english: 'Long live the king!',
+        notes: 'Fixed expression using subjunctive'
+      },
+      {
+        swedish: 'Om jag vore rik...',
+        english: 'If I were rich...',
+        notes: 'Hypothetical situation using subjunctive form of "vara"'
+      },
+      {
+        swedish: 'Må det gå dig väl.',
+        english: 'May it go well for you.',
+        notes: 'Expressing a wish using subjunctive'
+      }
+    ],
+    additionalNotes: [
+      'The subjunctive is formed by modifying the stem of the verb',
+      'It is more common in older texts and formal language',
+      'Many subjunctive forms have been replaced by other constructions in modern Swedish'
+    ],
+    commonMistakes: [
+      'Overusing the subjunctive in contexts where it#s not necessary',
+      'Confusing subjunctive forms with imperative or present tense forms',
+      'Failing to recognize subjunctive in fixed expressions'
+    ],
+    proTips: [
+      'Learn the most common fixed expressions that use the subjunctive',
+      'Practice with hypothetical situations to get a feel for the subjunctive',
+      'Pay attention to verb conjugation in formal or old texts',
+      'Remember that the subjunctive is not as common as other moods in modern Swedish'
+    ]
+  },
+  {
+    id: 'conditional-mood',
+    category: 'Verbs',
+    title: 'The Conditional Mood',
+    level: 'advanced',
+    explanation: 'The conditional mood in Swedish is used to express hypothetical situations or actions. It is formed using the auxiliary verb "skulle" followed by the infinitive form of the main verb.',
+    examples: [
+      {
+        swedish: 'Jag skulle resa om jag hade pengar.',
+        english: 'I would travel if I had money.',
+        notes: 'Basic conditional structure'
+      },
+      {
+        swedish: 'Hon skulle ha kommit om hon vetat.',
+        english: 'She would have come if she had known.',
+        notes: 'Past conditional'
+      },
+      {
+        swedish: 'Vi skulle kunna göra det imorgon.',
+        english: 'We could do it tomorrow.',
+        notes: 'Conditional with modal verb'
+      }
+    ],
+    additionalNotes: [
+      'The conditional is often used in "if" clauses',
+      'It can express politeness or soften requests',
+      'The past conditional uses "skulle ha" + supine form'
+    ],
+    commonMistakes: [
+      'Confusing "skulle" with "skola" (shall/will)',
+      'Using present tense instead of infinitive after "skulle"',
+      'Forgetting to use "ha" in past conditional constructions'
+    ],
+    proTips: [
+      'Practice with "if" clauses to get a feel for the conditional',
+      'Use the conditional to express politeness or make requests',
+      'Pay attention to verb conjugation in conditional sentences',
+      'Remember that the past conditional is used for hypothetical past situations'
+    ]
+  },
+  
   {
     id: 'verb-groups',
     category: 'Verbs',
@@ -162,6 +348,12 @@ const grammarRules: GrammarRule[] = [
       'Applying Group 1 pattern to all verbs',
       'Using wrong past tense form',
       'Forgetting to change stem in strong verbs'
+    ],
+    proTips: [
+      'Learn the most common verb groups and their patterns',
+      'Practice with verb conjugation in different tenses',
+      'Pay attention to verb stems and endings',
+      'Remember that some verbs are irregular and must be memorized'
     ]
   },
   {
@@ -205,6 +397,12 @@ const grammarRules: GrammarRule[] = [
       'Using basic form with definite nouns',
       'Wrong form in predicative position',
       'Mixing up forms with multiple adjectives'
+    ],
+    proTips: [
+      'Practice with adjective declension in different contexts',
+      'Pay attention to noun gender and number',
+      'Learn the most common adjective forms and patterns',
+      'Remember that some adjectives are irregular'
     ]
   },
   {
@@ -247,6 +445,12 @@ const grammarRules: GrammarRule[] = [
       'Forgetting double definiteness',
       'Using definite form with possessives',
       'Wrong plural definite ending'
+    ],
+    proTips: [
+      'Practice with indefinite and definite articles',
+      'Pay attention to noun gender and number',
+      'Learn the most common article forms and patterns',
+      'Remember that some nouns only use definite form'
     ]
   },
   {
@@ -303,6 +507,12 @@ const grammarRules: GrammarRule[] = [
       'Using på instead of i for cities (wrong: *på Stockholm)',
       'Forgetting to use på with islands (should be: på Gotland)',
       'Using wrong preposition with buildings/institutions'
+    ],
+    proTips: [
+      'Practice with location prepositions in different contexts',
+      'Pay attention to the type of location (surface, container, city, etc.)',
+      'Learn the most common preposition forms and patterns',
+      'Remember that some prepositions have multiple uses'
     ]
   },
   {
@@ -351,6 +561,12 @@ const grammarRules: GrammarRule[] = [
       'Using i or på instead of till for movement',
       'Forgetting the preposition with motion verbs',
       'Using wrong preposition with transportation (åka med buss, not *åka i buss)'
+    ],
+    proTips: [
+      'Practice with movement prepositions in different contexts',
+      'Pay attention to the direction of motion',
+      'Learn the most common preposition forms and patterns',
+      'Remember that some prepositions have multiple uses'
     ]
   },
   {
@@ -405,6 +621,12 @@ const grammarRules: GrammarRule[] = [
       'Using på instead of i for months',
       'Confusing om and i for future expressions',
       'Forgetting prepositions in time expressions'
+    ],
+    proTips: [
+      'Practice with time prepositions in different contexts',
+      'Pay attention to the type of time expression (day, month, year, etc.)',
+      'Learn the most common preposition forms and patterns',
+      'Remember that some prepositions have multiple uses'
     ]
   },
   {
@@ -456,6 +678,12 @@ const grammarRules: GrammarRule[] = [
       'Using English preposition patterns',
       'Mixing up om and på with different verbs',
       'Forgetting that some verbs need no preposition in Swedish'
+    ],
+    proTips: [
+      'Practice with verb + preposition combinations in different contexts',
+      'Pay attention to the verb and its required preposition',
+      'Learn the most common combinations and patterns',
+      'Remember that some verbs have multiple prepositions'
     ]
   },
   {
@@ -491,6 +719,12 @@ const grammarRules: GrammarRule[] = [
       'Wrong ordinal number form in dates',
       'Incorrect time expressions',
       'Mixing up number patterns'
+    ],
+    proTips: [
+      'Practice with number expressions in different contexts',
+      'Pay attention to the type of number (ordinal, cardinal, etc.)',
+      'Learn the most common number forms and patterns',
+      'Remember that some numbers have irregular forms'
     ]
   },
   {
@@ -531,6 +765,12 @@ const grammarRules: GrammarRule[] = [
       'Adding "att" after modal verbs',
       'Wrong word order with modals',
       'Confusing similar modals'
+    ],
+    proTips: [
+      'Practice with modal verbs in different contexts',
+      'Pay attention to the modal verb and its meaning',
+      'Learn the most common modal forms and patterns',
+      'Remember that some modals are irregular'
     ]
   },
   {
@@ -566,6 +806,12 @@ const grammarRules: GrammarRule[] = [
       'Wrong relative pronoun choice',
       'Incorrect word order',
       'Forgetting som in subject position'
+    ],
+    proTips: [
+      'Practice with relative clauses in different contexts',
+      'Pay attention to the relative pronoun and its meaning',
+      'Learn the most common relative clause forms and patterns',
+      'Remember that subject-verb inversion applies'
     ]
   },
   {
@@ -601,6 +847,12 @@ const grammarRules: GrammarRule[] = [
       'Wrong passive form choice',
       'Incorrect verb conjugation',
       'Overuse of passive voice'
+    ],
+    proTips: [
+      'Practice with passive voice in different contexts',
+      'Pay attention to the type of passive voice (S-passive or bli-passive)',
+      'Learn the most common passive voice forms and patterns',
+      'Remember that some verbs prefer one form'
     ]
   },
   {
@@ -636,6 +888,12 @@ const grammarRules: GrammarRule[] = [
       'Wrong conjunction type',
       'Incorrect word order after conjunction',
       'Missing necessary conjunctions'
+    ],
+    proTips: [
+      'Practice with conjunctions in different contexts',
+      'Pay attention to the type of conjunction (coordinating or subordinating)',
+      'Learn the most common conjunction forms and patterns',
+      'Remember that conjunctions can affect word order'
     ]
   },
   {
@@ -683,6 +941,12 @@ const grammarRules: GrammarRule[] = [
       'Adding wrong plural ending',
       'Forgetting to replace final "a" in words like "flicka"',
       'Using wrong definite plural ending'
+    ],
+    proTips: [
+      'Practice with noun declension in different contexts',
+      'Pay attention to the type of noun (en-word or ett-word)',
+      'Learn the most common noun forms and patterns',
+      'Remember that some nouns have irregular forms'
     ]
   },
   {
@@ -730,6 +994,12 @@ const grammarRules: GrammarRule[] = [
       'Forgetting the umlaut change in plural forms',
       'Using wrong definite plural endings',
       'Missing consonant doubling in certain forms'
+    ],
+    proTips: [
+      'Practice with irregular nouns in different contexts',
+      'Pay attention to the type of noun (irregular or regular)',
+      'Learn the most common irregular noun forms and patterns',
+      'Remember that some nouns have unique plural endings'
     ]
   },
 ];
@@ -1020,23 +1290,34 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
 
                 {renderVisualizations(rule.id)}
 
-                {rule.additionalNotes && (
-                  <div className="mt-4">
-                    <h4 className="font-medium text-gray-900 mb-2">Key Points:</h4>
-                    <ul className="list-disc list-inside space-y-1">
+                {rule.additionalNotes && rule.additionalNotes.length > 0 && (
+                  <div className="mt-4 bg-green-50 p-4 rounded-md">
+                    <h3 className="font-medium text-green-900 mb-2">Key Points:</h3>
+                    <ul className="list-disc list-inside space-y-1 text-green-800">
                       {rule.additionalNotes.map((note, index) => (
-                        <li key={index} className="text-gray-700">{note}</li>
+                        <li key={index}>{note}</li>
                       ))}
                     </ul>
                   </div>
                 )}
 
-                {rule.commonMistakes && (
-                  <div className="mt-4">
-                    <h4 className="font-medium text-gray-900 mb-2">Common Mistakes:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-red-600">
+                {rule.commonMistakes && rule.commonMistakes.length > 0 && (
+                  <div className="mt-4 bg-red-50 p-4 rounded-md">
+                    <h3 className="font-medium text-red-900 mb-2">Common Mistakes:</h3>
+                    <ul className="list-disc list-inside space-y-1 text-red-800">
                       {rule.commonMistakes.map((mistake, index) => (
                         <li key={index}>{mistake}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {rule.proTips && rule.proTips.length > 0 && (
+                  <div className="mt-4 bg-blue-50 p-4 rounded-md">
+                    <h3 className="font-medium text-blue-900 mb-2">Pro Tips:</h3>
+                    <ul className="list-disc list-inside space-y-1 text-blue-800">
+                      {rule.proTips.map((tip, index) => (
+                        <li key={index}>{tip}</li>
                       ))}
                     </ul>
                   </div>

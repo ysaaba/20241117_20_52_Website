@@ -6,7 +6,13 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToggleGroup';
 
 declare global {
   interface Window {
-    responsiveVoice: any;
+    responsiveVoice: {
+      speak: (text: string, voice: string, options?: object | undefined) => void;
+      isPlaying: () => boolean;
+      cancel: () => void;
+      voiceSupport: () => boolean;
+      init: () => void;
+    };
   }
 }
 
@@ -896,8 +902,6 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
         <div className="flex flex-col gap-4">
           <ToggleGroup
             className="w-full"
-            type="single"
-            variant="solid"
             value={activeLevel ? [activeLevel] : []}
             onValueChange={(value) => {
               const level = value[0] as 'beginner' | 'intermediate' | 'advanced' | undefined;
@@ -910,6 +914,8 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
                 key={level}
                 value={level}
                 className="capitalize"
+                onClick={() => {}}
+                isActive={activeLevel === level}
               >
                 {level}
               </ToggleGroupItem>
@@ -918,8 +924,6 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
 
           <ToggleGroup
             className="w-full"
-            type="single"
-            variant="solid"
             value={selectedCategory ? [selectedCategory] : []}
             onValueChange={(value) => {
               const category = value.length ? value[0] : null;
@@ -930,6 +934,8 @@ const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {
               <ToggleGroupItem
                 key={category}
                 value={category}
+                onClick={() => {}}
+                isActive={selectedCategory === category}
               >
                 {category}
               </ToggleGroupItem>

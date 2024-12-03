@@ -6,7 +6,7 @@ export const midsommarFirande: Story = {
   englishTitle: 'Midsummer Celebration',
   difficulty: 'intermediate',
   category: 'culture',
-  description: 'Experience a traditional Swedish Midsummer celebration through this story while learning cultural vocabulary.',
+  description: 'Learn about Swedish midsummer traditions and related vocabulary.',
   content: [
     { text: 'Familjen', translation: 'The family' },
     { text: 'förbereder', translation: 'prepares' },
@@ -45,7 +45,7 @@ export const midsommarFirande: Story = {
     { text: 'magisk', translation: 'magical' },
     { text: 'kväll.', translation: 'evening.' }
   ],
-  audioUrl: '/audio/midsommar-firande.mp3',
+  audioUrl: '/audio/stories/midsommar-firande.mp3',
   exercises: [
     {
       question: 'Vad plockar familjen?',

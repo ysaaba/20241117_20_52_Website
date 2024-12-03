@@ -3,7 +3,7 @@ import { stories, type Story } from '../../data/stories';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, BarChart2, Volume2, Bookmark, Search, Filter, X, Copy, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Badge } from '@/components/ui/badge';
+import { Badge, BadgeProps } from '@/components/ui/badge';
 
 const STORIES_PER_PAGE = 6;
 
@@ -11,36 +11,6 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
   const navigate = useNavigate();
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'beginner':
-        return 'bg-green-100 text-green-800';
-      case 'intermediate':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'advanced':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'everyday':
-        return 'bg-purple-100 text-purple-800';
-      case 'culture':
-        return 'bg-blue-100 text-blue-800';
-      case 'nature':
-        return 'bg-emerald-100 text-emerald-800';
-      case 'travel':
-        return 'bg-orange-100 text-orange-800';
-      case 'food':
-        return 'bg-pink-100 text-pink-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
 
   // Calculate estimated reading time based on content length
   const getReadingTime = () => {
@@ -68,6 +38,36 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
     });
   };
 
+  const getDifficultyVariant = (difficulty: string): BadgeProps['variant'] => {
+    switch (difficulty) {
+      case 'beginner':
+        return 'green';
+      case 'intermediate':
+        return 'yellow';
+      case 'advanced':
+        return 'red';
+      default:
+        return 'default';
+    }
+  };
+
+  const getCategoryVariant = (category: string): BadgeProps['variant'] => {
+    switch (category) {
+      case 'everyday':
+        return 'purple';
+      case 'culture':
+        return 'blue';
+      case 'nature':
+        return 'green';
+      case 'travel':
+        return 'yellow';
+      case 'food':
+        return 'red';
+      default:
+        return 'default';
+    }
+  };
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -76,10 +76,10 @@ const StoryCard: React.FC<{ story: Story }> = ({ story }) => {
       <div className="p-6" onClick={() => navigate(`/stories/${encodeURIComponent(story.id)}`)}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Badge variant="blue" size="sm">
+            <Badge variant={getDifficultyVariant(story.difficulty)} size="sm">
               {story.difficulty.charAt(0).toUpperCase() + story.difficulty.slice(1)}
             </Badge>
-            <Badge variant="purple" size="sm">
+            <Badge variant={getCategoryVariant(story.category)} size="sm">
               {story.category.charAt(0).toUpperCase() + story.category.slice(1)}
             </Badge>
           </div>

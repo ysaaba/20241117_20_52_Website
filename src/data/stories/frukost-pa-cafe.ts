@@ -49,7 +49,7 @@ export const frukostPaCafe: Story = {
     { text: 'i', translation: 'in' },
     { text: 'vinden.', translation: 'the wind.' },
   ],
-  audioUrl: '/audio/frukost-pa-cafe.mp3',
+  audioUrl: '/audio/stories/frukost-pa-cafe.mp3',
   exercises: [
     {
       question: 'Vad beställer Anna att dricka?',

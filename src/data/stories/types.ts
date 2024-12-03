@@ -14,10 +14,18 @@ export interface Story {
   id: string;
   title: string;
   englishTitle: string;
-  content: Word[];
-  audioUrl: string;
-  exercises: Exercise[];
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   category: 'everyday' | 'culture' | 'nature' | 'travel' | 'food';
   description: string;
+  content: Array<{
+    text: string;
+    translation: string;
+  }>;
+  audioUrl?: string;
+  exercises: Array<{
+    question: string;
+    englishQuestion: string;
+    options: string[];
+    correctAnswer: string;
+  }>;
 }

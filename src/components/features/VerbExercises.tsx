@@ -7,14 +7,24 @@ import { VolumeUp } from '@mui/icons-material';
 
 declare global {
   interface Window {
-    responsiveVoice: any;
+    responsiveVoice: {
+      speak: (text: string, voice: string, options?: object) => void;
+      isPlaying: () => boolean;
+      cancel: () => void;
+      voiceSupport: () => boolean;
+      init: () => void;
+    };
   }
 }
 
 type ViewMode = 'cards' | 'table';
 
-export default function VerbExercises() {
-  const [viewMode, setViewMode] = useState<ViewMode>('table');
+interface VerbExercisesProps {
+  initialMode?: ViewMode;
+}
+
+export default function VerbExercises({ initialMode = 'table' }: VerbExercisesProps): JSX.Element {
+  const [viewMode, setViewMode] = useState<ViewMode>(initialMode);
   const [voiceReady, setVoiceReady] = useState(false);
 
   const {

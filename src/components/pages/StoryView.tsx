@@ -4,10 +4,17 @@ import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCir
 import { stories } from '../../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
+import { getDifficultyVariant, getCategoryVariant } from '@/utils/badges';
 
 declare global {
   interface Window {
-    responsiveVoice: any;
+    responsiveVoice: {
+      speak: (text: string, voice: string, options?: object) => void;
+      isPlaying: () => boolean;
+      cancel: () => void;
+      voiceSupport: () => boolean;
+      init: () => void;
+    };
   }
 }
 
@@ -134,6 +141,7 @@ const StoryView: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [voiceReady, setVoiceReady] = useState(false);
+  const [audioError, setAudioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -152,6 +160,28 @@ const StoryView: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Reset audio state when story changes
+    setIsPlaying(false);
+    setAudioError(null);
+
+    // Initialize audio source when component mounts or story changes
+    if (audioRef.current && story?.audioUrl) {
+      // Get the base URL from Vite's env
+      const base = import.meta.env.BASE_URL || '/';
+      
+      // Remove leading slash from audioUrl if it exists
+      const audioPath = story.audioUrl.startsWith('/') ? story.audioUrl.slice(1) : story.audioUrl;
+      
+      // Combine base URL with audio path
+      const absoluteUrl = `${window.location.origin}${base}${audioPath}`;
+      
+      console.log('Loading audio from:', absoluteUrl); // Debug log
+      audioRef.current.src = absoluteUrl;
+      audioRef.current.load();
+    }
+  }, [story?.id]);
+
   const handleSpeak = (text: string) => {
     if (voiceReady && window.responsiveVoice) {
       window.responsiveVoice.speak(text, 'Swedish Male', {
@@ -163,17 +193,22 @@ const StoryView: React.FC = () => {
   };
 
   // Audio handling
-  const togglePlayPause = () => {
-    if (audioRef.current) {
+  const togglePlayPause = async () => {
+    if (!audioRef.current) return;
+
+    try {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch(error => {
-          console.error('Error playing audio:', error);
-          setIsPlaying(false);
-        });
+        setAudioError(null);
+        await audioRef.current.play();
+        setIsPlaying(true);
       }
-      setIsPlaying(!isPlaying);
+    } catch (error) {
+      console.error('Audio playback error:', error);
+      setAudioError('Failed to play audio. Please check if audio file exists.');
+      setIsPlaying(false);
     }
   };
 
@@ -221,10 +256,19 @@ const StoryView: React.FC = () => {
               {story.audioUrl && (
                 <button
                   onClick={togglePlayPause}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
+                    isPlaying ? 'bg-blue-100 text-blue-700' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                  }`}
+                  disabled={!!audioError}
+                  title={audioError || undefined}
                 >
                   <Volume2 className="w-5 h-5" />
                   {isPlaying ? 'Pause' : 'Play Audio'}
+                  {audioError && (
+                    <span className="text-red-500 text-sm ml-2">
+                      {audioError}
+                    </span>
+                  )}
                 </button>
               )}
               <button
@@ -267,11 +311,11 @@ const StoryView: React.FC = () => {
               <h1 className="text-4xl font-bold text-gray-900 mb-2">{story.title}</h1>
               <h2 className="text-xl text-gray-600 mb-4">{story.englishTitle}</h2>
               <div className="flex items-center gap-3">
-                <Badge variant="blue" size="sm">
-                  {story.level}
+                <Badge variant={getDifficultyVariant(story.difficulty)}>
+                  {story.difficulty.charAt(0).toUpperCase() + story.difficulty.slice(1)}
                 </Badge>
-                <Badge variant="purple" size="sm">
-                  {story.category}
+                <Badge variant={getCategoryVariant(story.category)}>
+                  {story.category.charAt(0).toUpperCase() + story.category.slice(1)}
                 </Badge>
               </div>
             </div>
@@ -335,12 +379,13 @@ const StoryView: React.FC = () => {
       {/* Audio element */}
       <audio
         ref={audioRef}
-        src={story.audioUrl}
         onEnded={() => setIsPlaying(false)}
         onError={(e) => {
           console.error('Audio failed to load:', e);
           setIsPlaying(false);
+          setAudioError('Failed to load audio file. Please check your internet connection.');
         }}
+        preload="auto"
       />
     </div>
   );

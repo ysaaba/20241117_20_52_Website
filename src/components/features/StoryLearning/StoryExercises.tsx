@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Check, X, ArrowRight, Trophy } from 'lucide-react';
-import { exercises } from '../../../data/storyContent';
+import { exercises } from '../../../data/stories/skuggor-i-stockholm';
 import type { Exercise } from '../../../types';
 
 const StoryExercises: React.FC = () => {

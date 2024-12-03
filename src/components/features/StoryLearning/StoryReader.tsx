@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Volume2, ChevronLeft, ChevronRight, BookOpen, Check } from 'lucide-react';
-import { storySections } from '../../../data/storyContent';
+import { storySections } from '../../../data/stories/skuggor-i-stockholm';
 import type { StorySection, Word } from '../../../types';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';

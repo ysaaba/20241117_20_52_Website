@@ -163,7 +163,7 @@ export const sommarstugan: Story = {
     { text: 'små', translation: 'small' },
     { text: 'grodorna.', translation: 'frogs.' },
   ],
-  audioUrl: '/audio/sommarstugan.mp3',
+  audioUrl: '/audio/stories/sommarstugan.mp3',
   exercises: [
     {
       question: 'Hur länge stannar familjen i sommarstugan?',

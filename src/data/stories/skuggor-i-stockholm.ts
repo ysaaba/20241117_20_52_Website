@@ -1,4 +1,4 @@
-import { StorySection, Exercise } from '../types';
+import { StorySection, StoryExercise } from '../../types';
 
 export const storyTitle = "Skuggor i Stockholm";
 export const storySubtitle = "A Swedish Crime Thriller";
@@ -261,7 +261,7 @@ export const storySections: StorySection[] = [
   }
 ];
 
-export const exercises: Exercise[] = [
+export const exercises: StoryExercise[] = [
   {
     id: 1,
     type: 'multiple-choice',

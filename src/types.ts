@@ -265,7 +265,7 @@ export interface StorySection {
   grammarNotes?: string[];
 }
 
-export interface Exercise {
+export interface StoryExercise {
   id: number;
   type: 'multiple-choice' | 'fill-in' | 'translation' | 'comprehension' | 'vocabulary';
   sectionId: number;

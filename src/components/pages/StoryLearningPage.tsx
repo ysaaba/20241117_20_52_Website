@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Book, Dumbbell, BookOpen, BookText, GraduationCap } from 'lucide-react';
 import StoryReader from '../features/StoryLearning/StoryReader';
 import StoryExercises from '../features/StoryLearning/StoryExercises';
-import { storyTitle, storySubtitle } from '../../data/storyContent';
+import { storyTitle, storySubtitle } from '../../data/stories/skuggor-i-stockholm';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 

@@ -12,6 +12,7 @@ interface VerbExerciseCardProps {
   onChange: (value: string) => void;
   showTranslation: boolean;
   tenseType: 'present' | 'past' | 'supine';
+  children?: React.ReactNode;
 }
 
 export function VerbExerciseCard({
@@ -20,7 +21,8 @@ export function VerbExerciseCard({
   feedback,
   onChange,
   showTranslation,
-  tenseType
+  tenseType,
+  children
 }: VerbExerciseCardProps) {
   const getFeedbackColor = () => {
     if (feedback.isCorrect === null) return 'bg-white';
@@ -42,6 +44,7 @@ export function VerbExerciseCard({
 
   return (
     <div className={`p-6 rounded-lg shadow-md mb-4 transition-colors ${getFeedbackColor()}`}>
+      {children}
       <div className="mb-4">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">

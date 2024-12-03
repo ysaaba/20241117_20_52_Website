@@ -124,7 +124,7 @@ export const paKontoret: Story = {
     { text: 'viktigt', translation: 'important' },
     { text: 'här.', translation: 'here.' },
   ],
-  audioUrl: '/audio/pa-kontoret.mp3',
+  audioUrl: '/audio/stories/pa-kontoret.mp3',
   exercises: [
     {
       question: 'När är det dags för förmiddagsfika?',

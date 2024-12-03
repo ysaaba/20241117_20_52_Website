@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { VolumeUp, CheckCircle, Cancel } from '@mui/icons-material';
+import { VolumeUp } from '@mui/icons-material';
 import { Badge } from '@/components/ui/badge';
+
+interface ResponsiveVoice {
+  speak: (text: string, voice: string, options?: object) => void;
+  isPlaying: () => boolean;
+  cancel: () => void;
+  voiceSupport: () => boolean;
+  init: () => void;
+}
 
 declare global {
   interface Window {
-    responsiveVoice: any;
+    responsiveVoice: ResponsiveVoice;
   }
 }
 
@@ -16,7 +23,7 @@ interface Question {
   options: string[];
   correctAnswer: string;
   explanation: string;
-  type: 'word-order' | 'verb-form' | 'article' | 'adjective' | 'pronoun';
+  type: 'word-order' | 'verb-form' | 'article' | 'adjective' | 'pronoun' | 'conjunction' | 'particle-verb';
   level: 'beginner' | 'intermediate' | 'advanced';
   category: string;
   hint?: string;
@@ -25,10 +32,6 @@ interface Question {
     notes?: string;
   };
 }
-
-const shuffleArray = <T,>(array: T[]): T[] => {
-  return [...array].sort(() => Math.random() - 0.5);
-};
 
 const createRandomizedOptions = (correctAnswer: string, wrongOptions: string[]): string[] => {
   const options = [...wrongOptions];
@@ -1048,14 +1051,9 @@ const questions: Question[] = [
 ];
 
 const GrammarPractice: React.FC = () => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [score, setScore] = useState(0);
-  const [selectedLevel, setSelectedLevel] = useState<'beginner' | 'intermediate' | 'advanced'>('beginner');
-  const [showHint, setShowHint] = useState(false);
-  const [streak, setStreak] = useState(0);
-  const [activeTab, setActiveTab] = useState<'practice' | 'explanations'>('practice');
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [voiceReady, setVoiceReady] = useState(false);
 
   useEffect(() => {
@@ -1084,26 +1082,19 @@ const GrammarPractice: React.FC = () => {
     }
   };
 
-  const filteredQuestions = questions.filter(q => q.level === selectedLevel);
+  const filteredQuestions = questions.filter(q => q.level === 'beginner');
   const currentQuestion = filteredQuestions[currentQuestionIndex];
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
-    setShowFeedback(true);
-    if (answer === currentQuestion.correctAnswer) {
-      setScore(score + 1);
-      setStreak(streak + 1);
-    } else {
-      setStreak(0);
-    }
+    setIsCorrect(answer === currentQuestion.correctAnswer);
   };
 
   const handleNext = () => {
     if (currentQuestionIndex < filteredQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
-      setShowFeedback(false);
-      setShowHint(false);
+      setIsCorrect(null);
     }
   };
 
@@ -1124,15 +1115,12 @@ const GrammarPractice: React.FC = () => {
             <button
               key={level}
               onClick={() => {
-                setSelectedLevel(level as 'beginner' | 'intermediate' | 'advanced');
                 setCurrentQuestionIndex(0);
-                setScore(0);
-                setStreak(0);
-                setShowFeedback(false);
                 setSelectedAnswer(null);
+                setIsCorrect(null);
               }}
               className={`px-4 py-2 rounded-md ${
-                selectedLevel === level
+                level === 'beginner'
                   ? 'bg-green-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
@@ -1151,10 +1139,7 @@ const GrammarPractice: React.FC = () => {
                 </Badge>
                 <div className="flex space-x-4">
                   <Badge variant="green" size="sm">
-                    Score: {score}/{filteredQuestions.length}
-                  </Badge>
-                  <Badge variant="yellow" size="sm">
-                    Streak: {streak}
+                    Score: {filteredQuestions.length - filteredQuestions.length + (isCorrect ? 1 : 0)}/{filteredQuestions.length}
                   </Badge>
                 </div>
               </div>
@@ -1199,7 +1184,7 @@ const GrammarPractice: React.FC = () => {
                       >
                         <button
                           onClick={() => handleAnswerSelect(option)}
-                          disabled={showFeedback}
+                          disabled={selectedAnswer !== null}
                           className="flex-1 text-left"
                         >
                           <span>{option}</span>
@@ -1217,33 +1202,36 @@ const GrammarPractice: React.FC = () => {
                     ))}
                   </div>
 
-                  {!showFeedback && !showHint && currentQuestion.hint && (
+                  {isCorrect === null && !selectedAnswer && currentQuestion.hint && (
                     <button
-                      onClick={() => setShowHint(true)}
+                      onClick={() => setIsCorrect(true)}
                       className="mt-4 text-sm text-blue-600 hover:text-blue-800"
                     >
                       Need a hint?
                     </button>
                   )}
 
-                  {showHint && (
-                    <div className="mt-4 text-sm text-blue-600 bg-blue-50 p-3 rounded-md">
-                      {currentQuestion.hint}
+                  {isCorrect === true && (
+                    <div className="mt-6">
+                      <div className="p-4 rounded-md bg-green-50 text-green-700">
+                        <p className="font-medium">
+                          Correct! {currentQuestion.explanation}
+                        </p>
+                      </div>
+                      <button
+                        onClick={handleNext}
+                        className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                      >
+                        Next Question
+                      </button>
                     </div>
                   )}
 
-                  {showFeedback && (
+                  {isCorrect === false && (
                     <div className="mt-6">
-                      <div className={`p-4 rounded-md ${
-                        selectedAnswer === currentQuestion.correctAnswer
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-red-50 text-red-700'
-                      }`}>
+                      <div className="p-4 rounded-md bg-red-50 text-red-700">
                         <p className="font-medium">
-                          {selectedAnswer === currentQuestion.correctAnswer
-                            ? 'Correct! '
-                            : 'Not quite. '}
-                          {currentQuestion.explanation}
+                          Not quite. {currentQuestion.explanation}
                         </p>
                       </div>
                       <button

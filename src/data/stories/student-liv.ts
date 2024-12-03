@@ -184,7 +184,7 @@ export const studentLiv: Story = {
     { text: 'våren', translation: 'spring' },
     { text: 'välkommen.', translation: 'welcome.' },
   ],
-  audioUrl: '/audio/student-liv.mp3',
+  audioUrl: '/audio/stories/student-liv.mp3',
   exercises: [
     {
       question: 'Vad kallas den första veckan på universitetet?',

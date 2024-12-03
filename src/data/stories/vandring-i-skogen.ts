@@ -6,7 +6,7 @@ export const vandringISkogen: Story = {
   englishTitle: 'Hiking in the Forest',
   difficulty: 'intermediate',
   category: 'nature',
-  description: 'Join a Swedish forest adventure while learning nature-related vocabulary and expressions.',
+  description: 'Learn nature-related vocabulary through a story about hiking in a Swedish forest.',
   content: [
     { text: 'Erik', translation: 'Erik' },
     { text: 'och', translation: 'and' },
@@ -48,7 +48,7 @@ export const vandringISkogen: Story = {
     { text: 'genom', translation: 'through' },
     { text: 'granarna.', translation: 'the spruce trees.' }
   ],
-  audioUrl: '/audio/vandring-i-skogen.mp3',
+  audioUrl: '/audio/stories/vandring-i-skogen.mp3',
   exercises: [
     {
       question: 'Var går Erik och Maria?',

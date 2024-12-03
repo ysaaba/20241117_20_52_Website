@@ -123,7 +123,7 @@ export const musikfestival: Story = {
     { text: 'på', translation: 'the' },
     { text: 'natten.', translation: 'night.' },
   ],
-  audioUrl: '/audio/musikfestival.mp3',
+  audioUrl: '/audio/stories/musikfestival.mp3',
   exercises: [
     {
       question: 'Vad var speciellt med solen under festivalen?',

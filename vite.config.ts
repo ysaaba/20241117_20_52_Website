@@ -13,7 +13,10 @@ export default defineConfig({
     port: 3002,
     strictPort: true,
     host: true,
-    open: true
+    open: true,
+    fs: {
+      allow: ['..'],
+    },
   },
   resolve: {
     alias: {

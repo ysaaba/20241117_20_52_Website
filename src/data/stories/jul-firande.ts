@@ -127,7 +127,7 @@ export const julFirande: Story = {
     { text: 'nästa', translation: 'next' },
     { text: 'år!', translation: 'year!' },
   ],
-  audioUrl: '/audio/jul-firande.mp3',
+  audioUrl: '/audio/stories/jul-firande.mp3',
   exercises: [
     {
       question: 'Vilken speciell TV-tradition finns på julafton?',

@@ -14,7 +14,8 @@ const pathToType: Record<string, ExerciseType> = {
   '/grammar-visualizer': 'grammar-visualizer',
   '/grammar-animation': 'grammar-animation',
   '/grammar-practice': 'grammar-practice',
-  '/grammar-explanations': 'grammarExplanations'
+  '/grammar-explanations': 'grammarExplanations',
+  '/story-learning': 'story-learning'
 };
 
 const typeToPath: Record<ExerciseType, string> = {
@@ -29,7 +30,8 @@ const typeToPath: Record<ExerciseType, string> = {
   'grammar-visualizer': '/grammar-visualizer',
   'grammar-animation': '/grammar-animation',
   'grammar-practice': '/grammar-practice',
-  'grammarExplanations': '/grammar-explanations'
+  'grammarExplanations': '/grammar-explanations',
+  'story-learning': '/story-learning'
 };
 
 export default function useRouteState(

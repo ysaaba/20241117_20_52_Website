@@ -12,7 +12,8 @@ import {
   BookOpen,
   LayoutTemplate,
   PlayCircle,
-  BookText
+  BookText,
+  BookOpenText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ExerciseType } from '../../types';
@@ -225,6 +226,18 @@ export default function Navbar({ selectedType, onSelectType }: NavbarProps) {
                           <div className="flex items-center gap-2">
                             <BookA className="w-4 h-4" />
                             Articles
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSelectType('story-learning');
+                            closeDropdowns();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <div className="flex items-center gap-2">
+                            <BookOpenText className="w-4 h-4" />
+                            Story Learning
                           </div>
                         </button>
                         <button

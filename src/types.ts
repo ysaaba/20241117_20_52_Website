@@ -1,4 +1,4 @@
-export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'adverbs' | 'quiz' | 'stories' | 'grammar-visualizer' | 'grammar-animation' | 'grammar-practice' | 'grammarExplanations';
+export type ExerciseType = 'landing' | 'articles' | 'nouns' | 'verbGroups' | 'adjectives' | 'adverbs' | 'quiz' | 'stories' | 'grammar-visualizer' | 'grammar-animation' | 'grammar-practice' | 'grammarExplanations' | 'story-learning';
 export type NounCategory = 
   // People and Professions
   | 'people'
@@ -250,4 +250,29 @@ export interface ExerciseSummaryItem {
   exercise: Exercise;
   userAnswer: string;
   isCorrect: boolean;
+}
+
+export interface Word {
+  swedish: string;
+  english: string;
+}
+
+export interface StorySection {
+  id: number;
+  title: string;
+  text: string;
+  vocabulary: Word[];
+  grammarNotes?: string[];
+}
+
+export interface Exercise {
+  id: number;
+  type: 'multiple-choice' | 'fill-in' | 'translation' | 'comprehension' | 'vocabulary';
+  sectionId: number;
+  question: string;
+  correctAnswer: string | string[];
+  options?: string[];
+  hint?: string;
+  explanation?: string;
+  pairs?: Word[];
 }

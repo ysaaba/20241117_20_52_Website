@@ -1,22 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, CheckCircle2, XCircle, ArrowLeft, Bookmark, Share2, MessageCircle, Copy, Check } from 'lucide-react';
+import { Volume2, CheckCircle2, XCircle, ArrowLeft, MessageCircle, Copy, Check } from 'lucide-react';
 import { stories } from '../../data/stories';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { getDifficultyVariant, getCategoryVariant } from '@/utils/badges';
-
-declare global {
-  interface Window {
-    responsiveVoice: {
-      speak: (text: string, voice: string, options?: object) => void;
-      isPlaying: () => boolean;
-      cancel: () => void;
-      voiceSupport: () => boolean;
-      init: () => void;
-    };
-  }
-}
 
 interface WordTooltipProps {
   word: {
@@ -135,30 +123,12 @@ const StoryView: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const story = stories.find(s => s.id === decodeURIComponent(id || ''));
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [notes, setNotes] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const [voiceReady, setVoiceReady] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    // Load ResponsiveVoice script
-    const script = document.createElement('script');
-    script.src = 'https://code.responsivevoice.org/responsivevoice.js?key=u9E3wZGX';
-    script.async = true;
-    script.onload = () => setVoiceReady(true);
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-      if (window.responsiveVoice) {
-        window.responsiveVoice.cancel();
-      }
-    };
-  }, []);
 
   useEffect(() => {
     // Reset audio state when story changes
@@ -183,7 +153,7 @@ const StoryView: React.FC = () => {
   }, [story?.id]);
 
   const handleSpeak = (text: string) => {
-    if (voiceReady && window.responsiveVoice) {
+    if (window.responsiveVoice) {
       window.responsiveVoice.speak(text, 'Swedish Male', {
         pitch: 1,
         rate: 0.9,

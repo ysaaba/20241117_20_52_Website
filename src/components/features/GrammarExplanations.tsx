@@ -2096,6 +2096,189 @@ const grammarRules: GrammarRule[] = [
       'Pay attention to regional variations',
       'Focus on question intonation patterns'
     ]
+  },
+  {
+    id: 'imperative-mood',
+    category: 'Verbs',
+    title: 'Imperative Mood (Commands)',
+    level: 'beginner',
+    explanation: 'The imperative mood in Swedish is used to give commands or instructions. It is formed by removing the -a or -er from the infinitive form of the verb. The imperative is one of the simplest verb forms in Swedish as it doesn\'t change for person or number.',
+    examples: [
+      {
+        swedish: 'Kom hit!',
+        english: 'Come here!',
+        notes: 'Basic command (komma → kom)'
+      },
+      {
+        swedish: 'Prata långsammare!',
+        english: 'Speak more slowly!',
+        notes: 'Command with adverb (prata → prata)'
+      },
+      {
+        swedish: 'Öppna dörren!',
+        english: 'Open the door!',
+        notes: 'Command with object (öppna → öppna)'
+      },
+      {
+        swedish: 'Sitt ner!',
+        english: 'Sit down!',
+        notes: 'Command with particle (sitta → sitt)'
+      },
+      {
+        swedish: 'Var snäll och hjälp mig!',
+        english: 'Please help me!',
+        notes: 'Polite command with "var snäll och"'
+      },
+      {
+        swedish: 'Låt oss gå!',
+        english: 'Let\'s go!',
+        notes: 'First person plural suggestion with "låt oss"'
+      }
+    ],
+    additionalNotes: [
+      'The imperative is identical to the verb stem for most verbs',
+      'First conjugation verbs (-ar verbs) keep their -a in imperative',
+      'Some common verbs have irregular imperatives',
+      'The imperative can be softened with "var snäll och" (please)',
+      'Use "låt oss" for "let\'s" suggestions',
+      'The imperative is used for both singular and plural addressees'
+    ],
+    commonMistakes: [
+      'Using infinitive instead of imperative form',
+      'Adding -a to verbs that drop it in imperative',
+      'Forgetting to drop -er in second conjugation verbs',
+      'Using wrong form in polite requests',
+      'Direct translation of "let\'s" without "låt oss"'
+    ],
+    proTips: [
+      'Learn the imperative form alongside the infinitive',
+      'Practice with common commands used in daily life',
+      'Remember that politeness often depends more on tone than form',
+      'Use "var så god och" for very polite requests',
+      'Notice how natives soften commands in different situations'
+    ]
+  },
+  {
+    id: 'conditional-sentences',
+    category: 'Sentence Structure',
+    title: 'Conditional Sentences (Om-satser)',
+    level: 'intermediate',
+    explanation: 'Conditional sentences in Swedish express hypothetical situations and their consequences. They typically use "om" (if) in the condition clause and "skulle" or other modal verbs in the main clause. The tense and mood used depend on how likely or real the condition is.',
+    examples: [
+      {
+        swedish: 'Om det regnar, stannar jag hemma',
+        english: 'If it rains, I\'ll stay home',
+        notes: 'Real condition (present → present)'
+      },
+      {
+        swedish: 'Om jag hade pengar, skulle jag resa',
+        english: 'If I had money, I would travel',
+        notes: 'Hypothetical present/future'
+      },
+      {
+        swedish: 'Om jag hade vetat, skulle jag ha kommit',
+        english: 'If I had known, I would have come',
+        notes: 'Past hypothetical'
+      },
+      {
+        swedish: 'Skulle du kunna hjälpa mig om du har tid?',
+        english: 'Could you help me if you have time?',
+        notes: 'Polite request with condition'
+      },
+      {
+        swedish: 'Om bara vädret vore bättre!',
+        english: 'If only the weather were better!',
+        notes: 'Wish using subjunctive vore'
+      },
+      {
+        swedish: 'Även om det regnar, går jag ut',
+        english: 'Even if it rains, I\'ll go out',
+        notes: 'Concessive conditional with även om'
+      }
+    ],
+    additionalNotes: [
+      'Real conditions use present tense in both clauses',
+      'Hypothetical conditions use past tense or hade + supine',
+      'The subjunctive "vore" can be used in formal/literary contexts',
+      'Word order follows normal subordinate clause rules after om',
+      'Skulle is commonly used in the main clause for hypotheticals',
+      'Även om introduces concessive conditionals (despite/even if)'
+    ],
+    commonMistakes: [
+      'Using skulle in the om-clause (*Om jag skulle ha pengar)',
+      'Wrong word order after om',
+      'Mixing tenses inappropriately',
+      'Forgetting to use hade in past hypotheticals',
+      'Using wrong form of vara (är instead of vore) in wishes'
+    ],
+    proTips: [
+      'Learn the three main types: real, present hypothetical, and past hypothetical',
+      'Practice BIFF rule word order in om-clauses',
+      'Notice how natives soften requests with conditional forms',
+      'Use om bara for wishes and desires',
+      'Remember that skulle goes in the main clause, not the if-clause'
+    ]
+  },
+  {
+    id: 'indirect-speech',
+    category: 'Sentence Structure',
+    title: 'Indirect Speech (Indirekt tal)',
+    level: 'intermediate',
+    explanation: 'Indirect speech in Swedish reports what someone has said without quoting them directly. This involves changes in pronouns, tenses, and word order, as well as the use of att (that) to introduce the reported speech.',
+    examples: [
+      {
+        swedish: 'Hon sa att hon var trött',
+        english: 'She said (that) she was tired',
+        notes: 'Direct: "Jag är trött" → Indirect with tense shift'
+      },
+      {
+        swedish: 'Han frågade om jag ville komma',
+        english: 'He asked if I wanted to come',
+        notes: 'Question becomes statement with om'
+      },
+      {
+        swedish: 'De undrade var jag bodde',
+        english: 'They wondered where I lived',
+        notes: 'Wh-question in indirect speech'
+      },
+      {
+        swedish: 'Hon bad mig att stänga dörren',
+        english: 'She asked me to close the door',
+        notes: 'Reported command with att + infinitive'
+      },
+      {
+        swedish: 'Han sa att han skulle komma imorgon',
+        english: 'He said he would come tomorrow',
+        notes: 'Future in indirect speech'
+      },
+      {
+        swedish: 'De berättade att de hade varit där',
+        english: 'They told (us) they had been there',
+        notes: 'Past perfect in indirect speech'
+      }
+    ],
+    additionalNotes: [
+      'Main verbs for reporting: säga, berätta, fråga, undra, be',
+      'Questions become statements with om or question words',
+      'Commands use att + infinitive',
+      'Pronouns change based on the new perspective',
+      'Time expressions may need to change',
+      'Word order follows subordinate clause patterns'
+    ],
+    commonMistakes: [
+      'Keeping direct speech word order',
+      'Forgetting to change pronouns appropriately',
+      'Wrong tense sequence',
+      'Missing att or using it incorrectly',
+      'Using direct question word order in indirect questions'
+    ],
+    proTips: [
+      'Practice changing all pronouns systematically',
+      'Learn the most common reporting verbs and their patterns',
+      'Pay attention to tense changes in authentic texts',
+      'Remember that time expressions may need adjustment',
+      'Notice how natives handle indirect questions'
+    ]
   }
 ];
 
@@ -3620,6 +3803,206 @@ const grammarVisualizations: Record<string, VisualizationData[]> = {
             'bil-en',
             '◢__◣\nBI-len',
             'Both syllables full length'
+          ]
+        ]
+      }
+    }
+  ],
+  'adjective-stress': [
+    {
+      type: 'table',
+      title: 'Basic Adjective Forms',
+      data: {
+        headers: ['Form', 'Example', 'Pitch Pattern', 'Description'],
+        rows: [
+          [
+            'Attributive (en)',
+            'en grön bil',
+            '◢_\nGRÖN bil',
+            'Strong stress on adjective'
+          ],
+          [
+            'Attributive (ett)',
+            'ett grönt hus',
+            '◢_\nGRÖNT hus',
+            'Strong stress with -t ending'
+          ],
+          [
+            'Predicative',
+            'bilen är grön',
+            '__◢\när GRÖN',
+            'Main sentence stress on adjective'
+          ],
+          [
+            'Plural Form',
+            'gröna bilar',
+            '◢__\nGRÖ-na',
+            'Stress on first syllable'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Comparative Forms',
+      data: {
+        headers: ['Type', 'Example', 'Pitch Pattern', 'Notes'],
+        rows: [
+          [
+            'Regular -are',
+            'vackrare',
+            '◢__◣\nVACK-ra-re',
+            'Fall-rise across syllables'
+          ],
+          [
+            'Regular -ast',
+            'vackrast',
+            '◢__\nVACK-rast',
+            'Strong fall on first'
+          ],
+          [
+            'Irregular',
+            'bättre',
+            '◢_\nBÄTT-re',
+            'Sharp fall pattern'
+          ],
+          [
+            'Periphrastic',
+            'mer intressant',
+            '◢_ ◢_\nMER in-tre-SANT',
+            'Double stress pattern'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Compound Adjectives',
+      data: {
+        headers: ['Compound', 'Components', 'Pattern', 'Description'],
+        rows: [
+          [
+            'mörkblå',
+            'mörk + blå',
+            '◢_◣\nMÖRK-blå',
+            'Main stress + secondary'
+          ],
+          [
+            'svensktalande',
+            'svensk + talande',
+            '◢___◣\nSVENSK-ta-lan-de',
+            'Long compound pattern'
+          ],
+          [
+            'rödvit',
+            'röd + vit',
+            '◢_◣\nRÖD-vit',
+            'Color compound'
+          ],
+          [
+            'nybakad',
+            'ny + bakad',
+            '◢_◣\nNY-ba-kad',
+            'Prefix compound'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Definite Forms',
+      data: {
+        headers: ['Structure', 'Example', 'Pattern', 'Description'],
+        rows: [
+          [
+            'den/det + Adj',
+            'den stora bilen',
+            '_ ◢_ _\nden STO-ra bilen',
+            'Weak stress on den'
+          ],
+          [
+            'den här + Adj',
+            'den här gröna',
+            '_ ◢ ◢_\nden HÄR GRÖ-na',
+            'Double stress pattern'
+          ],
+          [
+            'min + Adj',
+            'min gamla bil',
+            '_ ◢_ _\nmin GAM-la bilen',
+            'Focus on adjective'
+          ],
+          [
+            'någon + Adj',
+            'någon stor bil',
+            '◢_ ◢\nNÅ-gon STOR',
+            'Dual stress pattern'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Adjective Phrases',
+      data: {
+        headers: ['Type', 'Example', 'Pattern', 'Description'],
+        rows: [
+          [
+            'Intensifier',
+            'mycket vacker',
+            '◢_ ◢_\nMYC-ket VAC-ker',
+            'Dual emphasis'
+          ],
+          [
+            'Negation',
+            'inte stor',
+            '◢_ ◢\nIN-te STOR',
+            'Stress on both words'
+          ],
+          [
+            'With Adverb',
+            'ganska lång',
+            '◢_ ◢\nGAN-ska LÅNG',
+            'Rising to adjective'
+          ],
+          [
+            'Complex',
+            'alldeles utmärkt',
+            '◢__ ◢_\nALL-de-les UT-märkt',
+            'Multiple stress points'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Special Patterns',
+      data: {
+        headers: ['Context', 'Example', 'Pattern', 'Notes'],
+        rows: [
+          [
+            'Emphasis',
+            'JÄTTE-fin',
+            '◥◢_\nJÄT-te-fin',
+            'Extra strong prefix'
+          ],
+          [
+            'Contrast',
+            'inte VIT utan SVARt',
+            '_ ◢ _ ◢\ninte VIT utan SVART',
+            'Contrastive stress'
+          ],
+          [
+            'Hesitation',
+            'lite... konstig',
+            '◢→ ◢_\nLI-te... KONS-tig',
+            'Pause pattern'
+          ],
+          [
+            'Exclamation',
+            'Så VACKERT!',
+            '_ ◥◢\nså VAC-kert',
+            'Emotional emphasis'
           ]
         ]
       }

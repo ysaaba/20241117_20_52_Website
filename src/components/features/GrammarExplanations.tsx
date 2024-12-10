@@ -2008,6 +2008,95 @@ const grammarRules: GrammarRule[] = [
       'Pay attention to word order with time expressions'
     ]
   },
+  {
+    id: 'satzmelodie',
+    category: 'Pronunciation',
+    title: 'Sentence Melody (Satzmelodie)',
+    level: 'intermediate',
+    explanation: 'Swedish has two distinct intonation patterns (accents) that can change the meaning of words and affect sentence melody. These are called Accent 1 (acute) and Accent 2 (grave). The melody of Swedish sentences also follows specific patterns for statements, questions, and emphasis.',
+    examples: [
+      {
+        swedish: 'anden (Accent 1)',
+        english: 'the duck',
+        notes: 'Single peak accent pattern'
+      },
+      {
+        swedish: 'anden (Accent 2)',
+        english: 'the spirit',
+        notes: 'Double peak accent pattern'
+      },
+      {
+        swedish: 'Kommer du?↗',
+        english: 'Are you coming?',
+        notes: 'Rising intonation for yes/no questions'
+      },
+      {
+        swedish: 'Vad gör du?↘',
+        english: 'What are you doing?',
+        notes: 'Falling intonation for wh-questions'
+      },
+      {
+        swedish: 'Det var INTE jag!',
+        english: 'It was NOT me!',
+        notes: 'Emphasis on negation'
+      },
+      {
+        swedish: 'stegen (Accent 1)',
+        english: 'the steps',
+        notes: 'Single peak: ˈste.gen'
+      },
+      {
+        swedish: 'stegen (Accent 2)',
+        english: 'the ladder',
+        notes: 'Double peak: ˈste̖.gen'
+      },
+      {
+        swedish: 'Nu förstår jag!↘',
+        english: 'Now I understand!',
+        notes: 'Falling intonation with emphasis on "nu"'
+      },
+      {
+        swedish: 'Jaså? Gör du det?↗',
+        english: 'Oh really? You do?',
+        notes: 'Double rising intonation for surprise'
+      },
+      {
+        swedish: 'Kaffe... te... eller juice...↗',
+        english: 'Coffee... tea... or juice...',
+        notes: 'Rising pattern for options'
+      }
+    ],
+    additionalNotes: [
+      'Accent 1 has a single peak in pitch',
+      'Accent 2 has two peaks in pitch',
+      'Yes/no questions typically have rising intonation',
+      'Wh-questions typically have falling intonation',
+      'Emphasis can be shown through pitch and stress',
+      'Compound words usually take Accent 2',
+      'Regional variations exist in intonation patterns',
+      'Accent 1 has a single peak in pitch',
+      'Accent 2 has two peaks in pitch',
+      'Yes/no questions typically have rising intonation',
+      'Wh-questions typically have falling intonation',
+      'Emphasis can be shown through pitch and stress',
+      'Compound words usually take Accent 2',
+      'Regional variations exist in intonation patterns'
+    ],
+    commonMistakes: [
+      'Using English intonation patterns',
+      'Not distinguishing between Accent 1 and 2',
+      'Wrong intonation in questions',
+      'Missing emphasis in contrastive statements',
+      'Incorrect stress in compound words'
+    ],
+    proTips: [
+      'Listen carefully to native speakers\' intonation',
+      'Practice minimal pairs with different accents',
+      'Record yourself and compare with native speech',
+      'Pay attention to regional variations',
+      'Focus on question intonation patterns'
+    ]
+  }
 ];
 
 const grammarVisualizations: Record<string, VisualizationData[]> = {
@@ -3125,6 +3214,417 @@ const grammarVisualizations: Record<string, VisualizationData[]> = {
       }
     }
   ],
+  'satzmelodie': [
+    {
+      type: 'table',
+      title: 'Swedish Accent Patterns',
+      data: {
+        headers: ['Word', 'Accent Type', 'Meaning', 'Pattern'],
+        rows: [
+          ['anden', 'Accent 1', 'the duck', 'Single peak (´)'],
+          ['anden', 'Accent 2', 'the spirit', 'Double peak (`)'],
+          ['tomten', 'Accent 1', 'the plot (of land)', 'Single peak (´)'],
+          ['tomten', 'Accent 2', 'Santa Claus', 'Double peak (`)'],
+          ['buren', 'Accent 1', 'the cage', 'Single peak (´)'],
+          ['buren', 'Accent 2', 'carried', 'Double peak (`)']
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Sentence Intonation Patterns',
+      data: {
+        headers: ['Sentence Type', 'Pattern', 'Example', 'Notes'],
+        rows: [
+          ['Statement', 'Falling', 'Jag går hem.↘', 'Gradual fall'],
+          ['Yes/No Question', 'Rising', 'Går du hem?↗', 'Rise at end'],
+          ['Wh-Question', 'Falling', 'Var går du?↘', 'Fall from question word'],
+          ['Emphasis', 'Peak on focus', 'JAG går hem.', 'Strong stress'],
+          ['Continuation', 'Level or rising', 'När jag kommer hem...→', 'Indicates more to come'],
+          ['List', 'Rise, rise, fall', 'äpplen↗, päron↗, bananer↘', 'Final item falls']
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Accent Patterns in Compound Words',
+      data: {
+        headers: ['Compound Word', 'Components', 'Accent Type', 'Meaning'],
+        rows: [
+          ['vardagsrum', 'vardag + rum', 'Accent 2', 'living room'],
+          ['jordgubbe', 'jord + gubbe', 'Accent 2', 'strawberry'],
+          ['kaffekopp', 'kaffe + kopp', 'Accent 2', 'coffee cup'],
+          ['matsäck', 'mat + säck', 'Accent 2', 'packed lunch'],
+          ['bokhylla', 'bok + hylla', 'Accent 2', 'bookshelf'],
+          ['barnbok', 'barn + bok', 'Accent 2', 'children\'s book']
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Regional Accent Variations',
+      data: {
+        headers: ['Region', 'Characteristic', 'Example Word', 'Pattern'],
+        rows: [
+          ['Stockholm', 'Sharp accent distinction', 'anden', 'Clear Accent 1/2 difference'],
+          ['Skåne', 'Softer distinction', 'anden', 'Less pronounced difference'],
+          ['Göteborg', 'Distinct rise-fall', 'gatan', 'Strong pitch movement'],
+          ['Norrland', 'Extended pitch range', 'huset', 'Wider pitch intervals'],
+          ['Finland Swedish', 'Less tonal', 'bilen', 'Minimal pitch movement'],
+          ['Standard Swedish', 'Reference form', 'handen', 'Textbook pattern']
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Intonation in Different Contexts',
+      data: {
+        headers: ['Context', 'Pattern', 'Example', 'Effect'],
+        rows: [
+          ['Excitement', '↗↗↗', 'Vad roligt!', 'Multiple rising tones'],
+          ['Disappointment', '↘↘', 'Jaha...', 'Falling, extended'],
+          ['Listing Items', '↗,↗,↘', 'ett, två, tre', 'Rise, rise, fall'],
+          ['Hesitation', '→→', 'Jaa...', 'Extended level tone'],
+          ['Strong Emphasis', '⋀', 'NEJ!', 'Sharp rise-fall'],
+          ['Gentle Request', '↗↘', 'Kan du...?', 'Rise-fall pattern']
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Detailed Pitch Patterns',
+      data: {
+        headers: ['Word', 'Accent Type', 'Pitch Visualization', 'Description'],
+        rows: [
+          [
+            'anden',
+            'Accent 1',
+            '◢___\nAN-den',
+            'Sharp fall on first syllable, stays low'
+          ],
+          [
+            'anden',
+            'Accent 2',
+            '◢_◣\nAN-den',
+            'Fall-rise pattern across syllables'
+          ],
+          [
+            'flicka',
+            'Accent 2',
+            '◢_◣\nFLIC-ka',
+            'Fall on FLIC, rise on -ka'
+          ],
+          [
+            'sommar',
+            'Accent 2',
+            '◢_◣\nSOM-mar',
+            'Fall-rise across syllables'
+          ],
+          [
+            'tala',
+            'Accent 1',
+            '◢___\nTA-la',
+            'Sharp fall, remains low'
+          ],
+          [
+            'talet',
+            'Accent 2',
+            '◢_◣\nTA-let',
+            'Fall-rise pattern'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Sentence Pitch Movement',
+      data: {
+        headers: ['Sentence', 'Type', 'Pitch Pattern', 'Description'],
+        rows: [
+          [
+            'Jag går hem',
+            'Statement',
+            '___◢___\nJAG GÅR HEM',
+            'Gradual descent'
+          ],
+          [
+            'Går du hem?',
+            'Yes/No Question',
+            '_____◣\nGÅR DU HEM',
+            'Rising at the end'
+          ],
+          [
+            'Vad gör du?',
+            'Wh-Question',
+            '◢____\nVAD GÖR DU',
+            'High start, falling'
+          ],
+          [
+            'INTE jag!',
+            'Emphasis',
+            '◥◢___\nIN-TE JAG',
+            'Extra emphasis on INTE'
+          ],
+          [
+            'Kaffe... te...',
+            'List',
+            '◣ ◣\nKAF-FE... TE...',
+            'Rising on each item'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Compound Word Patterns',
+      data: {
+        headers: ['Word', 'Components', 'Pitch Pattern', 'Description'],
+        rows: [
+          [
+            'vardagsrum',
+            'vardag+rum',
+            '◢__◣\nVAR-dags-rum',
+            'Main fall + final rise'
+          ],
+          [
+            'jordgubbe',
+            'jord+gubbe',
+            '◢__◣\nJORD-gub-be',
+            'Fall on first, rise at end'
+          ],
+          [
+            'kaffekopp',
+            'kaffe+kopp',
+            '◢__◣\nKAF-fe-kopp',
+            'Fall-rise pattern'
+          ],
+          [
+            'bokhylla',
+            'bok+hylla',
+            '◢__◣\nBOK-hyl-la',
+            'Fall + gentle rise'
+          ]
+        ]
+      }
+    }
+  ],
+  'pitch-pattern-legend': [
+    {
+      type: 'table',
+      title: 'Pitch Pattern Legend',
+      data: {
+        headers: ['Symbol', 'Meaning', 'Example', 'Usage'],
+        rows: [
+          ['◢', 'Sharp fall', 'TA-la', 'Start of stressed syllable'],
+          ['◣', 'Sharp rise', 'kom-MER', 'End rise in questions'],
+          ['___', 'Low level', 'efter', 'Unstressed syllables'],
+          ['◥', 'High level', 'JA', 'Emphasized syllables'],
+          ['→', 'Sustained', 'jaaa...', 'Lengthened sounds'],
+          ['◢__◣', 'Fall-rise', 'AND-en', 'Accent 2 pattern']
+        ]
+      }
+    }
+  ],
+  'noun-stress': [
+    {
+      type: 'table',
+      title: 'Basic Noun Stress Patterns',
+      data: {
+        headers: ['Form', 'Example', 'Pitch Pattern', 'Description'],
+        rows: [
+          [
+            'Indefinite Singular',
+            'en FLICKA',
+            '◢___\nFLIC-ka',
+            'Main stress on first syllable'
+          ],
+          [
+            'Definite Singular',
+            'FLICKAN',
+            '◢_◣\nFLIC-kan',
+            'Rise on definite suffix'
+          ],
+          [
+            'Indefinite Plural',
+            'FLICKOR',
+            '◢__\nFLIC-kor',
+            'Stress remains on first syllable'
+          ],
+          [
+            'Definite Plural',
+            'FLICKORNA',
+            '◢__◣\nFLIC-kor-na',
+            'Secondary rise on definite suffix'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Compound Noun Patterns',
+      data: {
+        headers: ['Compound', 'Components', 'Pitch Pattern', 'Description'],
+        rows: [
+          [
+            'sommardag',
+            'sommar + dag',
+            '◢___◣\nSOM-mar-dag',
+            'Main stress + final rise'
+          ],
+          [
+            'järnvägsstation',
+            'järnväg + station',
+            '◢____◣\nJÄRN-vägs-sta-tion',
+            'Long compound, maintain pattern'
+          ],
+          [
+            'skolböcker',
+            'skol + böcker',
+            '◢__◣\nSKOL-böc-ker',
+            'Compound plural form'
+          ],
+          [
+            'kaffekoppen',
+            'kaffe + kopp + en',
+            '◢___◣\nKAF-fe-kopp-en',
+            'Compound with definite'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Definite Form Variations',
+      data: {
+        headers: ['Base Form', 'Definite Form', 'Pitch Pattern', 'Notes'],
+        rows: [
+          [
+            'bok',
+            'boken',
+            '◢_◣\nBO-ken',
+            'Short word + definite'
+          ],
+          [
+            'telefon',
+            'telefonen',
+            '◢__◣\nTE-le-FON-en',
+            'Long word + definite'
+          ],
+          [
+            'äpple',
+            'äpplet',
+            '◢_◣\nÄPP-let',
+            'Neuter noun + definite'
+          ],
+          [
+            'hus',
+            'huset',
+            '◢_◣\nHU-set',
+            'Short neuter + definite'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Regional Noun Variations',
+      data: {
+        headers: ['Region', 'Example', 'Pattern', 'Characteristics'],
+        rows: [
+          [
+            'Stockholm',
+            'flickan',
+            '◢_◣\nFLIC-kan',
+            'Clear two-peak pattern'
+          ],
+          [
+            'Skåne',
+            'flickan',
+            '◢___\nFLIC-kan',
+            'Flatter, less distinct rise'
+          ],
+          [
+            'Göteborg',
+            'flickan',
+            '◢_↗\nFLIC-kan',
+            'Stronger final rise'
+          ],
+          [
+            'Norrland',
+            'flickan',
+            '◢__◣\nFLIC-kan',
+            'Extended pitch range'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Special Noun Patterns',
+      data: {
+        headers: ['Type', 'Example', 'Pattern', 'Description'],
+        rows: [
+          [
+            'Loan Words',
+            'garage',
+            '__◢\nga-RAGE',
+            'Final stress (French)'
+          ],
+          [
+            'Abbreviations',
+            'TV:n',
+            '◥◣\nTE-VE:n',
+            'Equal stress both syllables'
+          ],
+          [
+            'Foreign Names',
+            'Paris',
+            '__◢\npa-RIS',
+            'Final stress maintained'
+          ],
+          [
+            'Mixed Compounds',
+            'TV-apparat',
+            '◥_◢__\nTE-VE-app-rat',
+            'Multiple stress points'
+          ]
+        ]
+      }
+    },
+    {
+      type: 'table',
+      title: 'Length and Stress Interaction',
+      data: {
+        headers: ['Pattern', 'Example', 'Visualization', 'Rule'],
+        rows: [
+          [
+            'Short + Short',
+            'hus-et',
+            '◢_◣\nHU-set',
+            'Complementary length'
+          ],
+          [
+            'Long + Short',
+            'bok-en',
+            '◢__\nBO-ken',
+            'Maintains length contrast'
+          ],
+          [
+            'Short + Long',
+            'tak-et',
+            '◢_◣\nTA-ket',
+            'Complementary distribution'
+          ],
+          [
+            'Long + Long',
+            'bil-en',
+            '◢__◣\nBI-len',
+            'Both syllables full length'
+          ]
+        ]
+      }
+    }
+  ]
 };
 
 const GrammarExplanations: React.FC<Props> = ({ selectedLevel }) => {

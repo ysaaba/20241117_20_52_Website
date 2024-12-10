@@ -4130,5 +4130,1019 @@ export const commonNouns: Noun[] = removeDuplicates([
       canBeBorrowed: false,
       bodyPart: false
     }
-  }
-]);
+  },
+  {
+      noun: 'kudde',
+      translation: 'pillow',
+      category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+        indefinite: 'en kudde',
+        definite: 'kudden',
+        indefinitePlural: 'kuddar',
+        definitePlural: 'kuddarna'
+    },
+    examples: {
+      indefinite: {
+          swedish: 'Jag behöver en ny kudde',
+          english: 'I need a new pillow'
+      },
+      definite: {
+          swedish: 'Kudden är mjuk',
+          english: 'The pillow is soft'
+      },
+      indefinitePlural: {
+          swedish: 'Det finns många kuddar i soffan',
+          english: 'There are many pillows on the sofa'
+      },
+      definitePlural: {
+          swedish: 'Kuddarna är bekväma',
+          english: 'The pillows are comfortable'
+        }
+      },
+      semantics: {
+        canBeSeen: true,
+        canBeFound: true,
+        animate: false,
+        natural: false,
+        canBeBought: true,
+        canBeUsedAtWork: false,
+        canBeConsumed: false,
+        canBeWorn: false,
+        canGrow: false,
+        isWeather: false,
+        canBeBorrowed: true,
+        bodyPart: false
+    },
+    },
+    {
+      noun: 'gardin',
+      translation: 'curtain',
+      category: 'furniture',
+      difficulty: 'beginner',
+      gender: 'en',
+      countable: true,
+      forms: {
+        indefinite: 'en gardin',
+        definite: 'gardinen',
+        indefinitePlural: 'gardiner',
+        definitePlural: 'gardinerna'
+      },
+      examples: {
+        indefinite: {
+          swedish: 'Vi behöver en gardin här',
+          english: 'We need a curtain here'
+        },
+        definite: {
+          swedish: 'Gardinen är vit',
+          english: 'The curtain is white'
+        },
+        indefinitePlural: {
+          swedish: 'De har nya gardiner',
+          english: 'They have new curtains'
+        },
+        definitePlural: {
+          swedish: 'Gardinerna är stängda',
+          english: 'The curtains are closed'
+        }
+      },
+      semantics: {
+        canBeSeen: true,
+        canBeFound: true,
+        animate: false,
+        natural: false,
+        canBeBought: true,
+        canBeUsedAtWork: false,
+        canBeConsumed: false,
+        canBeWorn: false,
+        canGrow: false,
+        isWeather: false,
+        canBeBorrowed: false,
+        bodyPart: false
+      }
+    },
+    {
+      noun: 'tvål',
+      translation: 'soap',
+      category: 'bathroom',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+        indefinite: 'en tvål',
+        definite: 'tvålen',
+        indefinitePlural: 'tvålar',
+        definitePlural: 'tvålarna'
+    },
+    examples: {
+      indefinite: {
+          swedish: 'Kan du köpa en tvål?',
+          english: 'Can you buy a soap?'
+      },
+      definite: {
+          swedish: 'Tvålen luktar gott',
+          english: 'The soap smells good'
+      },
+      indefinitePlural: {
+          swedish: 'Vi har flera tvålar',
+          english: 'We have several soaps'
+      },
+      definitePlural: {
+          swedish: 'Tvålarna är slut',
+          english: 'The soaps are finished'
+        }
+      },
+      semantics: {
+        canBeSeen: true,
+        canBeFound: true,
+        animate: false,
+        natural: false,
+        canBeBought: true,
+        canBeUsedAtWork: false,
+        canBeConsumed: false,
+        canBeWorn: false,
+        canGrow: false,
+        isWeather: false,
+        canBeBorrowed: false,
+        bodyPart: false
+      }
+    },
+    { 
+        noun: 'handduk',
+        translation: 'towel',
+        category: 'bathroom',
+        difficulty: 'beginner',
+        gender: 'en',
+        countable: true,
+        forms: {
+          indefinite: 'en handduk',
+          definite: 'handduken',
+          indefinitePlural: 'handdukar',
+          definitePlural: 'handdukarna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Jag behöver en handduk',
+            english: 'I need a towel'
+          },
+          definite: {
+            swedish: 'Handduken är fuktig',
+            english: 'The towel is damp'
+          },
+          indefinitePlural: {
+            swedish: 'Vi har rena handdukar',
+            english: 'We have clean towels'
+          },
+          definitePlural: {
+            swedish: 'Handdukarna hänger i badrummet',
+            english: 'The towels are hanging in the bathroom'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: true,
+          bodyPart: false
+        },
+      },
+      {
+          noun: 'hylla',
+          translation: 'shelf',
+          category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en hylla',
+          definite: 'hyllan',
+          indefinitePlural: 'hyllor',
+          definitePlural: 'hyllorna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi behöver en hylla här',
+            english: 'We need a shelf here'
+      },
+      definite: {
+            swedish: 'Hyllan är full av böcker',
+            english: 'The shelf is full of books'
+      },
+      indefinitePlural: {
+            swedish: 'Det finns tomma hyllor',
+            english: 'There are empty shelves'
+      },
+      definitePlural: {
+            swedish: 'Hyllorna är av trä',
+            english: 'The shelves are made of wood'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'servett',
+        translation: 'napkin',
+        category: 'kitchen',
+        difficulty: 'beginner',
+        gender: 'en',
+        countable: true,
+        forms: {
+          indefinite: 'en servett',
+          definite: 'servetten',
+          indefinitePlural: 'servetter',
+          definitePlural: 'servetterna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Kan jag få en servett?',
+            english: 'Can I have a napkin?'
+          },
+          definite: {
+            swedish: 'Servetten är vit',
+            english: 'The napkin is white'
+          },
+          indefinitePlural: {
+            swedish: 'Vi behöver fler servetter',
+            english: 'We need more napkins'
+          },
+          definitePlural: {
+            swedish: 'Servetterna ligger på bordet',
+            english: 'The napkins are on the table'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: true,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'matta',
+        translation: 'rug/carpet',
+        category: 'furniture',
+        difficulty: 'beginner',
+        gender: 'en',
+        countable: true,
+        forms: {
+          indefinite: 'en matta',
+          definite: 'mattan',
+          indefinitePlural: 'mattor',
+          definitePlural: 'mattorna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Vi har köpt en matta',
+            english: 'We have bought a rug'
+          },
+          definite: {
+            swedish: 'Mattan är mjuk',
+            english: 'The rug is soft'
+          },
+          indefinitePlural: {
+            swedish: 'Det finns mattor i varje rum',
+            english: 'There are rugs in every room'
+          },
+          definitePlural: {
+            swedish: 'Mattorna behöver dammsugas',
+            english: 'The rugs need to be vacuumed'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      { 
+    noun: 'gitarr',
+    translation: 'guitar',
+    category: 'music',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+      indefinite: 'en gitarr',
+      definite: 'gitarren',
+      indefinitePlural: 'gitarrer',
+      definitePlural: 'gitarrerna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Han spelar en gitarr',
+            english: 'He plays a guitar'
+      },
+      definite: {
+            swedish: 'Gitarren är avstämd',
+            english: 'The guitar is tuned'
+      },
+      indefinitePlural: {
+        swedish: 'Det finns många gitarrer i affären',
+        english: 'There are many guitars in the store'
+      },
+      definitePlural: {
+            swedish: 'Gitarrerna hänger på väggen',
+            english: 'The guitars are hanging on the wall'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: true,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'moln',
+        translation: 'cloud',
+        category: 'weather',
+    difficulty: 'beginner',
+        gender: 'ett',
+    countable: true,
+    forms: {
+          indefinite: 'ett moln',
+          definite: 'molnet',
+          indefinitePlural: 'moln',
+          definitePlural: 'molnen'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Jag ser ett moln',
+            english: 'I see a cloud'
+      },
+      definite: {
+            swedish: 'Molnet är grått',
+            english: 'The cloud is grey'
+      },
+      indefinitePlural: {
+            swedish: 'Det finns många moln på himlen',
+            english: 'There are many clouds in the sky'
+      },
+      definitePlural: {
+            swedish: 'Molnen rör sig snabbt',
+            english: 'The clouds are moving fast'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: true,
+          canBeBought: false,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: true,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'tandkräm',
+        translation: 'toothpaste',
+        category: 'bathroom',
+    difficulty: 'beginner',
+        gender: 'en',
+        countable: false,
+        forms: {
+          indefinite: 'en tandkräm',
+          definite: 'tandkrämen',
+          indefinitePlural: '-',
+          definitePlural: '-'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Vi behöver köpa tandkräm',
+            english: 'We need to buy toothpaste'
+          },
+          definite: {
+            swedish: 'Tandkrämen är slut',
+            english: 'The toothpaste is empty'
+          },
+          indefinitePlural: {
+            swedish: '-',
+            english: '-'
+          },
+          definitePlural: {
+            swedish: '-',
+            english: '-'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: true,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      { 
+        noun: 'kruka',
+        translation: 'pot/planter',
+        category: 'garden',
+        difficulty: 'beginner',
+        gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en kruka',
+          definite: 'krukan',
+          indefinitePlural: 'krukor',
+          definitePlural: 'krukorna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Jag behöver en kruka till växten',
+            english: 'I need a pot for the plant'
+      },
+      definite: {
+            swedish: 'Krukan är av keramik',
+            english: 'The pot is made of ceramic'
+      },
+      indefinitePlural: {
+            swedish: 'Vi har många krukor i trädgården',
+            english: 'We have many pots in the garden'
+      },
+      definitePlural: {
+            swedish: 'Krukorna står på balkongen',
+            english: 'The pots are on the balcony'
+      }
+    },
+    semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+      canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: true,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'gräsmatta',
+        translation: 'lawn',
+        category: 'garden',
+    difficulty: 'beginner',
+        gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en gräsmatta',
+          definite: 'gräsmattan',
+          indefinitePlural: 'gräsmattor',
+          definitePlural: 'gräsmattorna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'De har en fin gräsmatta',
+            english: 'They have a nice lawn'
+      },
+      definite: {
+            swedish: 'Gräsmattan behöver klippas',
+            english: 'The lawn needs to be mowed'
+      },
+      indefinitePlural: {
+            swedish: 'Parkens gräsmattor är gröna',
+            english: 'The park\'s lawns are green'
+      },
+      definitePlural: {
+            swedish: 'Gräsmattorna är välskötta',
+            english: 'The lawns are well-maintained'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: true,
+          canBeBought: false,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: true,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'diskmaskin',
+        translation: 'dishwasher',
+        category: 'kitchen',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en diskmaskin',
+          definite: 'diskmaskinen',
+          indefinitePlural: 'diskmaskiner',
+          definitePlural: 'diskmaskinerna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi ska köpa en diskmaskin',
+            english: 'We are going to buy a dishwasher'
+      },
+      definite: {
+            swedish: 'Diskmaskinen är full',
+            english: 'The dishwasher is full'
+      },
+      indefinitePlural: {
+            swedish: 'De säljer diskmaskiner',
+            english: 'They sell dishwashers'
+      },
+      definitePlural: {
+            swedish: 'Diskmaskinerna är tysta',
+            english: 'The dishwashers are quiet'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      { 
+        noun: 'tvättmaskin',
+        translation: 'washing machine',
+        category: 'household',
+        difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en tvättmaskin',
+          definite: 'tvättmaskinen',
+          indefinitePlural: 'tvättmaskiner',
+          definitePlural: 'tvättmaskinerna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi behöver en ny tvättmaskin',
+            english: 'We need a new washing machine'
+      },
+      definite: {
+            swedish: 'Tvättmaskinen låter konstigt',
+            english: 'The washing machine sounds strange'
+      },
+      indefinitePlural: {
+            swedish: 'De har flera tvättmaskiner i tvättstugan',
+            english: 'They have several washing machines in the laundry room'
+      },
+      definitePlural: {
+            swedish: 'Tvättmaskinerna är moderna',
+            english: 'The washing machines are modern'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'mikrovågsugn',
+        translation: 'microwave',
+        category: 'kitchen',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en mikrovågsugn',
+          definite: 'mikrovågsugnen',
+          indefinitePlural: 'mikrovågsugnar',
+          definitePlural: 'mikrovågsugnarna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi har köpt en mikrovågsugn',
+            english: 'We have bought a microwave'
+      },
+      definite: {
+            swedish: 'Mikrovågsugnen är praktisk',
+            english: 'The microwave is practical'
+      },
+      indefinitePlural: {
+            swedish: 'Det finns mikrovågsugnar på rea',
+            english: 'There are microwaves on sale'
+      },
+      definitePlural: {
+            swedish: 'Mikrovågsugnarna står i köket',
+            english: 'The microwaves are in the kitchen'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'kylskåp',
+        translation: 'refrigerator',
+        category: 'kitchen',
+    difficulty: 'beginner',
+    gender: 'ett',
+    countable: true,
+    forms: {
+          indefinite: 'ett kylskåp',
+          definite: 'kylskåpet',
+          indefinitePlural: 'kylskåp',
+          definitePlural: 'kylskåpen'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi behöver ett större kylskåp',
+            english: 'We need a bigger refrigerator'
+      },
+      definite: {
+            swedish: 'Kylskåpet är tomt',
+            english: 'The refrigerator is empty'
+      },
+      indefinitePlural: {
+            swedish: 'De säljer kylskåp här',
+            english: 'They sell refrigerators here'
+      },
+      definitePlural: {
+            swedish: 'Kylskåpen är energisnåla',
+            english: 'The refrigerators are energy-efficient'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      { 
+        noun: 'balkong',
+        translation: 'balcony',
+        category: 'buildings',
+        difficulty: 'beginner',
+        gender: 'en',
+        countable: true,
+        forms: {
+          indefinite: 'en balkong',
+          definite: 'balkongen',
+          indefinitePlural: 'balkonger',
+          definitePlural: 'balkongerna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'De har en stor balkong',
+            english: 'They have a large balcony'
+          },
+          definite: {
+            swedish: 'Balkongen har fin utsikt',
+            english: 'The balcony has a nice view'
+          },
+          indefinitePlural: {
+            swedish: 'Huset har många balkonger',
+            english: 'The building has many balconies'
+          },
+          definitePlural: {
+            swedish: 'Balkongerna vetter mot söder',
+            english: 'The balconies face south'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: false,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'dammsugare',
+        translation: 'vacuum cleaner',
+        category: 'household',
+        difficulty: 'beginner',
+    gender: 'en',
+        countable: true,
+    forms: {
+          indefinite: 'en dammsugare',
+          definite: 'dammsugaren',
+          indefinitePlural: 'dammsugare',
+          definitePlural: 'dammsugarna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Vi behöver köpa en dammsugare',
+            english: 'We need to buy a vacuum cleaner'
+      },
+      definite: {
+            swedish: 'Dammsugaren är trasig',
+            english: 'The vacuum cleaner is broken'
+      },
+      indefinitePlural: {
+            swedish: 'De har flera dammsugare',
+            english: 'They have several vacuum cleaners'
+      },
+      definitePlural: {
+            swedish: 'Dammsugarna är på rea',
+            english: 'The vacuum cleaners are on sale'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: true,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'dusch',
+        translation: 'shower',
+        category: 'bathroom',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en dusch',
+          definite: 'duschen',
+          indefinitePlural: 'duschar',
+          definitePlural: 'duscharna'
+    },
+    examples: {
+      indefinite: {
+            swedish: 'Det finns en dusch i badrummet',
+            english: 'There is a shower in the bathroom'
+      },
+      definite: {
+            swedish: 'Duschen är varm',
+            english: 'The shower is hot'
+      },
+      indefinitePlural: {
+            swedish: 'Hotellet har flera duschar',
+            english: 'The hotel has several showers'
+      },
+      definitePlural: {
+            swedish: 'Duscharna är moderna',
+            english: 'The showers are modern'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      { 
+        noun: 'spis',
+        translation: 'stove',
+        category: 'kitchen',
+        difficulty: 'beginner',
+        gender: 'en',
+        countable: true,
+        forms: {
+          indefinite: 'en spis',
+          definite: 'spisen',
+          indefinitePlural: 'spisar',
+          definitePlural: 'spisarna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Vi har köpt en ny spis',
+            english: 'We have bought a new stove'
+          },
+          definite: {
+            swedish: 'Spisen är elektrisk',
+            english: 'The stove is electric'
+          },
+          indefinitePlural: {
+            swedish: 'De säljer spisar här',
+            english: 'They sell stoves here'
+          },
+          definitePlural: {
+            swedish: 'Spisarna är moderna',
+            english: 'The stoves are modern'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: true,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'garderob',
+        translation: 'wardrobe/closet',
+        category: 'furniture',
+    difficulty: 'beginner',
+    gender: 'en',
+    countable: true,
+    forms: {
+          indefinite: 'en garderob',
+          definite: 'garderoben',
+          indefinitePlural: 'garderober',
+          definitePlural: 'garderoberna'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Vi behöver en större garderob',
+            english: 'We need a bigger wardrobe'
+          },
+          definite: {
+            swedish: 'Garderoben är full',
+            english: 'The wardrobe is full'
+          },
+          indefinitePlural: {
+            swedish: 'Det finns garderober i varje rum',
+            english: 'There are wardrobes in every room'
+          },
+          definitePlural: {
+            swedish: 'Garderoberna är byggda i ek',
+            english: 'The wardrobes are made of oak'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      },
+      {
+        noun: 'element',
+        translation: 'radiator',
+        category: 'household',
+        difficulty: 'beginner',
+        gender: 'ett',
+        countable: true,
+        forms: {
+          indefinite: 'ett element',
+          definite: 'elementet',
+          indefinitePlural: 'element',
+          definitePlural: 'elementen'
+        },
+        examples: {
+          indefinite: {
+            swedish: 'Vi har ett varmt element',
+            english: 'We have a warm radiator'
+          },
+          definite: {
+            swedish: 'Elementet är kallt',
+            english: 'The radiator is cold'
+          },
+          indefinitePlural: {
+            swedish: 'Alla element är på',
+            english: 'All radiators are on'
+          },
+          definitePlural: {
+            swedish: 'Elementen behöver repareras',
+            english: 'The radiators need to be repaired'
+          }
+        },
+        semantics: {
+          canBeSeen: true,
+          canBeFound: true,
+          animate: false,
+          natural: false,
+          canBeBought: true,
+          canBeUsedAtWork: false,
+          canBeConsumed: false,
+          canBeWorn: false,
+          canGrow: false,
+          isWeather: false,
+          canBeBorrowed: false,
+          bodyPart: false
+        }
+      }
+
+    ]
+);

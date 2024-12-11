@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { NounsQuiz } from '../quiz/NounsQuiz';
 import { AdjectivesQuiz } from '../quiz/AdjectivesQuiz';
 import { VerbsQuiz } from '../quiz/VerbsQuiz';
-import { BookOpen, Languages, Pencil, BarChart3 } from 'lucide-react';
+import { BookOpen, Languages, Pencil, BarChart3, Type } from 'lucide-react';
 import { QuizStatistics } from '../quiz/QuizStatistics';
+import { SentenceBuilder } from '../quiz/SentenceBuilder';
 
 export default function QuizPage() {
   const [activeTab, setActiveTab] = useState('nouns');
@@ -16,7 +17,7 @@ export default function QuizPage() {
             Swedish Language Quiz
           </h1>
           <p className="text-gray-600 mb-4">
-            Test your knowledge with multiple-choice questions
+            Test your knowledge with multiple-choice questions and interactive exercises
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
@@ -64,6 +65,17 @@ export default function QuizPage() {
               <BarChart3 className="w-5 h-5" />
               Statistics
             </button>
+            <button
+              onClick={() => setActiveTab('sentence-builder')}
+              className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+                activeTab === 'sentence-builder'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <Type className="w-5 h-5" />
+              Sentence Builder
+            </button>
           </div>
         </header>
 
@@ -72,6 +84,7 @@ export default function QuizPage() {
           {activeTab === 'adjectives' && <AdjectivesQuiz />}
           {activeTab === 'verbs' && <VerbsQuiz />}
           {activeTab === 'statistics' && <QuizStatistics />}
+          {activeTab === 'sentence-builder' && <SentenceBuilder />}
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ import GrammarAnimation from './components/features/GrammarAnimation';
 import GrammarPractice from './components/features/GrammarPractice';
 import GrammarExplanationsPage from './components/pages/GrammarExplanationsPage';
 import StoryLearningPage from './components/pages/StoryLearningPage';
+import { StrictMode } from 'react';
 
 // MainContent component to handle the routing and content display
 const MainContent: React.FC<{ selectedType: ExerciseType; setSelectedType: (type: ExerciseType) => void }> = ({
@@ -55,9 +56,11 @@ const App = () => {
   const [selectedType, setSelectedType] = React.useState<ExerciseType>('landing');
   
   return (
-    <Router>
-      <MainContent selectedType={selectedType} setSelectedType={setSelectedType} />
-    </Router>
+    <StrictMode>
+      <Router>
+        <MainContent selectedType={selectedType} setSelectedType={setSelectedType} />
+      </Router>
+    </StrictMode>
   );
 };
 

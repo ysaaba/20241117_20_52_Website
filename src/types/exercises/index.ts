@@ -1,39 +1,21 @@
-export type ExerciseType = 
-  | 'landing' 
-  | 'articles' 
-  | 'nouns' 
-  | 'verbGroups' 
-  | 'adjectives' 
-  | 'adverbs' 
-  | 'quiz' 
-  | 'stories' 
-  | 'grammar-visualizer' 
-  | 'grammar-animation' 
-  | 'grammar-practice';
-
-export interface Exercise {
+export interface Question {
   id: number;
-  type: 'indefinite' | 'definite' | 'indefinitePlural' | 'definitePlural';
-  baseForm: string;
-  definiteForm: string;
-  indefinitePluralForm: string;
-  definitePluralForm: string;
-  sentence: string;
-  correctArticle: string;
-  correctSentence: string;
-  noun: string;
-  translation: string;
+  difficulty: 'easy' | 'medium' | 'advanced';
+  swedish: string;
+  english: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+  category: string;
+  hint?: string;
+  pronunciation?: {
+    ipa: string;
+    notes?: string;
+  };
 }
 
 export interface ExerciseProgress {
-  correct: number;
-  wrong: number;
+  completed: number;
   total: number;
-  answeredQuestions: Set<number>;
-}
-
-export interface ExerciseSummaryItem {
-  exercise: Exercise;
-  userAnswer: string;
-  isCorrect: boolean;
+  correct: number;
 }

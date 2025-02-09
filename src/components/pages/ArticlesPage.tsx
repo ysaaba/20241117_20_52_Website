@@ -28,9 +28,22 @@ const EXERCISES_PER_PAGE = 10;
 const TOTAL_PAGES = 3;
 const TOTAL_EXERCISES = EXERCISES_PER_PAGE * TOTAL_PAGES;
 
+const getOffsetForType = (type: ArticleType) => {
+  switch (type) {
+    case 'indefinite': return 10000;
+    case 'definite': return 20000;
+    case 'indefinitePlural': return 30000;
+    case 'definitePlural': return 40000;
+  }
+};
+
 const initializeSession = (type: ArticleType): ExerciseSession => {
   console.log('Initializing session for type:', type);
-  const exercises = generateExercises(TOTAL_EXERCISES, 1, type);
+  const offset = getOffsetForType(type);
+  const exercises = generateExercises(TOTAL_EXERCISES, 1, type).map(ex => ({
+    ...ex,
+    id: ex.id + offset
+  }));
   console.log('Generated exercises for session:', exercises.length);
   
   return {
